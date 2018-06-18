@@ -1,0 +1,333 @@
+// File /mnt/c/Users/icecube/WorkSpace/Altera/D-Egg_fw/CommTest_Fujii_edit/ICE_CUBE/hdl/Tlm_ans.vhd translated with vhd2vl v2.4 VHDL to Verilog RTL translator
+// vhd2vl settings:
+//  * Verilog Module Declaration Style: 1995
+
+// vhd2vl is Free (libre) Software:
+//   Copyright (C) 2001 Vincenzo Liguori - Ocean Logic Pty Ltd
+//     http://www.ocean-logic.com
+//   Modifications Copyright (C) 2006 Mark Gonzales - PMC Sierra Inc
+//   Modifications (C) 2010 Shankar Giri
+//   Modifications Copyright (C) 2002, 2005, 2008-2010 Larry Doolittle - LBNL
+//     http://doolittle.icarus.com/~larry/vhd2vl/
+//
+//   vhd2vl comes with ABSOLUTELY NO WARRANTY.  Always check the resulting
+//   Verilog for correctness, ideally with a formal verification tool.
+//
+//   You are welcome to redistribute vhd2vl under certain conditions.
+//   See the license (GPLv2) file included with the source for details.
+
+// The result of translation follows.  Its copyright status should be
+// considered unchanged from the original VHDL.
+
+// TLM_SEQ
+//library synplify;
+//  use synplify.attributes.all;	
+// no timescale needed
+
+module TLM_SEQ(
+CLK,
+RESET,
+IF_TX,
+IN_TX_STR,
+IN_TX_SEND_END,
+IN_TIME,
+IN_TOTAL_CNT,
+FIFO_FF,
+FIFO_EF,
+FIFO_AEF,
+FIFO_AFF,
+FIFO_DAT_OUT,
+IF_SAD_DA,
+FIFO_RD_ENA
+);
+
+input CLK, RESET;
+output IF_TX;
+input IN_TX_STR;
+output IN_TX_SEND_END;
+input [39:0] IN_TIME;
+input [31:0] IN_TOTAL_CNT;
+//IN_TIME2			   : in  std_logic_vector(3 downto 0);
+input FIFO_FF;
+input FIFO_EF;
+input FIFO_AEF;
+input FIFO_AFF;
+input [13:0] FIFO_DAT_OUT;
+input [13:0] IF_SAD_DA;
+output FIFO_RD_ENA;
+
+wire CLK;
+wire RESET;
+wire IF_TX;
+wire IN_TX_STR;
+wire IN_TX_SEND_END;
+wire [39:0] IN_TIME;
+wire [31:0] IN_TOTAL_CNT;
+wire FIFO_FF;
+wire FIFO_EF;
+wire FIFO_AEF;
+wire FIFO_AFF;
+wire [13:0] FIFO_DAT_OUT;
+wire [13:0] IF_SAD_DA;
+wire FIFO_RD_ENA;
+
+
+reg [3:0] TLM_BIT_COUNT;
+reg [11:0] TLM_BYT_COUNT;
+reg [11:0] TLM_SEQ_CLK_CNT;
+reg [7:0] IN_SEND_DATA;
+reg TLM_SEQ_STS;
+reg TLM_SEQ_CLR;
+reg TLM_SEQ_CLK;
+reg SDATA_OUT;
+reg [15:0] SERAL_NO;
+reg [15:0] FIFO_DAT_LAT;
+reg [7:0] MEM_SEQ_ID;
+wire MEM_DAT_LAT;
+reg [7:0] WAVE_DATA;
+reg IN_FIFO_READ_ENA;
+
+  //------------------------------------------------------------------------------------------
+  // TLM_SEQ
+  //------------------------------------------------------------------------------------------
+  // Generate SDM Status and make dammy data
+  always @(negedge RESET or posedge CLK) begin
+    if(~RESET) begin
+      TLM_SEQ_STS <= 1'b 0;
+    end
+	 else begin
+      if(TLM_SEQ_CLR) begin
+        TLM_SEQ_STS <= 1'b0;
+      end
+      else if(IN_TX_STR) begin
+        TLM_SEQ_STS <= 1'b1;
+      end
+    end
+	  
+  end
+
+  always @(negedge RESET or posedge CLK) begin
+    if(~RESET) begin
+      TLM_SEQ_CLK_CNT <= {12{1'b0}};
+      TLM_SEQ_CLK <= 1'b0;
+    end
+	 else begin
+      if(TLM_SEQ_STS) begin
+        //if(TLM_SEQ_CLK_CNT(7 downto 0) = x"8A") then --115200bps 16MHz 138.888888(DEC) 8A(HEX)
+        if((TLM_SEQ_CLK_CNT[11:0] == 12'h1B2)) begin
+          //50MHz 1B2(H) --40MHz 115200bps 347.2(DEC)
+          //if(TLM_SEQ_CLK_CNT(11 downto 0) = x"364") then --100MHz 364(H) --40MHz 115200bps 347.2(DEC) 15C(HEX) --16MHz 115200bps 138.9(DEC) 08A(HEX)
+          //if(TLM_SEQ_CLK_CNT(11 downto 0) = x"87A") then --250MHz 115200bps 173.6(DEC) 0AD(HEX) --16MHz 115200bps 138.9(DEC) 08A(HEX)
+          TLM_SEQ_CLK_CNT <= {12{1'b0}};
+          TLM_SEQ_CLK <= 1'b1;
+        end
+        else begin
+          TLM_SEQ_CLK_CNT <= TLM_SEQ_CLK_CNT + 1'b1;
+          TLM_SEQ_CLK <= 1'b0;
+        end
+      end
+      else begin
+        TLM_SEQ_CLK_CNT <= {12{1'b0}};
+        TLM_SEQ_CLK <= 1'b0;
+      end
+    end
+	 
+  end
+
+  // Generate telemetry sequence clear SIGNAL
+  always @(negedge RESET or posedge CLK) begin
+    if(~RESET) begin
+      TLM_BIT_COUNT <= {4{1'b0}};
+      TLM_BYT_COUNT <= {12{1'b0}};
+    end 
+	 else begin
+      if(TLM_SEQ_STS) begin
+        if(TLM_SEQ_CLK) begin
+          if((TLM_BIT_COUNT == 4'h9)) begin
+            TLM_BIT_COUNT <= {4{1'b0}};
+            TLM_BYT_COUNT <= TLM_BYT_COUNT + 1'b1;
+          end
+          else begin
+            TLM_BIT_COUNT <= TLM_BIT_COUNT + 1'b1;
+          end
+        end
+      end
+      else begin
+        TLM_BIT_COUNT <= {4{1'b0}};
+        TLM_BYT_COUNT <= {12{1'b0}};
+      end
+    end
+	 
+  end
+
+  // Generate telemetry sequence clear SIGNAL
+  always @(negedge RESET or posedge CLK) begin
+    if(~RESET) begin
+      TLM_SEQ_CLR <= 1'b0;
+    end 
+	 else begin
+      if(TLM_SEQ_CLK) begin
+        if(((TLM_BYT_COUNT[11:0] == 12'h409) && (TLM_BIT_COUNT == 4'h9))) begin
+          TLM_SEQ_CLR <= 1'b1;
+        end
+        else begin
+          TLM_SEQ_CLR <= 1'b0;
+        end
+      end
+      else begin
+        TLM_SEQ_CLR <= 1'b0;
+      end
+    end
+	 
+  end
+
+  // Generate Output sirial data
+  always @(negedge RESET or posedge CLK) begin
+    if(~RESET) begin
+      SDATA_OUT <= 1'b1;
+    end
+	 else begin
+      if(TLM_SEQ_STS) begin
+        case(TLM_BIT_COUNT)
+        4'h0 : SDATA_OUT <= 1'b0;
+        4'h1 : SDATA_OUT <= IN_SEND_DATA[0];
+        4'h2 : SDATA_OUT <= IN_SEND_DATA[1];
+        4'h3 : SDATA_OUT <= IN_SEND_DATA[2];
+        4'h4 : SDATA_OUT <= IN_SEND_DATA[3];
+        4'h5 : SDATA_OUT <= IN_SEND_DATA[4];
+        4'h6 : SDATA_OUT <= IN_SEND_DATA[5];
+        4'h7 : SDATA_OUT <= IN_SEND_DATA[6];
+        4'h8 : SDATA_OUT <= IN_SEND_DATA[7];
+        4'h9 : SDATA_OUT <= 1'b1;
+        default : SDATA_OUT <= 1'b1;
+        endcase
+      end
+      else begin
+        SDATA_OUT <= 1'b1;
+      end
+    end
+	  
+  end
+
+  always @(posedge CLK or negedge RESET) begin
+    if(~RESET) begin
+      IN_SEND_DATA <= {8{1'b0}};
+    end 
+	 else begin
+      if((TLM_SEQ_STS == 1'b 1)) begin
+        //if(IN_TLM_MODE = "01")then 
+        case(TLM_BYT_COUNT[11:0])
+        12'h000 : IN_SEND_DATA <= 8'h81;
+        12'h001 : IN_SEND_DATA <= 8'h81;
+        12'h002 : IN_SEND_DATA <= IN_TIME[31:24];
+        12'h003 : IN_SEND_DATA <= IN_TIME[23:16];
+        12'h004 : IN_SEND_DATA <= IN_TIME[15:8];
+        12'h005 : IN_SEND_DATA <= IN_TIME[7:0];
+        12'h006 : IN_SEND_DATA <= SERAL_NO[15:8];
+        12'h007 : begin
+          IN_SEND_DATA <= SERAL_NO[7:0];
+          IN_FIFO_READ_ENA <= 1'b1;
+          //                    when x"F8" => IN_SEND_DATA <= IN_TOTAL_CNT(31 downto 24); 
+          //                                  IN_FIFO_READ_ENA <= '0';
+          //                    when x"F9" => IN_SEND_DATA <= IN_TOTAL_CNT(23 downto 16); 
+          //                    when x"FA" => IN_SEND_DATA <= IN_TOTAL_CNT(15 downto 8); 
+          //                    when x"FB" => IN_SEND_DATA <= IN_TOTAL_CNT(7 downto 0); 
+          //                    when x"FC" => IN_SEND_DATA <= IN_TIME(39 downto 32);
+          //                    when x"FD" => IN_SEND_DATA <= "0000" & FIFO_FF & FIFO_EF & FIFO_AEF & FIFO_AFF; 
+        end
+        12'h40A : begin
+          IN_SEND_DATA <= 8'hEE;
+          IN_FIFO_READ_ENA <= 1'b0;
+        end
+        12'h40B : begin
+          IN_SEND_DATA <= 8'hEE;
+        end
+        default : begin
+          IN_SEND_DATA <= WAVE_DATA[7:0];
+          //"IF_SAD_DA(13 downto 6) ; --FIFO_DAT_LAT(7 downto 0); 
+        end
+        endcase
+        //elsif(IN_TLM_MODE = "10")then
+        //    IN_SEND_DATA <= IN_ROW_DAT(7 downto 0);
+        //end if; 
+      end
+      else begin
+        IN_FIFO_READ_ENA <= 1'b0;
+      end
+    end
+	 
+  end
+
+  always @(posedge CLK or negedge RESET) begin
+    if(~RESET) begin
+      SERAL_NO <= {16{1'b0}};
+    end 
+	 else begin
+      if(TLM_SEQ_CLR) begin
+        SERAL_NO <= SERAL_NO + 1'b1;
+      end
+    end
+	 
+  end
+
+  // Generate Output sirial data
+  always @(negedge RESET or posedge CLK) begin
+    if(~RESET) begin
+      MEM_SEQ_ID <= {8{1'b0}};
+    end
+	 else begin
+      if(TLM_SEQ_STS) begin
+        if((TLM_BIT_COUNT == 4'h0)) begin
+          MEM_SEQ_ID[0] <= 1'b1;
+          MEM_SEQ_ID[7:1] <= MEM_SEQ_ID[6:0];
+        end
+        else begin
+          MEM_SEQ_ID <= {8{1'b0}};
+        end
+      end
+      else begin
+        MEM_SEQ_ID <= {8{1'b0}};
+      end
+    end
+	  
+  end
+
+  assign FIFO_RD_ENA = IN_FIFO_READ_ENA & ((MEM_SEQ_ID[0] &  ~MEM_SEQ_ID[1])) &  ~TLM_BYT_COUNT[0];
+  assign MEM_DAT_LAT = IN_FIFO_READ_ENA & ((MEM_SEQ_ID[5] &  ~MEM_SEQ_ID[6])) &  ~TLM_BYT_COUNT[0];
+  always @(negedge RESET or posedge CLK) begin
+    if(~RESET) begin
+      FIFO_DAT_LAT <= {16{1'b0}};
+    end
+	 else begin
+      if(MEM_DAT_LAT) begin
+        FIFO_DAT_LAT[15:0] <= {2'b 00,FIFO_DAT_OUT[13:0]};
+        //            if(FIFO_DAT_OUT(15 downto 0) >= x"2000") then
+        //                FIFO_DAT_LAT(15 downto 0) <= x"6000"- FIFO_DAT_OUT(15 downto 0);
+        //            else
+        //                FIFO_DAT_LAT(15 downto 0) <= x"2000"- FIFO_DAT_OUT(15 downto 0);
+        //            end if;
+      end
+    end
+	  
+  end
+
+  always @(negedge RESET or posedge CLK) begin
+    if(~RESET) begin
+      WAVE_DATA[7:0] <= {8{1'b0}};
+      //FIFO_DAT_LAT(15 downto 8);
+    end
+	 else begin
+      if(~TLM_BYT_COUNT[0]) begin
+        WAVE_DATA[7:0] <= FIFO_DAT_LAT[15:8];
+      end
+      else begin
+        WAVE_DATA[7:0] <= FIFO_DAT_LAT[7:0];
+      end
+    end
+	  
+  end
+
+  assign IF_TX = SDATA_OUT;
+  assign IN_TX_SEND_END = TLM_SEQ_CLR;
+
+endmodule

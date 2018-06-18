@@ -1,0 +1,110 @@
+<?xml version="1.0"?>
+<!--Created by Liquid XML 2008 (www.liquid-technologies.com) for Altera-->
+<ProgramExecution xmlns:xs="http://www.w3.org/2001/XMLSchema-instance">
+	<QuartusExecution>
+		<AddressBits>64</AddressBits>
+		<ApplicationError>
+		<Bits>64</Bits>
+		<CommandLine>quartus C:\Users\icecube\WorkSpace\Altera\D-Egg_fw\CommTest_2ADC_dev\dmb1test.qpf</CommandLine>
+		<ErrorMessage>Access Violation at 0X00000000A7D73A75</ErrorMessage>
+		<Line>0</Line>
+		<Platform>windows</Platform>
+		<SourceFile>unknown</SourceFile>
+		<StackTrace>
+	 0xa7d73a74:
+	0x7ffcd8013731: ole32 + 0x23731 (OleIsCurrentClipboard + 0x1cd1)
+	0x7ffcd8006452: ole32 + 0x16452 (OleSetClipboard + 0x3d2)
+	0x7ffcd8006157: ole32 + 0x16157 (OleSetClipboard + 0xd7)
+	 0x53a39e9d: QtGui4 + 0x89e9d (?setMimeData@QClipboard@@QEAAXPEAVQMimeData@@W4Mode@1@@Z + 0x9d)
+	0x7ffc927b204d: edt_tedq + 0x1204d (??1TEDQ_SCINTILLA_CTRL@@UEAA@XZ + 0x4ed)
+	0x7ffc927b2ea3: edt_tedq + 0x12ea3 (??_ETEDQ_SCINTILLA_CTRL@@UEAAPEAXI@Z + 0x13)
+	0x7ffc927b1a86: edt_tedq + 0x11a86 (??1TEDQ_FRAME_WND@@UEAA@XZ + 0x46)
+	0x7ffc927b2c83: edt_tedq + 0x12c83 (??_ETEDQ_FRAME_WND@@UEAAPEAXI@Z + 0x13)
+	 0x537df9b4: QtCore4 + 0x11f9b4 (?event@QObject@@UEAA_NPEAVQEvent@@@Z + 0xa4)
+	 0x53a11402: QtGui4 + 0x61402 (?event@QWidget@@MEAA_NPEAVQEvent@@@Z + 0xd42)
+	 0x53d49d30: QtGui4 + 0x399d30 (?event@QMainWindow@@MEAA_NPEAVQEvent@@@Z + 0x280)
+	 0x539d2e95: QtGui4 + 0x22e95 (?notify_helper@QApplicationPrivate@@QEAA_NPEAVQObject@@PEAVQEvent@@@Z + 0xf5)
+	 0x539d2b2f: QtGui4 + 0x22b2f (?notify@QApplication@@UEAA_NPEAVQObject@@PEAVQEvent@@@Z + 0x17bf)
+	 0x537cd92b: QtCore4 + 0x10d92b (?notifyInternal@QCoreApplication@@AEAA_NPEAVQObject@@PEAVQEvent@@@Z + 0x7b)
+	 0x537cf502: QtCore4 + 0x10f502 (?sendPostedEvents@QCoreApplicationPrivate@@SAXPEAVQObject@@HPEAVQThreadData@@@Z + 0x2b2)
+	 0x537f2fb8: QtCore4 + 0x132fb8 (?processEvents@QEventDispatcherWin32@@UEAA_NV?$QFlags@W4ProcessEventsFlag@QEventLoop@@@@@Z + 0xb98)
+	0x7ffcda18b85c: USER32 + 0xb85c (CallWindowProcW + 0x4dc)
+	0x7ffcda18b1ee: USER32 + 0xb1ee (DispatchMessageW + 0x1ae)
+	 0x537f2802: QtCore4 + 0x132802 (?processEvents@QEventDispatcherWin32@@UEAA_NV?$QFlags@W4ProcessEventsFlag@QEventLoop@@@@@Z + 0x3e2)
+	 0x53a30eb4: QtGui4 + 0x80eb4 (?openPopup@QApplicationPrivate@@QEAAXPEAVQWidget@@@Z + 0x204)
+	 0x537ca88b: QtCore4 + 0x10a88b (?exec@QEventLoop@@QEAAHV?$QFlags@W4ProcessEventsFlag@QEventLoop@@@@@Z + 0x22b)
+	 0x537cce6f: QtCore4 + 0x10ce6f (?exec@QCoreApplication@@SAHXZ + 0xdf)
+	0x7ff62f5d197b: quartus + 0x197b (?qgq_main@@YAHHPEAPEBD@Z + 0x7b)
+	0x7ffccbf62928: CCL_MSG + 0x12928 (?msg_main_thread@@YAPEAXPEAX@Z + 0x18)
+	0x7ffccbf63f4e: CCL_MSG + 0x13f4e (?msg_thread_wrapper@@YAPEAXP6APEAXPEAX@Z0@Z + 0x6e)
+	0x7ffccccb4240: ccl_mem + 0x14240 (?mem_thread_wrapper@@YAPEAXP6APEAXPEAX@Z0@Z + 0x70)
+	0x7ffccbf62011: CCL_MSG + 0x12011 (?msg_exe_main@@YAHHPEAPEBDP6AHH0@Z@Z + 0xa1)
+	0x7ff62f5d24e7: quartus + 0x24e7 (WinMain + 0x127)
+	0x7ff62f5d1e58: quartus + 0x1e58 (__tmainCRTStartup + 0x148)
+	0x7ffcd9f91fe3: KERNEL32 + 0x11fe3 (BaseThreadInitThunk + 0x13)
+	0x7ffcda6bf060: ntdll + 0x6f060 (RtlUserThreadStart + 0x20)
+		</StackTrace>
+		<Subsystem>unknown</Subsystem>
+	</ApplicationError>
+	<Compilation>
+			<CompileID>0</CompileID>
+			<DeviceFamily/>
+			<IncrementalCompilation/>
+			<TopLevelEntityName/>
+		</Compilation>
+		<DateInvoked>2018/05/15 12:37:21</DateInvoked>
+		<ElapsedTime>773825</ElapsedTime>
+		<IP>10.25.123.79</IP>
+		<IsInternal>false</IsInternal>
+		<IsQt>true</IsQt>
+		<License>
+			<Edition>Lite Edition</Edition>
+			<LicenseHostID/>
+		</License>
+		<Machine>
+			<CPUCountLogical>8</CPUCountLogical>
+			<CPUCountPhysical>1</CPUCountPhysical>
+			<CPUSpeed>3600</CPUSpeed>
+			<Hostname>DESKTOP-5QAKFN2</Hostname>
+			<NIC>
+				<Address>d89ef311d4ea</Address>
+			</NIC>
+			<OS>Windows 8</OS>
+			<OSAddressBits>64</OSAddressBits>
+			<OSVersion>6.2</OSVersion>
+			<Platform>windows</Platform>
+			<ScreenResolution>unknown</ScreenResolution>
+			<TotalPhysicalRAM>8055</TotalPhysicalRAM>
+			<TotalVirtualRAM>3072</TotalVirtualRAM>
+		</Machine>
+		<Name>quartus</Name>
+		<PeakMemoryUsed>0</PeakMemoryUsed>
+		<ProjectRevision>
+			<ProjectName/>
+			<Revision/>
+		</ProjectRevision>
+		<QuartusInstallation>
+			<InstallationID>238177194464490.15166058070924</InstallationID>
+			<Version>
+				<Build>211</Build>
+				<BuildSite>SJ</BuildSite>
+				<BuildSuffix/>
+				<Edition>Lite Edition</Edition>
+				<ServicePack>0</ServicePack>
+				<VersionNumber>16</VersionNumber>
+			</Version>
+		</QuartusInstallation>
+		<QuartusUser>
+			<AlteraUserName/>
+			<FAEContactName/>
+			<TalkbackStatus>
+				<DateSet/>
+				<TalkbackOn>true</TalkbackOn>
+			</TalkbackStatus>
+			<UserID>238177194464490.151660586506108</UserID>
+			<UserName>icecube</UserName>
+		</QuartusUser>
+	</QuartusExecution>
+	<SchemaVersion>schema_2013-01-18</SchemaVersion>
+</ProgramExecution>
+

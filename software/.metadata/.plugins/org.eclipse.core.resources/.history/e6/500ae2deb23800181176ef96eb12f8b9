@@ -1,0 +1,18 @@
+/*
+ * testreadout.c
+ *
+ *  Created on: Apr 5, 2018
+ *      Author: icecube
+ */
+#include <stdio.h>
+#include <unistd.h>
+#include "system.h"
+#include "altera_avalon_jtag_uart_regs.h"
+
+int main()
+{
+	printf("Hello world!");
+
+	return 0;
+}
+

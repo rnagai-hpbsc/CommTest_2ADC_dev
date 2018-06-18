@@ -1,0 +1,185 @@
+{
+	"partitions" : [
+		{
+			"name" : "Top",
+			"pins" : [
+				{
+					"name" : "IF_SAD_RESET1",
+					"strict" : false
+				},
+				{
+					"name" : "IF_SAD_SCLK1",
+					"strict" : false
+				},
+				{
+					"name" : "IF_SAD_SDAT1",
+					"strict" : false
+				},
+				{
+					"name" : "IF_SAD_SEN1",
+					"strict" : false
+				},
+				{
+					"name" : "IF_SAD_RESET2",
+					"strict" : false
+				},
+				{
+					"name" : "IF_SAD_SCLK2",
+					"strict" : false
+				},
+				{
+					"name" : "IF_SAD_SDAT2",
+					"strict" : false
+				},
+				{
+					"name" : "IF_SAD_SEN2",
+					"strict" : false
+				},
+				{
+					"name" : "IF_IND_FPGA1",
+					"strict" : false
+				},
+				{
+					"name" : "IF_IND_FPGA2",
+					"strict" : false
+				},
+				{
+					"name" : "IF_TEST",
+					"strict" : false
+				},
+				{
+					"name" : "SLO_DAC1_CS",
+					"strict" : false
+				},
+				{
+					"name" : "SLO_DAC1_SCLK",
+					"strict" : false
+				},
+				{
+					"name" : "SLO_DAC1_MOSI",
+					"strict" : false
+				},
+				{
+					"name" : "IF_SAD_SDOUT1",
+					"strict" : false
+				},
+				{
+					"name" : "IF_SYS_CLK",
+					"strict" : false
+				},
+				{
+					"name" : "IF_SAD_D1[0]",
+					"strict" : false
+				},
+				{
+					"name" : "IF_SAD_D2[0]",
+					"strict" : false
+				},
+				{
+					"name" : "IF_SAD_D1[8]",
+					"strict" : false
+				},
+				{
+					"name" : "IF_SAD_D2[8]",
+					"strict" : false
+				},
+				{
+					"name" : "IF_SAD_D1[10]",
+					"strict" : false
+				},
+				{
+					"name" : "IF_SAD_D2[10]",
+					"strict" : false
+				},
+				{
+					"name" : "IF_SAD_D1[13]",
+					"strict" : false
+				},
+				{
+					"name" : "IF_SAD_D2[13]",
+					"strict" : false
+				},
+				{
+					"name" : "IF_SAD_D2[11]",
+					"strict" : false
+				},
+				{
+					"name" : "IF_SAD_D1[11]",
+					"strict" : false
+				},
+				{
+					"name" : "IF_SAD_D1[4]",
+					"strict" : false
+				},
+				{
+					"name" : "IF_SAD_D2[4]",
+					"strict" : false
+				},
+				{
+					"name" : "IF_SAD_D1[5]",
+					"strict" : false
+				},
+				{
+					"name" : "IF_SAD_D2[5]",
+					"strict" : false
+				},
+				{
+					"name" : "IF_SAD_D1[7]",
+					"strict" : false
+				},
+				{
+					"name" : "IF_SAD_D2[7]",
+					"strict" : false
+				},
+				{
+					"name" : "IF_SAD_D1[6]",
+					"strict" : false
+				},
+				{
+					"name" : "IF_SAD_D2[6]",
+					"strict" : false
+				},
+				{
+					"name" : "IF_SAD_D1[9]",
+					"strict" : false
+				},
+				{
+					"name" : "IF_SAD_D2[9]",
+					"strict" : false
+				},
+				{
+					"name" : "IF_SAD_D1[12]",
+					"strict" : false
+				},
+				{
+					"name" : "IF_SAD_D2[12]",
+					"strict" : false
+				},
+				{
+					"name" : "IF_SAD_D1[2]",
+					"strict" : false
+				},
+				{
+					"name" : "IF_SAD_D2[2]",
+					"strict" : false
+				},
+				{
+					"name" : "IF_SAD_D1[3]",
+					"strict" : false
+				},
+				{
+					"name" : "IF_SAD_D2[3]",
+					"strict" : false
+				},
+				{
+					"name" : "IF_SAD_D1[1]",
+					"strict" : false
+				},
+				{
+					"name" : "IF_SAD_D2[1]",
+					"strict" : false
+				}
+			]
+		}
+	]
+}

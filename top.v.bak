@@ -1,0 +1,964 @@
+// File /mnt/c/Users/icecube/WorkSpace/Altera/D-Egg_fw/CommTest_Fujii_edit/ICE_CUBE/hdl/top_edit.vhd translated with vhd2vl v2.4 VHDL to Verilog RTL translator
+// vhd2vl settings:
+//  * Verilog Module Declaration Style: 1995
+
+// vhd2vl is Free (libre) Software:
+//   Copyright (C) 2001 Vincenzo Liguori - Ocean Logic Pty Ltd
+//     http://www.ocean-logic.com
+//   Modifications Copyright (C) 2006 Mark Gonzales - PMC Sierra Inc
+//   Modifications (C) 2010 Shankar Giri
+//   Modifications Copyright (C) 2002, 2005, 2008-2010 Larry Doolittle - LBNL
+//     http://doolittle.icarus.com/~larry/vhd2vl/
+//
+//   vhd2vl comes with ABSOLUTELY NO WARRANTY.  Always check the resulting
+//   Verilog for correctness, ideally with a formal verification tool.
+//
+//   You are welcome to redistribute vhd2vl under certain conditions.
+//   See the license (GPLv2) file included with the source for details.
+
+// The result of translation follows.  Its copyright status should be
+// considered unchanged from the original VHDL.
+
+//use synplify.attributes.all;		--spase synplifty library
+//library Axcelerator;
+//use Axcelerator.all;
+//library WORK;
+//use work.def_pack.all;
+//use work.ver_pack.all;
+// no timescale needed
+
+module top(
+IF_SYS_CLK,
+IF_RX,
+IF_TX,
+IF_SAD_CLK1,
+IF_SAD_CLK2,
+IF_SAD_D1,
+IF_SAD_D2,
+IF_SAD_CKO1,
+IF_SAD_CKO2,
+IF_SAD_RESET1,
+IF_SAD_SCLK1,
+IF_SAD_SDAT1,
+IF_SAD_SEN1,
+IF_SAD_SDOUT1,
+IF_SAD_RESET2,
+IF_SAD_SCLK2,
+IF_SAD_SDAT2,
+IF_SAD_SEN2,
+IF_SAD_SDOUT2,
+IF_IND_FPGA1,
+IF_IND_FPGA2,
+IF_TEST
+);
+
+input IF_SYS_CLK;
+//20MHz
+//			IF_SYS_RSTn			: in  std_logic;
+input IF_RX;
+output IF_TX;
+output IF_SAD_CLK1;
+//LVDS
+output IF_SAD_CLK2;
+//LVDS
+input [13:0] IF_SAD_D1;
+input [13:0] IF_SAD_D2;
+input IF_SAD_CKO1;
+input IF_SAD_CKO2;
+output IF_SAD_RESET1;
+output IF_SAD_SCLK1;
+output IF_SAD_SDAT1;
+output IF_SAD_SEN1;
+input IF_SAD_SDOUT1;
+output IF_SAD_RESET2;
+output IF_SAD_SCLK2;
+output IF_SAD_SDAT2;
+output IF_SAD_SEN2;
+input IF_SAD_SDOUT2;
+output IF_IND_FPGA1;
+output IF_IND_FPGA2;
+output IF_TEST;
+//        IF_SAD_CLKO     : in  std_logic;
+//        IF_SAD_CLKO_N   : in  std_logic;
+//		  
+//
+//
+//        IF_AD_SCLK1     : out std_logic;
+//        IF_AD_CS1       : out std_logic;
+//        IF_AD_SDATA1    : in  std_logic;
+//        IF_AD_SCLK2     : out std_logic;
+//        IF_AD_CS2       : out std_logic;
+//        IF_AD_SDATA2    : in  std_logic;
+//
+//        IF_DA1_SCLK     : out std_logic;
+//        IF_DA1_SYNC     : out std_logic;
+//        IF_DA1_DIN      : out std_logic;
+//
+//        IF_PH_GT        : out std_logic;
+//        IF_PH_DC        : out std_logic;
+//
+//        IF_TRIG_OUT1    : in  std_logic;
+//        IF_TRIG_OUT2    : in  std_logic;
+//
+//        IF_CAL_CLK      : out std_logic;
+//
+//        IF_DUMY_1      : out std_logic;
+//        IF_DUMY_2      : out std_logic;
+//        IF_TX_A         : out std_logic_vector(3 downto 0)
+
+wire IF_SYS_CLK;
+wire IF_RX;
+wire IF_TX;
+wire IF_SAD_CLK1;
+wire IF_SAD_CLK2;
+wire [13:0] IF_SAD_D1;
+wire [13:0] IF_SAD_D2;
+wire IF_SAD_CKO1;
+wire IF_SAD_CKO2;
+wire IF_SAD_RESET1;
+wire IF_SAD_SCLK1;
+wire IF_SAD_SDAT1;
+wire IF_SAD_SEN1;
+wire IF_SAD_SDOUT1;
+wire IF_SAD_RESET2;
+wire IF_SAD_SCLK2;
+wire IF_SAD_SDAT2;
+wire IF_SAD_SEN2;
+wire IF_SAD_SDOUT2;
+wire IF_IND_FPGA1;
+wire IF_IND_FPGA2;
+wire IF_TEST;
+
+// 
+
+// ***********************************************************************************************************
+// ***********************************************************************************************************
+parameter AA = 1023;  //511; --512;
+wire CLK; wire RESET;  //signal TIM_SEQ_CNT      : std_logic_vector(27 downto 0);
+//signal MF_SIG         : std_logic;
+//    signal IN_REG_IN	: std_logic;
+//    signal IN_SET_INT           : std_logic;
+wire [13:0] FIFO_DAT_IN1;
+wire [13:0] FIFO_DAT_IN2;
+wire [13:0] FIFO_DAT_OUT1;
+wire [13:0] FIFO_DAT_OUT2;
+reg FIFO_WR_ENA;
+wire FIFO_RD_ENA;
+wire FIFO_FF;
+wire FIFO_EF;
+wire FIFO_AEF;
+wire FIFO_AFF;
+wire [3:0] IN_CMD_AD_CTRL;
+reg [3:0] IN_AD_CLK_CNT;
+reg IN_AD_CLK;
+wire IN_TX_SEND_END;
+reg [7:0] uSEC_SIG_CNT;
+reg [11:0] mSEC_SIG_CNT;
+reg [7:0] hSEC_SIG_CNT;
+reg [7:0] SEC_SIG_CNT;
+reg uSEC_SIG;
+reg mSEC_SIG;
+reg hSEC_SIG;
+reg SEC_SIG;
+reg [39:0] IN_TIME;  //signal IN_TIME2        		: std_logic_vector(3 downto 0);
+wire IN_TX_STR;
+wire IN_CMD_CAL;
+wire [7:0] IN_CMD_DISC;
+wire IN_SET_DAC;
+wire [31:0] IN_TOTAL_CNT;
+wire IN_TRIG1_START;
+wire [3:0] IN_TRIG1_CNT;
+wire IN_SET_ADC_INI;
+wire [3:0] IN_CMD_AD_FREQ;
+wire [7:0] IN_CAL_CLK_CNT;
+wire IN_CAL_CLK_PLS;
+wire DA1_SEQ_STS;
+wire DA1_SEQ_CLR;
+wire [11:0] DA1_SEQ_CNT;
+wire DA1_DIN;
+wire DA1_SEQ_STA;
+wire [1:0] DA1_SEL_CH;
+wire INT_SEQ_SIG;  //signal INT_SEQ_SIG2         : std_logic;
+reg INT_SEQ_STS;  //signal INT_SEQ_STS2          : std_logic;
+reg [23:0] INT_SEQ_CNT;
+reg [1:0] INT_SEQ_D;
+reg SAD_INI_SEQ_STS;
+reg SAD_INI_SEQ_CLR;
+reg [15:0] SAD_INI_SEQ_CNT;
+reg SAD_INI_SEQ_DIN;
+reg SAD_INI_SEQ_STA;
+reg [7:0] SAD_INI_ADD;
+reg [7:0] SAD_INI_DAT;
+reg SAD_INI_RESET_SIG;
+reg TRIG_SEQ_STS;
+reg TRIG_SEQ_CLR;
+reg [11:0] TRIG_SEQ_CNT;
+reg DATA_WRITE_DIS;
+wire CLKB;
+wire CLK_250M;  //signal CLK_ADC         			: std_logic;
+reg [15:0] RESET_COUNT;
+reg RESET_SIG;  //   attribute syn_radhardlevel of sftbuf1: signal is "cc"; 
+//component CLKINT
+//	port(
+//		A				        : in  STD_ULOGIC;
+//		Y				        : out STD_ULOGIC);
+//end component; 
+//
+//component A3P_FIFO_16 is 
+//    port( 
+//        DATA                    : in    std_logic_vector(15 downto 0); 
+//        Q                       : out   std_logic_vector(15 downto 0);
+//        WE, RE, WCLOCK, RCLOCK  : in    std_logic;  
+//        FULL, EMPTY             : out   std_logic;  
+//        RESET                   : in    std_logic;  
+//        AEMPTY, AFULL           : out   std_logic) ;
+//end component;
+//component SD_CNT is
+//	port ( CLK  			    : in    std_logic; 
+//		RESET				    : in	std_logic;
+//        IF_SD_CLK               : in    std_logic;
+//        IF_SD_ENA               : in    std_logic;
+//        IF_SD_DAT               : in    std_logic;
+//        FIFO_DAT_IN             : out   std_logic_vector(15 downto 0);
+//        FIFO_FF                 : in    std_logic;
+//        FIFO_AFF                : in    std_logic;
+//        FIFO_WR_ENA             : out   std_logic;
+//        BANK_SIG			    : in    std_logic
+// 		);		
+//end component;
+
+  // **************************************************************************************
+  // SYS
+  // **************************************************************************************
+  // SYS
+  //g0 : CLKINT port map(A=> IF_SYS_CLK,	Y=> CLK);
+  //g1 : CLKINT port map(A=> IF_SYS_CLK,	Y=> iREG_CLK);
+  //g2 : CLKINT port map(A=> not IF_SYS_RSTn,	Y=> RESET);
+  //g2 : CLKINT port map(A=> IF_SYS_RSTn,	Y=> RESET);
+  //CLK <= IF_SYS_CLK;
+  //RESET <= '1'; --IF_SYS_RSTn;
+  assign CLKB = CLK_250M;
+  // IF_TEST <= IF_SAD_CKO1;
+  assign IF_TEST = IF_SAD_SDOUT1;
+  assign IF_SAD_CLK1 = CLKB;
+  assign IF_SAD_CLK2 = CLKB;
+  assign IF_IND_FPGA1 = IF_SAD_SDOUT1;
+  assign IF_IND_FPGA2 = FIFO_FF;
+  // **************************************************************************************
+  // RESET
+  // **************************************************************************************
+  always @(posedge CLK) begin
+    if((RESET_COUNT == 16'h FFFE)) begin
+      // 20MHz *256*256 = 3.28msec
+      RESET_COUNT <= RESET_COUNT;
+      RESET_SIG <= 1'b 1;
+    end
+    else begin
+      RESET_COUNT <= RESET_COUNT + 1'b 1;
+      RESET_SIG <= 1'b 0;
+    end
+  end
+
+  assign RESET = RESET_SIG;
+  // **************************************************************************************
+  // TIME Controle
+  // **************************************************************************************
+  always @(posedge RESET or posedge CLK) begin
+    if((RESET == 1'b 0)) begin
+      uSEC_SIG_CNT <= {8{1'b0}};
+      uSEC_SIG <= 1'b 0;
+    end else begin
+      if((uSEC_SIG_CNT == 8'h 13)) begin
+        // 20MHz 20 14(H)
+        uSEC_SIG_CNT <= {8{1'b0}};
+        uSEC_SIG <= 1'b 1;
+      end
+      else begin
+        uSEC_SIG_CNT <= uSEC_SIG_CNT + 1'b 1;
+        uSEC_SIG <= 1'b 0;
+      end
+    end
+  end
+
+  always @(posedge RESET or posedge CLK) begin
+    if((RESET == 1'b 0)) begin
+      mSEC_SIG_CNT <= {12{1'b0}};
+      mSEC_SIG <= 1'b 0;
+    end else begin
+      if((uSEC_SIG == 1'b 1)) begin
+        if((mSEC_SIG_CNT == 12'h 3E7)) begin
+          // 1msec 1usec*1000 3E8(H)
+          mSEC_SIG_CNT <= {12{1'b0}};
+          mSEC_SIG <= 1'b 1;
+        end
+        else begin
+          mSEC_SIG_CNT <= mSEC_SIG_CNT + 1'b 1;
+          mSEC_SIG <= 1'b 0;
+        end
+      end
+      else begin
+        mSEC_SIG <= 1'b 0;
+      end
+    end
+  end
+
+  always @(posedge RESET or posedge CLK) begin
+    if((RESET == 1'b 0)) begin
+      hSEC_SIG_CNT <= {8{1'b0}};
+      hSEC_SIG <= 1'b 0;
+    end else begin
+      if((mSEC_SIG == 1'b 1)) begin
+        if((hSEC_SIG_CNT == 8'h 63)) begin
+          // 0.1sec 1msec*100 64
+          hSEC_SIG_CNT <= {8{1'b0}};
+          hSEC_SIG <= 1'b 1;
+        end
+        else begin
+          hSEC_SIG_CNT <= hSEC_SIG_CNT + 1'b 1;
+          hSEC_SIG <= 1'b 0;
+        end
+      end
+      else begin
+        hSEC_SIG <= 1'b 0;
+      end
+    end
+  end
+
+  assign IN_TX_STR = SEC_SIG;
+  always @(posedge RESET or posedge CLK) begin
+    if((RESET == 1'b 0)) begin
+      SEC_SIG_CNT <= {8{1'b0}};
+      SEC_SIG <= 1'b 0;
+    end else begin
+      if((hSEC_SIG == 1'b 1)) begin
+        if((SEC_SIG_CNT == 4'h 9)) begin
+          // 1sec 0.1sec*10
+          SEC_SIG_CNT <= {8{1'b0}};
+          SEC_SIG <= 1'b 1;
+        end
+        else begin
+          SEC_SIG_CNT <= SEC_SIG_CNT + 1'b 1;
+          SEC_SIG <= 1'b 0;
+        end
+      end
+      else begin
+        SEC_SIG <= 1'b 0;
+      end
+    end
+  end
+
+  always @(posedge RESET or posedge CLK) begin
+    if((RESET == 1'b 0)) begin
+      IN_TIME <= {40{1'b0}};
+    end else begin
+      if((SEC_SIG == 1'b 1)) begin
+        IN_TIME <= IN_TIME + 1'b 1;
+      end
+    end
+  end
+
+  //----------------------------------------- ADC CLK Controle
+  always @(posedge RESET or posedge CLK) begin
+    if((RESET == 1'b 0)) begin
+      IN_AD_CLK_CNT <= {4{1'b0}};
+    end else begin
+      IN_AD_CLK_CNT <= IN_AD_CLK_CNT + 1'b 1;
+    end
+  end
+
+  always @(IN_CMD_AD_FREQ or CLK or IN_AD_CLK_CNT) begin
+    case(IN_CMD_AD_FREQ[3:0])
+    4'h 0 : begin
+      IN_AD_CLK <= CLKB;
+      FIFO_WR_ENA <= 1'b 1;
+      //IN_AD_CLK_CNT(0);
+    end
+    4'h 1 : begin
+      IN_AD_CLK <= IN_AD_CLK_CNT[0];
+      FIFO_WR_ENA <= IN_AD_CLK_CNT[0];
+    end
+    4'h 2 : begin
+      IN_AD_CLK <= IN_AD_CLK_CNT[1];
+      FIFO_WR_ENA <= IN_AD_CLK_CNT[0] & IN_AD_CLK_CNT[1];
+    end
+    4'h 3 : begin
+      IN_AD_CLK <= IN_AD_CLK_CNT[2];
+      FIFO_WR_ENA <= IN_AD_CLK_CNT[0] & IN_AD_CLK_CNT[1] & IN_AD_CLK_CNT[2];
+    end
+    4'h 4 : begin
+      IN_AD_CLK <= IN_AD_CLK_CNT[3];
+      FIFO_WR_ENA <= IN_AD_CLK_CNT[0] & IN_AD_CLK_CNT[1] & IN_AD_CLK_CNT[2] & IN_AD_CLK_CNT[3];
+    end
+    default : begin
+      IN_AD_CLK <= IN_AD_CLK_CNT[3];
+      FIFO_WR_ENA <= IN_AD_CLK_CNT[0] & IN_AD_CLK_CNT[1] & IN_AD_CLK_CNT[2] & IN_AD_CLK_CNT[3];
+    end
+    endcase
+  end
+
+  //IN_TIME2 <= mSEC_SIG_CNT(3 downto 0);
+  //CAL_CLK_SEQ_A1:process(RESET,CLK) begin
+  //    if(RESET ='0') then
+  //	    IN_CAL_CLK_CNT <= (others => '0');
+  //	elsif(CLK'event and CLK='1') then
+  //        if(mSEC_SIG = '1')then 
+  //            IN_CAL_CLK_CNT <= IN_CAL_CLK_CNT + '1';
+  //        end if;
+  //    end if;
+  //end process;
+  //
+  //IN_CAL_CLK_PLS <= IN_CAL_CLK_CNT(1);
+  //SD_SEQ_A1:process(RESET,CLK) begin
+  //    if(RESET ='0') then
+  //	    IN_TRIG1_CNT <= (others => '0');
+  //	elsif(CLK'event and CLK='1') then
+  //        IN_TRIG1_CNT(0) <= IF_TRIG_OUT1;
+  //        IN_TRIG1_CNT(3 downto 1) <= IN_TRIG1_CNT(2 downto 0);
+  //    end if;
+  //end process;
+  //
+  //IN_TRIG1_START <= IN_TRIG1_CNT(3) and IN_TRIG1_CNT(2) and not IN_TRIG1_CNT(1) and not IN_TRIG1_CNT(0);
+  //
+  //SD_SEQ_A2:process(RESET,CLK) begin
+  //    if(RESET ='0') then
+  //	    IN_TOTAL_CNT <= (others => '0');
+  //	elsif(CLK'event and CLK='1') then
+  //        if(IN_TRIG1_START = '1') then
+  //            IN_TOTAL_CNT <= IN_TOTAL_CNT + '1';    
+  //        end if;
+  //    end if;
+  //end process;
+  // **************************************************************************************
+  // Initial Set  SEQUENCE
+  // **************************************************************************************
+  always @(posedge RESET or posedge CLK) begin
+    if((RESET == 1'b 0)) begin
+      INT_SEQ_CNT <= {24{1'b0}};
+      INT_SEQ_STS <= 1'b 0;
+    end else begin
+      if((INT_SEQ_CNT == 24'h FFFFFF)) begin
+        //167msec
+        INT_SEQ_STS <= 1'b 1;
+      end
+      else begin
+        INT_SEQ_CNT <= INT_SEQ_CNT + 1'b 1;
+        INT_SEQ_STS <= 1'b 0;
+      end
+    end
+  end
+
+  always @(posedge RESET or posedge CLK) begin
+    if((RESET == 1'b 0)) begin
+      INT_SEQ_D <= {2{1'b0}};
+    end else begin
+      INT_SEQ_D[0] <= INT_SEQ_STS;
+      INT_SEQ_D[1] <= INT_SEQ_D[0];
+    end
+  end
+
+  //INT_SEQ_A3:process(RESET,CLK) begin
+  //    if(RESET ='0') then
+  //	    INT_SEQ_D2 <= (others => '0');
+  //	elsif(CLK'event and CLK='1') then
+  //	    INT_SEQ_D2(0) <= INT_SEQ_STS2; 
+  //        INT_SEQ_D2(1) <= INT_SEQ_D2(0);
+  //    end if;
+  //end process;
+  assign INT_SEQ_SIG = INT_SEQ_D[0] &  ~INT_SEQ_D[1];
+  //    INT_SEQ_SIG2 <= INT_SEQ_D2(0) and not INT_SEQ_D2(1);
+  // **************************************************************************************
+  // DA1 HV & DISCRI Controle
+  // **************************************************************************************
+  //DA1_SEQ_A0:process(RESET,CLK) begin
+  //    if(RESET ='0') then
+  //	    DA1_SEQ_STA <= '0';
+  //        DA1_SEL_CH <= "00";
+  //	elsif(CLK'event and CLK='1') then
+  //	    if(IN_SET_DAC = '1' or INT_SEQ_SIG = '1') then
+  // 		    DA1_SEQ_STA <= '1';
+  //            DA1_SEL_CH <= "00";
+  //--        elsif(IN_SET_HVR = '1' or INT_SEQ_SIG2 = '1') then
+  //--            DA1_SEQ_STA <= '1';
+  //--            DA1_SEL_CH <= "01";
+  //        else
+  //            DA1_SEQ_STA <= '0';
+  //	    end if;
+  //    end if;
+  //end process;
+  //
+  //
+  //DA1_SEQ_A1:process(RESET,CLK) begin
+  //    if(RESET ='0') then
+  //	    DA1_SEQ_STS <= '0';
+  //	elsif(CLK'event and CLK='1') then
+  //	    if(DA1_SEQ_STA = '1') then
+  // 		    DA1_SEQ_STS <= '1';
+  //        elsif(DA1_SEQ_CLR = '1') then
+  //            DA1_SEQ_STS <= '0';
+  //	    end if;
+  //    end if;
+  //end process;
+  //
+  //DA1_SEQ_A2:process(RESET,CLK) begin
+  //    if(RESET ='0') then
+  //	    DA1_SEQ_CNT <= (others => '0');
+  //	elsif(CLK'event and CLK='1') then
+  //	    if(DA1_SEQ_STS = '1') then
+  //            DA1_SEQ_CNT <= DA1_SEQ_CNT + '1';
+  //        else
+  //            DA1_SEQ_CNT <= (others => '0');
+  //	    end if;
+  //    end if;
+  //end process;
+  //
+  //DA1_SEQ_A3:process(RESET,CLK) begin
+  //    if(RESET ='0') then
+  //	    DA1_SEQ_CLR <= '0'; 
+  //	elsif(CLK'event and CLK='1') then
+  //	    if(DA1_SEQ_STS = '1') then
+  //            if(DA1_SEQ_CNT = x"3FF")then  --
+  //                DA1_SEQ_CLR <= '1';
+  //            else
+  //                DA1_SEQ_CLR <= '0';     
+  //            end if;
+  //        else
+  //            DA1_SEQ_CLR <= '0';
+  //	    end if;
+  //    end if;
+  //end process;
+  //
+  //
+  //DA1_SEQ_A4:process(RESET,CLK) begin
+  //    if(RESET ='0') then
+  //	    DA1_DIN <= '0'; 
+  //    elsif(CLK'event and CLK='1') then
+  //	    if(DA1_SEQ_STS = '1') then
+  //            if(DA1_SEL_CH = "00") then
+  //                case DA1_SEQ_CNT(9 downto 6) is
+  //                    when x"0" => DA1_DIN <= '0';
+  //                    when x"1" => DA1_DIN <= '0';
+  //                    when x"2" => DA1_DIN <= '0';
+  //                    when x"3" => DA1_DIN <= '1';
+  //                    when x"4" => DA1_DIN <= IN_CMD_DISC(7);
+  //                    when x"5" => DA1_DIN <= IN_CMD_DISC(6);
+  //                    when x"6" => DA1_DIN <= IN_CMD_DISC(5);
+  //                    when x"7" => DA1_DIN <= IN_CMD_DISC(4);
+  //                    when x"8" => DA1_DIN <= IN_CMD_DISC(3);
+  //                    when x"9" => DA1_DIN <= IN_CMD_DISC(2);
+  //                    when x"A" => DA1_DIN <= IN_CMD_DISC(1);
+  //                    when x"B" => DA1_DIN <= IN_CMD_DISC(0);
+  //                    when x"C" => DA1_DIN <= '0';
+  //                    when x"D" => DA1_DIN <= '0';
+  //                    when x"E" => DA1_DIN <= '0';
+  //                    when x"F" => DA1_DIN <= '0';
+  //				    when others => NULL; 
+  //                end case;
+  //--            elsif(DA1_SEL_CH = "01") then
+  //--                case DA1_SEQ_CNT(5 downto 2) is
+  //--                    when x"0" => DA1_DIN <= '0';
+  //--                    when x"1" => DA1_DIN <= '1';
+  //--                    when x"2" => DA1_DIN <= '0';
+  //--                    when x"3" => DA1_DIN <= '1';
+  //--                    when x"4" => DA1_DIN <= IN_VAL_HVR(7);
+  //--                    when x"5" => DA1_DIN <= IN_VAL_HVR(6);
+  //--                    when x"6" => DA1_DIN <= IN_VAL_HVR(5);
+  //--                    when x"7" => DA1_DIN <= IN_VAL_HVR(4);
+  //--                    when x"8" => DA1_DIN <= IN_VAL_HVR(3);
+  //--                    when x"9" => DA1_DIN <= IN_VAL_HVR(2);
+  //--                    when x"A" => DA1_DIN <= IN_VAL_HVR(1);
+  //--                    when x"B" => DA1_DIN <= IN_VAL_HVR(0);
+  //--                    when x"C" => DA1_DIN <= '0';
+  //--                    when x"D" => DA1_DIN <= '0';
+  //--                    when x"E" => DA1_DIN <= '0';
+  //--                    when x"F" => DA1_DIN <= '0';
+  //--				    when others => NULL; 
+  //--                end case;
+  //            end if;
+  //        else
+  //            DA1_DIN <= '0';
+  //	    end if;
+  //    end if;
+  //end process;
+  //
+  //
+  //
+  //
+  //        IF_DA1_SYNC <= not DA1_SEQ_STS;
+  //        IF_DA1_SCLK <= not (DA1_SEQ_STS and DA1_SEQ_CNT(5));
+  //        IF_DA1_DIN <= DA1_DIN;
+  // **************************************************************************************
+  // DA1 HV & DISCRI Controle
+  // **************************************************************************************
+  always @(posedge RESET or posedge CLK) begin
+    if((RESET == 1'b 0)) begin
+      SAD_INI_SEQ_STA <= 1'b 0;
+    end else begin
+      if((IN_SET_ADC_INI == 1'b 1 || INT_SEQ_SIG == 1'b 1)) begin
+        SAD_INI_SEQ_STA <= 1'b 1;
+      end
+      else begin
+        SAD_INI_SEQ_STA <= 1'b 0;
+      end
+    end
+  end
+
+  always @(posedge RESET or posedge CLK) begin
+    if((RESET == 1'b 0)) begin
+      SAD_INI_SEQ_STS <= 1'b 0;
+    end else begin
+      if((SAD_INI_SEQ_STA == 1'b 1)) begin
+        SAD_INI_SEQ_STS <= 1'b 1;
+      end
+      else if((SAD_INI_SEQ_CLR == 1'b 1)) begin
+        SAD_INI_SEQ_STS <= 1'b 0;
+      end
+    end
+  end
+
+  always @(posedge RESET or posedge CLK) begin
+    if((RESET == 1'b 0)) begin
+      SAD_INI_SEQ_CNT <= {16{1'b0}};
+    end else begin
+      //20MHz
+      if((SAD_INI_SEQ_STS == 1'b 1)) begin
+        SAD_INI_SEQ_CNT <= SAD_INI_SEQ_CNT + 1'b 1;
+      end
+      else begin
+        SAD_INI_SEQ_CNT <= {16{1'b0}};
+      end
+    end
+  end
+
+  always @(posedge RESET or posedge CLK) begin
+    if((RESET == 1'b 0)) begin
+      SAD_INI_SEQ_CLR <= 1'b 0;
+    end else begin
+      if((SAD_INI_SEQ_STS == 1'b 1)) begin
+        if((SAD_INI_SEQ_CNT == 16'h 3FFF)) begin
+          SAD_INI_SEQ_CLR <= 1'b 1;
+        end
+        else begin
+          SAD_INI_SEQ_CLR <= 1'b 0;
+        end
+      end
+      else begin
+        SAD_INI_SEQ_CLR <= 1'b 0;
+      end
+    end
+  end
+
+  always @(posedge RESET or posedge CLK) begin
+    if((RESET == 1'b 0)) begin
+      SAD_INI_ADD <= 8'h FF;
+      SAD_INI_DAT <= 8'h FF;
+    end else begin
+      if((SAD_INI_SEQ_STS == 1'b 1)) begin
+        case(SAD_INI_SEQ_CNT[13:11])
+        3'b 001 : begin
+          SAD_INI_ADD <= 8'h 00;
+          SAD_INI_DAT <= 8'b 00000010;
+        end
+        3'b 010 : begin
+          SAD_INI_ADD <= 8'h 3D;
+          SAD_INI_DAT <= 8'b 11100000;
+        end
+        3'b 011 : begin
+          SAD_INI_ADD <= 8'h 41;
+          SAD_INI_DAT <= 8'b 11000000;
+        end
+        3'b 100 : begin
+          SAD_INI_ADD <= 8'h 25;
+          SAD_INI_DAT <= 8'b 00000011;
+          //                when "010" => SAD_INI_ADD <= x"00";
+          //                              SAD_INI_DAT <= x"01";
+          //                when "011" => SAD_INI_ADD <= x"00";
+          //                              SAD_INI_DAT <= x"01";
+          //                when "100" => SAD_INI_ADD <= x"00";
+          //                              SAD_INI_DAT <= x"01";
+          //                when "101" => SAD_INI_ADD <= x"00";
+          //                              SAD_INI_DAT <= x"01";
+          //                when "110" => SAD_INI_ADD <= x"00";
+          //                              SAD_INI_DAT <= x"01";
+          //                when "000" => SAD_INI_ADD <= x"00";
+          //                              SAD_INI_DAT <= x"01";
+        end
+        default : begin
+          SAD_INI_ADD <= 8'h 41;
+          SAD_INI_DAT <= 8'b 11000000;
+        end
+        endcase
+      end
+      else begin
+        SAD_INI_ADD <= 8'h FF;
+        SAD_INI_DAT <= 8'h FF;
+      end
+    end
+  end
+
+  always @(posedge RESET or posedge CLK) begin
+    if((RESET == 1'b 0)) begin
+      SAD_INI_SEQ_DIN <= 1'b 0;
+    end else begin
+      if((SAD_INI_SEQ_STS == 1'b 1)) begin
+        case(SAD_INI_SEQ_CNT[9:6])
+        4'h 0 : begin
+          SAD_INI_SEQ_DIN <= SAD_INI_ADD[7];
+        end
+        4'h 1 : begin
+          SAD_INI_SEQ_DIN <= SAD_INI_ADD[6];
+        end
+        4'h 2 : begin
+          SAD_INI_SEQ_DIN <= SAD_INI_ADD[5];
+        end
+        4'h 3 : begin
+          SAD_INI_SEQ_DIN <= SAD_INI_ADD[4];
+        end
+        4'h 4 : begin
+          SAD_INI_SEQ_DIN <= SAD_INI_ADD[3];
+        end
+        4'h 5 : begin
+          SAD_INI_SEQ_DIN <= SAD_INI_ADD[2];
+        end
+        4'h 6 : begin
+          SAD_INI_SEQ_DIN <= SAD_INI_ADD[1];
+        end
+        4'h 7 : begin
+          SAD_INI_SEQ_DIN <= SAD_INI_ADD[0];
+        end
+        4'h 8 : begin
+          SAD_INI_SEQ_DIN <= SAD_INI_DAT[7];
+        end
+        4'h 9 : begin
+          SAD_INI_SEQ_DIN <= SAD_INI_DAT[6];
+        end
+        4'h A : begin
+          SAD_INI_SEQ_DIN <= SAD_INI_DAT[5];
+        end
+        4'h B : begin
+          SAD_INI_SEQ_DIN <= SAD_INI_DAT[4];
+        end
+        4'h C : begin
+          SAD_INI_SEQ_DIN <= SAD_INI_DAT[3];
+        end
+        4'h D : begin
+          SAD_INI_SEQ_DIN <= SAD_INI_DAT[2];
+        end
+        4'h E : begin
+          SAD_INI_SEQ_DIN <= SAD_INI_DAT[1];
+        end
+        4'h F : begin
+          SAD_INI_SEQ_DIN <= SAD_INI_DAT[0];
+        end
+        default : begin
+        end
+        endcase
+      end
+      else begin
+        SAD_INI_SEQ_DIN <= 1'b 0;
+      end
+    end
+  end
+
+  always @(posedge RESET or posedge CLK) begin
+    if((RESET == 1'b 0)) begin
+      SAD_INI_RESET_SIG <= 1'b 0;
+    end else begin
+      if((SAD_INI_SEQ_STS == 1'b 1)) begin
+        if((SAD_INI_SEQ_CNT == 16'h 0001)) begin
+          SAD_INI_RESET_SIG <= 1'b 1;
+        end
+        else if((SAD_INI_SEQ_CNT == 16'h 00FF)) begin
+          //256*50nsec = 12.8usec
+          SAD_INI_RESET_SIG <= 1'b 0;
+        end
+      end
+      else begin
+        SAD_INI_RESET_SIG <= 1'b 0;
+      end
+    end
+  end
+
+  assign IF_SAD_SEN1 =  ~((SAD_INI_SEQ_STS & SAD_INI_SEQ_CNT[10]));
+  assign IF_SAD_SCLK1 =  ~((SAD_INI_SEQ_STS & SAD_INI_SEQ_CNT[10] & SAD_INI_SEQ_CNT[5]));
+  assign IF_SAD_SDAT1 = SAD_INI_SEQ_STS & SAD_INI_SEQ_CNT[10] & SAD_INI_SEQ_DIN;
+  assign IF_SAD_RESET1 = SAD_INI_RESET_SIG | IN_CMD_AD_CTRL[3];
+  //13usec
+  assign IF_SAD_SEN2 =  ~((SAD_INI_SEQ_STS & SAD_INI_SEQ_CNT[10]));
+  assign IF_SAD_SCLK2 =  ~((SAD_INI_SEQ_STS & SAD_INI_SEQ_CNT[10] & SAD_INI_SEQ_CNT[5]));
+  assign IF_SAD_SDAT2 = SAD_INI_SEQ_STS & SAD_INI_SEQ_CNT[10] & SAD_INI_SEQ_DIN;
+  assign IF_SAD_RESET2 = SAD_INI_RESET_SIG | IN_CMD_AD_CTRL[3];
+  // **************************************************************************************
+  // DATA AQUISITION  Controle
+  // **************************************************************************************
+  assign IN_TRIG1_START = SEC_SIG;
+  always @(posedge RESET or posedge CLKB) begin
+    if((RESET == 1'b 0)) begin
+      TRIG_SEQ_STS <= 1'b 0;
+    end else begin
+      if((TRIG_SEQ_CLR == 1'b 1)) begin
+        TRIG_SEQ_STS <= 1'b 0;
+      end
+      else if((IN_TRIG1_START == 1'b 1)) begin
+        TRIG_SEQ_STS <= 1'b 1;
+      end
+    end
+  end
+
+  always @(posedge RESET or posedge CLKB) begin
+    if((RESET == 1'b 0)) begin
+      TRIG_SEQ_CNT <= {12{1'b0}};
+    end else begin
+      if((TRIG_SEQ_STS == 1'b 1)) begin
+        if((FIFO_WR_ENA == 1'b 1)) begin
+          TRIG_SEQ_CNT <= TRIG_SEQ_CNT + 1'b 1;
+        end
+      end
+      else begin
+        TRIG_SEQ_CNT <= {12{1'b0}};
+      end
+    end
+  end
+
+  always @(posedge RESET or posedge CLKB) begin
+    if((RESET == 1'b 0)) begin
+      TRIG_SEQ_CLR <= 1'b 0;
+    end else begin
+      if((TRIG_SEQ_STS == 1'b 1)) begin
+        if((TRIG_SEQ_CNT == 12'h 3FF)) begin
+          TRIG_SEQ_CLR <= 1'b 1;
+        end
+        else begin
+          TRIG_SEQ_CLR <= 1'b 0;
+        end
+      end
+      else begin
+        TRIG_SEQ_CLR <= 1'b 0;
+      end
+    end
+  end
+
+  always @(posedge RESET or posedge CLK) begin
+    if((RESET == 1'b 0)) begin
+      DATA_WRITE_DIS <= 1'b 0;
+    end else begin
+      if((IN_TX_SEND_END == 1'b 1)) begin
+        DATA_WRITE_DIS <= 1'b 0;
+      end
+      else if((TRIG_SEQ_CLR == 1'b 1)) begin
+        DATA_WRITE_DIS <= 1'b 1;
+      end
+    end
+  end
+
+  //        IF_DUMY_1 <= TRIG_SEQ_STS;
+  //        IF_DUMY_2 <= DATA_WRITE_DIS;
+  // **************************************************************************************
+  //        IF_SAD_CTRL1    <= IN_CMD_AD_CTRL(0);
+  //        IF_SAD_CTRL2    <= IN_CMD_AD_CTRL(1);
+  //        IF_SAD_CTRL3    <= IN_CMD_AD_CTRL(2);
+  //        IF_SAD_SCLK     <= '0';
+  //        IF_SAD_SDAT     <= '0';
+  //        IF_SAD_SEN      <= '0';
+  //        IF_AD_SCLK1     <= '0';
+  //        IF_AD_CS1       <= '1';
+  //        IF_AD_SCLK2     <= '0';
+  //        IF_AD_CS2       <= '1';
+  //       IF_DA1_SCLK     <= '0';
+  //       IF_DA1_SYNC     <= '1';
+  //       IF_DA1_DIN      <= '0';
+  //        IF_PH_GT        <= '0';
+  //        IF_PH_DC        <= '0';
+  //
+  //        IF_TX_A(0)      <= IN_AD_CLK;
+  //
+  //        IF_TX_A(1)      <= '0';
+  //        IF_TX_A(2)      <= '0';
+  //        IF_TX_A(3)      <= '0';
+  assign FIFO_DAT_IN1 = IF_SAD_D1[13:0];
+  assign FIFO_DAT_IN2 = IF_SAD_D2[13:0];
+    //CLK_ADC <= CLKB;
+  //FIFO_WR_ENA <= '0';
+  //        IF_CAL_CLK <= IN_CMD_CAL and IN_CAL_CLK_PLS;
+  //A1_3 :  A3P_FIFO_16
+  //    port map( 
+  //        DATA    => FIFO_DAT_IN,
+  //        Q       => FIFO_DAT_OUT,
+  //        WE      => not(FIFO_WR_ENA and TRIG_SEQ_STS), --and not DATA_WRITE_DIS),
+  //        RE      => not(FIFO_RD_ENA), -- or (FIFO_WR_ENA and not DATA_WRITE_DIS and FIFO_AFF)), 
+  //        WCLOCK  => CLK,
+  //        RCLOCK  => CLK,
+  //        FULL    => FIFO_FF,
+  //        EMPTY   => FIFO_EF,
+  //        RESET   => not (not RESET or IN_TX_SEND_END), 
+  //        AEMPTY  => FIFO_AEF,
+  //        AFULL   => FIFO_AFF
+  //        ) ;
+  //A1_3: component CUBE_FIFO
+  //	port map
+  //	(
+  //		clock		=> CLKB,
+  //		data		=> FIFO_DAT_IN1(13 downto 0),
+  //		rdreq		=> (FIFO_RD_ENA), 
+  //		wrreq		=> (FIFO_WR_ENA and TRIG_SEQ_STS), 
+  //		empty		=> FIFO_EF,
+  //		full		=> FIFO_FF,
+  //		q			=> FIFO_DAT_OUT1(13 downto 0)
+  //	);
+  //A0 : component CUBE_GCLK
+  //		port map (
+  //			inclk  => IF_SYS_CLK,  --  altclkctrl_input.inclk
+  //			outclk => CLK  -- altclkctrl_output.outclk
+  //		);
+  //
+  //A1: CUBE_PLL
+  //	port map(
+  //		refclk   => CLK,
+  //		rst      => '0',
+  //		outclk_0 => CLK_250M
+  //	);
+  //
+  //
+  //A2: CMD_DEC	   
+  //	port map( CLK => CLK, RESET => RESET,
+  //	    IF_RX => IF_RX,
+  //        SEC_SIG => SEC_SIG,
+  //        IN_CMD_CAL => IN_CMD_CAL,
+  //        IN_CMD_DISC => IN_CMD_DISC,
+  //        IN_CMD_AD_FREQ => IN_CMD_AD_FREQ,
+  //        IN_SET_DAC => IN_SET_DAC,
+  //        IN_SET_ADC_INI => IN_SET_ADC_INI,
+  //        IN_CMD_AD_CTRL => IN_CMD_AD_CTRL
+  //
+  //     	);
+  //
+  //
+  //A3: TLM_SEQ
+  //	port map( CLK => CLKB, RESET => RESET,
+  //        IF_TX => IF_TX,
+  //        IN_TX_STR => IN_TX_STR,
+  //        IN_TX_SEND_END => IN_TX_SEND_END,
+  //        IN_TIME	=> IN_TIME,
+  //        IN_TOTAL_CNT => IN_TOTAL_CNT,
+  //        --IN_TIME2 => IN_TIME2,
+  //        FIFO_FF => FIFO_FF,
+  //        FIFO_EF => FIFO_EF,
+  //        FIFO_AEF => FIFO_AEF,
+  //        FIFO_AFF => FIFO_AFF,
+  //        FIFO_DAT_OUT => FIFO_DAT_OUT1,
+  //        IF_SAD_DA => IF_SAD_D1,
+  //        FIFO_RD_ENA	=> FIFO_RD_ENA
+  //		);
+  //
+  //--A4: SD_CNT
+  //--	port map( CLK => CLK, RESET => RESET,
+  //--        IF_SD_CLK => IF_SD_CLK,
+  //--        IF_SD_ENA => IF_SD_ENA, 
+  //--        IF_SD_DAT => IF_SD_DAT,
+  //--        FIFO_DAT_IN => FIFO_DAT_IN,
+  //--        FIFO_FF => FIFO_FF,
+  //--        FIFO_AFF => FIFO_AFF,
+  //--        FIFO_WR_ENA => FIFO_WR_ENA,
+  //--        BANK_SIG => SEC_SIG
+  //-- 		);		
+
+endmodule

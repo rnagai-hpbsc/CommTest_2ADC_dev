@@ -1,0 +1,557 @@
+Partition Merge report for dmb1test
+Fri Apr 20 10:30:08 2018
+Quartus Prime Version 16.0.0 Build 211 04/27/2016 SJ Lite Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Partition Merge Summary
+  3. Partition Merge Netlist Types Used
+  4. Partition Merge Partition Statistics
+  5. Partition Merge Partition Pin Processing
+  6. Partition Merge Resource Usage Summary
+  7. Partition Merge RAM Summary
+  8. Partition Merge Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2016 Altera Corporation. All rights reserved.
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, the Altera Quartus Prime License Agreement,
+the Altera MegaCore Function License Agreement, or other 
+applicable license agreement, including, without limitation, 
+that your use is for the sole purpose of programming logic 
+devices manufactured by Altera and sold by Altera or its 
+authorized distributors.  Please refer to the applicable 
+agreement for further details.
+
+
+
++-------------------------------------------------------------------------------+
+; Partition Merge Summary                                                       ;
++---------------------------------+---------------------------------------------+
+; Partition Merge Status          ; Successful - Fri Apr 20 10:30:08 2018       ;
+; Quartus Prime Version           ; 16.0.0 Build 211 04/27/2016 SJ Lite Edition ;
+; Revision Name                   ; dmb1test                                    ;
+; Top-level Entity Name           ; top                                         ;
+; Family                          ; Cyclone V                                   ;
+; Logic utilization (in ALMs)     ; N/A                                         ;
+; Total registers                 ; 1458                                        ;
+; Total pins                      ; 48                                          ;
+; Total virtual pins              ; 0                                           ;
+; Total block memory bits         ; 2,429,696                                   ;
+; Total DSP Blocks                ; 0                                           ;
+; Total HSSI RX PCSs              ; 0                                           ;
+; Total HSSI PMA RX Deserializers ; 0                                           ;
+; Total HSSI TX PCSs              ; 0                                           ;
+; Total HSSI PMA TX Serializers   ; 0                                           ;
+; Total PLLs                      ; 1                                           ;
+; Total DLLs                      ; 0                                           ;
++---------------------------------+---------------------------------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------+
+; Partition Merge Netlist Types Used                                                                                            ;
++--------------------------------+----------------+-------------------+------------------------+--------------------------------+
+; Partition Name                 ; Partition Type ; Netlist Type Used ; Netlist Type Requested ; Partition Contents             ;
++--------------------------------+----------------+-------------------+------------------------+--------------------------------+
+; Top                            ; User-created   ; Source File       ; Source File            ;                                ;
+; sld_hub:auto_hub               ; Auto-generated ; Post-Synthesis    ; Post-Synthesis         ; sld_hub:auto_hub               ;
+; hard_block:auto_generated_inst ; Auto-generated ; Source File       ; Source File            ; hard_block:auto_generated_inst ;
++--------------------------------+----------------+-------------------+------------------------+--------------------------------+
+
+
++-----------------------------------------------------------------------------------------------------------+
+; Partition Merge Partition Statistics                                                                      ;
++---------------------------------------------+---------+------------------+--------------------------------+
+; Statistic                                   ; Top     ; sld_hub:auto_hub ; hard_block:auto_generated_inst ;
++---------------------------------------------+---------+------------------+--------------------------------+
+; Estimate of Logic utilization (ALMs needed) ; 1113    ; 63               ; 0                              ;
+;                                             ;         ;                  ;                                ;
+; Combinational ALUT usage for logic          ; 1841    ; 114              ; 0                              ;
+;     -- 7 input functions                    ; 10      ; 3                ; 0                              ;
+;     -- 6 input functions                    ; 233     ; 25               ; 0                              ;
+;     -- 5 input functions                    ; 473     ; 21               ; 0                              ;
+;     -- 4 input functions                    ; 354     ; 17               ; 0                              ;
+;     -- <=3 input functions                  ; 771     ; 48               ; 0                              ;
+; Memory ALUT usage                           ; 0       ; 0                ; 0                              ;
+;     -- 64-address deep                      ; 0       ; 0                ; 0                              ;
+;     -- 32-address deep                      ; 0       ; 0                ; 0                              ;
+;                                             ;         ;                  ;                                ;
+; Dedicated logic registers                   ; 1375    ; 83               ; 0                              ;
+;                                             ;         ;                  ;                                ;
+;                                             ;         ;                  ;                                ;
+; I/O pins                                    ; 45      ; 0                ; 3                              ;
+; I/O registers                               ; 0       ; 0                ; 0                              ;
+; Total block memory bits                     ; 2429696 ; 0                ; 0                              ;
+; Total block memory implementation bits      ; 0       ; 0                ; 0                              ;
+; JTAG                                        ; 0       ; 0                ; 1                              ;
+;                                             ;         ;                  ;                                ;
+; Connections                                 ;         ;                  ;                                ;
+;     -- Input Connections                    ; 2249    ; 127              ; 1                              ;
+;     -- Registered Input Connections         ; 1460    ; 92               ; 0                              ;
+;     -- Output Connections                   ; 6       ; 197              ; 2174                           ;
+;     -- Registered Output Connections        ; 4       ; 197              ; 0                              ;
+;                                             ;         ;                  ;                                ;
+; Internal Connections                        ;         ;                  ;                                ;
+;     -- Total Connections                    ; 21754   ; 907              ; 2193                           ;
+;     -- Registered Connections               ; 9345    ; 696              ; 0                              ;
+;                                             ;         ;                  ;                                ;
+; External Connections                        ;         ;                  ;                                ;
+;     -- Top                                  ; 0       ; 201              ; 2054                           ;
+;     -- sld_hub:auto_hub                     ; 201     ; 2                ; 121                            ;
+;     -- hard_block:auto_generated_inst       ; 2054    ; 121              ; 0                              ;
+;                                             ;         ;                  ;                                ;
+; Partition Interface                         ;         ;                  ;                                ;
+;     -- Input Ports                          ; 85      ; 62               ; 5                              ;
+;     -- Output Ports                         ; 21      ; 79               ; 14                             ;
+;     -- Bidir Ports                          ; 0       ; 0                ; 0                              ;
+;                                             ;         ;                  ;                                ;
+; Registered Ports                            ;         ;                  ;                                ;
+;     -- Registered Input Ports               ; 0       ; 3                ; 0                              ;
+;     -- Registered Output Ports              ; 0       ; 40               ; 0                              ;
+;                                             ;         ;                  ;                                ;
+; Port Connectivity                           ;         ;                  ;                                ;
+;     -- Input Ports driven by GND            ; 0       ; 2                ; 0                              ;
+;     -- Output Ports driven by GND           ; 0       ; 29               ; 0                              ;
+;     -- Input Ports driven by VCC            ; 0       ; 0                ; 0                              ;
+;     -- Output Ports driven by VCC           ; 0       ; 0                ; 0                              ;
+;     -- Input Ports with no Source           ; 0       ; 47               ; 0                              ;
+;     -- Output Ports with no Source          ; 0       ; 0                ; 0                              ;
+;     -- Input Ports with no Fanout           ; 0       ; 52               ; 0                              ;
+;     -- Output Ports with no Fanout          ; 0       ; 59               ; 0                              ;
++---------------------------------------------+---------+------------------+--------------------------------+
+Note: Resource usage numbers presented for Partitions containing post-synthesis logic are estimates.  For Partitions containing post-fit logic, resource usage numbers are accurate based on previous placement information.  Actual Fitter results may vary depending on current Fitter Preservation Level assignments.
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Partition Merge Partition Pin Processing                                                                                                                                                                                                                       ;
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------+---------------+----------+-------------+
+; Name                                                                                                                                                                                                      ; Partition ; Type          ; Location ; Status      ;
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------+---------------+----------+-------------+
+; IF_IND_FPGA1                                                                                                                                                                                              ; Top       ; Output Port   ; n/a      ;             ;
+;     -- IF_IND_FPGA1                                                                                                                                                                                       ; Top       ; Output Pad    ; Unplaced ; Synthesized ;
+;     -- IF_IND_FPGA1~output                                                                                                                                                                                ; Top       ; Output Buffer ; Unplaced ; Synthesized ;
+;                                                                                                                                                                                                           ;           ;               ;          ;             ;
+; IF_IND_FPGA2                                                                                                                                                                                              ; Top       ; Output Port   ; n/a      ;             ;
+;     -- IF_IND_FPGA2                                                                                                                                                                                       ; Top       ; Output Pad    ; Unplaced ; Synthesized ;
+;     -- IF_IND_FPGA2~output                                                                                                                                                                                ; Top       ; Output Buffer ; Unplaced ; Synthesized ;
+;                                                                                                                                                                                                           ;           ;               ;          ;             ;
+; IF_RX                                                                                                                                                                                                     ; Top       ; Input Port    ; n/a      ;             ;
+;     -- IF_RX                                                                                                                                                                                              ; Top       ; Input Pad     ; Unplaced ; Synthesized ;
+;     -- IF_RX~input                                                                                                                                                                                        ; Top       ; Input Buffer  ; Unplaced ; Synthesized ;
+;                                                                                                                                                                                                           ;           ;               ;          ;             ;
+; IF_SAD_CKO1                                                                                                                                                                                               ; Top       ; Input Port    ; n/a      ;             ;
+;     -- IF_SAD_CKO1                                                                                                                                                                                        ; Top       ; Input Pad     ; Unplaced ; Synthesized ;
+;     -- IF_SAD_CKO1~input                                                                                                                                                                                  ; Top       ; Input Buffer  ; Unplaced ; Synthesized ;
+;                                                                                                                                                                                                           ;           ;               ;          ;             ;
+; IF_SAD_CKO2                                                                                                                                                                                               ; Top       ; Input Port    ; n/a      ;             ;
+;     -- IF_SAD_CKO2                                                                                                                                                                                        ; Top       ; Input Pad     ; Unplaced ; Synthesized ;
+;     -- IF_SAD_CKO2~input                                                                                                                                                                                  ; Top       ; Input Buffer  ; Unplaced ; Synthesized ;
+;                                                                                                                                                                                                           ;           ;               ;          ;             ;
+; IF_SAD_CLK1                                                                                                                                                                                               ; Top       ; Output Port   ; n/a      ;             ;
+;     -- IF_SAD_CLK1                                                                                                                                                                                        ; Top       ; Output Pad    ; Unplaced ; Synthesized ;
+;     -- IF_SAD_CLK1~output                                                                                                                                                                                 ; Top       ; Output Buffer ; Unplaced ; Synthesized ;
+;                                                                                                                                                                                                           ;           ;               ;          ;             ;
+; IF_SAD_CLK2                                                                                                                                                                                               ; Top       ; Output Port   ; n/a      ;             ;
+;     -- IF_SAD_CLK2                                                                                                                                                                                        ; Top       ; Output Pad    ; Unplaced ; Synthesized ;
+;     -- IF_SAD_CLK2~output                                                                                                                                                                                 ; Top       ; Output Buffer ; Unplaced ; Synthesized ;
+;                                                                                                                                                                                                           ;           ;               ;          ;             ;
+; IF_SAD_D1[0]                                                                                                                                                                                              ; Top       ; Input Port    ; n/a      ;             ;
+;     -- IF_SAD_D1[0]                                                                                                                                                                                       ; Top       ; Input Pad     ; Unplaced ; Synthesized ;
+;     -- IF_SAD_D1[0]~input                                                                                                                                                                                 ; Top       ; Input Buffer  ; Unplaced ; Synthesized ;
+;                                                                                                                                                                                                           ;           ;               ;          ;             ;
+; IF_SAD_D1[10]                                                                                                                                                                                             ; Top       ; Input Port    ; n/a      ;             ;
+;     -- IF_SAD_D1[10]                                                                                                                                                                                      ; Top       ; Input Pad     ; Unplaced ; Synthesized ;
+;     -- IF_SAD_D1[10]~input                                                                                                                                                                                ; Top       ; Input Buffer  ; Unplaced ; Synthesized ;
+;                                                                                                                                                                                                           ;           ;               ;          ;             ;
+; IF_SAD_D1[11]                                                                                                                                                                                             ; Top       ; Input Port    ; n/a      ;             ;
+;     -- IF_SAD_D1[11]                                                                                                                                                                                      ; Top       ; Input Pad     ; Unplaced ; Synthesized ;
+;     -- IF_SAD_D1[11]~input                                                                                                                                                                                ; Top       ; Input Buffer  ; Unplaced ; Synthesized ;
+;                                                                                                                                                                                                           ;           ;               ;          ;             ;
+; IF_SAD_D1[12]                                                                                                                                                                                             ; Top       ; Input Port    ; n/a      ;             ;
+;     -- IF_SAD_D1[12]                                                                                                                                                                                      ; Top       ; Input Pad     ; Unplaced ; Synthesized ;
+;     -- IF_SAD_D1[12]~input                                                                                                                                                                                ; Top       ; Input Buffer  ; Unplaced ; Synthesized ;
+;                                                                                                                                                                                                           ;           ;               ;          ;             ;
+; IF_SAD_D1[13]                                                                                                                                                                                             ; Top       ; Input Port    ; n/a      ;             ;
+;     -- IF_SAD_D1[13]                                                                                                                                                                                      ; Top       ; Input Pad     ; Unplaced ; Synthesized ;
+;     -- IF_SAD_D1[13]~input                                                                                                                                                                                ; Top       ; Input Buffer  ; Unplaced ; Synthesized ;
+;                                                                                                                                                                                                           ;           ;               ;          ;             ;
+; IF_SAD_D1[1]                                                                                                                                                                                              ; Top       ; Input Port    ; n/a      ;             ;
+;     -- IF_SAD_D1[1]                                                                                                                                                                                       ; Top       ; Input Pad     ; Unplaced ; Synthesized ;
+;     -- IF_SAD_D1[1]~input                                                                                                                                                                                 ; Top       ; Input Buffer  ; Unplaced ; Synthesized ;
+;                                                                                                                                                                                                           ;           ;               ;          ;             ;
+; IF_SAD_D1[2]                                                                                                                                                                                              ; Top       ; Input Port    ; n/a      ;             ;
+;     -- IF_SAD_D1[2]                                                                                                                                                                                       ; Top       ; Input Pad     ; Unplaced ; Synthesized ;
+;     -- IF_SAD_D1[2]~input                                                                                                                                                                                 ; Top       ; Input Buffer  ; Unplaced ; Synthesized ;
+;                                                                                                                                                                                                           ;           ;               ;          ;             ;
+; IF_SAD_D1[3]                                                                                                                                                                                              ; Top       ; Input Port    ; n/a      ;             ;
+;     -- IF_SAD_D1[3]                                                                                                                                                                                       ; Top       ; Input Pad     ; Unplaced ; Synthesized ;
+;     -- IF_SAD_D1[3]~input                                                                                                                                                                                 ; Top       ; Input Buffer  ; Unplaced ; Synthesized ;
+;                                                                                                                                                                                                           ;           ;               ;          ;             ;
+; IF_SAD_D1[4]                                                                                                                                                                                              ; Top       ; Input Port    ; n/a      ;             ;
+;     -- IF_SAD_D1[4]                                                                                                                                                                                       ; Top       ; Input Pad     ; Unplaced ; Synthesized ;
+;     -- IF_SAD_D1[4]~input                                                                                                                                                                                 ; Top       ; Input Buffer  ; Unplaced ; Synthesized ;
+;                                                                                                                                                                                                           ;           ;               ;          ;             ;
+; IF_SAD_D1[5]                                                                                                                                                                                              ; Top       ; Input Port    ; n/a      ;             ;
+;     -- IF_SAD_D1[5]                                                                                                                                                                                       ; Top       ; Input Pad     ; Unplaced ; Synthesized ;
+;     -- IF_SAD_D1[5]~input                                                                                                                                                                                 ; Top       ; Input Buffer  ; Unplaced ; Synthesized ;
+;                                                                                                                                                                                                           ;           ;               ;          ;             ;
+; IF_SAD_D1[6]                                                                                                                                                                                              ; Top       ; Input Port    ; n/a      ;             ;
+;     -- IF_SAD_D1[6]                                                                                                                                                                                       ; Top       ; Input Pad     ; Unplaced ; Synthesized ;
+;     -- IF_SAD_D1[6]~input                                                                                                                                                                                 ; Top       ; Input Buffer  ; Unplaced ; Synthesized ;
+;                                                                                                                                                                                                           ;           ;               ;          ;             ;
+; IF_SAD_D1[7]                                                                                                                                                                                              ; Top       ; Input Port    ; n/a      ;             ;
+;     -- IF_SAD_D1[7]                                                                                                                                                                                       ; Top       ; Input Pad     ; Unplaced ; Synthesized ;
+;     -- IF_SAD_D1[7]~input                                                                                                                                                                                 ; Top       ; Input Buffer  ; Unplaced ; Synthesized ;
+;                                                                                                                                                                                                           ;           ;               ;          ;             ;
+; IF_SAD_D1[8]                                                                                                                                                                                              ; Top       ; Input Port    ; n/a      ;             ;
+;     -- IF_SAD_D1[8]                                                                                                                                                                                       ; Top       ; Input Pad     ; Unplaced ; Synthesized ;
+;     -- IF_SAD_D1[8]~input                                                                                                                                                                                 ; Top       ; Input Buffer  ; Unplaced ; Synthesized ;
+;                                                                                                                                                                                                           ;           ;               ;          ;             ;
+; IF_SAD_D1[9]                                                                                                                                                                                              ; Top       ; Input Port    ; n/a      ;             ;
+;     -- IF_SAD_D1[9]                                                                                                                                                                                       ; Top       ; Input Pad     ; Unplaced ; Synthesized ;
+;     -- IF_SAD_D1[9]~input                                                                                                                                                                                 ; Top       ; Input Buffer  ; Unplaced ; Synthesized ;
+;                                                                                                                                                                                                           ;           ;               ;          ;             ;
+; IF_SAD_D2[0]                                                                                                                                                                                              ; Top       ; Input Port    ; n/a      ;             ;
+;     -- IF_SAD_D2[0]                                                                                                                                                                                       ; Top       ; Input Pad     ; Unplaced ; Synthesized ;
+;     -- IF_SAD_D2[0]~input                                                                                                                                                                                 ; Top       ; Input Buffer  ; Unplaced ; Synthesized ;
+;                                                                                                                                                                                                           ;           ;               ;          ;             ;
+; IF_SAD_D2[10]                                                                                                                                                                                             ; Top       ; Input Port    ; n/a      ;             ;
+;     -- IF_SAD_D2[10]                                                                                                                                                                                      ; Top       ; Input Pad     ; Unplaced ; Synthesized ;
+;     -- IF_SAD_D2[10]~input                                                                                                                                                                                ; Top       ; Input Buffer  ; Unplaced ; Synthesized ;
+;                                                                                                                                                                                                           ;           ;               ;          ;             ;
+; IF_SAD_D2[11]                                                                                                                                                                                             ; Top       ; Input Port    ; n/a      ;             ;
+;     -- IF_SAD_D2[11]                                                                                                                                                                                      ; Top       ; Input Pad     ; Unplaced ; Synthesized ;
+;     -- IF_SAD_D2[11]~input                                                                                                                                                                                ; Top       ; Input Buffer  ; Unplaced ; Synthesized ;
+;                                                                                                                                                                                                           ;           ;               ;          ;             ;
+; IF_SAD_D2[12]                                                                                                                                                                                             ; Top       ; Input Port    ; n/a      ;             ;
+;     -- IF_SAD_D2[12]                                                                                                                                                                                      ; Top       ; Input Pad     ; Unplaced ; Synthesized ;
+;     -- IF_SAD_D2[12]~input                                                                                                                                                                                ; Top       ; Input Buffer  ; Unplaced ; Synthesized ;
+;                                                                                                                                                                                                           ;           ;               ;          ;             ;
+; IF_SAD_D2[13]                                                                                                                                                                                             ; Top       ; Input Port    ; n/a      ;             ;
+;     -- IF_SAD_D2[13]                                                                                                                                                                                      ; Top       ; Input Pad     ; Unplaced ; Synthesized ;
+;     -- IF_SAD_D2[13]~input                                                                                                                                                                                ; Top       ; Input Buffer  ; Unplaced ; Synthesized ;
+;                                                                                                                                                                                                           ;           ;               ;          ;             ;
+; IF_SAD_D2[1]                                                                                                                                                                                              ; Top       ; Input Port    ; n/a      ;             ;
+;     -- IF_SAD_D2[1]                                                                                                                                                                                       ; Top       ; Input Pad     ; Unplaced ; Synthesized ;
+;     -- IF_SAD_D2[1]~input                                                                                                                                                                                 ; Top       ; Input Buffer  ; Unplaced ; Synthesized ;
+;                                                                                                                                                                                                           ;           ;               ;          ;             ;
+; IF_SAD_D2[2]                                                                                                                                                                                              ; Top       ; Input Port    ; n/a      ;             ;
+;     -- IF_SAD_D2[2]                                                                                                                                                                                       ; Top       ; Input Pad     ; Unplaced ; Synthesized ;
+;     -- IF_SAD_D2[2]~input                                                                                                                                                                                 ; Top       ; Input Buffer  ; Unplaced ; Synthesized ;
+;                                                                                                                                                                                                           ;           ;               ;          ;             ;
+; IF_SAD_D2[3]                                                                                                                                                                                              ; Top       ; Input Port    ; n/a      ;             ;
+;     -- IF_SAD_D2[3]                                                                                                                                                                                       ; Top       ; Input Pad     ; Unplaced ; Synthesized ;
+;     -- IF_SAD_D2[3]~input                                                                                                                                                                                 ; Top       ; Input Buffer  ; Unplaced ; Synthesized ;
+;                                                                                                                                                                                                           ;           ;               ;          ;             ;
+; IF_SAD_D2[4]                                                                                                                                                                                              ; Top       ; Input Port    ; n/a      ;             ;
+;     -- IF_SAD_D2[4]                                                                                                                                                                                       ; Top       ; Input Pad     ; Unplaced ; Synthesized ;
+;     -- IF_SAD_D2[4]~input                                                                                                                                                                                 ; Top       ; Input Buffer  ; Unplaced ; Synthesized ;
+;                                                                                                                                                                                                           ;           ;               ;          ;             ;
+; IF_SAD_D2[5]                                                                                                                                                                                              ; Top       ; Input Port    ; n/a      ;             ;
+;     -- IF_SAD_D2[5]                                                                                                                                                                                       ; Top       ; Input Pad     ; Unplaced ; Synthesized ;
+;     -- IF_SAD_D2[5]~input                                                                                                                                                                                 ; Top       ; Input Buffer  ; Unplaced ; Synthesized ;
+;                                                                                                                                                                                                           ;           ;               ;          ;             ;
+; IF_SAD_D2[6]                                                                                                                                                                                              ; Top       ; Input Port    ; n/a      ;             ;
+;     -- IF_SAD_D2[6]                                                                                                                                                                                       ; Top       ; Input Pad     ; Unplaced ; Synthesized ;
+;     -- IF_SAD_D2[6]~input                                                                                                                                                                                 ; Top       ; Input Buffer  ; Unplaced ; Synthesized ;
+;                                                                                                                                                                                                           ;           ;               ;          ;             ;
+; IF_SAD_D2[7]                                                                                                                                                                                              ; Top       ; Input Port    ; n/a      ;             ;
+;     -- IF_SAD_D2[7]                                                                                                                                                                                       ; Top       ; Input Pad     ; Unplaced ; Synthesized ;
+;     -- IF_SAD_D2[7]~input                                                                                                                                                                                 ; Top       ; Input Buffer  ; Unplaced ; Synthesized ;
+;                                                                                                                                                                                                           ;           ;               ;          ;             ;
+; IF_SAD_D2[8]                                                                                                                                                                                              ; Top       ; Input Port    ; n/a      ;             ;
+;     -- IF_SAD_D2[8]                                                                                                                                                                                       ; Top       ; Input Pad     ; Unplaced ; Synthesized ;
+;     -- IF_SAD_D2[8]~input                                                                                                                                                                                 ; Top       ; Input Buffer  ; Unplaced ; Synthesized ;
+;                                                                                                                                                                                                           ;           ;               ;          ;             ;
+; IF_SAD_D2[9]                                                                                                                                                                                              ; Top       ; Input Port    ; n/a      ;             ;
+;     -- IF_SAD_D2[9]                                                                                                                                                                                       ; Top       ; Input Pad     ; Unplaced ; Synthesized ;
+;     -- IF_SAD_D2[9]~input                                                                                                                                                                                 ; Top       ; Input Buffer  ; Unplaced ; Synthesized ;
+;                                                                                                                                                                                                           ;           ;               ;          ;             ;
+; IF_SAD_RESET1                                                                                                                                                                                             ; Top       ; Output Port   ; n/a      ;             ;
+;     -- IF_SAD_RESET1                                                                                                                                                                                      ; Top       ; Output Pad    ; Unplaced ; Synthesized ;
+;     -- IF_SAD_RESET1~output                                                                                                                                                                               ; Top       ; Output Buffer ; Unplaced ; Synthesized ;
+;                                                                                                                                                                                                           ;           ;               ;          ;             ;
+; IF_SAD_RESET2                                                                                                                                                                                             ; Top       ; Output Port   ; n/a      ;             ;
+;     -- IF_SAD_RESET2                                                                                                                                                                                      ; Top       ; Output Pad    ; Unplaced ; Synthesized ;
+;     -- IF_SAD_RESET2~output                                                                                                                                                                               ; Top       ; Output Buffer ; Unplaced ; Synthesized ;
+;                                                                                                                                                                                                           ;           ;               ;          ;             ;
+; IF_SAD_SCLK1                                                                                                                                                                                              ; Top       ; Output Port   ; n/a      ;             ;
+;     -- IF_SAD_SCLK1                                                                                                                                                                                       ; Top       ; Output Pad    ; Unplaced ; Synthesized ;
+;     -- IF_SAD_SCLK1~output                                                                                                                                                                                ; Top       ; Output Buffer ; Unplaced ; Synthesized ;
+;                                                                                                                                                                                                           ;           ;               ;          ;             ;
+; IF_SAD_SCLK2                                                                                                                                                                                              ; Top       ; Output Port   ; n/a      ;             ;
+;     -- IF_SAD_SCLK2                                                                                                                                                                                       ; Top       ; Output Pad    ; Unplaced ; Synthesized ;
+;     -- IF_SAD_SCLK2~output                                                                                                                                                                                ; Top       ; Output Buffer ; Unplaced ; Synthesized ;
+;                                                                                                                                                                                                           ;           ;               ;          ;             ;
+; IF_SAD_SDAT1                                                                                                                                                                                              ; Top       ; Output Port   ; n/a      ;             ;
+;     -- IF_SAD_SDAT1                                                                                                                                                                                       ; Top       ; Output Pad    ; Unplaced ; Synthesized ;
+;     -- IF_SAD_SDAT1~output                                                                                                                                                                                ; Top       ; Output Buffer ; Unplaced ; Synthesized ;
+;                                                                                                                                                                                                           ;           ;               ;          ;             ;
+; IF_SAD_SDAT2                                                                                                                                                                                              ; Top       ; Output Port   ; n/a      ;             ;
+;     -- IF_SAD_SDAT2                                                                                                                                                                                       ; Top       ; Output Pad    ; Unplaced ; Synthesized ;
+;     -- IF_SAD_SDAT2~output                                                                                                                                                                                ; Top       ; Output Buffer ; Unplaced ; Synthesized ;
+;                                                                                                                                                                                                           ;           ;               ;          ;             ;
+; IF_SAD_SDOUT1                                                                                                                                                                                             ; Top       ; Input Port    ; n/a      ;             ;
+;     -- IF_SAD_SDOUT1                                                                                                                                                                                      ; Top       ; Input Pad     ; Unplaced ; Synthesized ;
+;     -- IF_SAD_SDOUT1~input                                                                                                                                                                                ; Top       ; Input Buffer  ; Unplaced ; Synthesized ;
+;                                                                                                                                                                                                           ;           ;               ;          ;             ;
+; IF_SAD_SDOUT2                                                                                                                                                                                             ; Top       ; Input Port    ; n/a      ;             ;
+;     -- IF_SAD_SDOUT2                                                                                                                                                                                      ; Top       ; Input Pad     ; Unplaced ; Synthesized ;
+;     -- IF_SAD_SDOUT2~input                                                                                                                                                                                ; Top       ; Input Buffer  ; Unplaced ; Synthesized ;
+;                                                                                                                                                                                                           ;           ;               ;          ;             ;
+; IF_SAD_SEN1                                                                                                                                                                                               ; Top       ; Output Port   ; n/a      ;             ;
+;     -- IF_SAD_SEN1                                                                                                                                                                                        ; Top       ; Output Pad    ; Unplaced ; Synthesized ;
+;     -- IF_SAD_SEN1~output                                                                                                                                                                                 ; Top       ; Output Buffer ; Unplaced ; Synthesized ;
+;                                                                                                                                                                                                           ;           ;               ;          ;             ;
+; IF_SAD_SEN2                                                                                                                                                                                               ; Top       ; Output Port   ; n/a      ;             ;
+;     -- IF_SAD_SEN2                                                                                                                                                                                        ; Top       ; Output Pad    ; Unplaced ; Synthesized ;
+;     -- IF_SAD_SEN2~output                                                                                                                                                                                 ; Top       ; Output Buffer ; Unplaced ; Synthesized ;
+;                                                                                                                                                                                                           ;           ;               ;          ;             ;
+; IF_SYS_CLK                                                                                                                                                                                                ; Top       ; Input Port    ; n/a      ;             ;
+;     -- IF_SYS_CLK                                                                                                                                                                                         ; Top       ; Input Pad     ; Unplaced ; Synthesized ;
+;     -- IF_SYS_CLK~input                                                                                                                                                                                   ; Top       ; Input Buffer  ; Unplaced ; Synthesized ;
+;                                                                                                                                                                                                           ;           ;               ;          ;             ;
+; IF_TEST                                                                                                                                                                                                   ; Top       ; Output Port   ; n/a      ;             ;
+;     -- IF_TEST                                                                                                                                                                                            ; Top       ; Output Pad    ; Unplaced ; Synthesized ;
+;     -- IF_TEST~output                                                                                                                                                                                     ; Top       ; Output Buffer ; Unplaced ; Synthesized ;
+;                                                                                                                                                                                                           ;           ;               ;          ;             ;
+; IF_TX                                                                                                                                                                                                     ; Top       ; Output Port   ; n/a      ;             ;
+;     -- IF_TX                                                                                                                                                                                              ; Top       ; Output Pad    ; Unplaced ; Synthesized ;
+;     -- IF_TX~output                                                                                                                                                                                       ; Top       ; Output Buffer ; Unplaced ; Synthesized ;
+;                                                                                                                                                                                                           ;           ;               ;          ;             ;
+; altera_reserved_tck                                                                                                                                                                                       ; Top       ; Input Port    ; n/a      ;             ;
+;     -- altera_reserved_tck                                                                                                                                                                                ; Top       ; Input Pad     ; Unplaced ; Synthesized ;
+;     -- altera_reserved_tck~input                                                                                                                                                                          ; Top       ; Input Buffer  ; Unplaced ; Synthesized ;
+;                                                                                                                                                                                                           ;           ;               ;          ;             ;
+; altera_reserved_tdi                                                                                                                                                                                       ; Top       ; Input Port    ; n/a      ;             ;
+;     -- altera_reserved_tdi                                                                                                                                                                                ; Top       ; Input Pad     ; Unplaced ; Synthesized ;
+;     -- altera_reserved_tdi~input                                                                                                                                                                          ; Top       ; Input Buffer  ; Unplaced ; Synthesized ;
+;                                                                                                                                                                                                           ;           ;               ;          ;             ;
+; altera_reserved_tdo                                                                                                                                                                                       ; Top       ; Output Port   ; n/a      ;             ;
+;     -- altera_reserved_tdo                                                                                                                                                                                ; Top       ; Output Pad    ; Unplaced ; Synthesized ;
+;     -- altera_reserved_tdo~output                                                                                                                                                                         ; Top       ; Output Buffer ; Unplaced ; Synthesized ;
+;                                                                                                                                                                                                           ;           ;               ;          ;             ;
+; altera_reserved_tms                                                                                                                                                                                       ; Top       ; Input Port    ; n/a      ;             ;
+;     -- altera_reserved_tms                                                                                                                                                                                ; Top       ; Input Pad     ; Unplaced ; Synthesized ;
+;     -- altera_reserved_tms~input                                                                                                                                                                          ; Top       ; Input Buffer  ; Unplaced ; Synthesized ;
+;                                                                                                                                                                                                           ;           ;               ;          ;             ;
+; jtag.bp.test_A1_jtag_uart_0_TestRO_jtag_uart_0_alt_jtag_atlantic_inst_ep_fabric_receive_0_                                                                                                                ; Top       ; Input Port    ; n/a      ;             ;
+;                                                                                                                                                                                                           ;           ;               ;          ;             ;
+; jtag.bp.test_A1_jtag_uart_0_TestRO_jtag_uart_0_alt_jtag_atlantic_inst_ep_fabric_receive_10_                                                                                                               ; Top       ; Input Port    ; n/a      ;             ;
+;                                                                                                                                                                                                           ;           ;               ;          ;             ;
+; jtag.bp.test_A1_jtag_uart_0_TestRO_jtag_uart_0_alt_jtag_atlantic_inst_ep_fabric_receive_11_                                                                                                               ; Top       ; Input Port    ; n/a      ;             ;
+;                                                                                                                                                                                                           ;           ;               ;          ;             ;
+; jtag.bp.test_A1_jtag_uart_0_TestRO_jtag_uart_0_alt_jtag_atlantic_inst_ep_fabric_receive_12_                                                                                                               ; Top       ; Input Port    ; n/a      ;             ;
+;                                                                                                                                                                                                           ;           ;               ;          ;             ;
+; jtag.bp.test_A1_jtag_uart_0_TestRO_jtag_uart_0_alt_jtag_atlantic_inst_ep_fabric_receive_13_                                                                                                               ; Top       ; Input Port    ; n/a      ;             ;
+;                                                                                                                                                                                                           ;           ;               ;          ;             ;
+; jtag.bp.test_A1_jtag_uart_0_TestRO_jtag_uart_0_alt_jtag_atlantic_inst_ep_fabric_receive_14_                                                                                                               ; Top       ; Input Port    ; n/a      ;             ;
+;                                                                                                                                                                                                           ;           ;               ;          ;             ;
+; jtag.bp.test_A1_jtag_uart_0_TestRO_jtag_uart_0_alt_jtag_atlantic_inst_ep_fabric_receive_15_                                                                                                               ; Top       ; Input Port    ; n/a      ;             ;
+;                                                                                                                                                                                                           ;           ;               ;          ;             ;
+; jtag.bp.test_A1_jtag_uart_0_TestRO_jtag_uart_0_alt_jtag_atlantic_inst_ep_fabric_receive_16_                                                                                                               ; Top       ; Input Port    ; n/a      ;             ;
+;                                                                                                                                                                                                           ;           ;               ;          ;             ;
+; jtag.bp.test_A1_jtag_uart_0_TestRO_jtag_uart_0_alt_jtag_atlantic_inst_ep_fabric_receive_17_                                                                                                               ; Top       ; Input Port    ; n/a      ;             ;
+;                                                                                                                                                                                                           ;           ;               ;          ;             ;
+; jtag.bp.test_A1_jtag_uart_0_TestRO_jtag_uart_0_alt_jtag_atlantic_inst_ep_fabric_receive_18_                                                                                                               ; Top       ; Input Port    ; n/a      ;             ;
+;                                                                                                                                                                                                           ;           ;               ;          ;             ;
+; jtag.bp.test_A1_jtag_uart_0_TestRO_jtag_uart_0_alt_jtag_atlantic_inst_ep_fabric_receive_19_                                                                                                               ; Top       ; Input Port    ; n/a      ;             ;
+;                                                                                                                                                                                                           ;           ;               ;          ;             ;
+; jtag.bp.test_A1_jtag_uart_0_TestRO_jtag_uart_0_alt_jtag_atlantic_inst_ep_fabric_receive_1_                                                                                                                ; Top       ; Input Port    ; n/a      ;             ;
+;                                                                                                                                                                                                           ;           ;               ;          ;             ;
+; jtag.bp.test_A1_jtag_uart_0_TestRO_jtag_uart_0_alt_jtag_atlantic_inst_ep_fabric_receive_20_                                                                                                               ; Top       ; Input Port    ; n/a      ;             ;
+;                                                                                                                                                                                                           ;           ;               ;          ;             ;
+; jtag.bp.test_A1_jtag_uart_0_TestRO_jtag_uart_0_alt_jtag_atlantic_inst_ep_fabric_receive_21_                                                                                                               ; Top       ; Input Port    ; n/a      ;             ;
+;                                                                                                                                                                                                           ;           ;               ;          ;             ;
+; jtag.bp.test_A1_jtag_uart_0_TestRO_jtag_uart_0_alt_jtag_atlantic_inst_ep_fabric_receive_22_                                                                                                               ; Top       ; Input Port    ; n/a      ;             ;
+;                                                                                                                                                                                                           ;           ;               ;          ;             ;
+; jtag.bp.test_A1_jtag_uart_0_TestRO_jtag_uart_0_alt_jtag_atlantic_inst_ep_fabric_receive_23_                                                                                                               ; Top       ; Input Port    ; n/a      ;             ;
+;                                                                                                                                                                                                           ;           ;               ;          ;             ;
+; jtag.bp.test_A1_jtag_uart_0_TestRO_jtag_uart_0_alt_jtag_atlantic_inst_ep_fabric_receive_2_                                                                                                                ; Top       ; Input Port    ; n/a      ;             ;
+;                                                                                                                                                                                                           ;           ;               ;          ;             ;
+; jtag.bp.test_A1_jtag_uart_0_TestRO_jtag_uart_0_alt_jtag_atlantic_inst_ep_fabric_receive_3_                                                                                                                ; Top       ; Input Port    ; n/a      ;             ;
+;                                                                                                                                                                                                           ;           ;               ;          ;             ;
+; jtag.bp.test_A1_jtag_uart_0_TestRO_jtag_uart_0_alt_jtag_atlantic_inst_ep_fabric_receive_4_                                                                                                                ; Top       ; Input Port    ; n/a      ;             ;
+;                                                                                                                                                                                                           ;           ;               ;          ;             ;
+; jtag.bp.test_A1_jtag_uart_0_TestRO_jtag_uart_0_alt_jtag_atlantic_inst_ep_fabric_receive_5_                                                                                                                ; Top       ; Input Port    ; n/a      ;             ;
+;                                                                                                                                                                                                           ;           ;               ;          ;             ;
+; jtag.bp.test_A1_jtag_uart_0_TestRO_jtag_uart_0_alt_jtag_atlantic_inst_ep_fabric_receive_6_                                                                                                                ; Top       ; Input Port    ; n/a      ;             ;
+;                                                                                                                                                                                                           ;           ;               ;          ;             ;
+; jtag.bp.test_A1_jtag_uart_0_TestRO_jtag_uart_0_alt_jtag_atlantic_inst_ep_fabric_receive_7_                                                                                                                ; Top       ; Input Port    ; n/a      ;             ;
+;                                                                                                                                                                                                           ;           ;               ;          ;             ;
+; jtag.bp.test_A1_jtag_uart_0_TestRO_jtag_uart_0_alt_jtag_atlantic_inst_ep_fabric_receive_8_                                                                                                                ; Top       ; Input Port    ; n/a      ;             ;
+;                                                                                                                                                                                                           ;           ;               ;          ;             ;
+; jtag.bp.test_A1_jtag_uart_0_TestRO_jtag_uart_0_alt_jtag_atlantic_inst_ep_fabric_receive_9_                                                                                                                ; Top       ; Input Port    ; n/a      ;             ;
+;                                                                                                                                                                                                           ;           ;               ;          ;             ;
+; jtag.bp.test_A1_jtag_uart_0_TestRO_jtag_uart_0_alt_jtag_atlantic_inst_ep_fabric_send_0_                                                                                                                   ; Top       ; Output Port   ; n/a      ;             ;
+;                                                                                                                                                                                                           ;           ;               ;          ;             ;
+; jtag.bp.test_A1_jtag_uart_0_TestRO_jtag_uart_0_alt_jtag_atlantic_inst_ep_fabric_send_1_                                                                                                                   ; Top       ; Output Port   ; n/a      ;             ;
+;                                                                                                                                                                                                           ;           ;               ;          ;             ;
+; jtag.bp.test_A1_jtag_uart_0_TestRO_jtag_uart_0_alt_jtag_atlantic_inst_ep_fabric_send_2_                                                                                                                   ; Top       ; Output Port   ; n/a      ;             ;
+;                                                                                                                                                                                                           ;           ;               ;          ;             ;
+; jtag.bp.test_A1_nios2_gen2_0_cpu_the_TestRO_nios2_gen2_0_cpu_nios2_oci_the_TestRO_nios2_gen2_0_cpu_debug_slave_wrapper_TestRO_nios2_gen2_0_cpu_debug_slave_phy_sld_virtual_jtag_impl_inst_clr             ; Top       ; Input Port    ; n/a      ;             ;
+;                                                                                                                                                                                                           ;           ;               ;          ;             ;
+; jtag.bp.test_A1_nios2_gen2_0_cpu_the_TestRO_nios2_gen2_0_cpu_nios2_oci_the_TestRO_nios2_gen2_0_cpu_debug_slave_wrapper_TestRO_nios2_gen2_0_cpu_debug_slave_phy_sld_virtual_jtag_impl_inst_ena             ; Top       ; Input Port    ; n/a      ;             ;
+;                                                                                                                                                                                                           ;           ;               ;          ;             ;
+; jtag.bp.test_A1_nios2_gen2_0_cpu_the_TestRO_nios2_gen2_0_cpu_nios2_oci_the_TestRO_nios2_gen2_0_cpu_debug_slave_wrapper_TestRO_nios2_gen2_0_cpu_debug_slave_phy_sld_virtual_jtag_impl_inst_ir_in_0_        ; Top       ; Input Port    ; n/a      ;             ;
+;                                                                                                                                                                                                           ;           ;               ;          ;             ;
+; jtag.bp.test_A1_nios2_gen2_0_cpu_the_TestRO_nios2_gen2_0_cpu_nios2_oci_the_TestRO_nios2_gen2_0_cpu_debug_slave_wrapper_TestRO_nios2_gen2_0_cpu_debug_slave_phy_sld_virtual_jtag_impl_inst_ir_in_1_        ; Top       ; Input Port    ; n/a      ;             ;
+;                                                                                                                                                                                                           ;           ;               ;          ;             ;
+; jtag.bp.test_A1_nios2_gen2_0_cpu_the_TestRO_nios2_gen2_0_cpu_nios2_oci_the_TestRO_nios2_gen2_0_cpu_debug_slave_wrapper_TestRO_nios2_gen2_0_cpu_debug_slave_phy_sld_virtual_jtag_impl_inst_ir_out_0_       ; Top       ; Output Port   ; n/a      ;             ;
+;                                                                                                                                                                                                           ;           ;               ;          ;             ;
+; jtag.bp.test_A1_nios2_gen2_0_cpu_the_TestRO_nios2_gen2_0_cpu_nios2_oci_the_TestRO_nios2_gen2_0_cpu_debug_slave_wrapper_TestRO_nios2_gen2_0_cpu_debug_slave_phy_sld_virtual_jtag_impl_inst_ir_out_1_       ; Top       ; Output Port   ; n/a      ;             ;
+;                                                                                                                                                                                                           ;           ;               ;          ;             ;
+; jtag.bp.test_A1_nios2_gen2_0_cpu_the_TestRO_nios2_gen2_0_cpu_nios2_oci_the_TestRO_nios2_gen2_0_cpu_debug_slave_wrapper_TestRO_nios2_gen2_0_cpu_debug_slave_phy_sld_virtual_jtag_impl_inst_jtag_state_cdr  ; Top       ; Input Port    ; n/a      ;             ;
+;                                                                                                                                                                                                           ;           ;               ;          ;             ;
+; jtag.bp.test_A1_nios2_gen2_0_cpu_the_TestRO_nios2_gen2_0_cpu_nios2_oci_the_TestRO_nios2_gen2_0_cpu_debug_slave_wrapper_TestRO_nios2_gen2_0_cpu_debug_slave_phy_sld_virtual_jtag_impl_inst_jtag_state_cir  ; Top       ; Input Port    ; n/a      ;             ;
+;                                                                                                                                                                                                           ;           ;               ;          ;             ;
+; jtag.bp.test_A1_nios2_gen2_0_cpu_the_TestRO_nios2_gen2_0_cpu_nios2_oci_the_TestRO_nios2_gen2_0_cpu_debug_slave_wrapper_TestRO_nios2_gen2_0_cpu_debug_slave_phy_sld_virtual_jtag_impl_inst_jtag_state_e1dr ; Top       ; Input Port    ; n/a      ;             ;
+;                                                                                                                                                                                                           ;           ;               ;          ;             ;
+; jtag.bp.test_A1_nios2_gen2_0_cpu_the_TestRO_nios2_gen2_0_cpu_nios2_oci_the_TestRO_nios2_gen2_0_cpu_debug_slave_wrapper_TestRO_nios2_gen2_0_cpu_debug_slave_phy_sld_virtual_jtag_impl_inst_jtag_state_e1ir ; Top       ; Input Port    ; n/a      ;             ;
+;                                                                                                                                                                                                           ;           ;               ;          ;             ;
+; jtag.bp.test_A1_nios2_gen2_0_cpu_the_TestRO_nios2_gen2_0_cpu_nios2_oci_the_TestRO_nios2_gen2_0_cpu_debug_slave_wrapper_TestRO_nios2_gen2_0_cpu_debug_slave_phy_sld_virtual_jtag_impl_inst_jtag_state_e2dr ; Top       ; Input Port    ; n/a      ;             ;
+;                                                                                                                                                                                                           ;           ;               ;          ;             ;
+; jtag.bp.test_A1_nios2_gen2_0_cpu_the_TestRO_nios2_gen2_0_cpu_nios2_oci_the_TestRO_nios2_gen2_0_cpu_debug_slave_wrapper_TestRO_nios2_gen2_0_cpu_debug_slave_phy_sld_virtual_jtag_impl_inst_jtag_state_e2ir ; Top       ; Input Port    ; n/a      ;             ;
+;                                                                                                                                                                                                           ;           ;               ;          ;             ;
+; jtag.bp.test_A1_nios2_gen2_0_cpu_the_TestRO_nios2_gen2_0_cpu_nios2_oci_the_TestRO_nios2_gen2_0_cpu_debug_slave_wrapper_TestRO_nios2_gen2_0_cpu_debug_slave_phy_sld_virtual_jtag_impl_inst_jtag_state_pdr  ; Top       ; Input Port    ; n/a      ;             ;
+;                                                                                                                                                                                                           ;           ;               ;          ;             ;
+; jtag.bp.test_A1_nios2_gen2_0_cpu_the_TestRO_nios2_gen2_0_cpu_nios2_oci_the_TestRO_nios2_gen2_0_cpu_debug_slave_wrapper_TestRO_nios2_gen2_0_cpu_debug_slave_phy_sld_virtual_jtag_impl_inst_jtag_state_pir  ; Top       ; Input Port    ; n/a      ;             ;
+;                                                                                                                                                                                                           ;           ;               ;          ;             ;
+; jtag.bp.test_A1_nios2_gen2_0_cpu_the_TestRO_nios2_gen2_0_cpu_nios2_oci_the_TestRO_nios2_gen2_0_cpu_debug_slave_wrapper_TestRO_nios2_gen2_0_cpu_debug_slave_phy_sld_virtual_jtag_impl_inst_jtag_state_rti  ; Top       ; Input Port    ; n/a      ;             ;
+;                                                                                                                                                                                                           ;           ;               ;          ;             ;
+; jtag.bp.test_A1_nios2_gen2_0_cpu_the_TestRO_nios2_gen2_0_cpu_nios2_oci_the_TestRO_nios2_gen2_0_cpu_debug_slave_wrapper_TestRO_nios2_gen2_0_cpu_debug_slave_phy_sld_virtual_jtag_impl_inst_jtag_state_sdr  ; Top       ; Input Port    ; n/a      ;             ;
+;                                                                                                                                                                                                           ;           ;               ;          ;             ;
+; jtag.bp.test_A1_nios2_gen2_0_cpu_the_TestRO_nios2_gen2_0_cpu_nios2_oci_the_TestRO_nios2_gen2_0_cpu_debug_slave_wrapper_TestRO_nios2_gen2_0_cpu_debug_slave_phy_sld_virtual_jtag_impl_inst_jtag_state_sdrs ; Top       ; Input Port    ; n/a      ;             ;
+;                                                                                                                                                                                                           ;           ;               ;          ;             ;
+; jtag.bp.test_A1_nios2_gen2_0_cpu_the_TestRO_nios2_gen2_0_cpu_nios2_oci_the_TestRO_nios2_gen2_0_cpu_debug_slave_wrapper_TestRO_nios2_gen2_0_cpu_debug_slave_phy_sld_virtual_jtag_impl_inst_jtag_state_sir  ; Top       ; Input Port    ; n/a      ;             ;
+;                                                                                                                                                                                                           ;           ;               ;          ;             ;
+; jtag.bp.test_A1_nios2_gen2_0_cpu_the_TestRO_nios2_gen2_0_cpu_nios2_oci_the_TestRO_nios2_gen2_0_cpu_debug_slave_wrapper_TestRO_nios2_gen2_0_cpu_debug_slave_phy_sld_virtual_jtag_impl_inst_jtag_state_sirs ; Top       ; Input Port    ; n/a      ;             ;
+;                                                                                                                                                                                                           ;           ;               ;          ;             ;
+; jtag.bp.test_A1_nios2_gen2_0_cpu_the_TestRO_nios2_gen2_0_cpu_nios2_oci_the_TestRO_nios2_gen2_0_cpu_debug_slave_wrapper_TestRO_nios2_gen2_0_cpu_debug_slave_phy_sld_virtual_jtag_impl_inst_jtag_state_tlr  ; Top       ; Input Port    ; n/a      ;             ;
+;                                                                                                                                                                                                           ;           ;               ;          ;             ;
+; jtag.bp.test_A1_nios2_gen2_0_cpu_the_TestRO_nios2_gen2_0_cpu_nios2_oci_the_TestRO_nios2_gen2_0_cpu_debug_slave_wrapper_TestRO_nios2_gen2_0_cpu_debug_slave_phy_sld_virtual_jtag_impl_inst_jtag_state_udr  ; Top       ; Input Port    ; n/a      ;             ;
+;                                                                                                                                                                                                           ;           ;               ;          ;             ;
+; jtag.bp.test_A1_nios2_gen2_0_cpu_the_TestRO_nios2_gen2_0_cpu_nios2_oci_the_TestRO_nios2_gen2_0_cpu_debug_slave_wrapper_TestRO_nios2_gen2_0_cpu_debug_slave_phy_sld_virtual_jtag_impl_inst_jtag_state_uir  ; Top       ; Input Port    ; n/a      ;             ;
+;                                                                                                                                                                                                           ;           ;               ;          ;             ;
+; jtag.bp.test_A1_nios2_gen2_0_cpu_the_TestRO_nios2_gen2_0_cpu_nios2_oci_the_TestRO_nios2_gen2_0_cpu_debug_slave_wrapper_TestRO_nios2_gen2_0_cpu_debug_slave_phy_sld_virtual_jtag_impl_inst_raw_tck         ; Top       ; Input Port    ; n/a      ;             ;
+;                                                                                                                                                                                                           ;           ;               ;          ;             ;
+; jtag.bp.test_A1_nios2_gen2_0_cpu_the_TestRO_nios2_gen2_0_cpu_nios2_oci_the_TestRO_nios2_gen2_0_cpu_debug_slave_wrapper_TestRO_nios2_gen2_0_cpu_debug_slave_phy_sld_virtual_jtag_impl_inst_raw_tms         ; Top       ; Input Port    ; n/a      ;             ;
+;                                                                                                                                                                                                           ;           ;               ;          ;             ;
+; jtag.bp.test_A1_nios2_gen2_0_cpu_the_TestRO_nios2_gen2_0_cpu_nios2_oci_the_TestRO_nios2_gen2_0_cpu_debug_slave_wrapper_TestRO_nios2_gen2_0_cpu_debug_slave_phy_sld_virtual_jtag_impl_inst_tdi             ; Top       ; Input Port    ; n/a      ;             ;
+;                                                                                                                                                                                                           ;           ;               ;          ;             ;
+; jtag.bp.test_A1_nios2_gen2_0_cpu_the_TestRO_nios2_gen2_0_cpu_nios2_oci_the_TestRO_nios2_gen2_0_cpu_debug_slave_wrapper_TestRO_nios2_gen2_0_cpu_debug_slave_phy_sld_virtual_jtag_impl_inst_tdo             ; Top       ; Output Port   ; n/a      ;             ;
+;                                                                                                                                                                                                           ;           ;               ;          ;             ;
+; jtag.bp.test_A1_nios2_gen2_0_cpu_the_TestRO_nios2_gen2_0_cpu_nios2_oci_the_TestRO_nios2_gen2_0_cpu_debug_slave_wrapper_TestRO_nios2_gen2_0_cpu_debug_slave_phy_sld_virtual_jtag_impl_inst_usr1            ; Top       ; Input Port    ; n/a      ;             ;
+;                                                                                                                                                                                                           ;           ;               ;          ;             ;
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------+---------------+----------+-------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------+
+; Partition Merge Resource Usage Summary                                                                                    ;
++---------------------------------------------+-----------------------------------------------------------------------------+
+; Resource                                    ; Usage                                                                       ;
++---------------------------------------------+-----------------------------------------------------------------------------+
+; Estimate of Logic utilization (ALMs needed) ; 1176                                                                        ;
+;                                             ;                                                                             ;
+; Combinational ALUT usage for logic          ; 1955                                                                        ;
+;     -- 7 input functions                    ; 13                                                                          ;
+;     -- 6 input functions                    ; 258                                                                         ;
+;     -- 5 input functions                    ; 494                                                                         ;
+;     -- 4 input functions                    ; 371                                                                         ;
+;     -- <=3 input functions                  ; 819                                                                         ;
+;                                             ;                                                                             ;
+; Dedicated logic registers                   ; 1458                                                                        ;
+;                                             ;                                                                             ;
+; I/O pins                                    ; 48                                                                          ;
+; Total MLAB memory bits                      ; 0                                                                           ;
+; Total block memory bits                     ; 2429696                                                                     ;
+;                                             ;                                                                             ;
+; Total DSP Blocks                            ; 0                                                                           ;
+;                                             ;                                                                             ;
+; Total PLLs                                  ; 2                                                                           ;
+;     -- PLLs                                 ; 2                                                                           ;
+;                                             ;                                                                             ;
+; Maximum fan-out node                        ; SYS_PLL:A1|SYS_PLL_0002:sys_pll_inst|altera_pll:altera_pll_i|outclk_wire[0] ;
+; Maximum fan-out                             ; 1596                                                                        ;
+; Total fan-out                               ; 22194                                                                       ;
+; Average fan-out                             ; 5.46                                                                        ;
++---------------------------------------------+-----------------------------------------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Partition Merge RAM Summary                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            ;
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+---------+-----------------------------+
+; Name                                                                                                                                                                                                                                                                                                                                                                                     ; Type ; Mode             ; Port A Depth ; Port A Width ; Port B Depth ; Port B Width ; Size    ; MIF                         ;
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+---------+-----------------------------+
+; DAT_FIFO:A1_3|dcfifo:dcfifo_component|dcfifo_col1:auto_generated|altsyncram_0la1:fifo_ram|ALTSYNCRAM                                                                                                                                                                                                                                                                                     ; AUTO ; Simple Dual Port ; 1024         ; 14           ; 1024         ; 14           ; 14336   ; None                        ;
+; TestRO:test_A1|TestRO_fifo_0:fifo_0|TestRO_fifo_0_scfifo_with_controls:the_scfifo_with_controls|TestRO_fifo_0_single_clock_fifo:the_scfifo|scfifo:single_clock_fifo|scfifo_r3a1:auto_generated|a_dpfifo_2aa1:dpfifo|altsyncram_0us1:FIFOram|ALTSYNCRAM                                                                                                                                   ; AUTO ; Simple Dual Port ; 128          ; 32           ; 128          ; 32           ; 4096    ; None                        ;
+; TestRO:test_A1|TestRO_jtag_uart_0:jtag_uart_0|TestRO_jtag_uart_0_scfifo_r:the_TestRO_jtag_uart_0_scfifo_r|scfifo:rfifo|scfifo_3291:auto_generated|a_dpfifo_5771:dpfifo|altsyncram_7pu1:FIFOram|ALTSYNCRAM                                                                                                                                                                                ; AUTO ; Simple Dual Port ; 64           ; 8            ; 64           ; 8            ; 512     ; None                        ;
+; TestRO:test_A1|TestRO_jtag_uart_0:jtag_uart_0|TestRO_jtag_uart_0_scfifo_w:the_TestRO_jtag_uart_0_scfifo_w|scfifo:wfifo|scfifo_3291:auto_generated|a_dpfifo_5771:dpfifo|altsyncram_7pu1:FIFOram|ALTSYNCRAM                                                                                                                                                                                ; AUTO ; Simple Dual Port ; 64           ; 8            ; 64           ; 8            ; 512     ; None                        ;
+; TestRO:test_A1|TestRO_nios2_gen2_0:nios2_gen2_0|TestRO_nios2_gen2_0_cpu:cpu|TestRO_nios2_gen2_0_cpu_nios2_oci:the_TestRO_nios2_gen2_0_cpu_nios2_oci|TestRO_nios2_gen2_0_cpu_nios2_ocimem:the_TestRO_nios2_gen2_0_cpu_nios2_ocimem|TestRO_nios2_gen2_0_cpu_ociram_sp_ram_module:TestRO_nios2_gen2_0_cpu_ociram_sp_ram|altsyncram:the_altsyncram|altsyncram_qid1:auto_generated|ALTSYNCRAM ; AUTO ; Single Port      ; 256          ; 32           ; --           ; --           ; 8192    ; None                        ;
+; TestRO:test_A1|TestRO_nios2_gen2_0:nios2_gen2_0|TestRO_nios2_gen2_0_cpu:cpu|TestRO_nios2_gen2_0_cpu_register_bank_a_module:TestRO_nios2_gen2_0_cpu_register_bank_a|altsyncram:the_altsyncram|altsyncram_msi1:auto_generated|ALTSYNCRAM                                                                                                                                                   ; AUTO ; Simple Dual Port ; 32           ; 32           ; 32           ; 32           ; 1024    ; None                        ;
+; TestRO:test_A1|TestRO_nios2_gen2_0:nios2_gen2_0|TestRO_nios2_gen2_0_cpu:cpu|TestRO_nios2_gen2_0_cpu_register_bank_b_module:TestRO_nios2_gen2_0_cpu_register_bank_b|altsyncram:the_altsyncram|altsyncram_msi1:auto_generated|ALTSYNCRAM                                                                                                                                                   ; AUTO ; Simple Dual Port ; 32           ; 32           ; 32           ; 32           ; 1024    ; None                        ;
+; TestRO:test_A1|TestRO_onchip_memory2_0:onchip_memory2_0|altsyncram:the_altsyncram|altsyncram_rdj1:auto_generated|ALTSYNCRAM                                                                                                                                                                                                                                                              ; AUTO ; Single Port      ; 18750        ; 128          ; --           ; --           ; 2400000 ; TestRO_onchip_memory2_0.hex ;
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+---------+-----------------------------+
+
+
++--------------------------+
+; Partition Merge Messages ;
++--------------------------+
+Info: *******************************************************************
+Info: Running Quartus Prime Partition Merge
+    Info: Version 16.0.0 Build 211 04/27/2016 SJ Lite Edition
+    Info: Processing started: Fri Apr 20 10:30:06 2018
+Info: Command: quartus_cdb --read_settings_files=off --write_settings_files=off dmb1test -c dmb1test --merge=on
+Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
+Info (35007): Using synthesis netlist for partition "Top"
+Info (35007): Using synthesis netlist for partition "sld_hub:auto_hub"
+Info (35002): Resolved and merged 2 partition(s)
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 18 node(s), including 0 DDIO, 2 PLL, 0 transceiver and 0 LCELL
+Warning: RST port on the PLL is not properly connected on instance SYS_PLL:A1|SYS_PLL_0002:sys_pll_inst|altera_pll:altera_pll_i|general[1].gpll. The reset port on the PLL should be connected. If the PLL loses lock for any reason, you might need to manually reset the PLL in order to re-establish lock to the reference clock. File: c:/altera_lite/16.0/quartus/libraries/megafunctions/altera_pll.v Line: 749
+    Info: Must be connected
+Warning: RST port on the PLL is not properly connected on instance SYS_PLL:A1|SYS_PLL_0002:sys_pll_inst|altera_pll:altera_pll_i|general[0].gpll. The reset port on the PLL should be connected. If the PLL loses lock for any reason, you might need to manually reset the PLL in order to re-establish lock to the reference clock. File: c:/altera_lite/16.0/quartus/libraries/megafunctions/altera_pll.v Line: 749
+    Info: Must be connected
+Warning (21074): Design contains 17 input pin(s) that do not drive logic
+    Warning (15610): No output dependent on input pin "IF_SAD_CKO1" File: C:/Users/icecube/WorkSpace/Altera/D-Egg_fw/CommTest_Fujii_verilog_dev/top.v Line: 39
+    Warning (15610): No output dependent on input pin "IF_SAD_D2[0]" File: C:/Users/icecube/WorkSpace/Altera/D-Egg_fw/CommTest_Fujii_verilog_dev/top.v Line: 48
+    Warning (15610): No output dependent on input pin "IF_SAD_D2[1]" File: C:/Users/icecube/WorkSpace/Altera/D-Egg_fw/CommTest_Fujii_verilog_dev/top.v Line: 48
+    Warning (15610): No output dependent on input pin "IF_SAD_D2[2]" File: C:/Users/icecube/WorkSpace/Altera/D-Egg_fw/CommTest_Fujii_verilog_dev/top.v Line: 48
+    Warning (15610): No output dependent on input pin "IF_SAD_D2[3]" File: C:/Users/icecube/WorkSpace/Altera/D-Egg_fw/CommTest_Fujii_verilog_dev/top.v Line: 48
+    Warning (15610): No output dependent on input pin "IF_SAD_D2[4]" File: C:/Users/icecube/WorkSpace/Altera/D-Egg_fw/CommTest_Fujii_verilog_dev/top.v Line: 48
+    Warning (15610): No output dependent on input pin "IF_SAD_D2[5]" File: C:/Users/icecube/WorkSpace/Altera/D-Egg_fw/CommTest_Fujii_verilog_dev/top.v Line: 48
+    Warning (15610): No output dependent on input pin "IF_SAD_D2[6]" File: C:/Users/icecube/WorkSpace/Altera/D-Egg_fw/CommTest_Fujii_verilog_dev/top.v Line: 48
+    Warning (15610): No output dependent on input pin "IF_SAD_D2[7]" File: C:/Users/icecube/WorkSpace/Altera/D-Egg_fw/CommTest_Fujii_verilog_dev/top.v Line: 48
+    Warning (15610): No output dependent on input pin "IF_SAD_D2[8]" File: C:/Users/icecube/WorkSpace/Altera/D-Egg_fw/CommTest_Fujii_verilog_dev/top.v Line: 48
+    Warning (15610): No output dependent on input pin "IF_SAD_D2[9]" File: C:/Users/icecube/WorkSpace/Altera/D-Egg_fw/CommTest_Fujii_verilog_dev/top.v Line: 48
+    Warning (15610): No output dependent on input pin "IF_SAD_D2[10]" File: C:/Users/icecube/WorkSpace/Altera/D-Egg_fw/CommTest_Fujii_verilog_dev/top.v Line: 48
+    Warning (15610): No output dependent on input pin "IF_SAD_D2[11]" File: C:/Users/icecube/WorkSpace/Altera/D-Egg_fw/CommTest_Fujii_verilog_dev/top.v Line: 48
+    Warning (15610): No output dependent on input pin "IF_SAD_D2[12]" File: C:/Users/icecube/WorkSpace/Altera/D-Egg_fw/CommTest_Fujii_verilog_dev/top.v Line: 48
+    Warning (15610): No output dependent on input pin "IF_SAD_D2[13]" File: C:/Users/icecube/WorkSpace/Altera/D-Egg_fw/CommTest_Fujii_verilog_dev/top.v Line: 48
+    Warning (15610): No output dependent on input pin "IF_SAD_CKO2" File: C:/Users/icecube/WorkSpace/Altera/D-Egg_fw/CommTest_Fujii_verilog_dev/top.v Line: 49
+    Warning (15610): No output dependent on input pin "IF_SAD_SDOUT2" File: C:/Users/icecube/WorkSpace/Altera/D-Egg_fw/CommTest_Fujii_verilog_dev/top.v Line: 54
+Info (21057): Implemented 3205 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 37 input pins
+    Info (21059): Implemented 15 output pins
+    Info (21061): Implemented 2607 logic cells
+    Info (21064): Implemented 542 RAM segments
+    Info (21065): Implemented 2 PLLs
+Info: Quartus Prime Partition Merge was successful. 0 errors, 21 warnings
+    Info: Peak virtual memory: 952 megabytes
+    Info: Processing ended: Fri Apr 20 10:30:08 2018
+    Info: Elapsed time: 00:00:02
+    Info: Total CPU time (on all processors): 00:00:02
+
+

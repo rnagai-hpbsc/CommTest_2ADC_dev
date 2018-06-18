@@ -1,0 +1,29 @@
+/*
+ * testreadout.c
+ *
+ *  Created on: Apr 5, 2018
+ *      Author: icecube
+ */
+#include <stdio.h>
+#include <unistd.h>
+#include "system.h"
+#include "altera_avalon_jtag_uart_regs.h"
+
+int main()
+{
+	printf("Hello world!\n");
+
+	int index = 0;
+	int data;
+
+	while (1) {
+		++index;
+		data = IORD_ALTERA_AVALON_JTAG_UART_DATA(FIFO_0_OUT_BASE);
+		printf("%d,%d\n",index,data);
+		if (index==10000) break;
+	}
+
+	printf("End of the code.\n");
+	return 0;
+}
+

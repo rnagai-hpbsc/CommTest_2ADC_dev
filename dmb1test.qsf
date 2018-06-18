@@ -1,0 +1,171 @@
+# -------------------------------------------------------------------------- #
+#
+# Copyright (C) 1991-2016 Altera Corporation. All rights reserved.
+# Your use of Altera Corporation's design tools, logic functions 
+# and other software and tools, and its AMPP partner logic 
+# functions, and any output files from any of the foregoing 
+# (including device programming or simulation files), and any 
+# associated documentation or information are expressly subject 
+# to the terms and conditions of the Altera Program License 
+# Subscription Agreement, the Altera Quartus Prime License Agreement,
+# the Altera MegaCore Function License Agreement, or other 
+# applicable license agreement, including, without limitation, 
+# that your use is for the sole purpose of programming logic 
+# devices manufactured by Altera and sold by Altera or its 
+# authorized distributors.  Please refer to the applicable 
+# agreement for further details.
+#
+# -------------------------------------------------------------------------- #
+#
+# Quartus Prime
+# Version 16.0.0 Build 211 04/27/2016 SJ Lite Edition
+# Date created = 14:03:30  April 03, 2018
+#
+# -------------------------------------------------------------------------- #
+#
+# Notes:
+#
+# 1) The default values for assignments are stored in the file:
+#		dmb1test_assignment_defaults.qdf
+#    If this file doesn't exist, see file:
+#		assignment_defaults.qdf
+#
+# 2) Altera recommends that you do not modify this file. This
+#    file is updated automatically by the Quartus Prime software
+#    and any changes you make may be lost or overwritten.
+#
+# -------------------------------------------------------------------------- #
+
+
+set_global_assignment -name FAMILY "Cyclone V"
+set_global_assignment -name DEVICE 5CEFA7F23I7
+set_global_assignment -name TOP_LEVEL_ENTITY top
+set_global_assignment -name ORIGINAL_QUARTUS_VERSION 16.0.0
+set_global_assignment -name PROJECT_CREATION_TIME_DATE "14:03:30  APRIL 03, 2018"
+set_global_assignment -name LAST_QUARTUS_VERSION 16.0.0
+set_global_assignment -name VERILOG_FILE top.v
+set_global_assignment -name PROJECT_OUTPUT_DIRECTORY output_files
+set_global_assignment -name MIN_CORE_JUNCTION_TEMP "-40"
+set_global_assignment -name MAX_CORE_JUNCTION_TEMP 100
+set_global_assignment -name ERROR_CHECK_FREQUENCY_DIVISOR 256
+set_global_assignment -name EDA_SIMULATION_TOOL "ModelSim-Altera (Verilog)"
+set_global_assignment -name EDA_TIME_SCALE "1 ps" -section_id eda_simulation
+set_global_assignment -name EDA_OUTPUT_DATA_FORMAT "VERILOG HDL" -section_id eda_simulation
+set_global_assignment -name QIP_FILE SYS_GCLK/synthesis/SYS_GCLK.qip
+set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
+set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
+set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
+set_global_assignment -name QIP_FILE SYS_PLL.qip
+set_global_assignment -name SIP_FILE SYS_PLL.sip
+set_global_assignment -name VERILOG_FILE Cmd_dec.v
+set_global_assignment -name VERILOG_FILE Tlm_ans.v
+set_global_assignment -name QIP_FILE DAT_FIFO.qip
+set_location_assignment PIN_M7 -to IF_IND_FPGA1
+set_location_assignment PIN_M6 -to IF_IND_FPGA2
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to IF_IND_FPGA1
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to IF_IND_FPGA2
+set_location_assignment PIN_E21 -to IF_RX
+set_instance_assignment -name IO_STANDARD "2.5 V" -to IF_RX
+set_location_assignment PIN_F7 -to IF_SAD_CKO1
+set_instance_assignment -name IO_STANDARD "2.5 V" -to IF_SAD_CKO1
+set_location_assignment PIN_A5 -to IF_SAD_CKO2
+set_instance_assignment -name IO_STANDARD "2.5 V" -to IF_SAD_CKO2
+set_location_assignment PIN_A20 -to IF_SAD_CLK1
+set_instance_assignment -name IO_STANDARD LVDS -to IF_SAD_CLK1
+set_location_assignment PIN_B16 -to IF_SAD_CLK2
+set_instance_assignment -name IO_STANDARD LVDS -to IF_SAD_CLK2
+set_location_assignment PIN_E10 -to IF_SAD_D1[13]
+set_instance_assignment -name IO_STANDARD "2.5 V" -to IF_SAD_D1[13]
+set_location_assignment PIN_F9 -to IF_SAD_D1[12]
+set_location_assignment PIN_B6 -to IF_SAD_D1[11]
+set_location_assignment PIN_B7 -to IF_SAD_D1[10]
+set_location_assignment PIN_A8 -to IF_SAD_D1[9]
+set_location_assignment PIN_A7 -to IF_SAD_D1[8]
+set_location_assignment PIN_C6 -to IF_SAD_D1[7]
+set_instance_assignment -name IO_STANDARD "2.5 V" -to IF_SAD_D1[12]
+set_instance_assignment -name IO_STANDARD "2.5 V" -to IF_SAD_D1[11]
+set_instance_assignment -name IO_STANDARD "2.5 V" -to IF_SAD_D1[10]
+set_instance_assignment -name IO_STANDARD "2.5 V" -to IF_SAD_D1[9]
+set_instance_assignment -name IO_STANDARD "2.5 V" -to IF_SAD_D1[8]
+set_instance_assignment -name IO_STANDARD "2.5 V" -to IF_SAD_D1[7]
+set_location_assignment PIN_D6 -to IF_SAD_D1[6]
+set_location_assignment PIN_E9 -to IF_SAD_D1[5]
+set_location_assignment PIN_D9 -to IF_SAD_D1[4]
+set_location_assignment PIN_D7 -to IF_SAD_D1[3]
+set_location_assignment PIN_C8 -to IF_SAD_D1[2]
+set_location_assignment PIN_G6 -to IF_SAD_D1[1]
+set_location_assignment PIN_H6 -to IF_SAD_D1[0]
+set_location_assignment PIN_G10 -to IF_SAD_D2[13]
+set_location_assignment PIN_F10 -to IF_SAD_D2[12]
+set_location_assignment PIN_L7 -to IF_SAD_D2[11]
+set_location_assignment PIN_K7 -to IF_SAD_D2[10]
+set_location_assignment PIN_J7 -to IF_SAD_D2[9]
+set_location_assignment PIN_J8 -to IF_SAD_D2[8]
+set_location_assignment PIN_H8 -to IF_SAD_D2[7]
+set_location_assignment PIN_G8 -to IF_SAD_D2[6]
+set_location_assignment PIN_J9 -to IF_SAD_D2[5]
+set_location_assignment PIN_H9 -to IF_SAD_D2[4]
+set_location_assignment PIN_A10 -to IF_SAD_D2[3]
+set_location_assignment PIN_A9 -to IF_SAD_D2[2]
+set_location_assignment PIN_B10 -to IF_SAD_D2[1]
+set_location_assignment PIN_C9 -to IF_SAD_D2[0]
+set_location_assignment PIN_M22 -to IF_SAD_RESET1
+set_location_assignment PIN_M21 -to IF_SAD_RESET2
+set_location_assignment PIN_L22 -to IF_SAD_SCLK1
+set_location_assignment PIN_L19 -to IF_SAD_SCLK2
+set_location_assignment PIN_K17 -to IF_SAD_SDAT1
+set_location_assignment PIN_L18 -to IF_SAD_SDAT2
+set_location_assignment PIN_M20 -to IF_SAD_SDOUT1
+set_location_assignment PIN_K22 -to IF_SAD_SDOUT2
+set_location_assignment PIN_L17 -to IF_SAD_SEN1
+set_location_assignment PIN_K21 -to IF_SAD_SEN2
+set_location_assignment PIN_F19 -to IF_SYS_CLK
+set_location_assignment PIN_E20 -to IF_TEST
+set_instance_assignment -name IO_STANDARD "2.5 V" -to IF_SAD_D1[6]
+set_instance_assignment -name IO_STANDARD "2.5 V" -to IF_SAD_D1[5]
+set_instance_assignment -name IO_STANDARD "2.5 V" -to IF_SAD_D1[4]
+set_instance_assignment -name IO_STANDARD "2.5 V" -to IF_SAD_D1[3]
+set_instance_assignment -name IO_STANDARD "2.5 V" -to IF_SAD_D1[2]
+set_instance_assignment -name IO_STANDARD "2.5 V" -to IF_SAD_D1[1]
+set_instance_assignment -name IO_STANDARD "2.5 V" -to IF_SAD_D1[0]
+set_instance_assignment -name IO_STANDARD "2.5 V" -to IF_SAD_D2[13]
+set_instance_assignment -name IO_STANDARD "2.5 V" -to IF_SAD_D2[12]
+set_instance_assignment -name IO_STANDARD "2.5 V" -to IF_SAD_D2[11]
+set_instance_assignment -name IO_STANDARD "2.5 V" -to IF_SAD_D2[10]
+set_instance_assignment -name IO_STANDARD "2.5 V" -to IF_SAD_D2[9]
+set_instance_assignment -name IO_STANDARD "2.5 V" -to IF_SAD_D2[8]
+set_instance_assignment -name IO_STANDARD "2.5 V" -to IF_SAD_D2[7]
+set_instance_assignment -name IO_STANDARD "2.5 V" -to IF_SAD_D2[6]
+set_instance_assignment -name IO_STANDARD "2.5 V" -to IF_SAD_D2[5]
+set_instance_assignment -name IO_STANDARD "2.5 V" -to IF_SAD_D2[4]
+set_instance_assignment -name IO_STANDARD "2.5 V" -to IF_SAD_D2[3]
+set_instance_assignment -name IO_STANDARD "2.5 V" -to IF_SAD_D2[2]
+set_instance_assignment -name IO_STANDARD "2.5 V" -to IF_SAD_D2[1]
+set_instance_assignment -name IO_STANDARD "2.5 V" -to IF_SAD_D2[0]
+set_instance_assignment -name IO_STANDARD "2.5 V" -to IF_SAD_RESET1
+set_instance_assignment -name IO_STANDARD "2.5 V" -to IF_SAD_RESET2
+set_instance_assignment -name IO_STANDARD "2.5 V" -to IF_SAD_SCLK1
+set_instance_assignment -name IO_STANDARD "2.5 V" -to IF_SAD_SCLK2
+set_instance_assignment -name IO_STANDARD "2.5 V" -to IF_SAD_SDAT1
+set_instance_assignment -name IO_STANDARD "2.5 V" -to IF_SAD_SDAT2
+set_instance_assignment -name IO_STANDARD "2.5 V" -to IF_SAD_SDOUT1
+set_instance_assignment -name IO_STANDARD "2.5 V" -to IF_SAD_SDOUT2
+set_instance_assignment -name IO_STANDARD "2.5 V" -to IF_SAD_SEN1
+set_instance_assignment -name IO_STANDARD "2.5 V" -to IF_SAD_SEN2
+set_instance_assignment -name IO_STANDARD "2.5 V" -to IF_SYS_CLK
+set_instance_assignment -name IO_STANDARD LVDS -to IF_TEST
+set_global_assignment -name SDC_FILE dmb1test.sdc
+set_global_assignment -name QIP_FILE TestRO/synthesis/TestRO.qip
+set_global_assignment -name QIP_FILE ADC_PLL.qip
+set_global_assignment -name SIP_FILE ADC_PLL.sip
+set_global_assignment -name QIP_FILE ADCINCLKCTRL/synthesis/ADCINCLKCTRL.qip
+set_location_assignment PIN_R5 -to SLO_DAC1_CS
+set_location_assignment PIN_R6 -to SLO_DAC1_SCLK
+set_location_assignment PIN_U7 -to SLO_DAC1_MISO
+set_location_assignment PIN_U8 -to SLO_DAC1_MOSI
+set_global_assignment -name VERILOG_FILE dac_spi.v
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to SLO_DAC1_CS
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to SLO_DAC1_MISO
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to SLO_DAC1_SCLK
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to SLO_DAC1_MOSI
+set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

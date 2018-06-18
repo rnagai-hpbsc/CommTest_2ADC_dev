@@ -1,0 +1,2 @@
+$ nios2-download -g testreadout.elf
+$ nios2-terminal.exe | tee xxx.csv
