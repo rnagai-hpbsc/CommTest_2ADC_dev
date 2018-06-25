@@ -4,15 +4,16 @@
 
 `timescale 1 ps / 1 ps
 module TestRO (
-		input  wire        clk_clk,                          //                       clk.clk
-		input  wire [31:0] fifo_0_in_writedata,              //                 fifo_0_in.writedata
-		input  wire        fifo_0_in_write,                  //                          .write
-		output wire        fifo_0_in_waitrequest,            //                          .waitrequest
-		input  wire [31:0] fifo_1_in_writedata,              //                 fifo_1_in.writedata
-		input  wire        fifo_1_in_write,                  //                          .write
-		output wire        fifo_1_in_waitrequest,            //                          .waitrequest
-		output wire        pio_0_external_connection_export, // pio_0_external_connection.export
-		input  wire        reset_reset_n                     //                     reset.reset_n
+		input  wire        clk_clk,               //       clk.clk
+		output wire        exttrg_0_export,       //  exttrg_0.export
+		input  wire [31:0] fifo_0_in_writedata,   // fifo_0_in.writedata
+		input  wire        fifo_0_in_write,       //          .write
+		output wire        fifo_0_in_waitrequest, //          .waitrequest
+		input  wire [31:0] fifo_1_in_writedata,   // fifo_1_in.writedata
+		input  wire        fifo_1_in_write,       //          .write
+		output wire        fifo_1_in_waitrequest, //          .waitrequest
+		input  wire        reset_reset_n,         //     reset.reset_n
+		output wire        write_en_export        //  write_en.export
 	);
 
 	wire   [31:0] nios2_gen2_0_data_master_readdata;                           // mm_interconnect_0:nios2_gen2_0_data_master_readdata -> nios2_gen2_0:d_readdata
@@ -55,11 +56,16 @@ module TestRO (
 	wire          mm_interconnect_0_onchip_memory2_0_s1_write;                 // mm_interconnect_0:onchip_memory2_0_s1_write -> onchip_memory2_0:write
 	wire  [127:0] mm_interconnect_0_onchip_memory2_0_s1_writedata;             // mm_interconnect_0:onchip_memory2_0_s1_writedata -> onchip_memory2_0:writedata
 	wire          mm_interconnect_0_onchip_memory2_0_s1_clken;                 // mm_interconnect_0:onchip_memory2_0_s1_clken -> onchip_memory2_0:clken
-	wire          mm_interconnect_0_pio_0_s1_chipselect;                       // mm_interconnect_0:pio_0_s1_chipselect -> pio_0:chipselect
-	wire   [31:0] mm_interconnect_0_pio_0_s1_readdata;                         // pio_0:readdata -> mm_interconnect_0:pio_0_s1_readdata
-	wire    [1:0] mm_interconnect_0_pio_0_s1_address;                          // mm_interconnect_0:pio_0_s1_address -> pio_0:address
-	wire          mm_interconnect_0_pio_0_s1_write;                            // mm_interconnect_0:pio_0_s1_write -> pio_0:write_n
-	wire   [31:0] mm_interconnect_0_pio_0_s1_writedata;                        // mm_interconnect_0:pio_0_s1_writedata -> pio_0:writedata
+	wire          mm_interconnect_0_write_en_pio_s1_chipselect;                // mm_interconnect_0:write_en_pio_s1_chipselect -> write_en_pio:chipselect
+	wire   [31:0] mm_interconnect_0_write_en_pio_s1_readdata;                  // write_en_pio:readdata -> mm_interconnect_0:write_en_pio_s1_readdata
+	wire    [1:0] mm_interconnect_0_write_en_pio_s1_address;                   // mm_interconnect_0:write_en_pio_s1_address -> write_en_pio:address
+	wire          mm_interconnect_0_write_en_pio_s1_write;                     // mm_interconnect_0:write_en_pio_s1_write -> write_en_pio:write_n
+	wire   [31:0] mm_interconnect_0_write_en_pio_s1_writedata;                 // mm_interconnect_0:write_en_pio_s1_writedata -> write_en_pio:writedata
+	wire          mm_interconnect_0_exttrg_0_s1_chipselect;                    // mm_interconnect_0:exttrg_0_s1_chipselect -> exttrg_0:chipselect
+	wire   [31:0] mm_interconnect_0_exttrg_0_s1_readdata;                      // exttrg_0:readdata -> mm_interconnect_0:exttrg_0_s1_readdata
+	wire    [1:0] mm_interconnect_0_exttrg_0_s1_address;                       // mm_interconnect_0:exttrg_0_s1_address -> exttrg_0:address
+	wire          mm_interconnect_0_exttrg_0_s1_write;                         // mm_interconnect_0:exttrg_0_s1_write -> exttrg_0:write_n
+	wire   [31:0] mm_interconnect_0_exttrg_0_s1_writedata;                     // mm_interconnect_0:exttrg_0_s1_writedata -> exttrg_0:writedata
 	wire   [31:0] mm_interconnect_0_fifo_0_in_csr_readdata;                    // fifo_0:wrclk_control_slave_readdata -> mm_interconnect_0:fifo_0_in_csr_readdata
 	wire    [2:0] mm_interconnect_0_fifo_0_in_csr_address;                     // mm_interconnect_0:fifo_0_in_csr_address -> fifo_0:wrclk_control_slave_address
 	wire          mm_interconnect_0_fifo_0_in_csr_read;                        // mm_interconnect_0:fifo_0_in_csr_read -> fifo_0:wrclk_control_slave_read
@@ -74,11 +80,22 @@ module TestRO (
 	wire          irq_mapper_receiver1_irq;                                    // fifo_1:wrclk_control_slave_irq -> irq_mapper:receiver1_irq
 	wire          irq_mapper_receiver2_irq;                                    // jtag_uart_0:av_irq -> irq_mapper:receiver2_irq
 	wire   [31:0] nios2_gen2_0_irq_irq;                                        // irq_mapper:sender_irq -> nios2_gen2_0:irq
-	wire          rst_controller_reset_out_reset;                              // rst_controller:reset_out -> [fifo_0:reset_n, fifo_1:reset_n, irq_mapper:reset, mm_interconnect_0:nios2_gen2_0_reset_reset_bridge_in_reset_reset, nios2_gen2_0:reset_n, pio_0:reset_n, rst_translator:in_reset]
+	wire          rst_controller_reset_out_reset;                              // rst_controller:reset_out -> [exttrg_0:reset_n, fifo_0:reset_n, fifo_1:reset_n, irq_mapper:reset, mm_interconnect_0:nios2_gen2_0_reset_reset_bridge_in_reset_reset, nios2_gen2_0:reset_n, rst_translator:in_reset, write_en_pio:reset_n]
 	wire          rst_controller_reset_out_reset_req;                          // rst_controller:reset_req -> [nios2_gen2_0:reset_req, rst_translator:reset_req_in]
 	wire          rst_controller_001_reset_out_reset;                          // rst_controller_001:reset_out -> [jtag_uart_0:rst_n, mm_interconnect_0:jtag_uart_0_reset_reset_bridge_in_reset_reset, onchip_memory2_0:reset]
 	wire          rst_controller_001_reset_out_reset_req;                      // rst_controller_001:reset_req -> [onchip_memory2_0:reset_req, rst_translator_001:reset_req_in]
 	wire          nios2_gen2_0_debug_reset_request_reset;                      // nios2_gen2_0:debug_reset_request -> rst_controller_001:reset_in1
+
+	TestRO_exttrg_0 exttrg_0 (
+		.clk        (clk_clk),                                  //                 clk.clk
+		.reset_n    (~rst_controller_reset_out_reset),          //               reset.reset_n
+		.address    (mm_interconnect_0_exttrg_0_s1_address),    //                  s1.address
+		.write_n    (~mm_interconnect_0_exttrg_0_s1_write),     //                    .write_n
+		.writedata  (mm_interconnect_0_exttrg_0_s1_writedata),  //                    .writedata
+		.chipselect (mm_interconnect_0_exttrg_0_s1_chipselect), //                    .chipselect
+		.readdata   (mm_interconnect_0_exttrg_0_s1_readdata),   //                    .readdata
+		.out_port   (exttrg_0_export)                           // external_connection.export
+	);
 
 	TestRO_fifo_0 fifo_0 (
 		.wrclock                          (clk_clk),                                   //   clk_in.clk
@@ -169,15 +186,15 @@ module TestRO (
 		.reset_req  (rst_controller_001_reset_out_reset_req)            //       .reset_req
 	);
 
-	TestRO_pio_0 pio_0 (
-		.clk        (clk_clk),                               //                 clk.clk
-		.reset_n    (~rst_controller_reset_out_reset),       //               reset.reset_n
-		.address    (mm_interconnect_0_pio_0_s1_address),    //                  s1.address
-		.write_n    (~mm_interconnect_0_pio_0_s1_write),     //                    .write_n
-		.writedata  (mm_interconnect_0_pio_0_s1_writedata),  //                    .writedata
-		.chipselect (mm_interconnect_0_pio_0_s1_chipselect), //                    .chipselect
-		.readdata   (mm_interconnect_0_pio_0_s1_readdata),   //                    .readdata
-		.out_port   (pio_0_external_connection_export)       // external_connection.export
+	TestRO_exttrg_0 write_en_pio (
+		.clk        (clk_clk),                                      //                 clk.clk
+		.reset_n    (~rst_controller_reset_out_reset),              //               reset.reset_n
+		.address    (mm_interconnect_0_write_en_pio_s1_address),    //                  s1.address
+		.write_n    (~mm_interconnect_0_write_en_pio_s1_write),     //                    .write_n
+		.writedata  (mm_interconnect_0_write_en_pio_s1_writedata),  //                    .writedata
+		.chipselect (mm_interconnect_0_write_en_pio_s1_chipselect), //                    .chipselect
+		.readdata   (mm_interconnect_0_write_en_pio_s1_readdata),   //                    .readdata
+		.out_port   (write_en_export)                               // external_connection.export
 	);
 
 	TestRO_mm_interconnect_0 mm_interconnect_0 (
@@ -196,6 +213,11 @@ module TestRO (
 		.nios2_gen2_0_instruction_master_waitrequest    (nios2_gen2_0_instruction_master_waitrequest),                 //                                         .waitrequest
 		.nios2_gen2_0_instruction_master_read           (nios2_gen2_0_instruction_master_read),                        //                                         .read
 		.nios2_gen2_0_instruction_master_readdata       (nios2_gen2_0_instruction_master_readdata),                    //                                         .readdata
+		.exttrg_0_s1_address                            (mm_interconnect_0_exttrg_0_s1_address),                       //                              exttrg_0_s1.address
+		.exttrg_0_s1_write                              (mm_interconnect_0_exttrg_0_s1_write),                         //                                         .write
+		.exttrg_0_s1_readdata                           (mm_interconnect_0_exttrg_0_s1_readdata),                      //                                         .readdata
+		.exttrg_0_s1_writedata                          (mm_interconnect_0_exttrg_0_s1_writedata),                     //                                         .writedata
+		.exttrg_0_s1_chipselect                         (mm_interconnect_0_exttrg_0_s1_chipselect),                    //                                         .chipselect
 		.fifo_0_in_csr_address                          (mm_interconnect_0_fifo_0_in_csr_address),                     //                            fifo_0_in_csr.address
 		.fifo_0_in_csr_write                            (mm_interconnect_0_fifo_0_in_csr_write),                       //                                         .write
 		.fifo_0_in_csr_read                             (mm_interconnect_0_fifo_0_in_csr_read),                        //                                         .read
@@ -234,11 +256,11 @@ module TestRO (
 		.onchip_memory2_0_s1_byteenable                 (mm_interconnect_0_onchip_memory2_0_s1_byteenable),            //                                         .byteenable
 		.onchip_memory2_0_s1_chipselect                 (mm_interconnect_0_onchip_memory2_0_s1_chipselect),            //                                         .chipselect
 		.onchip_memory2_0_s1_clken                      (mm_interconnect_0_onchip_memory2_0_s1_clken),                 //                                         .clken
-		.pio_0_s1_address                               (mm_interconnect_0_pio_0_s1_address),                          //                                 pio_0_s1.address
-		.pio_0_s1_write                                 (mm_interconnect_0_pio_0_s1_write),                            //                                         .write
-		.pio_0_s1_readdata                              (mm_interconnect_0_pio_0_s1_readdata),                         //                                         .readdata
-		.pio_0_s1_writedata                             (mm_interconnect_0_pio_0_s1_writedata),                        //                                         .writedata
-		.pio_0_s1_chipselect                            (mm_interconnect_0_pio_0_s1_chipselect)                        //                                         .chipselect
+		.write_en_pio_s1_address                        (mm_interconnect_0_write_en_pio_s1_address),                   //                          write_en_pio_s1.address
+		.write_en_pio_s1_write                          (mm_interconnect_0_write_en_pio_s1_write),                     //                                         .write
+		.write_en_pio_s1_readdata                       (mm_interconnect_0_write_en_pio_s1_readdata),                  //                                         .readdata
+		.write_en_pio_s1_writedata                      (mm_interconnect_0_write_en_pio_s1_writedata),                 //                                         .writedata
+		.write_en_pio_s1_chipselect                     (mm_interconnect_0_write_en_pio_s1_chipselect)                 //                                         .chipselect
 	);
 
 	TestRO_irq_mapper irq_mapper (

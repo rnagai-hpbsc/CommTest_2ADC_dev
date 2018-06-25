@@ -4,7 +4,7 @@
  * Machine generated for CPU 'nios2_gen2_0' in SOPC Builder design 'TestRO'
  * SOPC Builder design path: ../../TestRO.sopcinfo
  *
- * Generated: Tue Jun 12 18:04:19 JST 2018
+ * Generated: Thu Jun 21 19:15:55 JST 2018
  */
 
 /*
@@ -363,29 +363,29 @@
 
 
 /*
- * pio_0 configuration
+ * write_en_pio configuration
  *
  */
 
-#define ALT_MODULE_CLASS_pio_0 altera_avalon_pio
-#define PIO_0_BASE 0x20000000
-#define PIO_0_BIT_CLEARING_EDGE_REGISTER 0
-#define PIO_0_BIT_MODIFYING_OUTPUT_REGISTER 0
-#define PIO_0_CAPTURE 0
-#define PIO_0_DATA_WIDTH 1
-#define PIO_0_DO_TEST_BENCH_WIRING 0
-#define PIO_0_DRIVEN_SIM_VALUE 0
-#define PIO_0_EDGE_TYPE "NONE"
-#define PIO_0_FREQ 100000000
-#define PIO_0_HAS_IN 0
-#define PIO_0_HAS_OUT 1
-#define PIO_0_HAS_TRI 0
-#define PIO_0_IRQ -1
-#define PIO_0_IRQ_INTERRUPT_CONTROLLER_ID -1
-#define PIO_0_IRQ_TYPE "NONE"
-#define PIO_0_NAME "/dev/pio_0"
-#define PIO_0_RESET_VALUE 0
-#define PIO_0_SPAN 16
-#define PIO_0_TYPE "altera_avalon_pio"
+#define ALT_MODULE_CLASS_write_en_pio altera_avalon_pio
+#define WRITE_EN_PIO_BASE 0x20000000
+#define WRITE_EN_PIO_BIT_CLEARING_EDGE_REGISTER 0
+#define WRITE_EN_PIO_BIT_MODIFYING_OUTPUT_REGISTER 0
+#define WRITE_EN_PIO_CAPTURE 0
+#define WRITE_EN_PIO_DATA_WIDTH 1
+#define WRITE_EN_PIO_DO_TEST_BENCH_WIRING 0
+#define WRITE_EN_PIO_DRIVEN_SIM_VALUE 0
+#define WRITE_EN_PIO_EDGE_TYPE "NONE"
+#define WRITE_EN_PIO_FREQ 100000000
+#define WRITE_EN_PIO_HAS_IN 0
+#define WRITE_EN_PIO_HAS_OUT 1
+#define WRITE_EN_PIO_HAS_TRI 0
+#define WRITE_EN_PIO_IRQ -1
+#define WRITE_EN_PIO_IRQ_INTERRUPT_CONTROLLER_ID -1
+#define WRITE_EN_PIO_IRQ_TYPE "NONE"
+#define WRITE_EN_PIO_NAME "/dev/write_en_pio"
+#define WRITE_EN_PIO_RESET_VALUE 0
+#define WRITE_EN_PIO_SPAN 16
+#define WRITE_EN_PIO_TYPE "altera_avalon_pio"
 
 #endif /* __SYSTEM_H_ */

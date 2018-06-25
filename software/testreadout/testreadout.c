@@ -17,7 +17,7 @@ int main()
 	int index = 0;
 	int data, data2;
 
-	IOWR_ALTERA_AVALON_PIO_DATA(PIO_0_BASE,1);
+	IOWR_ALTERA_AVALON_PIO_DATA(WRITE_EN_PIO_BASE,1);
 
 	while (1) {
 		++index;
@@ -27,7 +27,7 @@ int main()
 		if (index==500) break;
 	}
 
-	IOWR_ALTERA_AVALON_PIO_DATA(PIO_0_BASE,0);
+	IOWR_ALTERA_AVALON_PIO_DATA(WRITE_EN_PIO_BASE,0);
 
 	printf("End of the code.\n");
 	return 0;

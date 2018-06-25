@@ -1,0 +1,9 @@
+module IntTrig (
+  input  clk,
+  input  rst,
+  input  trigdat,
+  output trigsig
+  );
+  
+
+endmodule 

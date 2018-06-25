@@ -1,6 +1,6 @@
 module DAC_SPI (
   input        clk, 
-  input        rst, 
+  input        rst_n, 
   input [15:0] data, 
   input  [3:0] comm,
   input  [3:0] addr,
@@ -23,8 +23,8 @@ module DAC_SPI (
   reg  [3:0] comm_i;
   reg  [3:0] addr_i;
     
-  always @(negedge rst or posedge clk) begin 
-    if (~rst) begin 
+  always @(negedge rst_n or posedge clk) begin 
+    if (~rst_n) begin 
 	   starts   <=  1'b0;
 		counts   <= 16'h0000;
 		datain   <=  1'b0;

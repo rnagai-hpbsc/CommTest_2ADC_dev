@@ -49,7 +49,7 @@ set_global_assignment -name MIN_CORE_JUNCTION_TEMP "-40"
 set_global_assignment -name MAX_CORE_JUNCTION_TEMP 100
 set_global_assignment -name ERROR_CHECK_FREQUENCY_DIVISOR 256
 set_global_assignment -name EDA_SIMULATION_TOOL "ModelSim-Altera (Verilog)"
-set_global_assignment -name EDA_TIME_SCALE "1 ps" -section_id eda_simulation
+set_global_assignment -name EDA_TIME_SCALE "1 ns" -section_id eda_simulation
 set_global_assignment -name EDA_OUTPUT_DATA_FORMAT "VERILOG HDL" -section_id eda_simulation
 set_global_assignment -name QIP_FILE SYS_GCLK/synthesis/SYS_GCLK.qip
 set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
@@ -168,4 +168,17 @@ set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to SLO_DAC1_CS
 set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to SLO_DAC1_MISO
 set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to SLO_DAC1_SCLK
 set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to SLO_DAC1_MOSI
+set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "23 MM HEAT SINK WITH 200 LFPM AIRFLOW"
+set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
+set_global_assignment -name EDA_TEST_BENCH_ENABLE_STATUS TEST_BENCH_MODE -section_id eda_simulation
+set_global_assignment -name EDA_NATIVELINK_SIMULATION_TEST_BENCH top_vlg_tst -section_id eda_simulation
+set_global_assignment -name EDA_TEST_BENCH_NAME top_vlg_tst -section_id eda_simulation
+set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id top_vlg_tst
+set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME top_vlg_tst -section_id top_vlg_tst
+set_global_assignment -name EDA_TEST_BENCH_FILE simulation/modelsim/top.vt -section_id top_vlg_tst
+set_global_assignment -name VERILOG_FILE ExtTrig.v
+set_global_assignment -name VERILOG_FILE IntTrig.v
+set_global_assignment -name VERILOG_FILE pline.v
+set_global_assignment -name QIP_FILE SPICMD_FIFO.qip
+set_global_assignment -name VERILOG_FILE SPI_CMDGEN.v
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

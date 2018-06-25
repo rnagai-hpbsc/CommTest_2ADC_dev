@@ -1,0 +1,283 @@
+# Reading C:/altera_lite/16.0/modelsim_ase/tcl/vsim/pref.tcl
+# do dmb1test_run_msim_gate_verilog.do
+# if {[file exists gate_work]} {
+# 	vdel -lib gate_work -all
+# }
+# vlib gate_work
+# vmap work gate_work
+# Model Technology ModelSim ALTERA vmap 10.4d Lib Mapping Utility 2015.12 Dec 30 2015
+# vmap work gate_work 
+# Copying C:/altera_lite/16.0/modelsim_ase/win32aloem/../modelsim.ini to modelsim.ini
+# Modifying modelsim.ini
+# 
+# vlog -vlog01compat -work work +incdir+. {dmb1test.vo}
+# Model Technology ModelSim ALTERA vlog 10.4d Compiler 2015.12 Dec 30 2015
+# Start time: 18:29:43 on Jun 25,2018
+# vlog -reportprogress 300 -vlog01compat -work work "+incdir+." dmb1test.vo 
+# -- Compiling module top
+# 
+# Top level modules:
+# 	top
+# End time: 18:29:45 on Jun 25,2018, Elapsed time: 0:00:02
+# Errors: 0, Warnings: 0
+# 
+# vlog -vlog01compat -work work +incdir+C:/Users/icecube/WorkSpace/Altera/D-Egg_fw/CommTest_2ADC_dev/simulation/modelsim {C:/Users/icecube/WorkSpace/Altera/D-Egg_fw/CommTest_2ADC_dev/simulation/modelsim/top.vt}
+# Model Technology ModelSim ALTERA vlog 10.4d Compiler 2015.12 Dec 30 2015
+# Start time: 18:29:45 on Jun 25,2018
+# vlog -reportprogress 300 -vlog01compat -work work "+incdir+C:/Users/icecube/WorkSpace/Altera/D-Egg_fw/CommTest_2ADC_dev/simulation/modelsim" C:/Users/icecube/WorkSpace/Altera/D-Egg_fw/CommTest_2ADC_dev/simulation/modelsim/top.vt 
+# -- Compiling module top_vlg_tst
+# 
+# Top level modules:
+# 	top_vlg_tst
+# End time: 18:29:45 on Jun 25,2018, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# 
+# vsim -t 1ps +transport_int_delays +transport_path_delays -L altera_ver -L altera_lnsim_ver -L cyclonev_ver -L lpm_ver -L sgate_ver -L cyclonev_hssi_ver -L altera_mf_ver -L cyclonev_pcie_hip_ver -L gate_work -L work -voptargs="+acc"  top_vlg_tst
+# vsim -t 1ps "+transport_int_delays" "+transport_path_delays" -L altera_ver -L altera_lnsim_ver -L cyclonev_ver -L lpm_ver -L sgate_ver -L cyclonev_hssi_ver -L altera_mf_ver -L cyclonev_pcie_hip_ver -L gate_work -L work -voptargs=""+acc"" top_vlg_tst 
+# Start time: 18:29:46 on Jun 25,2018
+# Loading work.top_vlg_tst
+# Loading work.top
+# Loading altera_ver.dffeas
+# Loading sv_std.std
+# Loading altera_lnsim_ver.generic_m10k
+# Loading altera_lnsim_ver.altera_lnsim_functions
+# Loading altera_lnsim_ver.common_28nm_ram_block
+# Loading altera_lnsim_ver.common_28nm_ram_register
+# Loading altera_lnsim_ver.common_28nm_ram_pulse_generator
+# Loading altera_lnsim_ver.altera_pll_reconfig_tasks
+# Loading altera_lnsim_ver.generic_device_pll
+# Loading altera_lnsim_ver.altera_generic_pll_functions
+# Loading altera_lnsim_ver.generic_pll
+# ** Warning: (vsim-3017) C:/Users/icecube/WorkSpace/Altera/D-Egg_fw/CommTest_2ADC_dev/simulation/modelsim/top.vt(64): [TFMPC] - Too few port connections. Expected 32, found 25.
+#    Time: 0 ps  Iteration: 0  Instance: /top_vlg_tst/i1 File: dmb1test.vo
+# ** Warning: (vsim-3722) C:/Users/icecube/WorkSpace/Altera/D-Egg_fw/CommTest_2ADC_dev/simulation/modelsim/top.vt(64): [TFMPC] - Missing connection for port 'altera_reserved_tms'.
+# ** Warning: (vsim-3722) C:/Users/icecube/WorkSpace/Altera/D-Egg_fw/CommTest_2ADC_dev/simulation/modelsim/top.vt(64): [TFMPC] - Missing connection for port 'altera_reserved_tck'.
+# ** Warning: (vsim-3722) C:/Users/icecube/WorkSpace/Altera/D-Egg_fw/CommTest_2ADC_dev/simulation/modelsim/top.vt(64): [TFMPC] - Missing connection for port 'altera_reserved_tdi'.
+# ** Warning: (vsim-3722) C:/Users/icecube/WorkSpace/Altera/D-Egg_fw/CommTest_2ADC_dev/simulation/modelsim/top.vt(64): [TFMPC] - Missing connection for port 'altera_reserved_tdo'.
+# ** Warning: (vsim-3722) C:/Users/icecube/WorkSpace/Altera/D-Egg_fw/CommTest_2ADC_dev/simulation/modelsim/top.vt(64): [TFMPC] - Missing connection for port '\IF_SAD_CLK1(n) '.
+# ** Warning: (vsim-3722) C:/Users/icecube/WorkSpace/Altera/D-Egg_fw/CommTest_2ADC_dev/simulation/modelsim/top.vt(64): [TFMPC] - Missing connection for port '\IF_SAD_CLK2(n) '.
+# ** Warning: (vsim-3722) C:/Users/icecube/WorkSpace/Altera/D-Egg_fw/CommTest_2ADC_dev/simulation/modelsim/top.vt(64): [TFMPC] - Missing connection for port '\IF_TEST(n) '.
+# ** Warning: (vsim-3017) dmb1test.vo(5610): [TFMPC] - Too few port connections. Expected 15, found 14.
+#    Time: 0 ps  Iteration: 0  Instance: /top_vlg_tst/i1/\A1|sys_pll_inst|altera_pll_i|general[0].gpll~PLL_REFCLK_SELECT  File: nofile
+# ** Warning: (vsim-3722) dmb1test.vo(5610): [TFMPC] - Missing connection for port 'pllen'.
+# ** Warning: (vsim-3017) <protected>(<protected>): [TFMPC] - Too few port connections. Expected <protected>, found <protected>.
+#    Time: 0 ps  Iteration: 0  Protected: /top_vlg_tst/i1/\A1|sys_pll_inst|altera_pll_i|general[0].gpll~PLL_REFCLK_SELECT /<protected>/<protected> File: nofile
+# ** Warning: (vsim-3722) <protected>(<protected>): [TFMPC] - Missing connection for port '<protected>'.
+# ** Warning: (vsim-3017) dmb1test.vo(5637): [TFMPC] - Too few port connections. Expected 24, found 23.
+#    Time: 0 ps  Iteration: 0  Instance: /top_vlg_tst/i1/\A1|sys_pll_inst|altera_pll_i|general[0].gpll~FRACTIONAL_PLL  File: nofile
+# ** Warning: (vsim-3722) dmb1test.vo(5637): [TFMPC] - Missing connection for port 'vsspl'.
+# ** Warning: (vsim-3017) <protected>(<protected>): [TFMPC] - Too few port connections. Expected <protected>, found <protected>.
+#    Time: 0 ps  Iteration: 0  Protected: /top_vlg_tst/i1/\A1|sys_pll_inst|altera_pll_i|general[0].gpll~PLL_RECONFIG /<protected> File: nofile
+# ** Warning: (vsim-3722) <protected>(<protected>): [TFMPC] - Missing connection for port '<protected>'.
+# ** Warning: (vsim-3015) <protected>(<protected>): [PCDPC] - Port size (<protected>) does not match connection size (<protected>) for <protected>.<protected>
+#    Time: 0 ps  Iteration: 0  Protected: /top_vlg_tst/i1/\A1|sys_pll_inst|altera_pll_i|general[0].gpll~PLL_RECONFIG /<protected>/<protected> File: nofile
+# Loading altera_ver.PRIM_GDFF_LOW
+# ** Warning: (vsim-3017) dmb1test.vo(9559): [TFMPC] - Too few port connections. Expected 15, found 14.
+#    Time: 0 ps  Iteration: 0  Instance: /top_vlg_tst/i1/\ADC_PLL1|adc_pll_inst|altera_pll_i|general[0].gpll~PLL_REFCLK_SELECT  File: nofile
+# ** Warning: (vsim-3722) dmb1test.vo(9559): [TFMPC] - Missing connection for port 'pllen'.
+# ** Warning: (vsim-3017) <protected>(<protected>): [TFMPC] - Too few port connections. Expected <protected>, found <protected>.
+#    Time: 0 ps  Iteration: 0  Protected: /top_vlg_tst/i1/\ADC_PLL1|adc_pll_inst|altera_pll_i|general[0].gpll~PLL_REFCLK_SELECT /<protected>/<protected> File: nofile
+# ** Warning: (vsim-3722) <protected>(<protected>): [TFMPC] - Missing connection for port '<protected>'.
+# ** Warning: (vsim-3017) dmb1test.vo(9586): [TFMPC] - Too few port connections. Expected 24, found 23.
+#    Time: 0 ps  Iteration: 0  Instance: /top_vlg_tst/i1/\ADC_PLL1|adc_pll_inst|altera_pll_i|general[0].gpll~FRACTIONAL_PLL  File: nofile
+# ** Warning: (vsim-3722) dmb1test.vo(9586): [TFMPC] - Missing connection for port 'vsspl'.
+# ** Warning: (vsim-3017) <protected>(<protected>): [TFMPC] - Too few port connections. Expected <protected>, found <protected>.
+#    Time: 0 ps  Iteration: 0  Protected: /top_vlg_tst/i1/\ADC_PLL1|adc_pll_inst|altera_pll_i|general[0].gpll~PLL_RECONFIG /<protected> File: nofile
+# ** Warning: (vsim-3722) <protected>(<protected>): [TFMPC] - Missing connection for port '<protected>'.
+# ** Warning: (vsim-3015) <protected>(<protected>): [PCDPC] - Port size (<protected>) does not match connection size (<protected>) for <protected>.<protected>
+#    Time: 0 ps  Iteration: 0  Protected: /top_vlg_tst/i1/\ADC_PLL1|adc_pll_inst|altera_pll_i|general[0].gpll~PLL_RECONFIG /<protected>/<protected> File: nofile
+# ** Warning: (vsim-3017) dmb1test.vo(10489): [TFMPC] - Too few port connections. Expected 15, found 14.
+#    Time: 0 ps  Iteration: 0  Instance: /top_vlg_tst/i1/altera_internal_jtag File: nofile
+# ** Warning: (vsim-3722) dmb1test.vo(10489): [TFMPC] - Missing connection for port 'ntrst'.
+# ** Warning: (vsim-3017) dmb1test.vo(40956): [TFMPC] - Too few port connections. Expected 15, found 14.
+#    Time: 0 ps  Iteration: 0  Instance: /top_vlg_tst/i1/\ADC_PLL2|adc_pll_inst|altera_pll_i|general[0].gpll~PLL_REFCLK_SELECT  File: nofile
+# ** Warning: (vsim-3722) dmb1test.vo(40956): [TFMPC] - Missing connection for port 'pllen'.
+# ** Warning: (vsim-3017) <protected>(<protected>): [TFMPC] - Too few port connections. Expected <protected>, found <protected>.
+#    Time: 0 ps  Iteration: 0  Protected: /top_vlg_tst/i1/\ADC_PLL2|adc_pll_inst|altera_pll_i|general[0].gpll~PLL_REFCLK_SELECT /<protected>/<protected> File: nofile
+# ** Warning: (vsim-3722) <protected>(<protected>): [TFMPC] - Missing connection for port '<protected>'.
+# ** Warning: (vsim-3017) dmb1test.vo(40983): [TFMPC] - Too few port connections. Expected 24, found 23.
+#    Time: 0 ps  Iteration: 0  Instance: /top_vlg_tst/i1/\ADC_PLL2|adc_pll_inst|altera_pll_i|general[0].gpll~FRACTIONAL_PLL  File: nofile
+# ** Warning: (vsim-3722) dmb1test.vo(40983): [TFMPC] - Missing connection for port 'vsspl'.
+# ** Warning: (vsim-3017) <protected>(<protected>): [TFMPC] - Too few port connections. Expected <protected>, found <protected>.
+#    Time: 0 ps  Iteration: 0  Protected: /top_vlg_tst/i1/\ADC_PLL2|adc_pll_inst|altera_pll_i|general[0].gpll~PLL_RECONFIG /<protected> File: nofile
+# ** Warning: (vsim-3722) <protected>(<protected>): [TFMPC] - Missing connection for port '<protected>'.
+# ** Warning: (vsim-3015) <protected>(<protected>): [PCDPC] - Port size (<protected>) does not match connection size (<protected>) for <protected>.<protected>
+#    Time: 0 ps  Iteration: 0  Protected: /top_vlg_tst/i1/\ADC_PLL2|adc_pll_inst|altera_pll_i|general[0].gpll~PLL_RECONFIG /<protected>/<protected> File: nofile
+# ** Warning: Design size of 36739 statements exceeds ModelSim Altera Starter recommended capacity.
+# Expect performance to be adversely affected.
+# 
+# add wave *
+# view structure
+# .main_pane.structure.interior.cs.body.struct
+# view signals
+# .main_pane.objects.interior.cs.body.tree
+# run -all
+# 
+# Warning: por to CB BFM is not connected, internal por is used.
+# 
+# Info: =================================================
+# Info:           Generic PLL Summary
+# Info: =================================================
+# Time scale of (top_vlg_tst.i1.\A1|sys_pll_inst|altera_pll_i|general[0].gpll~FRACTIONAL_PLL .<protected>.<protected>.<protected>.inst_pll_phase_0.no_need_to_gen) is  1ps /  1ps
+# Info: hierarchical_name = top_vlg_tst.i1.\A1|sys_pll_inst|altera_pll_i|general[0].gpll~FRACTIONAL_PLL .<protected>.<protected>.<protected>.inst_pll_phase_0.no_need_to_gen
+# Info: reference_clock_frequency = 20.0 mhz
+# Info: output_clock_frequency = 500.0 mhz
+# Info: phase_shift = 0 ps
+# Info: duty_cycle = 50
+# Info: sim_additional_refclk_cycles_to_lock = 0
+# Info: output_clock_high_period = 1000.000000
+# Info: output_clock_low_period = 1000.000000
+# Info: =================================================
+# Info:           Generic PLL Summary
+# Info: =================================================
+# Time scale of (top_vlg_tst.i1.\A1|sys_pll_inst|altera_pll_i|general[0].gpll~FRACTIONAL_PLL .<protected>.<protected>.<protected>.inst_pll_phase_1.no_need_to_gen) is  1ps /  1ps
+# Info: hierarchical_name = top_vlg_tst.i1.\A1|sys_pll_inst|altera_pll_i|general[0].gpll~FRACTIONAL_PLL .<protected>.<protected>.<protected>.inst_pll_phase_1.no_need_to_gen
+# Info: reference_clock_frequency = 20.0 mhz
+# Info: output_clock_frequency = 500.0 mhz
+# Info: phase_shift = 250 ps
+# Info: duty_cycle = 50
+# Info: sim_additional_refclk_cycles_to_lock = 0
+# Info: output_clock_high_period = 1000.000000
+# Info: output_clock_low_period = 1000.000000
+# Info: =================================================
+# Info:           Generic PLL Summary
+# Info: =================================================
+# Time scale of (top_vlg_tst.i1.\A1|sys_pll_inst|altera_pll_i|general[0].gpll~FRACTIONAL_PLL .<protected>.<protected>.<protected>.inst_pll_phase_2.no_need_to_gen) is  1ps /  1ps
+# Info: hierarchical_name = top_vlg_tst.i1.\A1|sys_pll_inst|altera_pll_i|general[0].gpll~FRACTIONAL_PLL .<protected>.<protected>.<protected>.inst_pll_phase_2.no_need_to_gen
+# Info: reference_clock_frequency = 20.0 mhz
+# Info: output_clock_frequency = 500.0 mhz
+# Info: phase_shift = 500 ps
+# Info: duty_cycle = 50
+# Info: sim_additional_refclk_cycles_to_lock = 0
+# Info: output_clock_high_period = 1000.000000
+# Info: output_clock_low_period = 1000.000000
+# Info: =================================================
+# Info:           Generic PLL Summary
+# Info: =================================================
+# Time scale of (top_vlg_tst.i1.\A1|sys_pll_inst|altera_pll_i|general[0].gpll~FRACTIONAL_PLL .<protected>.<protected>.<protected>.inst_pll_phase_3.no_need_to_gen) is  1ps /  1ps
+# Info: hierarchical_name = top_vlg_tst.i1.\A1|sys_pll_inst|altera_pll_i|general[0].gpll~FRACTIONAL_PLL .<protected>.<protected>.<protected>.inst_pll_phase_3.no_need_to_gen
+# Info: reference_clock_frequency = 20.0 mhz
+# Info: output_clock_frequency = 500.0 mhz
+# Info: phase_shift = 750 ps
+# Info: duty_cycle = 50
+# Info: sim_additional_refclk_cycles_to_lock = 0
+# Info: output_clock_high_period = 1000.000000
+# Info: output_clock_low_period = 1000.000000
+# 
+# Warning: por to CB BFM is not connected, internal por is used.
+# 
+# 
+# Warning: por to CB BFM is not connected, internal por is used.
+# 
+# Info: =================================================
+# Info:           Generic PLL Summary
+# Info: =================================================
+# Time scale of (top_vlg_tst.i1.\ADC_PLL1|adc_pll_inst|altera_pll_i|general[0].gpll~FRACTIONAL_PLL .<protected>.<protected>.<protected>.inst_pll_phase_0.no_need_to_gen) is  1ps /  1ps
+# Info: hierarchical_name = top_vlg_tst.i1.\ADC_PLL1|adc_pll_inst|altera_pll_i|general[0].gpll~FRACTIONAL_PLL .<protected>.<protected>.<protected>.inst_pll_phase_0.no_need_to_gen
+# Info: reference_clock_frequency = 250.0 mhz
+# Info: output_clock_frequency = 500.0 mhz
+# Info: phase_shift = 0 ps
+# Info: duty_cycle = 50
+# Info: sim_additional_refclk_cycles_to_lock = 0
+# Info: output_clock_high_period = 1000.000000
+# Info: output_clock_low_period = 1000.000000
+# Info: =================================================
+# Info:           Generic PLL Summary
+# Info: =================================================
+# Time scale of (top_vlg_tst.i1.\ADC_PLL1|adc_pll_inst|altera_pll_i|general[0].gpll~FRACTIONAL_PLL .<protected>.<protected>.<protected>.inst_pll_phase_1.no_need_to_gen) is  1ps /  1ps
+# Info: hierarchical_name = top_vlg_tst.i1.\ADC_PLL1|adc_pll_inst|altera_pll_i|general[0].gpll~FRACTIONAL_PLL .<protected>.<protected>.<protected>.inst_pll_phase_1.no_need_to_gen
+# Info: reference_clock_frequency = 250.0 mhz
+# Info: output_clock_frequency = 500.0 mhz
+# Info: phase_shift = 250 ps
+# Info: duty_cycle = 50
+# Info: sim_additional_refclk_cycles_to_lock = 0
+# Info: output_clock_high_period = 1000.000000
+# Info: output_clock_low_period = 1000.000000
+# Info: =================================================
+# Info:           Generic PLL Summary
+# Info: =================================================
+# Time scale of (top_vlg_tst.i1.\ADC_PLL1|adc_pll_inst|altera_pll_i|general[0].gpll~FRACTIONAL_PLL .<protected>.<protected>.<protected>.inst_pll_phase_2.no_need_to_gen) is  1ps /  1ps
+# Info: hierarchical_name = top_vlg_tst.i1.\ADC_PLL1|adc_pll_inst|altera_pll_i|general[0].gpll~FRACTIONAL_PLL .<protected>.<protected>.<protected>.inst_pll_phase_2.no_need_to_gen
+# Info: reference_clock_frequency = 250.0 mhz
+# Info: output_clock_frequency = 500.0 mhz
+# Info: phase_shift = 500 ps
+# Info: duty_cycle = 50
+# Info: sim_additional_refclk_cycles_to_lock = 0
+# Info: output_clock_high_period = 1000.000000
+# Info: output_clock_low_period = 1000.000000
+# Info: =================================================
+# Info:           Generic PLL Summary
+# Info: =================================================
+# Time scale of (top_vlg_tst.i1.\ADC_PLL1|adc_pll_inst|altera_pll_i|general[0].gpll~FRACTIONAL_PLL .<protected>.<protected>.<protected>.inst_pll_phase_3.no_need_to_gen) is  1ps /  1ps
+# Info: hierarchical_name = top_vlg_tst.i1.\ADC_PLL1|adc_pll_inst|altera_pll_i|general[0].gpll~FRACTIONAL_PLL .<protected>.<protected>.<protected>.inst_pll_phase_3.no_need_to_gen
+# Info: reference_clock_frequency = 250.0 mhz
+# Info: output_clock_frequency = 500.0 mhz
+# Info: phase_shift = 750 ps
+# Info: duty_cycle = 50
+# Info: sim_additional_refclk_cycles_to_lock = 0
+# Info: output_clock_high_period = 1000.000000
+# Info: output_clock_low_period = 1000.000000
+# 
+# Warning: por to CB BFM is not connected, internal por is used.
+# 
+# 
+# Warning: por to CB BFM is not connected, internal por is used.
+# 
+# Info: =================================================
+# Info:           Generic PLL Summary
+# Info: =================================================
+# Time scale of (top_vlg_tst.i1.\ADC_PLL2|adc_pll_inst|altera_pll_i|general[0].gpll~FRACTIONAL_PLL .<protected>.<protected>.<protected>.inst_pll_phase_0.no_need_to_gen) is  1ps /  1ps
+# Info: hierarchical_name = top_vlg_tst.i1.\ADC_PLL2|adc_pll_inst|altera_pll_i|general[0].gpll~FRACTIONAL_PLL .<protected>.<protected>.<protected>.inst_pll_phase_0.no_need_to_gen
+# Info: reference_clock_frequency = 250.0 mhz
+# Info: output_clock_frequency = 500.0 mhz
+# Info: phase_shift = 0 ps
+# Info: duty_cycle = 50
+# Info: sim_additional_refclk_cycles_to_lock = 0
+# Info: output_clock_high_period = 1000.000000
+# Info: output_clock_low_period = 1000.000000
+# Info: =================================================
+# Info:           Generic PLL Summary
+# Info: =================================================
+# Time scale of (top_vlg_tst.i1.\ADC_PLL2|adc_pll_inst|altera_pll_i|general[0].gpll~FRACTIONAL_PLL .<protected>.<protected>.<protected>.inst_pll_phase_1.no_need_to_gen) is  1ps /  1ps
+# Info: hierarchical_name = top_vlg_tst.i1.\ADC_PLL2|adc_pll_inst|altera_pll_i|general[0].gpll~FRACTIONAL_PLL .<protected>.<protected>.<protected>.inst_pll_phase_1.no_need_to_gen
+# Info: reference_clock_frequency = 250.0 mhz
+# Info: output_clock_frequency = 500.0 mhz
+# Info: phase_shift = 250 ps
+# Info: duty_cycle = 50
+# Info: sim_additional_refclk_cycles_to_lock = 0
+# Info: output_clock_high_period = 1000.000000
+# Info: output_clock_low_period = 1000.000000
+# Info: =================================================
+# Info:           Generic PLL Summary
+# Info: =================================================
+# Time scale of (top_vlg_tst.i1.\ADC_PLL2|adc_pll_inst|altera_pll_i|general[0].gpll~FRACTIONAL_PLL .<protected>.<protected>.<protected>.inst_pll_phase_2.no_need_to_gen) is  1ps /  1ps
+# Info: hierarchical_name = top_vlg_tst.i1.\ADC_PLL2|adc_pll_inst|altera_pll_i|general[0].gpll~FRACTIONAL_PLL .<protected>.<protected>.<protected>.inst_pll_phase_2.no_need_to_gen
+# Info: reference_clock_frequency = 250.0 mhz
+# Info: output_clock_frequency = 500.0 mhz
+# Info: phase_shift = 500 ps
+# Info: duty_cycle = 50
+# Info: sim_additional_refclk_cycles_to_lock = 0
+# Info: output_clock_high_period = 1000.000000
+# Info: output_clock_low_period = 1000.000000
+# Info: =================================================
+# Info:           Generic PLL Summary
+# Info: =================================================
+# Time scale of (top_vlg_tst.i1.\ADC_PLL2|adc_pll_inst|altera_pll_i|general[0].gpll~FRACTIONAL_PLL .<protected>.<protected>.<protected>.inst_pll_phase_3.no_need_to_gen) is  1ps /  1ps
+# Info: hierarchical_name = top_vlg_tst.i1.\ADC_PLL2|adc_pll_inst|altera_pll_i|general[0].gpll~FRACTIONAL_PLL .<protected>.<protected>.<protected>.inst_pll_phase_3.no_need_to_gen
+# Info: reference_clock_frequency = 250.0 mhz
+# Info: output_clock_frequency = 500.0 mhz
+# Info: phase_shift = 750 ps
+# Info: duty_cycle = 50
+# Info: sim_additional_refclk_cycles_to_lock = 0
+# Info: output_clock_high_period = 1000.000000
+# Info: output_clock_low_period = 1000.000000
+# 
+# Warning: por to CB BFM is not connected, internal por is used.
+# 
+# Running testbench
+run -all
+run -all
+run -all
+run -all
+# End time: 19:07:44 on Jun 25,2018, Elapsed time: 0:37:58
+# Errors: 0, Warnings: 38

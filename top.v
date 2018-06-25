@@ -27,7 +27,8 @@
 //use work.ver_pack.all;
 // no timescale needed
 
-module top(
+module top
+(
   // SYS
   input          IF_SYS_CLK, // 20 MHz
   input          IF_RX,
@@ -62,7 +63,7 @@ module top(
   output         SLO_DAC1_SCLK, 
   output         SLO_DAC1_MOSI, 
   input          SLO_DAC1_MISO 
-  );
+);
 
   // 
 
@@ -140,7 +141,7 @@ module top(
   
   // Clock
   wire CLKB;
-  wire CLK_250M;  
+  wire CLK_250M; // clock feed to ADCs 
   
   // Reset 
   reg [15:0] RESET_COUNT;
@@ -161,7 +162,8 @@ module top(
   
   // INPUT CLOCK 
   wire clka_out;
-  ADCINCLKCTRL ADC1_CLKCTRL(
+  ADCINCLKCTRL ADC1_CLKCTRL
+  (
     .inclk  (IF_SAD_CKO1),
 	 .outclk (clka_out)
   );
@@ -169,7 +171,8 @@ module top(
   wire clk_adc;
   wire clk_ro;
   wire adc_pll_locked;
-  ADC_PLL ADC_PLL1 (
+  ADC_PLL ADC_PLL1 
+  (
     .refclk   (clka_out),
 	 .rst      (1'b0),
 	 .outclk_0 (clk_adc), // same frequency as CLK_250M. 
@@ -180,7 +183,8 @@ module top(
   
   // INPUT CLOCK from ADC2
   wire clka_out2;
-  ADCINCLKCTRL ADC2_CLKCTRL(
+  ADCINCLKCTRL ADC2_CLKCTRL
+  (
     .inclk  (IF_SAD_CKO2),
 	 .outclk (clka_out2)
   );
@@ -188,7 +192,8 @@ module top(
   wire clk_adc2;
   wire clk_ro2;
   wire adc_pll_locked2;
-  ADC_PLL ADC_PLL2 (
+  ADC_PLL ADC_PLL2 
+  (
     .refclk   (clka_out2),
 	 .rst      (1'b0),
 	 .outclk_0 (clk_adc2),
@@ -202,8 +207,9 @@ module top(
   // **************************************************************************************
 
   wire RST_FLG = (RESET_COUNT == 16'hFFFE); // 20MHz *256*256 = 3.28msec
-
-  always @(posedge CLK) begin
+  
+  always @(posedge CLK) 
+  begin
     RESET_SIG   <= RST_FLG;
 	 RESET_COUNT <= RST_FLG ? RESET_COUNT : RESET_COUNT + 1'b1;
   end
@@ -220,8 +226,10 @@ module top(
   wire hSEC_SIG_FLG = (hSEC_SIG_CNT ==  8'h63 ); // 0.1sec 1msec*100 64
   wire  SEC_SIG_FLG = ( SEC_SIG_CNT ==  4'h9  ); // 1sec 0.1sec*10
 
-  always @(negedge RESET or posedge clk_adc) begin
-	 if(~RESET) begin 
+  always @(negedge RESET or posedge clk_adc) 
+  begin
+	 if(~RESET) 
+	 begin 
 	   uSEC_SIG_CNT <=  8'h00;
 		uSEC_SIG     <=  1'b0;
 	   mSEC_SIG_CNT <= 12'h000;
@@ -232,7 +240,8 @@ module top(
 		 SEC_SIG     <=  1'b0;
 		 IN_TIME     <= 40'd0;
     end
-	 else begin
+	 else 
+	 begin
 	   uSEC_SIG     <= uSEC_SIG_FLG ;
 		mSEC_SIG     <= uSEC_SIG ? mSEC_SIG_FLG : 1'b0;
 		hSEC_SIG     <= mSEC_SIG ? hSEC_SIG_FLG : 1'b0;
@@ -256,11 +265,14 @@ module top(
 
   //----------------------------------------- ADC CLK Controle
 
-  always @(negedge RESET or posedge CLK) begin
-    if(~RESET) begin 
+  always @(negedge RESET or posedge CLK) 
+  begin
+    if(~RESET) 
+	 begin 
 	   IN_AD_CLK_CNT <= 4'h0;
 	 end
-	 else begin
+	 else 
+	 begin
       IN_AD_CLK_CNT <= IN_AD_CLK_CNT + 1'b1;
     end
   end
@@ -276,13 +288,16 @@ module top(
 
   wire INT_SEQ_FLG = (INT_SEQ_CNT == 24'hFFFFFF); //167msec
 
-  always @(negedge RESET or posedge CLK) begin
-    if(~RESET) begin 
+  always @(negedge RESET or posedge CLK) 
+  begin
+    if(~RESET) 
+	 begin 
 	   INT_SEQ_CNT <= 24'h000000;
 		INT_SEQ_STS <=  1'b0;
 		INT_SEQ_D   <=  2'b00;
 	 end
-	 else begin
+	 else 
+	 begin
 	   INT_SEQ_STS  <= INT_SEQ_FLG ;
 		INT_SEQ_CNT  <= INT_SEQ_FLG ? INT_SEQ_CNT : INT_SEQ_CNT + 1'b1;
 		INT_SEQ_D[0] <= INT_SEQ_STS ;
@@ -301,8 +316,10 @@ module top(
   wire SAD_INI_SEQ_FLG_1 = (SAD_INI_SEQ_CNT == 16'h0001); 
   wire SAD_INI_SEQ_FLG_2 = (SAD_INI_SEQ_CNT == 16'h00FF); //256*50nsec = 12.8usec
   
-  always @(negedge RESET or posedge CLK) begin
-    if(~RESET) begin
+  always @(negedge RESET or posedge CLK) 
+  begin
+    if(~RESET) 
+	 begin
 	   SAD_INI_SEQ_STA   <=  1'b0;
       SAD_INI_SEQ_STS   <=  1'b0;
 		SAD_INI_SEQ_CNT   <= 16'h0000;
@@ -312,7 +329,8 @@ module top(
 		SAD_INI_SEQ_DIN   <=  1'b0;
 		SAD_INI_RESET_SIG <=  1'b0;
     end 
-	 else begin
+	 else 
+	 begin
 	   SAD_INI_SEQ_STA <= INT_SEQ_SIG;
 		SAD_INI_SEQ_STS <= SAD_INI_SEQ_STA ? 1'b1 : 
 		                   SAD_INI_SEQ_CLR ? 1'b0 :
@@ -320,7 +338,8 @@ module top(
 		SAD_INI_SEQ_CNT <= SAD_INI_SEQ_STS ? SAD_INI_SEQ_CNT + 1'b1 : 
 		                                     16'h0000;
 		SAD_INI_SEQ_CLR <= (SAD_INI_SEQ_STS & SAD_INI_SEQ_FLG);
-      if(SAD_INI_SEQ_STS) begin
+      if(SAD_INI_SEQ_STS) 
+		begin
         case(SAD_INI_SEQ_CNT[13:11])
         3'b001 : begin
                    SAD_INI_ADD <= 8'h00;
@@ -366,7 +385,8 @@ module top(
 		                       SAD_INI_SEQ_FLG_2 ? 1'b0 : 
 									                      SAD_INI_RESET_SIG;
       end
-      else begin
+      else 
+		begin
 		  SAD_INI_ADD <= 8'hFF;
 		  SAD_INI_DAT <= 8'hFF;
         SAD_INI_SEQ_DIN <= 1'b0;
@@ -395,23 +415,30 @@ module top(
 
   wire TRIG_SEQ_FLG = (TRIG_SEQ_CNT == 12'h3FF);
 
-  always @(negedge RESET or posedge clk_adc) begin
-    if(~RESET) begin
+  always @(negedge RESET or posedge clk_adc) 
+  begin
+    if(~RESET) 
+	 begin
       TRIG_SEQ_STS <= 1'b0;
 		TRIG_SEQ_CNT <= 12'h000;
 		TRIG_SEQ_CLR <= 1'b0;
     end
-	 else begin
-      if(TRIG_SEQ_CLR) begin
+	 else 
+	 begin
+      if(TRIG_SEQ_CLR) 
+		begin
         TRIG_SEQ_STS <= 1'b0;
       end
-      else if(IN_TRIG1_START) begin
+      else if(IN_TRIG1_START) 
+		begin
         TRIG_SEQ_STS <= 1'b1;
       end
-		if(TRIG_SEQ_STS) begin
+		if(TRIG_SEQ_STS) 
+		begin
 		  TRIG_SEQ_CNT <= FIFO_WR_ENA ? TRIG_SEQ_CNT + 1'b1 : TRIG_SEQ_CNT;
       end
-      else begin
+      else 
+		begin
         TRIG_SEQ_CNT <= 12'h000;
       end
 		TRIG_SEQ_CLR <= (TRIG_SEQ_STS & TRIG_SEQ_FLG);
@@ -426,31 +453,48 @@ module top(
   
   reg FIFO_WR_EN_RO_1;
   
-  always @(clk_adc) begin 
+  always @(clk_adc) 
+  begin 
     FIFO_WR_EN_RO_1 <= FIFO_WR_EN_RO;
   end
   
   reg FIFO_WR_EN_RO_2;
   
-  always @(clk_adc2) begin
+  always @(clk_adc2) 
+  begin
     FIFO_WR_EN_RO_2 <= FIFO_WR_EN_RO;
   end
  
  
-  wire spi_sending;
+  wire spi_sending; 
+  
+  wire [13:0] FIFO_DAT_IN1_PL;
+  wire [13:0] FIFO_DAT_IN2_PL;
+  
+  pline #(.P_WIDTH(14),.P_DEPTH(10)) 
+  pl_1 
+  (
+    .clk   (CLKB),
+	 .rst_n (RESET),
+	 .a     (FIFO_DAT_IN1),
+	 .y     (FIFO_DAT_IN1_PL)
+  );
  
-  DAT_FIFO A1_3 (	
-    .data    (FIFO_DAT_IN1),
+  DAT_FIFO A1_3 
+  (	
+    .data    (FIFO_DAT_IN1_PL),
 	 .rdclk   (CLKB),
 	 .rdreq   (FIFO_RD_ENA),
 	 .wrclk   (clk_adc),
 	 .wrreq   (FIFO_WR_ENA & TRIG_SEQ_STS & FIFO_WR_EN_RO_1 & ~spi_sending),
 	 .q       (FIFO_DAT_OUT1),
 	 .rdempty (FIFO_EF),
-	 .wrfull  (FIFO_FF)
+	 .wrfull  (FIFO_FF),
+	 .aclr    (~RESET)
   );
   
-  DAT_FIFO A2_3 (
+  DAT_FIFO A2_3 
+  (
     .data    (FIFO_DAT_IN2),
 	 .rdclk   (CLKB),
 	 .rdreq   (FIFO_RD_ENA),
@@ -458,10 +502,12 @@ module top(
 	 .wrreq   (FIFO_WR_ENA & TRIG_SEQ_STS & FIFO_WR_EN_RO_2 & ~spi_sending),
 	 .q       (FIFO_DAT_OUT2),
 	 .rdempty (FIFO_EF2),
-	 .wrfull  (FIFO_FF2)
+	 .wrfull  (FIFO_FF2),
+	 .aclr    (~RESET)
   );
   
-  TestRO test_A1 (
+  TestRO test_A1 
+  (
   		.clk_clk               (CLKB),               //       clk.clk
 		.fifo_0_in_writedata   (FIFO_DAT_OUT1),   // fifo_0_in.writedata
 		.fifo_0_in_write       (FIFO_RD_ENA),       //          .write
@@ -470,17 +516,20 @@ module top(
 		.fifo_1_in_write       (FIFO_RD_ENA),       //          .write
 		.fifo_1_in_waitrequest (1'b0), //          .waitrequest
 		.reset_reset_n         (RESET),          //     reset.reset_n
-		.pio_0_external_connection_export (FIFO_WR_EN_RO)
+		.write_en_export       (FIFO_WR_EN_RO),
+		.exttrg_0_export       ()
   );
   
   assign FIFO_RD_ENA = ~FIFO_EF;
 
-  SYS_GCLK A0 (
+  SYS_GCLK A0 
+  (
     .inclk  (IF_SYS_CLK),
 	 .outclk (CLK)
   );
 
-  SYS_PLL A1 (
+  SYS_PLL A1 
+  (
     .refclk   (CLK),
 	 .rst      (1'b0),
 	 .outclk_0 (CLKB),
@@ -494,16 +543,17 @@ module top(
   reg [31:0] test_counter;
   wire eotest = (test_counter == 32'hFFFFFFFF);
  
-  always @(negedge RESET or posedge CLKB) begin 
-    if (~RESET) begin 
-	   ext_ctrl_src <=  1'b1;
+  always @(negedge RESET or posedge CLKB) 
+  begin 
+    if (~RESET) 
+	 begin 
+	   ext_ctrl_src <=  1'b0;
 		test_counter <= 32'd0;
 	 end 
-	 else begin 
+	 else 
+	 begin 
+	   ext_ctrl_src <= eotest ? 1'b0 : 1'b1;
 	   test_counter <= eotest ? test_counter : test_counter + 1'b1;
-		if (eotest) begin 
-		  ext_ctrl_src <= ~ext_ctrl_src;
-		end
 	 end
   end 
   
@@ -512,18 +562,51 @@ module top(
   
   assign offset_wire = 16'd32768;
   
-  DAC_SPI spi_inst (
-    .clk  (CLKB),
-	 .rst  (RESET),
-	 .data (offset_wire),
-	 .comm (4'h3),
-	 .addr (4'h0),
+  
+  wire [3:0] cmd = 4'h3;
+  wire [3:0] addr; 
+  
+  reg  [3:0] addr_ctrl;
+  reg        addr_cnt; 
+  
+  always @(negedge RESET or posedge CLKB) 
+  begin 
+    if (~RESET) 
+	 begin 
+	   addr_ctrl <= 4'h0;
+	   addr_cnt  <= 1'b0;	
+    end
+	 else 
+	 begin 
+	   addr_ctrl <= addr_cnt ? 4'h4 : 4'h0;
+		addr_cnt  <= 1'b1;
+	 end
+  end
+  
+  DAC_SPI spi_inst 
+  (
+    .clk    (CLKB),
+	 .rst_n  (RESET),
+	 .data   (offset_wire),
+	 .comm   (4'h3),
+	 .addr   (4'h0),
 	 .ext_ctrl(ext_ctrl),
 	 .spi_data(SLO_DAC1_MOSI),
 	 .spi_sync(SLO_DAC1_CS),
 	 .spi_sclk(SLO_DAC1_SCLK),
 	 .spi_enable(spi_sending)
   );
+  
+  SPI_CMDGEN spi_addrgen_inst 
+  (
+    .clk    (CLKB),
+	 .rst_n  (RESET),
+	 .out_en (~spi_sending),
+	 .incmd  (addr_ctrl),
+	 .outcmd (addr)
+  );
+  
+  
   
  
 

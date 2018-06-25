@@ -14,16 +14,13 @@ Progress: Adding nios2_gen2_0 [altera_nios2_gen2 16.0]
 Progress: Parameterizing module nios2_gen2_0
 Progress: Adding onchip_memory2_0 [altera_avalon_onchip_memory2 16.0]
 Progress: Parameterizing module onchip_memory2_0
-Progress: Adding pio_0 [altera_avalon_pio 16.0]
-Progress: Parameterizing module pio_0
-Progress: Adding spi_0 [altera_avalon_spi 16.0]
-Progress: Parameterizing module spi_0
+Progress: Adding write_en_pio [altera_avalon_pio 16.0]
+Progress: Parameterizing module write_en_pio
 Progress: Building connections
 Progress: Parameterizing connections
 Progress: Validating
 Progress: Done reading input file
 Info: TestRO.jtag_uart_0: JTAG UART IP input clock need to be at least double (2x) the operating frequency of JTAG TCK on board
-Warning: TestRO.spi_0: Interrupt sender spi_0.irq is not connected to an interrupt receiver
 Info: qsys-generate succeeded.
 Info: Finished: Create block symbol file (.bsf)
 Info: 
@@ -43,38 +40,31 @@ Progress: Adding nios2_gen2_0 [altera_nios2_gen2 16.0]
 Progress: Parameterizing module nios2_gen2_0
 Progress: Adding onchip_memory2_0 [altera_avalon_onchip_memory2 16.0]
 Progress: Parameterizing module onchip_memory2_0
-Progress: Adding pio_0 [altera_avalon_pio 16.0]
-Progress: Parameterizing module pio_0
-Progress: Adding spi_0 [altera_avalon_spi 16.0]
-Progress: Parameterizing module spi_0
+Progress: Adding write_en_pio [altera_avalon_pio 16.0]
+Progress: Parameterizing module write_en_pio
 Progress: Building connections
 Progress: Parameterizing connections
 Progress: Validating
 Progress: Done reading input file
 Info: TestRO.jtag_uart_0: JTAG UART IP input clock need to be at least double (2x) the operating frequency of JTAG TCK on board
-Warning: TestRO.spi_0: Interrupt sender spi_0.irq is not connected to an interrupt receiver
 Info: TestRO: Generating TestRO "TestRO" for QUARTUS_SYNTH
 Info: fifo_0: Starting RTL generation for module 'TestRO_fifo_0'
-Info: fifo_0:   Generation command is [exec C:/altera_lite/16.0/quartus/bin64/perl/bin/perl.exe -I C:/altera_lite/16.0/quartus/bin64/perl/lib -I C:/altera_lite/16.0/quartus/sopc_builder/bin/europa -I C:/altera_lite/16.0/quartus/sopc_builder/bin/perl_lib -I C:/altera_lite/16.0/quartus/sopc_builder/bin -I C:/altera_lite/16.0/quartus/../ip/altera/sopc_builder_ip/common -I C:/altera_lite/16.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_fifo -- C:/altera_lite/16.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_fifo/generate_rtl.pl --name=TestRO_fifo_0 --dir=C:/Users/icecube/AppData/Local/Temp/alt7680_7396429086135847723.dir/0001_fifo_0_gen/ --quartus_dir=C:/altera_lite/16.0/quartus --verilog --config=C:/Users/icecube/AppData/Local/Temp/alt7680_7396429086135847723.dir/0001_fifo_0_gen//TestRO_fifo_0_component_configuration.pl  --do_build_sim=0  ]
+Info: fifo_0:   Generation command is [exec C:/altera_lite/16.0/quartus/bin64/perl/bin/perl.exe -I C:/altera_lite/16.0/quartus/bin64/perl/lib -I C:/altera_lite/16.0/quartus/sopc_builder/bin/europa -I C:/altera_lite/16.0/quartus/sopc_builder/bin/perl_lib -I C:/altera_lite/16.0/quartus/sopc_builder/bin -I C:/altera_lite/16.0/quartus/../ip/altera/sopc_builder_ip/common -I C:/altera_lite/16.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_fifo -- C:/altera_lite/16.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_fifo/generate_rtl.pl --name=TestRO_fifo_0 --dir=C:/Users/icecube/AppData/Local/Temp/alt7703_370020825620939713.dir/0001_fifo_0_gen/ --quartus_dir=C:/altera_lite/16.0/quartus --verilog --config=C:/Users/icecube/AppData/Local/Temp/alt7703_370020825620939713.dir/0001_fifo_0_gen//TestRO_fifo_0_component_configuration.pl  --do_build_sim=0  ]
 Info: fifo_0: Done RTL generation for module 'TestRO_fifo_0'
 Info: fifo_0: "TestRO" instantiated altera_avalon_fifo "fifo_0"
 Info: jtag_uart_0: Starting RTL generation for module 'TestRO_jtag_uart_0'
-Info: jtag_uart_0:   Generation command is [exec C:/altera_lite/16.0/quartus/bin64/perl/bin/perl.exe -I C:/altera_lite/16.0/quartus/bin64/perl/lib -I C:/altera_lite/16.0/quartus/sopc_builder/bin/europa -I C:/altera_lite/16.0/quartus/sopc_builder/bin/perl_lib -I C:/altera_lite/16.0/quartus/sopc_builder/bin -I C:/altera_lite/16.0/quartus/../ip/altera/sopc_builder_ip/common -I C:/altera_lite/16.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_jtag_uart -- C:/altera_lite/16.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_jtag_uart/generate_rtl.pl --name=TestRO_jtag_uart_0 --dir=C:/Users/icecube/AppData/Local/Temp/alt7680_7396429086135847723.dir/0002_jtag_uart_0_gen/ --quartus_dir=C:/altera_lite/16.0/quartus --verilog --config=C:/Users/icecube/AppData/Local/Temp/alt7680_7396429086135847723.dir/0002_jtag_uart_0_gen//TestRO_jtag_uart_0_component_configuration.pl  --do_build_sim=0  ]
+Info: jtag_uart_0:   Generation command is [exec C:/altera_lite/16.0/quartus/bin64/perl/bin/perl.exe -I C:/altera_lite/16.0/quartus/bin64/perl/lib -I C:/altera_lite/16.0/quartus/sopc_builder/bin/europa -I C:/altera_lite/16.0/quartus/sopc_builder/bin/perl_lib -I C:/altera_lite/16.0/quartus/sopc_builder/bin -I C:/altera_lite/16.0/quartus/../ip/altera/sopc_builder_ip/common -I C:/altera_lite/16.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_jtag_uart -- C:/altera_lite/16.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_jtag_uart/generate_rtl.pl --name=TestRO_jtag_uart_0 --dir=C:/Users/icecube/AppData/Local/Temp/alt7703_370020825620939713.dir/0002_jtag_uart_0_gen/ --quartus_dir=C:/altera_lite/16.0/quartus --verilog --config=C:/Users/icecube/AppData/Local/Temp/alt7703_370020825620939713.dir/0002_jtag_uart_0_gen//TestRO_jtag_uart_0_component_configuration.pl  --do_build_sim=0  ]
 Info: jtag_uart_0: Done RTL generation for module 'TestRO_jtag_uart_0'
 Info: jtag_uart_0: "TestRO" instantiated altera_avalon_jtag_uart "jtag_uart_0"
 Info: nios2_gen2_0: "TestRO" instantiated altera_nios2_gen2 "nios2_gen2_0"
 Info: onchip_memory2_0: Starting RTL generation for module 'TestRO_onchip_memory2_0'
-Info: onchip_memory2_0:   Generation command is [exec C:/altera_lite/16.0/quartus/bin64/perl/bin/perl.exe -I C:/altera_lite/16.0/quartus/bin64/perl/lib -I C:/altera_lite/16.0/quartus/sopc_builder/bin/europa -I C:/altera_lite/16.0/quartus/sopc_builder/bin/perl_lib -I C:/altera_lite/16.0/quartus/sopc_builder/bin -I C:/altera_lite/16.0/quartus/../ip/altera/sopc_builder_ip/common -I C:/altera_lite/16.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_onchip_memory2 -- C:/altera_lite/16.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_onchip_memory2/generate_rtl.pl --name=TestRO_onchip_memory2_0 --dir=C:/Users/icecube/AppData/Local/Temp/alt7680_7396429086135847723.dir/0003_onchip_memory2_0_gen/ --quartus_dir=C:/altera_lite/16.0/quartus --verilog --config=C:/Users/icecube/AppData/Local/Temp/alt7680_7396429086135847723.dir/0003_onchip_memory2_0_gen//TestRO_onchip_memory2_0_component_configuration.pl  --do_build_sim=0  ]
+Info: onchip_memory2_0:   Generation command is [exec C:/altera_lite/16.0/quartus/bin64/perl/bin/perl.exe -I C:/altera_lite/16.0/quartus/bin64/perl/lib -I C:/altera_lite/16.0/quartus/sopc_builder/bin/europa -I C:/altera_lite/16.0/quartus/sopc_builder/bin/perl_lib -I C:/altera_lite/16.0/quartus/sopc_builder/bin -I C:/altera_lite/16.0/quartus/../ip/altera/sopc_builder_ip/common -I C:/altera_lite/16.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_onchip_memory2 -- C:/altera_lite/16.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_onchip_memory2/generate_rtl.pl --name=TestRO_onchip_memory2_0 --dir=C:/Users/icecube/AppData/Local/Temp/alt7703_370020825620939713.dir/0003_onchip_memory2_0_gen/ --quartus_dir=C:/altera_lite/16.0/quartus --verilog --config=C:/Users/icecube/AppData/Local/Temp/alt7703_370020825620939713.dir/0003_onchip_memory2_0_gen//TestRO_onchip_memory2_0_component_configuration.pl  --do_build_sim=0  ]
 Info: onchip_memory2_0: Done RTL generation for module 'TestRO_onchip_memory2_0'
 Info: onchip_memory2_0: "TestRO" instantiated altera_avalon_onchip_memory2 "onchip_memory2_0"
-Info: pio_0: Starting RTL generation for module 'TestRO_pio_0'
-Info: pio_0:   Generation command is [exec C:/altera_lite/16.0/quartus/bin64/perl/bin/perl.exe -I C:/altera_lite/16.0/quartus/bin64/perl/lib -I C:/altera_lite/16.0/quartus/sopc_builder/bin/europa -I C:/altera_lite/16.0/quartus/sopc_builder/bin/perl_lib -I C:/altera_lite/16.0/quartus/sopc_builder/bin -I C:/altera_lite/16.0/quartus/../ip/altera/sopc_builder_ip/common -I C:/altera_lite/16.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- C:/altera_lite/16.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=TestRO_pio_0 --dir=C:/Users/icecube/AppData/Local/Temp/alt7680_7396429086135847723.dir/0004_pio_0_gen/ --quartus_dir=C:/altera_lite/16.0/quartus --verilog --config=C:/Users/icecube/AppData/Local/Temp/alt7680_7396429086135847723.dir/0004_pio_0_gen//TestRO_pio_0_component_configuration.pl  --do_build_sim=0  ]
-Info: pio_0: Done RTL generation for module 'TestRO_pio_0'
-Info: pio_0: "TestRO" instantiated altera_avalon_pio "pio_0"
-Info: spi_0: Starting RTL generation for module 'TestRO_spi_0'
-Info: spi_0:   Generation command is [exec C:/altera_lite/16.0/quartus/bin64/perl/bin/perl.exe -I C:/altera_lite/16.0/quartus/bin64/perl/lib -I C:/altera_lite/16.0/quartus/sopc_builder/bin/europa -I C:/altera_lite/16.0/quartus/sopc_builder/bin/perl_lib -I C:/altera_lite/16.0/quartus/sopc_builder/bin -I C:/altera_lite/16.0/quartus/../ip/altera/sopc_builder_ip/common -I C:/altera_lite/16.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_spi -- C:/altera_lite/16.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_spi/generate_rtl.pl --name=TestRO_spi_0 --dir=C:/Users/icecube/AppData/Local/Temp/alt7680_7396429086135847723.dir/0005_spi_0_gen/ --quartus_dir=C:/altera_lite/16.0/quartus --verilog --config=C:/Users/icecube/AppData/Local/Temp/alt7680_7396429086135847723.dir/0005_spi_0_gen//TestRO_spi_0_component_configuration.pl  --do_build_sim=0  ]
-Info: spi_0: Done RTL generation for module 'TestRO_spi_0'
-Info: spi_0: "TestRO" instantiated altera_avalon_spi "spi_0"
+Info: write_en_pio: Starting RTL generation for module 'TestRO_write_en_pio'
+Info: write_en_pio:   Generation command is [exec C:/altera_lite/16.0/quartus/bin64/perl/bin/perl.exe -I C:/altera_lite/16.0/quartus/bin64/perl/lib -I C:/altera_lite/16.0/quartus/sopc_builder/bin/europa -I C:/altera_lite/16.0/quartus/sopc_builder/bin/perl_lib -I C:/altera_lite/16.0/quartus/sopc_builder/bin -I C:/altera_lite/16.0/quartus/../ip/altera/sopc_builder_ip/common -I C:/altera_lite/16.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- C:/altera_lite/16.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=TestRO_write_en_pio --dir=C:/Users/icecube/AppData/Local/Temp/alt7703_370020825620939713.dir/0004_write_en_pio_gen/ --quartus_dir=C:/altera_lite/16.0/quartus --verilog --config=C:/Users/icecube/AppData/Local/Temp/alt7703_370020825620939713.dir/0004_write_en_pio_gen//TestRO_write_en_pio_component_configuration.pl  --do_build_sim=0  ]
+Info: write_en_pio: Done RTL generation for module 'TestRO_write_en_pio'
+Info: write_en_pio: "TestRO" instantiated altera_avalon_pio "write_en_pio"
 Info: avalon_st_adapter: Inserting error_adapter: error_adapter_0
 Info: avalon_st_adapter_001: Inserting error_adapter: error_adapter_0
 Info: avalon_st_adapter_002: Inserting error_adapter: error_adapter_0
@@ -83,24 +73,23 @@ Info: avalon_st_adapter_004: Inserting error_adapter: error_adapter_0
 Info: avalon_st_adapter_005: Inserting error_adapter: error_adapter_0
 Info: avalon_st_adapter_006: Inserting error_adapter: error_adapter_0
 Info: avalon_st_adapter_007: Inserting error_adapter: error_adapter_0
-Info: avalon_st_adapter_008: Inserting error_adapter: error_adapter_0
 Info: mm_interconnect_0: "TestRO" instantiated altera_mm_interconnect "mm_interconnect_0"
 Info: irq_mapper: "TestRO" instantiated altera_irq_mapper "irq_mapper"
 Info: rst_controller: "TestRO" instantiated altera_reset_controller "rst_controller"
 Info: cpu: Starting RTL generation for module 'TestRO_nios2_gen2_0_cpu'
-Info: cpu:   Generation command is [exec C:/altera_lite/16.0/quartus/bin64//eperlcmd.exe -I C:/altera_lite/16.0/quartus/bin64//perl/lib -I C:/altera_lite/16.0/quartus/sopc_builder/bin/europa -I C:/altera_lite/16.0/quartus/sopc_builder/bin/perl_lib -I C:/altera_lite/16.0/quartus/sopc_builder/bin -I C:/altera_lite/16.0/quartus/../ip/altera/nios2_ip/altera_nios2_gen2/cpu_lib -I C:/altera_lite/16.0/quartus/../ip/altera/nios2_ip/altera_nios2_gen2/nios_lib -I C:/altera_lite/16.0/quartus/../ip/altera/nios2_ip/altera_nios2_gen2 -I C:/altera_lite/16.0/quartus/../ip/altera/nios2_ip/altera_nios2_gen2 -- C:/altera_lite/16.0/quartus/../ip/altera/nios2_ip/altera_nios2_gen2/generate_rtl.epl --name=TestRO_nios2_gen2_0_cpu --dir=C:/Users/icecube/AppData/Local/Temp/alt7680_7396429086135847723.dir/0008_cpu_gen/ --quartus_bindir=C:/altera_lite/16.0/quartus/bin64/ --verilog --config=C:/Users/icecube/AppData/Local/Temp/alt7680_7396429086135847723.dir/0008_cpu_gen//TestRO_nios2_gen2_0_cpu_processor_configuration.pl  --do_build_sim=0  ]
-Info: cpu: # 2018.05.29 14:35:32 (*) Starting Nios II generation
-Info: cpu: # 2018.05.29 14:35:32 (*)   Checking for plaintext license.
-Info: cpu: # 2018.05.29 14:35:33 (*)   Couldn't query license setup in Quartus directory C:/altera_lite/16.0/quartus/bin64/
-Info: cpu: # 2018.05.29 14:35:33 (*)   Defaulting to contents of LM_LICENSE_FILE environment variable
-Info: cpu: # 2018.05.29 14:35:33 (*)   LM_LICENSE_FILE environment variable is empty
-Info: cpu: # 2018.05.29 14:35:33 (*)   Plaintext license not found.
-Info: cpu: # 2018.05.29 14:35:33 (*)   No license required to generate encrypted Nios II/e.
-Info: cpu: # 2018.05.29 14:35:33 (*)   Elaborating CPU configuration settings
-Info: cpu: # 2018.05.29 14:35:33 (*)   Creating all objects for CPU
-Info: cpu: # 2018.05.29 14:35:34 (*)   Generating RTL from CPU objects
-Info: cpu: # 2018.05.29 14:35:34 (*)   Creating plain-text RTL
-Info: cpu: # 2018.05.29 14:35:34 (*) Done Nios II generation
+Info: cpu:   Generation command is [exec C:/altera_lite/16.0/quartus/bin64//eperlcmd.exe -I C:/altera_lite/16.0/quartus/bin64//perl/lib -I C:/altera_lite/16.0/quartus/sopc_builder/bin/europa -I C:/altera_lite/16.0/quartus/sopc_builder/bin/perl_lib -I C:/altera_lite/16.0/quartus/sopc_builder/bin -I C:/altera_lite/16.0/quartus/../ip/altera/nios2_ip/altera_nios2_gen2/cpu_lib -I C:/altera_lite/16.0/quartus/../ip/altera/nios2_ip/altera_nios2_gen2/nios_lib -I C:/altera_lite/16.0/quartus/../ip/altera/nios2_ip/altera_nios2_gen2 -I C:/altera_lite/16.0/quartus/../ip/altera/nios2_ip/altera_nios2_gen2 -- C:/altera_lite/16.0/quartus/../ip/altera/nios2_ip/altera_nios2_gen2/generate_rtl.epl --name=TestRO_nios2_gen2_0_cpu --dir=C:/Users/icecube/AppData/Local/Temp/alt7703_370020825620939713.dir/0007_cpu_gen/ --quartus_bindir=C:/altera_lite/16.0/quartus/bin64/ --verilog --config=C:/Users/icecube/AppData/Local/Temp/alt7703_370020825620939713.dir/0007_cpu_gen//TestRO_nios2_gen2_0_cpu_processor_configuration.pl  --do_build_sim=0  ]
+Info: cpu: # 2018.06.21 17:17:24 (*) Starting Nios II generation
+Info: cpu: # 2018.06.21 17:17:24 (*)   Checking for plaintext license.
+Info: cpu: # 2018.06.21 17:17:25 (*)   Couldn't query license setup in Quartus directory C:/altera_lite/16.0/quartus/bin64/
+Info: cpu: # 2018.06.21 17:17:25 (*)   Defaulting to contents of LM_LICENSE_FILE environment variable
+Info: cpu: # 2018.06.21 17:17:25 (*)   LM_LICENSE_FILE environment variable is empty
+Info: cpu: # 2018.06.21 17:17:25 (*)   Plaintext license not found.
+Info: cpu: # 2018.06.21 17:17:25 (*)   No license required to generate encrypted Nios II/e.
+Info: cpu: # 2018.06.21 17:17:25 (*)   Elaborating CPU configuration settings
+Info: cpu: # 2018.06.21 17:17:25 (*)   Creating all objects for CPU
+Info: cpu: # 2018.06.21 17:17:26 (*)   Generating RTL from CPU objects
+Info: cpu: # 2018.06.21 17:17:26 (*)   Creating plain-text RTL
+Info: cpu: # 2018.06.21 17:17:26 (*) Done Nios II generation
 Info: cpu: Done RTL generation for module 'TestRO_nios2_gen2_0_cpu'
 Info: cpu: "nios2_gen2_0" instantiated altera_nios2_gen2_unit "cpu"
 Info: nios2_gen2_0_data_master_translator: "mm_interconnect_0" instantiated altera_merlin_master_translator "nios2_gen2_0_data_master_translator"
@@ -113,7 +102,7 @@ Info: router_001: "mm_interconnect_0" instantiated altera_merlin_router "router_
 Info: router_002: "mm_interconnect_0" instantiated altera_merlin_router "router_002"
 Info: router_004: "mm_interconnect_0" instantiated altera_merlin_router "router_004"
 Info: router_006: "mm_interconnect_0" instantiated altera_merlin_router "router_006"
-Info: router_009: "mm_interconnect_0" instantiated altera_merlin_router "router_009"
+Info: router_008: "mm_interconnect_0" instantiated altera_merlin_router "router_008"
 Info: cmd_demux: "mm_interconnect_0" instantiated altera_merlin_demultiplexer "cmd_demux"
 Info: cmd_demux_001: "mm_interconnect_0" instantiated altera_merlin_demultiplexer "cmd_demux_001"
 Info: cmd_mux: "mm_interconnect_0" instantiated altera_merlin_multiplexer "cmd_mux"
@@ -131,6 +120,6 @@ Info: avalon_st_adapter: "mm_interconnect_0" instantiated altera_avalon_st_adapt
 Info: avalon_st_adapter_004: "mm_interconnect_0" instantiated altera_avalon_st_adapter "avalon_st_adapter_004"
 Info: error_adapter_0: "avalon_st_adapter" instantiated error_adapter "error_adapter_0"
 Info: error_adapter_0: "avalon_st_adapter_004" instantiated error_adapter "error_adapter_0"
-Info: TestRO: Done "TestRO" with 35 modules, 49 files
+Info: TestRO: Done "TestRO" with 34 modules, 48 files
 Info: qsys-generate succeeded.
 Info: Finished: Create HDL design files for synthesis

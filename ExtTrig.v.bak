@@ -1,0 +1,21 @@
+module EXT_TRIG (
+  input  clk,
+  input  rst,
+  input  trigdat,
+  output trigsig
+  );
+  
+  reg triggeron; 
+  
+  always @(negedge rst or posedge clk) begin  
+    if (~rst) begin 
+	   triggeron <= 1'b0; 
+    end 
+	 else begin 
+	   triggeron <= trigdat;
+	 end
+  end
+
+  assign trigsig = triggeron;
+
+endmodule 

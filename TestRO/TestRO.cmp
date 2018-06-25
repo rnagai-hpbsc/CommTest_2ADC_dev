@@ -1,14 +1,15 @@
 	component TestRO is
 		port (
-			clk_clk                          : in  std_logic                     := 'X';             -- clk
-			fifo_0_in_writedata              : in  std_logic_vector(31 downto 0) := (others => 'X'); -- writedata
-			fifo_0_in_write                  : in  std_logic                     := 'X';             -- write
-			fifo_0_in_waitrequest            : out std_logic;                                        -- waitrequest
-			fifo_1_in_writedata              : in  std_logic_vector(31 downto 0) := (others => 'X'); -- writedata
-			fifo_1_in_write                  : in  std_logic                     := 'X';             -- write
-			fifo_1_in_waitrequest            : out std_logic;                                        -- waitrequest
-			pio_0_external_connection_export : out std_logic;                                        -- export
-			reset_reset_n                    : in  std_logic                     := 'X'              -- reset_n
+			clk_clk               : in  std_logic                     := 'X';             -- clk
+			exttrg_0_export       : out std_logic;                                        -- export
+			fifo_0_in_writedata   : in  std_logic_vector(31 downto 0) := (others => 'X'); -- writedata
+			fifo_0_in_write       : in  std_logic                     := 'X';             -- write
+			fifo_0_in_waitrequest : out std_logic;                                        -- waitrequest
+			fifo_1_in_writedata   : in  std_logic_vector(31 downto 0) := (others => 'X'); -- writedata
+			fifo_1_in_write       : in  std_logic                     := 'X';             -- write
+			fifo_1_in_waitrequest : out std_logic;                                        -- waitrequest
+			reset_reset_n         : in  std_logic                     := 'X';             -- reset_n
+			write_en_export       : out std_logic                                         -- export
 		);
 	end component TestRO;
 

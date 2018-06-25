@@ -71,7 +71,7 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY
  26 .jdi          0000429c  00000000  00000000  0006c7d2  2**0
                   CONTENTS, READONLY
- 27 .sopcinfo     0004a44f  00000000  00000000  00070a6e  2**0
+ 27 .sopcinfo     0004a4cb  00000000  00000000  00070a6e  2**0
                   CONTENTS, READONLY
 SYMBOL TABLE:
 00000000 l    d  .entry	00000000 .entry
@@ -930,7 +930,7 @@ int main()
      288:	e03ffd15 	stw	zero,-12(fp)
 	int data, data2;
 
-	IOWR_ALTERA_AVALON_PIO_DATA(PIO_0_BASE,1);
+	IOWR_ALTERA_AVALON_PIO_DATA(WRITE_EN_PIO_BASE,1);
      28c:	00c00044 	movi	r3,1
      290:	00880034 	movhi	r2,8192
      294:	10c00035 	stwio	r3,0(r2)
@@ -972,7 +972,7 @@ int main()
      2ec:	0001883a 	nop
 	}
 
-	IOWR_ALTERA_AVALON_PIO_DATA(PIO_0_BASE,0);
+	IOWR_ALTERA_AVALON_PIO_DATA(WRITE_EN_PIO_BASE,0);
      2f0:	0007883a 	mov	r3,zero
      2f4:	00880034 	movhi	r2,8192
      2f8:	10c00035 	stwio	r3,0(r2)

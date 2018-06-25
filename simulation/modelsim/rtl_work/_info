@@ -1,0 +1,50 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dC:/Users/icecube/WorkSpace/Altera/D-Egg_fw/CommTest_2ADC_dev/simulation/modelsim
+vADC_PLL
+Z1 !s110 1529564987
+!i10b 1
+!s100 K21WjQNg`aP2NfeTV5eJj2
+I:bh=1oK^2:QVmd67[`07k0
+Z2 VDg1SIo80bB@j0V0VzS_@n1
+R0
+w1525253027
+8C:/Users/icecube/WorkSpace/Altera/D-Egg_fw/CommTest_2ADC_dev/ADC_PLL_sim/ADC_PLL.vo
+FC:/Users/icecube/WorkSpace/Altera/D-Egg_fw/CommTest_2ADC_dev/ADC_PLL_sim/ADC_PLL.vo
+Z3 L0 32
+Z4 OV;L;10.4d;61
+r1
+!s85 0
+31
+Z5 !s108 1529564987.000000
+!s107 C:/Users/icecube/WorkSpace/Altera/D-Egg_fw/CommTest_2ADC_dev/ADC_PLL_sim/ADC_PLL.vo|
+!s90 -reportprogress|300|C:/Users/icecube/WorkSpace/Altera/D-Egg_fw/CommTest_2ADC_dev/ADC_PLL_sim/ADC_PLL.vo|
+!i113 1
+n@a@d@c_@p@l@l
+vSYS_PLL
+R1
+!i10b 1
+!s100 >`3OVcYa[<egh6e<ZWj`]1
+IPV1jc>Wz8EJPWF=aW4e`F1
+R2
+R0
+w1527572169
+8C:/Users/icecube/WorkSpace/Altera/D-Egg_fw/CommTest_2ADC_dev/SYS_PLL_sim/SYS_PLL.vo
+FC:/Users/icecube/WorkSpace/Altera/D-Egg_fw/CommTest_2ADC_dev/SYS_PLL_sim/SYS_PLL.vo
+R3
+R4
+r1
+!s85 0
+31
+R5
+!s107 C:/Users/icecube/WorkSpace/Altera/D-Egg_fw/CommTest_2ADC_dev/SYS_PLL_sim/SYS_PLL.vo|
+!s90 -reportprogress|300|C:/Users/icecube/WorkSpace/Altera/D-Egg_fw/CommTest_2ADC_dev/SYS_PLL_sim/SYS_PLL.vo|
+!i113 1
+n@s@y@s_@p@l@l
