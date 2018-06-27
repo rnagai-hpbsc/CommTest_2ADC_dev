@@ -589,7 +589,7 @@ module top
 	 .rst_n  (RESET),
 	 .data   (offset_wire),
 	 .comm   (4'h3),
-	 .addr   (4'h0),
+	 .addr   (4'hF),
 	 .ext_ctrl(ext_ctrl),
 	 .spi_data(SLO_DAC1_MOSI),
 	 .spi_sync(SLO_DAC1_CS),

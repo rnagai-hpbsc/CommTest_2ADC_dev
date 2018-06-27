@@ -10,9 +10,7 @@ module DAC_SPI (
   output       spi_sclk,
   output       spi_enable
   );
-  
-  parameter nite = 1'b1; // number of iteration 
-    
+      
   reg nite_cnt; 
   
   reg        starts;
