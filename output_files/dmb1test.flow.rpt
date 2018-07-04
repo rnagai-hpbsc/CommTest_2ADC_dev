@@ -1,5 +1,5 @@
 Flow report for dmb1test
-Tue Jun 26 12:23:38 2018
+Wed Jul 04 17:04:13 2018
 Quartus Prime Version 16.0.0 Build 211 04/27/2016 SJ Lite Edition
 
 
@@ -41,18 +41,18 @@ agreement for further details.
 +-------------------------------------------------------------------------------+
 ; Flow Summary                                                                  ;
 +---------------------------------+---------------------------------------------+
-; Flow Status                     ; Successful - Tue Jun 26 12:23:38 2018       ;
+; Flow Status                     ; Successful - Wed Jul 04 17:04:13 2018       ;
 ; Quartus Prime Version           ; 16.0.0 Build 211 04/27/2016 SJ Lite Edition ;
 ; Revision Name                   ; dmb1test                                    ;
 ; Top-level Entity Name           ; top                                         ;
 ; Family                          ; Cyclone V                                   ;
 ; Device                          ; 5CEFA7F23I7                                 ;
 ; Timing Models                   ; Final                                       ;
-; Logic utilization (in ALMs)     ; 1,351 / 56,480 ( 2 % )                      ;
-; Total registers                 ; 1847                                        ;
+; Logic utilization (in ALMs)     ; 1,439 / 56,480 ( 3 % )                      ;
+; Total registers                 ; 2007                                        ;
 ; Total pins                      ; 54 / 240 ( 23 % )                           ;
 ; Total virtual pins              ; 0                                           ;
-; Total block memory bits         ; 2,472,830 / 7,024,640 ( 35 % )              ;
+; Total block memory bits         ; 2,472,704 / 7,024,640 ( 35 % )              ;
 ; Total DSP Blocks                ; 0 / 156 ( 0 % )                             ;
 ; Total HSSI RX PCSs              ; 0                                           ;
 ; Total HSSI PMA RX Deserializers ; 0                                           ;
@@ -68,7 +68,7 @@ agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 06/26/2018 12:20:48 ;
+; Start date & time ; 07/04/2018 17:01:32 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; dmb1test            ;
 +-------------------+---------------------+
@@ -79,7 +79,7 @@ agreement for further details.
 +--------------------------------------+----------------------------------------------------------------+---------------+--------------+----------------+
 ; Assignment Name                      ; Value                                                          ; Default Value ; Entity Name  ; Section Id     ;
 +--------------------------------------+----------------------------------------------------------------+---------------+--------------+----------------+
-; COMPILER_SIGNATURE_ID                ; 238177194464490.152998324713432                                ; --            ; --           ; --             ;
+; COMPILER_SIGNATURE_ID                ; 238177194464490.153069129209800                                ; --            ; --           ; --             ;
 ; EDA_DESIGN_INSTANCE_NAME             ; NA                                                             ; --            ; --           ; top_vlg_tst    ;
 ; EDA_NATIVELINK_SIMULATION_TEST_BENCH ; top_vlg_tst                                                    ; --            ; --           ; eda_simulation ;
 ; EDA_OUTPUT_DATA_FORMAT               ; Verilog Hdl                                                    ; --            ; --           ; eda_simulation ;
@@ -115,7 +115,7 @@ agreement for further details.
 ; SLD_FILE                             ; ADCINCLKCTRL/synthesis/ADCINCLKCTRL.debuginfo                  ; --            ; --           ; --             ;
 ; SLD_INFO                             ; QSYS_NAME ADCINCLKCTRL HAS_SOPCINFO 1 GENERATION_ID 1524464446 ; --            ; ADCINCLKCTRL ; --             ;
 ; SLD_INFO                             ; QSYS_NAME SYS_GCLK HAS_SOPCINFO 1 GENERATION_ID 1522809554     ; --            ; SYS_GCLK     ; --             ;
-; SLD_INFO                             ; QSYS_NAME TestRO HAS_SOPCINFO 1 GENERATION_ID 1529912918       ; --            ; TestRO       ; --             ;
+; SLD_INFO                             ; QSYS_NAME TestRO HAS_SOPCINFO 1 GENERATION_ID 1530684099       ; --            ; TestRO       ; --             ;
 ; SOPCINFO_FILE                        ; SYS_GCLK/synthesis/../../SYS_GCLK.sopcinfo                     ; --            ; --           ; --             ;
 ; SOPCINFO_FILE                        ; TestRO/synthesis/../../TestRO.sopcinfo                         ; --            ; --           ; --             ;
 ; SOPCINFO_FILE                        ; ADCINCLKCTRL/synthesis/../../ADCINCLKCTRL.sopcinfo             ; --            ; --           ; --             ;
@@ -135,12 +135,12 @@ agreement for further details.
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name               ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis      ; 00:00:38     ; 1.0                     ; 5310 MB             ; 00:00:57                           ;
-; Fitter                    ; 00:01:33     ; 1.2                     ; 7199 MB             ; 00:04:13                           ;
-; Assembler                 ; 00:00:10     ; 1.0                     ; 5121 MB             ; 00:00:10                           ;
-; TimeQuest Timing Analyzer ; 00:00:15     ; 2.0                     ; 5658 MB             ; 00:00:29                           ;
+; Analysis & Synthesis      ; 00:00:35     ; 1.0                     ; 5279 MB             ; 00:00:56                           ;
+; Fitter                    ; 00:01:27     ; 1.3                     ; 7217 MB             ; 00:03:41                           ;
+; Assembler                 ; 00:00:11     ; 1.0                     ; 5127 MB             ; 00:00:10                           ;
+; TimeQuest Timing Analyzer ; 00:00:15     ; 2.0                     ; 5660 MB             ; 00:00:28                           ;
 ; EDA Netlist Writer        ; 00:00:04     ; 1.0                     ; 5151 MB             ; 00:00:04                           ;
-; Total                     ; 00:02:40     ; --                      ; --                  ; 00:05:53                           ;
+; Total                     ; 00:02:32     ; --                      ; --                  ; 00:05:19                           ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 

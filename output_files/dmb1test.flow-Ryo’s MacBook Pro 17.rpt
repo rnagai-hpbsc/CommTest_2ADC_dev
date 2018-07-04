@@ -1,0 +1,161 @@
+Flow report for dmb1test
+Wed Jun 13 18:17:50 2018
+Quartus Prime Version 16.0.0 Build 211 04/27/2016 SJ Lite Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Flow Summary
+  3. Flow Settings
+  4. Flow Non-Default Global Settings
+  5. Flow Elapsed Time
+  6. Flow OS Summary
+  7. Flow Log
+  8. Flow Messages
+  9. Flow Suppressed Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2016 Altera Corporation. All rights reserved.
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, the Altera Quartus Prime License Agreement,
+the Altera MegaCore Function License Agreement, or other 
+applicable license agreement, including, without limitation, 
+that your use is for the sole purpose of programming logic 
+devices manufactured by Altera and sold by Altera or its 
+authorized distributors.  Please refer to the applicable 
+agreement for further details.
+
+
+
++-------------------------------------------------------------------------------+
+; Flow Summary                                                                  ;
++---------------------------------+---------------------------------------------+
+; Flow Status                     ; Successful - Wed Jun 13 18:17:50 2018       ;
+; Quartus Prime Version           ; 16.0.0 Build 211 04/27/2016 SJ Lite Edition ;
+; Revision Name                   ; dmb1test                                    ;
+; Top-level Entity Name           ; top                                         ;
+; Family                          ; Cyclone V                                   ;
+; Device                          ; 5CEFA7F23I7                                 ;
+; Timing Models                   ; Final                                       ;
+; Logic utilization (in ALMs)     ; 1,292 / 56,480 ( 2 % )                      ;
+; Total registers                 ; 1761                                        ;
+; Total pins                      ; 54 / 240 ( 23 % )                           ;
+; Total virtual pins              ; 0                                           ;
+; Total block memory bits         ; 2,472,704 / 7,024,640 ( 35 % )              ;
+; Total DSP Blocks                ; 0 / 156 ( 0 % )                             ;
+; Total HSSI RX PCSs              ; 0                                           ;
+; Total HSSI PMA RX Deserializers ; 0                                           ;
+; Total HSSI TX PCSs              ; 0                                           ;
+; Total HSSI PMA TX Serializers   ; 0                                           ;
+; Total PLLs                      ; 3 / 7 ( 43 % )                              ;
+; Total DLLs                      ; 0 / 4 ( 0 % )                               ;
++---------------------------------+---------------------------------------------+
+
+
++-----------------------------------------+
+; Flow Settings                           ;
++-------------------+---------------------+
+; Option            ; Setting             ;
++-------------------+---------------------+
+; Start date & time ; 06/13/2018 18:15:12 ;
+; Main task         ; Compilation         ;
+; Revision Name     ; dmb1test            ;
++-------------------+---------------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Flow Non-Default Global Settings                                                                                                                     ;
++-------------------------------------+----------------------------------------------------------------+---------------+--------------+----------------+
+; Assignment Name                     ; Value                                                          ; Default Value ; Entity Name  ; Section Id     ;
++-------------------------------------+----------------------------------------------------------------+---------------+--------------+----------------+
+; COMPILER_SIGNATURE_ID               ; 238177194464490.152888131115392                                ; --            ; --           ; --             ;
+; EDA_OUTPUT_DATA_FORMAT              ; Verilog Hdl                                                    ; --            ; --           ; eda_simulation ;
+; EDA_SIMULATION_TOOL                 ; ModelSim-Altera (Verilog)                                      ; <None>        ; --           ; --             ;
+; EDA_TIME_SCALE                      ; 1 ps                                                           ; --            ; --           ; eda_simulation ;
+; MAX_CORE_JUNCTION_TEMP              ; 100                                                            ; --            ; --           ; --             ;
+; MIN_CORE_JUNCTION_TEMP              ; -40                                                            ; --            ; --           ; --             ;
+; MISC_FILE                           ; SYS_GCLK/synthesis/../SYS_GCLK.cmp                             ; --            ; --           ; --             ;
+; MISC_FILE                           ; SYS_GCLK/synthesis/../../SYS_GCLK.qsys                         ; --            ; --           ; --             ;
+; MISC_FILE                           ; SYS_PLL.cmp                                                    ; --            ; --           ; --             ;
+; MISC_FILE                           ; SYS_PLL_sim/SYS_PLL.vo                                         ; --            ; --           ; --             ;
+; MISC_FILE                           ; DAT_FIFO_bb.v                                                  ; --            ; --           ; --             ;
+; MISC_FILE                           ; TestRO/synthesis/../TestRO.cmp                                 ; --            ; --           ; --             ;
+; MISC_FILE                           ; TestRO/synthesis/../../TestRO.qsys                             ; --            ; --           ; --             ;
+; MISC_FILE                           ; ADC_PLL.cmp                                                    ; --            ; --           ; --             ;
+; MISC_FILE                           ; ADC_PLL_sim/ADC_PLL.vo                                         ; --            ; --           ; --             ;
+; MISC_FILE                           ; ADCINCLKCTRL/synthesis/../ADCINCLKCTRL.cmp                     ; --            ; --           ; --             ;
+; MISC_FILE                           ; ADCINCLKCTRL/synthesis/../../ADCINCLKCTRL.qsys                 ; --            ; --           ; --             ;
+; PARTITION_COLOR                     ; 16764057                                                       ; --            ; top          ; Top            ;
+; PARTITION_FITTER_PRESERVATION_LEVEL ; PLACEMENT_AND_ROUTING                                          ; --            ; top          ; Top            ;
+; PARTITION_NETLIST_TYPE              ; SOURCE                                                         ; --            ; top          ; Top            ;
+; PROJECT_OUTPUT_DIRECTORY            ; output_files                                                   ; --            ; --           ; --             ;
+; SLD_FILE                            ; SYS_GCLK/synthesis/SYS_GCLK.debuginfo                          ; --            ; --           ; --             ;
+; SLD_FILE                            ; TestRO/synthesis/TestRO.regmap                                 ; --            ; --           ; --             ;
+; SLD_FILE                            ; TestRO/synthesis/TestRO.debuginfo                              ; --            ; --           ; --             ;
+; SLD_FILE                            ; ADCINCLKCTRL/synthesis/ADCINCLKCTRL.debuginfo                  ; --            ; --           ; --             ;
+; SLD_INFO                            ; QSYS_NAME ADCINCLKCTRL HAS_SOPCINFO 1 GENERATION_ID 1524464446 ; --            ; ADCINCLKCTRL ; --             ;
+; SLD_INFO                            ; QSYS_NAME SYS_GCLK HAS_SOPCINFO 1 GENERATION_ID 1522809554     ; --            ; SYS_GCLK     ; --             ;
+; SLD_INFO                            ; QSYS_NAME TestRO HAS_SOPCINFO 1 GENERATION_ID 1528793711       ; --            ; TestRO       ; --             ;
+; SOPCINFO_FILE                       ; SYS_GCLK/synthesis/../../SYS_GCLK.sopcinfo                     ; --            ; --           ; --             ;
+; SOPCINFO_FILE                       ; TestRO/synthesis/../../TestRO.sopcinfo                         ; --            ; --           ; --             ;
+; SOPCINFO_FILE                       ; ADCINCLKCTRL/synthesis/../../ADCINCLKCTRL.sopcinfo             ; --            ; --           ; --             ;
+; SPD_FILE                            ; SYS_PLL.spd                                                    ; --            ; --           ; --             ;
+; SPD_FILE                            ; ADC_PLL.spd                                                    ; --            ; --           ; --             ;
+; SYNTHESIS_ONLY_QIP                  ; On                                                             ; --            ; --           ; --             ;
+; SYNTHESIS_ONLY_QIP                  ; On                                                             ; --            ; --           ; --             ;
+; SYNTHESIS_ONLY_QIP                  ; On                                                             ; --            ; --           ; --             ;
+; SYNTHESIS_ONLY_QIP                  ; On                                                             ; --            ; --           ; --             ;
+; SYNTHESIS_ONLY_QIP                  ; On                                                             ; --            ; --           ; --             ;
+; TOP_LEVEL_ENTITY                    ; top                                                            ; dmb1test      ; --           ; --             ;
++-------------------------------------+----------------------------------------------------------------+---------------+--------------+----------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------+
+; Flow Elapsed Time                                                                                                             ;
++---------------------------+--------------+-------------------------+---------------------+------------------------------------+
+; Module Name               ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
++---------------------------+--------------+-------------------------+---------------------+------------------------------------+
+; Analysis & Synthesis      ; 00:00:33     ; 1.0                     ; 5259 MB             ; 00:00:52                           ;
+; Fitter                    ; 00:01:28     ; 1.2                     ; 7193 MB             ; 00:04:04                           ;
+; Assembler                 ; 00:00:10     ; 1.0                     ; 5125 MB             ; 00:00:10                           ;
+; TimeQuest Timing Analyzer ; 00:00:15     ; 2.0                     ; 5661 MB             ; 00:00:26                           ;
+; EDA Netlist Writer        ; 00:00:04     ; 1.0                     ; 5150 MB             ; 00:00:04                           ;
+; Total                     ; 00:02:30     ; --                      ; --                  ; 00:05:36                           ;
++---------------------------+--------------+-------------------------+---------------------+------------------------------------+
+
+
++----------------------------------------------------------------------------------------+
+; Flow OS Summary                                                                        ;
++---------------------------+------------------+-----------+------------+----------------+
+; Module Name               ; Machine Hostname ; OS Name   ; OS Version ; Processor type ;
++---------------------------+------------------+-----------+------------+----------------+
+; Analysis & Synthesis      ; DESKTOP-5QAKFN2  ; Windows 8 ; 6.2        ; x86_64         ;
+; Fitter                    ; DESKTOP-5QAKFN2  ; Windows 8 ; 6.2        ; x86_64         ;
+; Assembler                 ; DESKTOP-5QAKFN2  ; Windows 8 ; 6.2        ; x86_64         ;
+; TimeQuest Timing Analyzer ; DESKTOP-5QAKFN2  ; Windows 8 ; 6.2        ; x86_64         ;
+; EDA Netlist Writer        ; DESKTOP-5QAKFN2  ; Windows 8 ; 6.2        ; x86_64         ;
++---------------------------+------------------+-----------+------------+----------------+
+
+
+------------
+; Flow Log ;
+------------
+quartus_map --read_settings_files=on --write_settings_files=off dmb1test -c dmb1test
+quartus_fit --read_settings_files=off --write_settings_files=off dmb1test -c dmb1test
+quartus_asm --read_settings_files=off --write_settings_files=off dmb1test -c dmb1test
+quartus_sta dmb1test -c dmb1test
+quartus_eda --read_settings_files=off --write_settings_files=off dmb1test -c dmb1test
+
+
+

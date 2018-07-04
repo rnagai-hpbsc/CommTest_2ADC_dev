@@ -1,6 +1,8 @@
 
 module TestRO (
 	clk_clk,
+	dacctrl_export,
+	exttrg_0_export,
 	fifo_0_in_writedata,
 	fifo_0_in_write,
 	fifo_0_in_waitrequest,
@@ -8,10 +10,12 @@ module TestRO (
 	fifo_1_in_write,
 	fifo_1_in_waitrequest,
 	reset_reset_n,
-	write_en_export,
-	exttrg_0_export);	
+	version_info_export,
+	write_en_export);	
 
 	input		clk_clk;
+	output	[31:0]	dacctrl_export;
+	output		exttrg_0_export;
 	input	[31:0]	fifo_0_in_writedata;
 	input		fifo_0_in_write;
 	output		fifo_0_in_waitrequest;
@@ -19,6 +23,6 @@ module TestRO (
 	input		fifo_1_in_write;
 	output		fifo_1_in_waitrequest;
 	input		reset_reset_n;
+	input	[31:0]	version_info_export;
 	output		write_en_export;
-	output		exttrg_0_export;
 endmodule

@@ -1,31 +1,7 @@
-// File /mnt/c/Users/icecube/WorkSpace/Altera/D-Egg_fw/CommTest_Fujii_edit/ICE_CUBE/hdl/top_edit.vhd translated with vhd2vl v2.4 VHDL to Verilog RTL translator
-// vhd2vl settings:
-//  * Verilog Module Declaration Style: 1995
+// 
 
-// vhd2vl is Free (libre) Software:
-//   Copyright (C) 2001 Vincenzo Liguori - Ocean Logic Pty Ltd
-//     http://www.ocean-logic.com
-//   Modifications Copyright (C) 2006 Mark Gonzales - PMC Sierra Inc
-//   Modifications (C) 2010 Shankar Giri
-//   Modifications Copyright (C) 2002, 2005, 2008-2010 Larry Doolittle - LBNL
-//     http://doolittle.icarus.com/~larry/vhd2vl/
-//
-//   vhd2vl comes with ABSOLUTELY NO WARRANTY.  Always check the resulting
-//   Verilog for correctness, ideally with a formal verification tool.
-//
-//   You are welcome to redistribute vhd2vl under certain conditions.
-//   See the license (GPLv2) file included with the source for details.
-
-// The result of translation follows.  Its copyright status should be
-// considered unchanged from the original VHDL.
-
-//use synplify.attributes.all;		--spase synplifty library
-//library Axcelerator;
-//use Axcelerator.all;
-//library WORK;
-//use work.def_pack.all;
-//use work.ver_pack.all;
-// no timescale needed
+// First version was based on /mnt/c/Users/icecube/WorkSpace/Altera/D-Egg_fw/CommTest_Fujii_edit/ICE_CUBE/hdl/top_edit.vhd translated with vhd2vl v2.4 VHDL to Verilog RTL translator
+// But now the project is almost completely replaced to my own logic or modules. 
 
 module top
 (
@@ -70,6 +46,10 @@ module top
   // ***********************************************************************************************************
   // ***********************************************************************************************************
   parameter AA = 1023;  //511; --512;
+  
+  parameter VERSION = 32'h18070400;
+  
+  reg [31:0] vreg;
 
   // basic wires
   wire CLK; 
@@ -144,8 +124,8 @@ module top
   wire CLK_250M; // clock feed to ADCs 
   
   // Reset 
-  reg [15:0] RESET_COUNT;
-  reg        RESET_SIG;  //   attribute syn_radhardlevel of sftbuf1: signal is "cc"; 
+  //reg [15:0] RESET_COUNT;
+  //reg        RESET_SIG;  //   attribute syn_radhardlevel of sftbuf1: signal is "cc"; 
 
 
   // **************************************************************************************
@@ -176,7 +156,7 @@ module top
     .refclk   (clka_out),
 	 .rst      (1'b0),
 	 .outclk_0 (clk_adc), // same frequency as CLK_250M. 
-	 .outclk_1 (clk_ro),
+	 //.outclk_1 (clk_ro),
 	 .locked   (adc_pll_locked)
   );
 
@@ -197,7 +177,7 @@ module top
     .refclk   (clka_out2),
 	 .rst      (1'b0),
 	 .outclk_0 (clk_adc2),
-	 .outclk_1 (clk_ro2),
+	 //.outclk_1 (clk_ro2),
 	 .locked   (adc_pll_locked2)
   );
   
@@ -206,7 +186,7 @@ module top
   // RESET
   // **************************************************************************************
 
-  wire RST_FLG = (RESET_COUNT == 16'hFFFE); // 20MHz *256*256 = 3.28msec
+  /*wire RST_FLG = (RESET_COUNT == 16'hFFFE); // 20MHz *256*256 = 3.28msec
   
   always @(posedge CLK) 
   begin
@@ -214,7 +194,12 @@ module top
 	 RESET_COUNT <= RST_FLG ? RESET_COUNT : RESET_COUNT + 1'b1;
   end
 
-  assign RESET = RESET_SIG;
+  assign RESET = RESET_SIG;*/
+  
+  RST_GEN rst_inst (
+    .clk   (CLK),
+	 .rst_n (RESET)
+  );
   
 
   // **************************************************************************************
@@ -415,7 +400,7 @@ module top
 
   wire TRIG_SEQ_FLG = (TRIG_SEQ_CNT == 12'h3FF);
 
-  always @(negedge RESET or posedge clk_adc) 
+  always @(negedge RESET or posedge CLKB) 
   begin
     if(~RESET) 
 	 begin
@@ -452,17 +437,21 @@ module top
   wire FIFO_WR_EN_RO;
   
   reg FIFO_WR_EN_RO_1;
+  reg TRIG_SEQ_STS_1; 
   
-  always @(clk_adc) 
+  always @(posedge clk_adc) 
   begin 
     FIFO_WR_EN_RO_1 <= FIFO_WR_EN_RO;
+	 TRIG_SEQ_STS_1  <= TRIG_SEQ_STS;
   end
   
   reg FIFO_WR_EN_RO_2;
+  reg TRIG_SEQ_STS_2;
   
-  always @(clk_adc2) 
+  always @(posedge clk_adc2) 
   begin
     FIFO_WR_EN_RO_2 <= FIFO_WR_EN_RO;
+	 TRIG_SEQ_STS_2  <= TRIG_SEQ_STS;
   end
  
  
@@ -471,22 +460,22 @@ module top
   wire [13:0] FIFO_DAT_IN1_PL;
   wire [13:0] FIFO_DAT_IN2_PL;
   
-  pline #(.P_WIDTH(14),.P_DEPTH(10)) 
+  /*pline #(.P_WIDTH(14),.P_DEPTH(10)) 
   pl_1 
   (
     .clk   (CLKB),
 	 .rst_n (RESET),
 	 .a     (FIFO_DAT_IN1),
 	 .y     (FIFO_DAT_IN1_PL)
-  );
+  );*/
  
   DAT_FIFO A1_3 
   (	
-    .data    (FIFO_DAT_IN1_PL),
+    .data    (FIFO_DAT_IN1),
 	 .rdclk   (CLKB),
 	 .rdreq   (FIFO_RD_ENA),
 	 .wrclk   (clk_adc),
-	 .wrreq   (FIFO_WR_ENA & TRIG_SEQ_STS & FIFO_WR_EN_RO_1 & ~spi_sending),
+	 .wrreq   (FIFO_WR_ENA & TRIG_SEQ_STS_1 & FIFO_WR_EN_RO_1),
 	 .q       (FIFO_DAT_OUT1),
 	 .rdempty (FIFO_EF),
 	 .wrfull  (FIFO_FF),
@@ -499,13 +488,15 @@ module top
 	 .rdclk   (CLKB),
 	 .rdreq   (FIFO_RD_ENA),
 	 .wrclk   (clk_adc2),
-	 .wrreq   (FIFO_WR_ENA & TRIG_SEQ_STS & FIFO_WR_EN_RO_2 & ~spi_sending),
+	 .wrreq   (FIFO_WR_ENA & TRIG_SEQ_STS_2 & FIFO_WR_EN_RO_2),
 	 .q       (FIFO_DAT_OUT2),
 	 .rdempty (FIFO_EF2),
 	 .wrfull  (FIFO_FF2),
 	 .aclr    (~RESET)
   );
   
+  wire exttrg; 
+  wire [31:0] dacctrl;
   TestRO test_A1 
   (
   		.clk_clk               (CLKB),               //       clk.clk
@@ -517,10 +508,23 @@ module top
 		.fifo_1_in_waitrequest (1'b0), //          .waitrequest
 		.reset_reset_n         (RESET),          //     reset.reset_n
 		.write_en_export       (FIFO_WR_EN_RO),
-		.exttrg_0_export       ()
+		.exttrg_0_export       (exttrg),
+		.dacctrl_export        (dacctrl),
+		.version_info_export   (vreg)
   );
   
-  assign FIFO_RD_ENA = ~FIFO_EF;
+  wire ext_ctrl;
+  reg  ext_ctrl_src;
+  
+  assign ext_ctrl = ext_ctrl_src;
+  
+  reg [31:0] dacctrl_reg; 
+  reg flg; 
+  reg [31:0] cntflg;
+  reg [15:0] ofstreg; 
+
+  
+  assign FIFO_RD_ENA = ~FIFO_EF & ~FIFO_EF2;
 
   SYS_GCLK A0 
   (
@@ -537,77 +541,79 @@ module top
   );
 
   wire [15:0] offset_wire;
+   
   
-  wire ext_ctrl;
-  reg ext_ctrl_src;
-  reg [31:0] test_counter;
-  wire eotest = (test_counter == 32'hFFFFFFFF);
- 
-  always @(negedge RESET or posedge CLKB) 
-  begin 
-    if (~RESET) 
-	 begin 
-	   ext_ctrl_src <=  1'b0;
-		test_counter <= 32'd0;
-	 end 
-	 else 
-	 begin 
-	   ext_ctrl_src <= eotest ? 1'b0 : 1'b1;
-	   test_counter <= eotest ? test_counter : test_counter + 1'b1;
-	 end
-  end 
-  
-  
-  assign ext_ctrl = ext_ctrl_src;
-  
-  assign offset_wire = 16'd32768;
+  assign offset_wire = ofstreg;
   
   
   wire [3:0] cmd = 4'h3;
   wire [3:0] addr; 
   
   reg  [3:0] addr_ctrl;
-  reg        addr_cnt; 
+  reg [31:0] addr_cnt; 
   
+  // initial addr
   always @(negedge RESET or posedge CLKB) 
   begin 
-    if (~RESET) 
-	 begin 
+    if (~RESET) begin 
 	   addr_ctrl <= 4'h0;
-	   addr_cnt  <= 1'b0;	
+	   addr_cnt  <= 1'b0;
+		ofstreg   <= 16'd32768;
+		dacctrl_reg <= 32'd0;
+		flg <= 1'b0;
     end
-	 else 
-	 begin 
-	   addr_ctrl <= addr_cnt ? 4'h4 : 4'h0;
-		addr_cnt  <= 1'b1;
+	 else begin 
+		if (addr_cnt[31]==1'b0) begin
+		  addr_cnt  <= addr_cnt + 1'b1;
+		end
+		if (addr_cnt==32'd20000000) begin 
+		  addr_ctrl <=  4'b0100;
+		  ofstreg   <= 16'd30000;
+		end
+	   if (dacctrl[31]) begin 
+	     dacctrl_reg  <= dacctrl;
+		  flg <= 1'b1;
+		end
+		if (flg) begin 
+		  cntflg <= cntflg + 1'b1;
+		  ext_ctrl_src <= 1'b1;
+		  addr_ctrl <= dacctrl[19:16];
+		  ofstreg   <= dacctrl[15:0];
+		  if (cntflg==32'd10) begin 
+		    flg <= 1'b0;
+			 ext_ctrl_src <= 1'b0;
+			 addr_ctrl <= 4'h0;
+			 ofstreg <= 16'h0000;
+		  end
+		end
 	 end
   end
   
-  DAC_SPI spi_inst 
+  assign addr = addr_ctrl;
+ 
+  
+  dac_spi2 spi2_inst
   (
     .clk    (CLKB),
 	 .rst_n  (RESET),
-	 .data   (offset_wire),
 	 .comm   (4'h3),
-	 .addr   (4'hF),
-	 .ext_ctrl(ext_ctrl),
-	 .spi_data(SLO_DAC1_MOSI),
-	 .spi_sync(SLO_DAC1_CS),
-	 .spi_sclk(SLO_DAC1_SCLK),
+	 .addr   (addr),
+	 .data   (offset_wire),
+	 .ext_ctrl (ext_ctrl),
+	 .spi_data (SLO_DAC1_MOSI),
+	 .spi_sync (SLO_DAC1_CS),
+	 .spi_sclk (SLO_DAC1_SCLK),
 	 .spi_enable(spi_sending)
   );
   
-  SPI_CMDGEN spi_addrgen_inst 
-  (
-    .clk    (CLKB),
-	 .rst_n  (RESET),
-	 .out_en (~spi_sending),
-	 .incmd  (addr_ctrl),
-	 .outcmd (addr)
-  );
-  
-  
-  
- 
+  // version 
+  always @(negedge RESET or posedge CLKB) begin 
+    if (~RESET) begin 
+	   vreg <= 32'd0;
+    end 
+	 else begin 
+	   vreg <= VERSION; 
+    end
+  end
 
 endmodule

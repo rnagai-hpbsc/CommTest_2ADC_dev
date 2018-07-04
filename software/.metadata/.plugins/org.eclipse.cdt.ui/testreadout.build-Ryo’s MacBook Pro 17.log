@@ -1,0 +1,9 @@
+18:21:25 **** Incremental Build of configuration Nios II for project testreadout ****
+make all 
+Info: Building ../testreadout_bsp/
+C:/altera_lite/16.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../testreadout_bsp/
+[BSP build complete]
+[testreadout build complete]
+
+18:21:28 Build Finished (took 2s.484ms)
+

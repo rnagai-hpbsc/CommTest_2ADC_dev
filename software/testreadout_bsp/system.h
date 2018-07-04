@@ -4,7 +4,7 @@
  * Machine generated for CPU 'nios2_gen2_0' in SOPC Builder design 'TestRO'
  * SOPC Builder design path: ../../TestRO.sopcinfo
  *
- * Generated: Thu Jun 21 19:15:55 JST 2018
+ * Generated: Wed Jul 04 16:10:46 JST 2018
  */
 
 /*
@@ -174,6 +174,60 @@
 #define ALT_STDOUT_PRESENT
 #define ALT_STDOUT_TYPE "altera_avalon_jtag_uart"
 #define ALT_SYSTEM_NAME "TestRO"
+
+
+/*
+ * dacctrl configuration
+ *
+ */
+
+#define ALT_MODULE_CLASS_dacctrl altera_avalon_pio
+#define DACCTRL_BASE 0x22000000
+#define DACCTRL_BIT_CLEARING_EDGE_REGISTER 0
+#define DACCTRL_BIT_MODIFYING_OUTPUT_REGISTER 0
+#define DACCTRL_CAPTURE 0
+#define DACCTRL_DATA_WIDTH 32
+#define DACCTRL_DO_TEST_BENCH_WIRING 0
+#define DACCTRL_DRIVEN_SIM_VALUE 0
+#define DACCTRL_EDGE_TYPE "NONE"
+#define DACCTRL_FREQ 100000000
+#define DACCTRL_HAS_IN 0
+#define DACCTRL_HAS_OUT 1
+#define DACCTRL_HAS_TRI 0
+#define DACCTRL_IRQ -1
+#define DACCTRL_IRQ_INTERRUPT_CONTROLLER_ID -1
+#define DACCTRL_IRQ_TYPE "NONE"
+#define DACCTRL_NAME "/dev/dacctrl"
+#define DACCTRL_RESET_VALUE 0
+#define DACCTRL_SPAN 16
+#define DACCTRL_TYPE "altera_avalon_pio"
+
+
+/*
+ * exttrg_0 configuration
+ *
+ */
+
+#define ALT_MODULE_CLASS_exttrg_0 altera_avalon_pio
+#define EXTTRG_0_BASE 0x21000000
+#define EXTTRG_0_BIT_CLEARING_EDGE_REGISTER 0
+#define EXTTRG_0_BIT_MODIFYING_OUTPUT_REGISTER 0
+#define EXTTRG_0_CAPTURE 0
+#define EXTTRG_0_DATA_WIDTH 1
+#define EXTTRG_0_DO_TEST_BENCH_WIRING 0
+#define EXTTRG_0_DRIVEN_SIM_VALUE 0
+#define EXTTRG_0_EDGE_TYPE "NONE"
+#define EXTTRG_0_FREQ 100000000
+#define EXTTRG_0_HAS_IN 0
+#define EXTTRG_0_HAS_OUT 1
+#define EXTTRG_0_HAS_TRI 0
+#define EXTTRG_0_IRQ -1
+#define EXTTRG_0_IRQ_INTERRUPT_CONTROLLER_ID -1
+#define EXTTRG_0_IRQ_TYPE "NONE"
+#define EXTTRG_0_NAME "/dev/exttrg_0"
+#define EXTTRG_0_RESET_VALUE 0
+#define EXTTRG_0_SPAN 16
+#define EXTTRG_0_TYPE "altera_avalon_pio"
 
 
 /*
@@ -360,6 +414,33 @@
 #define ONCHIP_MEMORY2_0_SPAN 300000
 #define ONCHIP_MEMORY2_0_TYPE "altera_avalon_onchip_memory2"
 #define ONCHIP_MEMORY2_0_WRITABLE 1
+
+
+/*
+ * version_info configuration
+ *
+ */
+
+#define ALT_MODULE_CLASS_version_info altera_avalon_pio
+#define VERSION_INFO_BASE 0x11000000
+#define VERSION_INFO_BIT_CLEARING_EDGE_REGISTER 0
+#define VERSION_INFO_BIT_MODIFYING_OUTPUT_REGISTER 0
+#define VERSION_INFO_CAPTURE 0
+#define VERSION_INFO_DATA_WIDTH 32
+#define VERSION_INFO_DO_TEST_BENCH_WIRING 0
+#define VERSION_INFO_DRIVEN_SIM_VALUE 0
+#define VERSION_INFO_EDGE_TYPE "NONE"
+#define VERSION_INFO_FREQ 100000000
+#define VERSION_INFO_HAS_IN 1
+#define VERSION_INFO_HAS_OUT 0
+#define VERSION_INFO_HAS_TRI 0
+#define VERSION_INFO_IRQ -1
+#define VERSION_INFO_IRQ_INTERRUPT_CONTROLLER_ID -1
+#define VERSION_INFO_IRQ_TYPE "NONE"
+#define VERSION_INFO_NAME "/dev/version_info"
+#define VERSION_INFO_RESET_VALUE 0
+#define VERSION_INFO_SPAN 16
+#define VERSION_INFO_TYPE "altera_avalon_pio"
 
 
 /*

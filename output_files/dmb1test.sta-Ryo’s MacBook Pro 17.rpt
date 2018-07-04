@@ -1,0 +1,1289 @@
+TimeQuest Timing Analyzer report for dmb1test
+Wed Jun 13 18:17:45 2018
+Quartus Prime Version 16.0.0 Build 211 04/27/2016 SJ Lite Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. TimeQuest Timing Analyzer Summary
+  3. Parallel Compilation
+  4. SDC File List
+  5. Clocks
+  6. Slow 1100mV 100C Model Fmax Summary
+  7. Timing Closure Recommendations
+  8. Slow 1100mV 100C Model Setup Summary
+  9. Slow 1100mV 100C Model Hold Summary
+ 10. Slow 1100mV 100C Model Recovery Summary
+ 11. Slow 1100mV 100C Model Removal Summary
+ 12. Slow 1100mV 100C Model Minimum Pulse Width Summary
+ 13. Slow 1100mV 100C Model Metastability Summary
+ 14. Slow 1100mV -40C Model Fmax Summary
+ 15. Slow 1100mV -40C Model Setup Summary
+ 16. Slow 1100mV -40C Model Hold Summary
+ 17. Slow 1100mV -40C Model Recovery Summary
+ 18. Slow 1100mV -40C Model Removal Summary
+ 19. Slow 1100mV -40C Model Minimum Pulse Width Summary
+ 20. Slow 1100mV -40C Model Metastability Summary
+ 21. Fast 1100mV 100C Model Setup Summary
+ 22. Fast 1100mV 100C Model Hold Summary
+ 23. Fast 1100mV 100C Model Recovery Summary
+ 24. Fast 1100mV 100C Model Removal Summary
+ 25. Fast 1100mV 100C Model Minimum Pulse Width Summary
+ 26. Fast 1100mV 100C Model Metastability Summary
+ 27. Fast 1100mV -40C Model Setup Summary
+ 28. Fast 1100mV -40C Model Hold Summary
+ 29. Fast 1100mV -40C Model Recovery Summary
+ 30. Fast 1100mV -40C Model Removal Summary
+ 31. Fast 1100mV -40C Model Minimum Pulse Width Summary
+ 32. Fast 1100mV -40C Model Metastability Summary
+ 33. Multicorner Timing Analysis Summary
+ 34. Board Trace Model Assignments
+ 35. Input Transition Times
+ 36. Signal Integrity Metrics (Slow 1100mv n40c Model)
+ 37. Signal Integrity Metrics (Slow 1100mv 100c Model)
+ 38. Signal Integrity Metrics (Fast 1100mv n40c Model)
+ 39. Signal Integrity Metrics (Fast 1100mv 100c Model)
+ 40. Setup Transfers
+ 41. Hold Transfers
+ 42. Recovery Transfers
+ 43. Removal Transfers
+ 44. Report TCCS
+ 45. Report RSKM
+ 46. Unconstrained Paths Summary
+ 47. Clock Status Summary
+ 48. Unconstrained Input Ports
+ 49. Unconstrained Output Ports
+ 50. Unconstrained Input Ports
+ 51. Unconstrained Output Ports
+ 52. TimeQuest Timing Analyzer Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2016 Altera Corporation. All rights reserved.
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, the Altera Quartus Prime License Agreement,
+the Altera MegaCore Function License Agreement, or other 
+applicable license agreement, including, without limitation, 
+that your use is for the sole purpose of programming logic 
+devices manufactured by Altera and sold by Altera or its 
+authorized distributors.  Please refer to the applicable 
+agreement for further details.
+
+
+
++-----------------------------------------------------------------------------+
+; TimeQuest Timing Analyzer Summary                                           ;
++-----------------------+-----------------------------------------------------+
+; Quartus Prime Version ; Version 16.0.0 Build 211 04/27/2016 SJ Lite Edition ;
+; Timing Analyzer       ; TimeQuest                                           ;
+; Revision Name         ; dmb1test                                            ;
+; Device Family         ; Cyclone V                                           ;
+; Device Name           ; 5CEFA7F23I7                                         ;
+; Timing Models         ; Final                                               ;
+; Delay Model           ; Combined                                            ;
+; Rise/Fall Delays      ; Enabled                                             ;
++-----------------------+-----------------------------------------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 8           ;
+; Maximum allowed            ; 4           ;
+;                            ;             ;
+; Average used               ; 1.98        ;
+; Maximum used               ; 4           ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
+;     Processor 2            ;  32.9%      ;
+;     Processor 3            ;  32.6%      ;
+;     Processor 4            ;  32.3%      ;
++----------------------------+-------------+
+
+
++---------------------------------------------------------------------------------------------+
+; SDC File List                                                                               ;
++---------------------------------------------------------+--------+--------------------------+
+; SDC File Path                                           ; Status ; Read at                  ;
++---------------------------------------------------------+--------+--------------------------+
+; dmb1test.sdc                                            ; OK     ; Wed Jun 13 18:17:33 2018 ;
+; TestRO/synthesis/submodules/altera_reset_controller.sdc ; OK     ; Wed Jun 13 18:17:33 2018 ;
+; TestRO/synthesis/submodules/TestRO_nios2_gen2_0_cpu.sdc ; OK     ; Wed Jun 13 18:17:33 2018 ;
++---------------------------------------------------------+--------+--------------------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Clocks                                                                                                                                                                                                                                                                                                                                                                                                                                               ;
++------------------------------------------------------------------------+-----------+--------+-----------+-------+--------+------------+-----------+-------------+-------+--------+-----------+------------+----------+----------------------------------------------------------------------+---------------------------------------------------------------------------+----------------------------------------------------------------------------+
+; Clock Name                                                             ; Type      ; Period ; Frequency ; Rise  ; Fall   ; Duty Cycle ; Divide by ; Multiply by ; Phase ; Offset ; Edge List ; Edge Shift ; Inverted ; Master                                                               ; Source                                                                    ; Targets                                                                    ;
++------------------------------------------------------------------------+-----------+--------+-----------+-------+--------+------------+-----------+-------------+-------+--------+-----------+------------+----------+----------------------------------------------------------------------+---------------------------------------------------------------------------+----------------------------------------------------------------------------+
+; A1|sys_pll_inst|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]   ; Generated ; 2.000  ; 500.0 MHz ; 0.000 ; 1.000  ; 50.00      ; 2         ; 50          ;       ;        ;           ;            ; false    ; IF_SYS_CLK                                                           ; A1|sys_pll_inst|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|refclkin      ; { A1|sys_pll_inst|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0] }   ;
+; A1|sys_pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; Generated ; 10.000 ; 100.0 MHz ; 0.000 ; 5.000  ; 50.00      ; 5         ; 1           ;       ;        ;           ;            ; false    ; A1|sys_pll_inst|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0] ; A1|sys_pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|vco0ph[0] ; { A1|sys_pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk } ;
+; A1|sys_pll_inst|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk ; Generated ; 4.000  ; 250.0 MHz ; 0.000 ; 2.000  ; 50.00      ; 2         ; 1           ;       ;        ;           ;            ; false    ; A1|sys_pll_inst|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0] ; A1|sys_pll_inst|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|vco0ph[0] ; { A1|sys_pll_inst|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk } ;
+; altera_reserved_tck                                                    ; Base      ; 33.333 ; 30.0 MHz  ; 0.000 ; 16.666 ;            ;           ;             ;       ;        ;           ;            ;          ;                                                                      ;                                                                           ; { altera_reserved_tck }                                                    ;
+; IF_SAD_CKO1                                                            ; Base      ; 4.000  ; 250.0 MHz ; 0.000 ; 2.000  ;            ;           ;             ;       ;        ;           ;            ;          ;                                                                      ;                                                                           ; { IF_SAD_CKO1 }                                                            ;
+; IF_SAD_CKO2                                                            ; Base      ; 4.000  ; 250.0 MHz ; 0.000 ; 2.000  ;            ;           ;             ;       ;        ;           ;            ;          ;                                                                      ;                                                                           ; { IF_SAD_CKO2 }                                                            ;
+; IF_SYS_CLK                                                             ; Base      ; 50.000 ; 20.0 MHz  ; 0.000 ; 25.000 ;            ;           ;             ;       ;        ;           ;            ;          ;                                                                      ;                                                                           ; { IF_SYS_CLK }                                                             ;
++------------------------------------------------------------------------+-----------+--------+-----------+-------+--------+------------+-----------+-------------+-------+--------+-----------+------------+----------+----------------------------------------------------------------------+---------------------------------------------------------------------------+----------------------------------------------------------------------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Slow 1100mV 100C Model Fmax Summary                                                                                                                    ;
++------------+-----------------+------------------------------------------------------------------------+------------------------------------------------+
+; Fmax       ; Restricted Fmax ; Clock Name                                                             ; Note                                           ;
++------------+-----------------+------------------------------------------------------------------------+------------------------------------------------+
+; 106.69 MHz ; 106.69 MHz      ; altera_reserved_tck                                                    ;                                                ;
+; 119.25 MHz ; 119.25 MHz      ; A1|sys_pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;                                                ;
+; 265.89 MHz ; 265.89 MHz      ; IF_SYS_CLK                                                             ;                                                ;
+; 294.2 MHz  ; 275.03 MHz      ; IF_SAD_CKO2                                                            ; limit due to minimum period restriction (tmin) ;
+; 300.48 MHz ; 275.03 MHz      ; IF_SAD_CKO1                                                            ; limit due to minimum period restriction (tmin) ;
++------------+-----------------+------------------------------------------------------------------------+------------------------------------------------+
+This panel reports FMAX for every clock in the design, regardless of the user-specified clock periods.  FMAX is only computed for paths where the source and destination registers or ports are driven by the same clock.  Paths of different clocks, including generated clocks, are ignored.  For paths between a clock and its inversion, FMAX is computed as if the rising and falling edges are scaled along with FMAX, such that the duty cycle (in terms of a percentage) is maintained. Altera recommends that you always use clock constraints and other slack reports for sign-off analysis.
+
+
+----------------------------------
+; Timing Closure Recommendations ;
+----------------------------------
+HTML report is unavailable in plain text report export.
+
+
++-------------------------------------------------------------------------------------------------+
+; Slow 1100mV 100C Model Setup Summary                                                            ;
++------------------------------------------------------------------------+--------+---------------+
+; Clock                                                                  ; Slack  ; End Point TNS ;
++------------------------------------------------------------------------+--------+---------------+
+; IF_SAD_CKO2                                                            ; 0.601  ; 0.000         ;
+; IF_SAD_CKO1                                                            ; 0.672  ; 0.000         ;
+; A1|sys_pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 1.614  ; 0.000         ;
+; altera_reserved_tck                                                    ; 11.980 ; 0.000         ;
+; IF_SYS_CLK                                                             ; 46.239 ; 0.000         ;
++------------------------------------------------------------------------+--------+---------------+
+
+
++------------------------------------------------------------------------------------------------+
+; Slow 1100mV 100C Model Hold Summary                                                            ;
++------------------------------------------------------------------------+-------+---------------+
+; Clock                                                                  ; Slack ; End Point TNS ;
++------------------------------------------------------------------------+-------+---------------+
+; altera_reserved_tck                                                    ; 0.145 ; 0.000         ;
+; A1|sys_pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 0.318 ; 0.000         ;
+; IF_SAD_CKO1                                                            ; 0.338 ; 0.000         ;
+; IF_SAD_CKO2                                                            ; 0.340 ; 0.000         ;
+; IF_SYS_CLK                                                             ; 0.361 ; 0.000         ;
++------------------------------------------------------------------------+-------+---------------+
+
+
++-------------------------------------------------------------------------------------------------+
+; Slow 1100mV 100C Model Recovery Summary                                                         ;
++------------------------------------------------------------------------+--------+---------------+
+; Clock                                                                  ; Slack  ; End Point TNS ;
++------------------------------------------------------------------------+--------+---------------+
+; A1|sys_pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 4.712  ; 0.000         ;
+; altera_reserved_tck                                                    ; 14.449 ; 0.000         ;
+; IF_SYS_CLK                                                             ; 47.674 ; 0.000         ;
++------------------------------------------------------------------------+--------+---------------+
+
+
++------------------------------------------------------------------------------------------------+
+; Slow 1100mV 100C Model Removal Summary                                                         ;
++------------------------------------------------------------------------+-------+---------------+
+; Clock                                                                  ; Slack ; End Point TNS ;
++------------------------------------------------------------------------+-------+---------------+
+; IF_SYS_CLK                                                             ; 0.994 ; 0.000         ;
+; altera_reserved_tck                                                    ; 1.095 ; 0.000         ;
+; A1|sys_pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 1.387 ; 0.000         ;
++------------------------------------------------------------------------+-------+---------------+
+
+
++-------------------------------------------------------------------------------------------------+
+; Slow 1100mV 100C Model Minimum Pulse Width Summary                                              ;
++------------------------------------------------------------------------+--------+---------------+
+; Clock                                                                  ; Slack  ; End Point TNS ;
++------------------------------------------------------------------------+--------+---------------+
+; IF_SAD_CKO1                                                            ; 0.364  ; 0.000         ;
+; IF_SAD_CKO2                                                            ; 0.364  ; 0.000         ;
+; A1|sys_pll_inst|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]   ; 1.000  ; 0.000         ;
+; A1|sys_pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 3.598  ; 0.000         ;
+; altera_reserved_tck                                                    ; 15.472 ; 0.000         ;
+; IF_SYS_CLK                                                             ; 24.343 ; 0.000         ;
++------------------------------------------------------------------------+--------+---------------+
+
+
+------------------------------------------------
+; Slow 1100mV 100C Model Metastability Summary ;
+------------------------------------------------
+Worst-Case MTBF of Design is 0.0943 years or 2.97e+06 seconds.
+Typical MTBF of Design is 3.11e+04 years or 9.8e+11 seconds.
+
+Number of Synchronizer Chains Found: 60
+Shortest Synchronizer Chain: 1 Registers
+Fraction of Chains for which MTBFs Could Not be Calculated: 0.117
+Worst Case Available Settling Time: 1.291 ns
+
+Worst-Case MTBF values are calculated based on the worst-case silicon characteristics, with worst-case operating conditions.
+  - Under worst-case conditions, an increase of 100ps in available settling time will increase MTBF values by a factor of 8.0
+Typical MTBF values are calculated based on the nominal silicon characteristics, at nominal operating conditions.
+  - Under typical conditions, an increase of 100ps in available settling time will increase MTBF values by a factor of 17.8
+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Slow 1100mV -40C Model Fmax Summary                                                                                                                    ;
++------------+-----------------+------------------------------------------------------------------------+------------------------------------------------+
+; Fmax       ; Restricted Fmax ; Clock Name                                                             ; Note                                           ;
++------------+-----------------+------------------------------------------------------------------------+------------------------------------------------+
+; 114.85 MHz ; 114.85 MHz      ; altera_reserved_tck                                                    ;                                                ;
+; 120.44 MHz ; 120.44 MHz      ; A1|sys_pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;                                                ;
+; 260.55 MHz ; 260.55 MHz      ; IF_SYS_CLK                                                             ;                                                ;
+; 286.7 MHz  ; 275.03 MHz      ; IF_SAD_CKO2                                                            ; limit due to minimum period restriction (tmin) ;
+; 298.86 MHz ; 275.03 MHz      ; IF_SAD_CKO1                                                            ; limit due to minimum period restriction (tmin) ;
++------------+-----------------+------------------------------------------------------------------------+------------------------------------------------+
+This panel reports FMAX for every clock in the design, regardless of the user-specified clock periods.  FMAX is only computed for paths where the source and destination registers or ports are driven by the same clock.  Paths of different clocks, including generated clocks, are ignored.  For paths between a clock and its inversion, FMAX is computed as if the rising and falling edges are scaled along with FMAX, such that the duty cycle (in terms of a percentage) is maintained. Altera recommends that you always use clock constraints and other slack reports for sign-off analysis.
+
+
++-------------------------------------------------------------------------------------------------+
+; Slow 1100mV -40C Model Setup Summary                                                            ;
++------------------------------------------------------------------------+--------+---------------+
+; Clock                                                                  ; Slack  ; End Point TNS ;
++------------------------------------------------------------------------+--------+---------------+
+; IF_SAD_CKO2                                                            ; 0.512  ; 0.000         ;
+; IF_SAD_CKO1                                                            ; 0.654  ; 0.000         ;
+; A1|sys_pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 1.697  ; 0.000         ;
+; altera_reserved_tck                                                    ; 12.313 ; 0.000         ;
+; IF_SYS_CLK                                                             ; 46.162 ; 0.000         ;
++------------------------------------------------------------------------+--------+---------------+
+
+
++------------------------------------------------------------------------------------------------+
+; Slow 1100mV -40C Model Hold Summary                                                            ;
++------------------------------------------------------------------------+-------+---------------+
+; Clock                                                                  ; Slack ; End Point TNS ;
++------------------------------------------------------------------------+-------+---------------+
+; altera_reserved_tck                                                    ; 0.138 ; 0.000         ;
+; A1|sys_pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 0.308 ; 0.000         ;
+; IF_SAD_CKO2                                                            ; 0.322 ; 0.000         ;
+; IF_SAD_CKO1                                                            ; 0.326 ; 0.000         ;
+; IF_SYS_CLK                                                             ; 0.349 ; 0.000         ;
++------------------------------------------------------------------------+-------+---------------+
+
+
++-------------------------------------------------------------------------------------------------+
+; Slow 1100mV -40C Model Recovery Summary                                                         ;
++------------------------------------------------------------------------+--------+---------------+
+; Clock                                                                  ; Slack  ; End Point TNS ;
++------------------------------------------------------------------------+--------+---------------+
+; A1|sys_pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 5.000  ; 0.000         ;
+; altera_reserved_tck                                                    ; 14.643 ; 0.000         ;
+; IF_SYS_CLK                                                             ; 47.800 ; 0.000         ;
++------------------------------------------------------------------------+--------+---------------+
+
+
++------------------------------------------------------------------------------------------------+
+; Slow 1100mV -40C Model Removal Summary                                                         ;
++------------------------------------------------------------------------+-------+---------------+
+; Clock                                                                  ; Slack ; End Point TNS ;
++------------------------------------------------------------------------+-------+---------------+
+; IF_SYS_CLK                                                             ; 0.925 ; 0.000         ;
+; altera_reserved_tck                                                    ; 0.990 ; 0.000         ;
+; A1|sys_pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 1.326 ; 0.000         ;
++------------------------------------------------------------------------+-------+---------------+
+
+
++-------------------------------------------------------------------------------------------------+
+; Slow 1100mV -40C Model Minimum Pulse Width Summary                                              ;
++------------------------------------------------------------------------+--------+---------------+
+; Clock                                                                  ; Slack  ; End Point TNS ;
++------------------------------------------------------------------------+--------+---------------+
+; IF_SAD_CKO1                                                            ; 0.364  ; 0.000         ;
+; IF_SAD_CKO2                                                            ; 0.364  ; 0.000         ;
+; A1|sys_pll_inst|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]   ; 1.000  ; 0.000         ;
+; A1|sys_pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 3.565  ; 0.000         ;
+; altera_reserved_tck                                                    ; 15.461 ; 0.000         ;
+; IF_SYS_CLK                                                             ; 24.333 ; 0.000         ;
++------------------------------------------------------------------------+--------+---------------+
+
+
+------------------------------------------------
+; Slow 1100mV -40C Model Metastability Summary ;
+------------------------------------------------
+Worst-Case MTBF of Design is 0.0 years or 0.0225 seconds.
+Typical MTBF of Design is 1e+04 years or 3.16e+11 seconds.
+
+Number of Synchronizer Chains Found: 60
+Shortest Synchronizer Chain: 1 Registers
+Fraction of Chains for which MTBFs Could Not be Calculated: 0.117
+Worst Case Available Settling Time: 1.251 ns
+
+Worst-Case MTBF values are calculated based on the worst-case silicon characteristics, with worst-case operating conditions.
+  - Under worst-case conditions, an increase of 100ps in available settling time will increase MTBF values by a factor of 1.7
+Typical MTBF values are calculated based on the nominal silicon characteristics, at nominal operating conditions.
+  - Under typical conditions, an increase of 100ps in available settling time will increase MTBF values by a factor of 17.8
+
+
+
++-------------------------------------------------------------------------------------------------+
+; Fast 1100mV 100C Model Setup Summary                                                            ;
++------------------------------------------------------------------------+--------+---------------+
+; Clock                                                                  ; Slack  ; End Point TNS ;
++------------------------------------------------------------------------+--------+---------------+
+; IF_SAD_CKO1                                                            ; 2.157  ; 0.000         ;
+; IF_SAD_CKO2                                                            ; 2.210  ; 0.000         ;
+; A1|sys_pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 5.271  ; 0.000         ;
+; altera_reserved_tck                                                    ; 14.562 ; 0.000         ;
+; IF_SYS_CLK                                                             ; 48.133 ; 0.000         ;
++------------------------------------------------------------------------+--------+---------------+
+
+
++------------------------------------------------------------------------------------------------+
+; Fast 1100mV 100C Model Hold Summary                                                            ;
++------------------------------------------------------------------------+-------+---------------+
+; Clock                                                                  ; Slack ; End Point TNS ;
++------------------------------------------------------------------------+-------+---------------+
+; altera_reserved_tck                                                    ; 0.022 ; 0.000         ;
+; A1|sys_pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 0.166 ; 0.000         ;
+; IF_SAD_CKO1                                                            ; 0.175 ; 0.000         ;
+; IF_SAD_CKO2                                                            ; 0.181 ; 0.000         ;
+; IF_SYS_CLK                                                             ; 0.185 ; 0.000         ;
++------------------------------------------------------------------------+-------+---------------+
+
+
++-------------------------------------------------------------------------------------------------+
+; Fast 1100mV 100C Model Recovery Summary                                                         ;
++------------------------------------------------------------------------+--------+---------------+
+; Clock                                                                  ; Slack  ; End Point TNS ;
++------------------------------------------------------------------------+--------+---------------+
+; A1|sys_pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 6.604  ; 0.000         ;
+; altera_reserved_tck                                                    ; 15.923 ; 0.000         ;
+; IF_SYS_CLK                                                             ; 48.718 ; 0.000         ;
++------------------------------------------------------------------------+--------+---------------+
+
+
++------------------------------------------------------------------------------------------------+
+; Fast 1100mV 100C Model Removal Summary                                                         ;
++------------------------------------------------------------------------+-------+---------------+
+; Clock                                                                  ; Slack ; End Point TNS ;
++------------------------------------------------------------------------+-------+---------------+
+; altera_reserved_tck                                                    ; 0.412 ; 0.000         ;
+; IF_SYS_CLK                                                             ; 0.476 ; 0.000         ;
+; A1|sys_pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 0.669 ; 0.000         ;
++------------------------------------------------------------------------+-------+---------------+
+
+
++-------------------------------------------------------------------------------------------------+
+; Fast 1100mV 100C Model Minimum Pulse Width Summary                                              ;
++------------------------------------------------------------------------+--------+---------------+
+; Clock                                                                  ; Slack  ; End Point TNS ;
++------------------------------------------------------------------------+--------+---------------+
+; IF_SAD_CKO1                                                            ; 0.629  ; 0.000         ;
+; IF_SAD_CKO2                                                            ; 0.642  ; 0.000         ;
+; A1|sys_pll_inst|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]   ; 1.000  ; 0.000         ;
+; A1|sys_pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 3.894  ; 0.000         ;
+; altera_reserved_tck                                                    ; 15.393 ; 0.000         ;
+; IF_SYS_CLK                                                             ; 24.237 ; 0.000         ;
++------------------------------------------------------------------------+--------+---------------+
+
+
+------------------------------------------------
+; Fast 1100mV 100C Model Metastability Summary ;
+------------------------------------------------
+Worst-Case MTBF of Design is 1e+09 years or 3.15e+16 seconds.
+Typical MTBF of Design is 1e+09 years or 3.15e+16 seconds.
+
+Number of Synchronizer Chains Found: 60
+Shortest Synchronizer Chain: 1 Registers
+Fraction of Chains for which MTBFs Could Not be Calculated: 0.117
+Worst Case Available Settling Time: 2.692 ns
+
+Worst-Case MTBF values are calculated based on the worst-case silicon characteristics, with worst-case operating conditions.
+  - Under worst-case conditions, an increase of 100ps in available settling time will increase MTBF values by a factor of 8.0
+Typical MTBF values are calculated based on the nominal silicon characteristics, at nominal operating conditions.
+  - Under typical conditions, an increase of 100ps in available settling time will increase MTBF values by a factor of 17.8
+
+
+
++-------------------------------------------------------------------------------------------------+
+; Fast 1100mV -40C Model Setup Summary                                                            ;
++------------------------------------------------------------------------+--------+---------------+
+; Clock                                                                  ; Slack  ; End Point TNS ;
++------------------------------------------------------------------------+--------+---------------+
+; IF_SAD_CKO1                                                            ; 2.448  ; 0.000         ;
+; IF_SAD_CKO2                                                            ; 2.456  ; 0.000         ;
+; A1|sys_pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 6.204  ; 0.000         ;
+; altera_reserved_tck                                                    ; 15.055 ; 0.000         ;
+; IF_SYS_CLK                                                             ; 48.336 ; 0.000         ;
++------------------------------------------------------------------------+--------+---------------+
+
+
++------------------------------------------------------------------------------------------------+
+; Fast 1100mV -40C Model Hold Summary                                                            ;
++------------------------------------------------------------------------+-------+---------------+
+; Clock                                                                  ; Slack ; End Point TNS ;
++------------------------------------------------------------------------+-------+---------------+
+; altera_reserved_tck                                                    ; 0.004 ; 0.000         ;
+; A1|sys_pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 0.143 ; 0.000         ;
+; IF_SAD_CKO1                                                            ; 0.157 ; 0.000         ;
+; IF_SAD_CKO2                                                            ; 0.157 ; 0.000         ;
+; IF_SYS_CLK                                                             ; 0.162 ; 0.000         ;
++------------------------------------------------------------------------+-------+---------------+
+
+
++-------------------------------------------------------------------------------------------------+
+; Fast 1100mV -40C Model Recovery Summary                                                         ;
++------------------------------------------------------------------------+--------+---------------+
+; Clock                                                                  ; Slack  ; End Point TNS ;
++------------------------------------------------------------------------+--------+---------------+
+; A1|sys_pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 7.270  ; 0.000         ;
+; altera_reserved_tck                                                    ; 16.182 ; 0.000         ;
+; IF_SYS_CLK                                                             ; 48.919 ; 0.000         ;
++------------------------------------------------------------------------+--------+---------------+
+
+
++------------------------------------------------------------------------------------------------+
+; Fast 1100mV -40C Model Removal Summary                                                         ;
++------------------------------------------------------------------------+-------+---------------+
+; Clock                                                                  ; Slack ; End Point TNS ;
++------------------------------------------------------------------------+-------+---------------+
+; altera_reserved_tck                                                    ; 0.324 ; 0.000         ;
+; IF_SYS_CLK                                                             ; 0.404 ; 0.000         ;
+; A1|sys_pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 0.573 ; 0.000         ;
++------------------------------------------------------------------------+-------+---------------+
+
+
++-------------------------------------------------------------------------------------------------+
+; Fast 1100mV -40C Model Minimum Pulse Width Summary                                              ;
++------------------------------------------------------------------------+--------+---------------+
+; Clock                                                                  ; Slack  ; End Point TNS ;
++------------------------------------------------------------------------+--------+---------------+
+; IF_SAD_CKO1                                                            ; 0.657  ; 0.000         ;
+; IF_SAD_CKO2                                                            ; 0.663  ; 0.000         ;
+; A1|sys_pll_inst|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]   ; 1.000  ; 0.000         ;
+; A1|sys_pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 3.892  ; 0.000         ;
+; altera_reserved_tck                                                    ; 15.393 ; 0.000         ;
+; IF_SYS_CLK                                                             ; 24.236 ; 0.000         ;
++------------------------------------------------------------------------+--------+---------------+
+
+
+------------------------------------------------
+; Fast 1100mV -40C Model Metastability Summary ;
+------------------------------------------------
+Worst-Case MTBF of Design is 2.76e-06 years or 86.9 seconds.
+Typical MTBF of Design is 1e+09 years or 3.15e+16 seconds.
+
+Number of Synchronizer Chains Found: 60
+Shortest Synchronizer Chain: 1 Registers
+Fraction of Chains for which MTBFs Could Not be Calculated: 0.117
+Worst Case Available Settling Time: 2.829 ns
+
+Worst-Case MTBF values are calculated based on the worst-case silicon characteristics, with worst-case operating conditions.
+  - Under worst-case conditions, an increase of 100ps in available settling time will increase MTBF values by a factor of 1.7
+Typical MTBF values are calculated based on the nominal silicon characteristics, at nominal operating conditions.
+  - Under typical conditions, an increase of 100ps in available settling time will increase MTBF values by a factor of 17.8
+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------+
+; Multicorner Timing Analysis Summary                                                                                                 ;
++-------------------------------------------------------------------------+--------+-------+----------+---------+---------------------+
+; Clock                                                                   ; Setup  ; Hold  ; Recovery ; Removal ; Minimum Pulse Width ;
++-------------------------------------------------------------------------+--------+-------+----------+---------+---------------------+
+; Worst-case Slack                                                        ; 0.512  ; 0.004 ; 4.712    ; 0.324   ; 0.364               ;
+;  A1|sys_pll_inst|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]   ; N/A    ; N/A   ; N/A      ; N/A     ; 1.000               ;
+;  A1|sys_pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 1.614  ; 0.143 ; 4.712    ; 0.573   ; 3.565               ;
+;  IF_SAD_CKO1                                                            ; 0.654  ; 0.157 ; N/A      ; N/A     ; 0.364               ;
+;  IF_SAD_CKO2                                                            ; 0.512  ; 0.157 ; N/A      ; N/A     ; 0.364               ;
+;  IF_SYS_CLK                                                             ; 46.162 ; 0.162 ; 47.674   ; 0.404   ; 24.236              ;
+;  altera_reserved_tck                                                    ; 11.980 ; 0.004 ; 14.449   ; 0.324   ; 15.393              ;
+; Design-wide TNS                                                         ; 0.0    ; 0.0   ; 0.0      ; 0.0     ; 0.0                 ;
+;  A1|sys_pll_inst|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]   ; N/A    ; N/A   ; N/A      ; N/A     ; 0.000               ;
+;  A1|sys_pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 0.000  ; 0.000 ; 0.000    ; 0.000   ; 0.000               ;
+;  IF_SAD_CKO1                                                            ; 0.000  ; 0.000 ; N/A      ; N/A     ; 0.000               ;
+;  IF_SAD_CKO2                                                            ; 0.000  ; 0.000 ; N/A      ; N/A     ; 0.000               ;
+;  IF_SYS_CLK                                                             ; 0.000  ; 0.000 ; 0.000    ; 0.000   ; 0.000               ;
+;  altera_reserved_tck                                                    ; 0.000  ; 0.000 ; 0.000    ; 0.000   ; 0.000               ;
++-------------------------------------------------------------------------+--------+-------+----------+---------+---------------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Board Trace Model Assignments                                                                                                                                                                                                                                                                                                                                                                                          ;
++---------------------+--------------+-------------------+-------------------------+-------------------------+---------------+---------------------+----------------+------------------+--------+------------------+------------------------+------------------------+--------------+---------------+-----------------+-------+---------------------+--------------------+---------------+-----------------+-------------+
+; Pin                 ; I/O Standard ; Near Tline Length ; Near Tline L per Length ; Near Tline C per Length ; Near Series R ; Near Differential R ; Near Pull-up R ; Near Pull-down R ; Near C ; Far Tline Length ; Far Tline L per Length ; Far Tline C per Length ; Far Series R ; Far Pull-up R ; Far Pull-down R ; Far C ; Termination Voltage ; Far Differential R ; EBD File Name ; EBD Signal Name ; EBD Far-end ;
++---------------------+--------------+-------------------+-------------------------+-------------------------+---------------+---------------------+----------------+------------------+--------+------------------+------------------------+------------------------+--------------+---------------+-----------------+-------+---------------------+--------------------+---------------+-----------------+-------------+
+; IF_SAD_CLK1         ; LVDS         ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; open                ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; 100 Ohm            ; n/a           ; n/a             ; n/a         ;
+; IF_SAD_RESET1       ; 2.5 V        ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
+; IF_SAD_SCLK1        ; 2.5 V        ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
+; IF_SAD_SDAT1        ; 2.5 V        ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
+; IF_SAD_SEN1         ; 2.5 V        ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
+; IF_SAD_CLK2         ; LVDS         ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; open                ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; 100 Ohm            ; n/a           ; n/a             ; n/a         ;
+; IF_SAD_RESET2       ; 2.5 V        ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
+; IF_SAD_SCLK2        ; 2.5 V        ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
+; IF_SAD_SDAT2        ; 2.5 V        ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
+; IF_SAD_SEN2         ; 2.5 V        ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
+; IF_IND_FPGA1        ; 3.3-V LVCMOS ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
+; IF_IND_FPGA2        ; 3.3-V LVCMOS ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
+; IF_TEST             ; LVDS         ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; open                ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; 100 Ohm            ; n/a           ; n/a             ; n/a         ;
+; SLO_DAC1_CS         ; 3.3-V LVCMOS ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
+; SLO_DAC1_SCLK       ; 3.3-V LVCMOS ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
+; SLO_DAC1_MOSI       ; 3.3-V LVCMOS ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
+; altera_reserved_tdo ; 3.3-V LVTTL  ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
+; IF_SAD_CLK1(n)      ; LVDS         ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; open                ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; 100 Ohm            ; n/a           ; n/a             ; n/a         ;
+; IF_SAD_CLK2(n)      ; LVDS         ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; open                ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; 100 Ohm            ; n/a           ; n/a             ; n/a         ;
+; IF_TEST(n)          ; LVDS         ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; open                ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; 100 Ohm            ; n/a           ; n/a             ; n/a         ;
++---------------------+--------------+-------------------+-------------------------+-------------------------+---------------+---------------------+----------------+------------------+--------+------------------+------------------------+------------------------+--------------+---------------+-----------------+-------+---------------------+--------------------+---------------+-----------------+-------------+
+
+
++------------------------------------------------------------------------+
+; Input Transition Times                                                 ;
++---------------------+--------------+-----------------+-----------------+
+; Pin                 ; I/O Standard ; 10-90 Rise Time ; 90-10 Fall Time ;
++---------------------+--------------+-----------------+-----------------+
+; IF_RX               ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
+; IF_SAD_SDOUT2       ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
+; SLO_DAC1_MISO       ; 3.3-V LVCMOS ; 2640 ps         ; 2640 ps         ;
+; IF_SAD_SDOUT1       ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
+; IF_SYS_CLK          ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
+; IF_SAD_CKO1         ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
+; IF_SAD_D1[0]        ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
+; IF_SAD_D2[0]        ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
+; IF_SAD_D1[8]        ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
+; IF_SAD_D2[8]        ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
+; IF_SAD_D1[9]        ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
+; IF_SAD_D2[9]        ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
+; IF_SAD_D1[13]       ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
+; IF_SAD_D2[13]       ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
+; IF_SAD_D1[10]       ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
+; IF_SAD_D2[10]       ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
+; IF_SAD_D2[11]       ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
+; IF_SAD_D1[11]       ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
+; IF_SAD_D1[4]        ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
+; IF_SAD_D2[4]        ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
+; IF_SAD_D1[5]        ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
+; IF_SAD_D2[5]        ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
+; IF_SAD_D1[6]        ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
+; IF_SAD_D2[6]        ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
+; IF_SAD_D1[7]        ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
+; IF_SAD_D2[7]        ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
+; IF_SAD_D1[12]       ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
+; IF_SAD_D2[12]       ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
+; IF_SAD_D1[2]        ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
+; IF_SAD_D2[2]        ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
+; IF_SAD_D1[3]        ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
+; IF_SAD_D2[3]        ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
+; IF_SAD_CKO2         ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
+; IF_SAD_D1[1]        ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
+; IF_SAD_D2[1]        ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
+; altera_reserved_tms ; 3.3-V LVTTL  ; 2640 ps         ; 2640 ps         ;
+; altera_reserved_tck ; 3.3-V LVTTL  ; 2640 ps         ; 2640 ps         ;
+; altera_reserved_tdi ; 3.3-V LVTTL  ; 2640 ps         ; 2640 ps         ;
++---------------------+--------------+-----------------+-----------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Signal Integrity Metrics (Slow 1100mv n40c Model)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                ;
++---------------------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
+; Pin                 ; I/O Standard ; Board Delay on Rise ; Board Delay on Fall ; Steady State Voh at FPGA Pin ; Steady State Vol at FPGA Pin ; Voh Max at FPGA Pin ; Vol Min at FPGA Pin ; Ringback Voltage on Rise at FPGA Pin ; Ringback Voltage on Fall at FPGA Pin ; 10-90 Rise Time at FPGA Pin ; 90-10 Fall Time at FPGA Pin ; Monotonic Rise at FPGA Pin ; Monotonic Fall at FPGA Pin ; Steady State Voh at Far-end ; Steady State Vol at Far-end ; Voh Max at Far-end ; Vol Min at Far-end ; Ringback Voltage on Rise at Far-end ; Ringback Voltage on Fall at Far-end ; 10-90 Rise Time at Far-end ; 90-10 Fall Time at Far-end ; Monotonic Rise at Far-end ; Monotonic Fall at Far-end ;
++---------------------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
+; IF_SAD_CLK1         ; LVDS         ; 0 s                 ; 0 s                 ; 0.369 V                      ; -0.369 V                     ; -                   ; -                   ; -                                    ; -                                    ; 1.26e-10 s                  ; 1.3e-10 s                   ; Yes                        ; Yes                        ; 0.369 V                     ; -0.369 V                    ; -                  ; -                  ; -                                   ; -                                   ; 1.26e-10 s                 ; 1.3e-10 s                  ; Yes                       ; Yes                       ;
+; IF_SAD_RESET1       ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 1.56e-08 V                   ; 2.43 V              ; -0.0617 V           ; 0.35 V                               ; 0.107 V                              ; 3.1e-10 s                   ; 4.28e-10 s                  ; No                         ; No                         ; 2.32 V                      ; 1.56e-08 V                  ; 2.43 V             ; -0.0617 V          ; 0.35 V                              ; 0.107 V                             ; 3.1e-10 s                  ; 4.28e-10 s                 ; No                        ; No                        ;
+; IF_SAD_SCLK1        ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 1.56e-08 V                   ; 2.43 V              ; -0.0607 V           ; 0.35 V                               ; 0.108 V                              ; 3.1e-10 s                   ; 4.28e-10 s                  ; No                         ; No                         ; 2.32 V                      ; 1.56e-08 V                  ; 2.43 V             ; -0.0607 V          ; 0.35 V                              ; 0.108 V                             ; 3.1e-10 s                  ; 4.28e-10 s                 ; No                        ; No                        ;
+; IF_SAD_SDAT1        ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 1.6e-08 V                    ; 2.42 V              ; -0.0509 V           ; 0.197 V                              ; 0.118 V                              ; 4.57e-10 s                  ; 4.47e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 1.6e-08 V                   ; 2.42 V             ; -0.0509 V          ; 0.197 V                             ; 0.118 V                             ; 4.57e-10 s                 ; 4.47e-10 s                 ; No                        ; Yes                       ;
+; IF_SAD_SEN1         ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 1.33e-08 V                   ; 2.36 V              ; -0.0253 V           ; 0.132 V                              ; 0.078 V                              ; 4.45e-10 s                  ; 4.26e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 1.33e-08 V                  ; 2.36 V             ; -0.0253 V          ; 0.132 V                             ; 0.078 V                             ; 4.45e-10 s                 ; 4.26e-10 s                 ; No                        ; Yes                       ;
+; IF_SAD_CLK2         ; LVDS         ; 0 s                 ; 0 s                 ; 0.369 V                      ; -0.369 V                     ; -                   ; -                   ; -                                    ; -                                    ; 1.26e-10 s                  ; 1.3e-10 s                   ; Yes                        ; Yes                        ; 0.369 V                     ; -0.369 V                    ; -                  ; -                  ; -                                   ; -                                   ; 1.26e-10 s                 ; 1.3e-10 s                  ; Yes                       ; Yes                       ;
+; IF_SAD_RESET2       ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 1.56e-08 V                   ; 2.43 V              ; -0.0607 V           ; 0.35 V                               ; 0.108 V                              ; 3.1e-10 s                   ; 4.28e-10 s                  ; No                         ; No                         ; 2.32 V                      ; 1.56e-08 V                  ; 2.43 V             ; -0.0607 V          ; 0.35 V                              ; 0.108 V                             ; 3.1e-10 s                  ; 4.28e-10 s                 ; No                        ; No                        ;
+; IF_SAD_SCLK2        ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 1.6e-08 V                    ; 2.42 V              ; -0.0509 V           ; 0.197 V                              ; 0.118 V                              ; 4.57e-10 s                  ; 4.47e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 1.6e-08 V                   ; 2.42 V             ; -0.0509 V          ; 0.197 V                             ; 0.118 V                             ; 4.57e-10 s                 ; 4.47e-10 s                 ; No                        ; Yes                       ;
+; IF_SAD_SDAT2        ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 1.33e-08 V                   ; 2.36 V              ; -0.0253 V           ; 0.132 V                              ; 0.078 V                              ; 4.45e-10 s                  ; 4.26e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 1.33e-08 V                  ; 2.36 V             ; -0.0253 V          ; 0.132 V                             ; 0.078 V                             ; 4.45e-10 s                 ; 4.26e-10 s                 ; No                        ; Yes                       ;
+; IF_SAD_SEN2         ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 1.56e-08 V                   ; 2.43 V              ; -0.0617 V           ; 0.35 V                               ; 0.107 V                              ; 3.1e-10 s                   ; 4.28e-10 s                  ; No                         ; No                         ; 2.32 V                      ; 1.56e-08 V                  ; 2.43 V             ; -0.0617 V          ; 0.35 V                              ; 0.107 V                             ; 3.1e-10 s                  ; 4.28e-10 s                 ; No                        ; No                        ;
+; IF_IND_FPGA1        ; 3.3-V LVCMOS ; 0 s                 ; 0 s                 ; 3.08 V                       ; 2e-08 V                      ; 3.17 V              ; -0.245 V            ; 0.166 V                              ; 0.398 V                              ; 4.33e-10 s                  ; 1.46e-10 s                  ; Yes                        ; No                         ; 3.08 V                      ; 2e-08 V                     ; 3.17 V             ; -0.245 V           ; 0.166 V                             ; 0.398 V                             ; 4.33e-10 s                 ; 1.46e-10 s                 ; Yes                       ; No                        ;
+; IF_IND_FPGA2        ; 3.3-V LVCMOS ; 0 s                 ; 0 s                 ; 3.08 V                       ; 1.47e-08 V                   ; 3.11 V              ; -0.195 V            ; 0.108 V                              ; 0.32 V                               ; 4.03e-10 s                  ; 1.44e-10 s                  ; Yes                        ; No                         ; 3.08 V                      ; 1.47e-08 V                  ; 3.11 V             ; -0.195 V           ; 0.108 V                             ; 0.32 V                              ; 4.03e-10 s                 ; 1.44e-10 s                 ; Yes                       ; No                        ;
+; IF_TEST             ; LVDS         ; 0 s                 ; 0 s                 ; 0.369 V                      ; -0.369 V                     ; -                   ; -                   ; -                                    ; -                                    ; 1.26e-10 s                  ; 1.3e-10 s                   ; Yes                        ; Yes                        ; 0.369 V                     ; -0.369 V                    ; -                  ; -                  ; -                                   ; -                                   ; 1.26e-10 s                 ; 1.3e-10 s                  ; Yes                       ; Yes                       ;
+; SLO_DAC1_CS         ; 3.3-V LVCMOS ; 0 s                 ; 0 s                 ; 3.08 V                       ; 2e-08 V                      ; 3.17 V              ; -0.245 V            ; 0.166 V                              ; 0.398 V                              ; 4.33e-10 s                  ; 1.46e-10 s                  ; Yes                        ; No                         ; 3.08 V                      ; 2e-08 V                     ; 3.17 V             ; -0.245 V           ; 0.166 V                             ; 0.398 V                             ; 4.33e-10 s                 ; 1.46e-10 s                 ; Yes                       ; No                        ;
+; SLO_DAC1_SCLK       ; 3.3-V LVCMOS ; 0 s                 ; 0 s                 ; 3.08 V                       ; 1.47e-08 V                   ; 3.11 V              ; -0.195 V            ; 0.108 V                              ; 0.32 V                               ; 4.03e-10 s                  ; 1.44e-10 s                  ; Yes                        ; No                         ; 3.08 V                      ; 1.47e-08 V                  ; 3.11 V             ; -0.195 V           ; 0.108 V                             ; 0.32 V                              ; 4.03e-10 s                 ; 1.44e-10 s                 ; Yes                       ; No                        ;
+; SLO_DAC1_MOSI       ; 3.3-V LVCMOS ; 0 s                 ; 0 s                 ; 3.08 V                       ; 1.91e-08 V                   ; 3.17 V              ; -0.306 V            ; 0.142 V                              ; 0.425 V                              ; 4.17e-10 s                  ; 1.36e-10 s                  ; Yes                        ; No                         ; 3.08 V                      ; 1.91e-08 V                  ; 3.17 V             ; -0.306 V           ; 0.142 V                             ; 0.425 V                             ; 4.17e-10 s                 ; 1.36e-10 s                 ; Yes                       ; No                        ;
+; altera_reserved_tdo ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 2.56e-08 V                   ; 3.11 V              ; -0.0792 V           ; 0.135 V                              ; 0.16 V                               ; 5.59e-10 s                  ; 2.59e-10 s                  ; Yes                        ; Yes                        ; 3.08 V                      ; 2.56e-08 V                  ; 3.11 V             ; -0.0792 V          ; 0.135 V                             ; 0.16 V                              ; 5.59e-10 s                 ; 2.59e-10 s                 ; Yes                       ; Yes                       ;
+; IF_SAD_CLK1(n)      ; LVDS         ; 0 s                 ; 0 s                 ; 0.369 V                      ; -0.369 V                     ; -                   ; -                   ; -                                    ; -                                    ; 1.26e-10 s                  ; 1.3e-10 s                   ; Yes                        ; Yes                        ; 0.369 V                     ; -0.369 V                    ; -                  ; -                  ; -                                   ; -                                   ; 1.26e-10 s                 ; 1.3e-10 s                  ; Yes                       ; Yes                       ;
+; IF_SAD_CLK2(n)      ; LVDS         ; 0 s                 ; 0 s                 ; 0.369 V                      ; -0.369 V                     ; -                   ; -                   ; -                                    ; -                                    ; 1.26e-10 s                  ; 1.3e-10 s                   ; Yes                        ; Yes                        ; 0.369 V                     ; -0.369 V                    ; -                  ; -                  ; -                                   ; -                                   ; 1.26e-10 s                 ; 1.3e-10 s                  ; Yes                       ; Yes                       ;
+; IF_TEST(n)          ; LVDS         ; 0 s                 ; 0 s                 ; 0.369 V                      ; -0.369 V                     ; -                   ; -                   ; -                                    ; -                                    ; 1.26e-10 s                  ; 1.3e-10 s                   ; Yes                        ; Yes                        ; 0.369 V                     ; -0.369 V                    ; -                  ; -                  ; -                                   ; -                                   ; 1.26e-10 s                 ; 1.3e-10 s                  ; Yes                       ; Yes                       ;
++---------------------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Signal Integrity Metrics (Slow 1100mv 100c Model)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                ;
++---------------------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
+; Pin                 ; I/O Standard ; Board Delay on Rise ; Board Delay on Fall ; Steady State Voh at FPGA Pin ; Steady State Vol at FPGA Pin ; Voh Max at FPGA Pin ; Vol Min at FPGA Pin ; Ringback Voltage on Rise at FPGA Pin ; Ringback Voltage on Fall at FPGA Pin ; 10-90 Rise Time at FPGA Pin ; 90-10 Fall Time at FPGA Pin ; Monotonic Rise at FPGA Pin ; Monotonic Fall at FPGA Pin ; Steady State Voh at Far-end ; Steady State Vol at Far-end ; Voh Max at Far-end ; Vol Min at Far-end ; Ringback Voltage on Rise at Far-end ; Ringback Voltage on Fall at Far-end ; 10-90 Rise Time at Far-end ; 90-10 Fall Time at Far-end ; Monotonic Rise at Far-end ; Monotonic Fall at Far-end ;
++---------------------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
+; IF_SAD_CLK1         ; LVDS         ; 0 s                 ; 0 s                 ; 0.314 V                      ; -0.314 V                     ; -                   ; -                   ; -                                    ; -                                    ; 1.38e-10 s                  ; 1.42e-10 s                  ; Yes                        ; Yes                        ; 0.314 V                     ; -0.314 V                    ; -                  ; -                  ; -                                   ; -                                   ; 1.38e-10 s                 ; 1.42e-10 s                 ; Yes                       ; Yes                       ;
+; IF_SAD_RESET1       ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 4.73e-05 V                   ; 2.38 V              ; -0.0301 V           ; 0.21 V                               ; 0.2 V                                ; 4.78e-10 s                  ; 4.96e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 4.73e-05 V                  ; 2.38 V             ; -0.0301 V          ; 0.21 V                              ; 0.2 V                               ; 4.78e-10 s                 ; 4.96e-10 s                 ; No                        ; Yes                       ;
+; IF_SAD_SCLK1        ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 4.73e-05 V                   ; 2.38 V              ; -0.0297 V           ; 0.21 V                               ; 0.199 V                              ; 4.77e-10 s                  ; 4.97e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 4.73e-05 V                  ; 2.38 V             ; -0.0297 V          ; 0.21 V                              ; 0.199 V                             ; 4.77e-10 s                 ; 4.97e-10 s                 ; No                        ; Yes                       ;
+; IF_SAD_SDAT1        ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 4.81e-05 V                   ; 2.37 V              ; -0.0242 V           ; 0.257 V                              ; 0.097 V                              ; 5.03e-10 s                  ; 6.18e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 4.81e-05 V                  ; 2.37 V             ; -0.0242 V          ; 0.257 V                             ; 0.097 V                             ; 5.03e-10 s                 ; 6.18e-10 s                 ; No                        ; Yes                       ;
+; IF_SAD_SEN1         ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 4.28e-05 V                   ; 2.34 V              ; -0.00773 V          ; 0.214 V                              ; 0.065 V                              ; 5.06e-10 s                  ; 5.4e-10 s                   ; Yes                        ; Yes                        ; 2.32 V                      ; 4.28e-05 V                  ; 2.34 V             ; -0.00773 V         ; 0.214 V                             ; 0.065 V                             ; 5.06e-10 s                 ; 5.4e-10 s                  ; Yes                       ; Yes                       ;
+; IF_SAD_CLK2         ; LVDS         ; 0 s                 ; 0 s                 ; 0.314 V                      ; -0.314 V                     ; -                   ; -                   ; -                                    ; -                                    ; 1.38e-10 s                  ; 1.42e-10 s                  ; Yes                        ; Yes                        ; 0.314 V                     ; -0.314 V                    ; -                  ; -                  ; -                                   ; -                                   ; 1.38e-10 s                 ; 1.42e-10 s                 ; Yes                       ; Yes                       ;
+; IF_SAD_RESET2       ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 4.73e-05 V                   ; 2.38 V              ; -0.0297 V           ; 0.21 V                               ; 0.199 V                              ; 4.77e-10 s                  ; 4.97e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 4.73e-05 V                  ; 2.38 V             ; -0.0297 V          ; 0.21 V                              ; 0.199 V                             ; 4.77e-10 s                 ; 4.97e-10 s                 ; No                        ; Yes                       ;
+; IF_SAD_SCLK2        ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 4.81e-05 V                   ; 2.37 V              ; -0.0242 V           ; 0.257 V                              ; 0.097 V                              ; 5.03e-10 s                  ; 6.18e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 4.81e-05 V                  ; 2.37 V             ; -0.0242 V          ; 0.257 V                             ; 0.097 V                             ; 5.03e-10 s                 ; 6.18e-10 s                 ; No                        ; Yes                       ;
+; IF_SAD_SDAT2        ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 4.28e-05 V                   ; 2.34 V              ; -0.00773 V          ; 0.214 V                              ; 0.065 V                              ; 5.06e-10 s                  ; 5.4e-10 s                   ; Yes                        ; Yes                        ; 2.32 V                      ; 4.28e-05 V                  ; 2.34 V             ; -0.00773 V         ; 0.214 V                             ; 0.065 V                             ; 5.06e-10 s                 ; 5.4e-10 s                  ; Yes                       ; Yes                       ;
+; IF_SAD_SEN2         ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 4.73e-05 V                   ; 2.38 V              ; -0.0301 V           ; 0.21 V                               ; 0.2 V                                ; 4.78e-10 s                  ; 4.96e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 4.73e-05 V                  ; 2.38 V             ; -0.0301 V          ; 0.21 V                              ; 0.2 V                               ; 4.78e-10 s                 ; 4.96e-10 s                 ; No                        ; Yes                       ;
+; IF_IND_FPGA1        ; 3.3-V LVCMOS ; 0 s                 ; 0 s                 ; 3.08 V                       ; 3.87e-05 V                   ; 3.11 V              ; -0.0814 V           ; 0.131 V                              ; 0.136 V                              ; 5.88e-10 s                  ; 3.2e-10 s                   ; Yes                        ; Yes                        ; 3.08 V                      ; 3.87e-05 V                  ; 3.11 V             ; -0.0814 V          ; 0.131 V                             ; 0.136 V                             ; 5.88e-10 s                 ; 3.2e-10 s                  ; Yes                       ; Yes                       ;
+; IF_IND_FPGA2        ; 3.3-V LVCMOS ; 0 s                 ; 0 s                 ; 3.08 V                       ; 3.09e-05 V                   ; 3.09 V              ; -0.0462 V           ; 0.045 V                              ; 0.085 V                              ; 5.49e-10 s                  ; 3.06e-10 s                  ; Yes                        ; Yes                        ; 3.08 V                      ; 3.09e-05 V                  ; 3.09 V             ; -0.0462 V          ; 0.045 V                             ; 0.085 V                             ; 5.49e-10 s                 ; 3.06e-10 s                 ; Yes                       ; Yes                       ;
+; IF_TEST             ; LVDS         ; 0 s                 ; 0 s                 ; 0.314 V                      ; -0.314 V                     ; -                   ; -                   ; -                                    ; -                                    ; 1.38e-10 s                  ; 1.42e-10 s                  ; Yes                        ; Yes                        ; 0.314 V                     ; -0.314 V                    ; -                  ; -                  ; -                                   ; -                                   ; 1.38e-10 s                 ; 1.42e-10 s                 ; Yes                       ; Yes                       ;
+; SLO_DAC1_CS         ; 3.3-V LVCMOS ; 0 s                 ; 0 s                 ; 3.08 V                       ; 3.87e-05 V                   ; 3.11 V              ; -0.0814 V           ; 0.131 V                              ; 0.136 V                              ; 5.88e-10 s                  ; 3.2e-10 s                   ; Yes                        ; Yes                        ; 3.08 V                      ; 3.87e-05 V                  ; 3.11 V             ; -0.0814 V          ; 0.131 V                             ; 0.136 V                             ; 5.88e-10 s                 ; 3.2e-10 s                  ; Yes                       ; Yes                       ;
+; SLO_DAC1_SCLK       ; 3.3-V LVCMOS ; 0 s                 ; 0 s                 ; 3.08 V                       ; 3.09e-05 V                   ; 3.09 V              ; -0.0462 V           ; 0.045 V                              ; 0.085 V                              ; 5.49e-10 s                  ; 3.06e-10 s                  ; Yes                        ; Yes                        ; 3.08 V                      ; 3.09e-05 V                  ; 3.09 V             ; -0.0462 V          ; 0.045 V                             ; 0.085 V                             ; 5.49e-10 s                 ; 3.06e-10 s                 ; Yes                       ; Yes                       ;
+; SLO_DAC1_MOSI       ; 3.3-V LVCMOS ; 0 s                 ; 0 s                 ; 3.08 V                       ; 3.73e-05 V                   ; 3.11 V              ; -0.104 V            ; 0.101 V                              ; 0.139 V                              ; 5.54e-10 s                  ; 3.16e-10 s                  ; Yes                        ; Yes                        ; 3.08 V                      ; 3.73e-05 V                  ; 3.11 V             ; -0.104 V           ; 0.101 V                             ; 0.139 V                             ; 5.54e-10 s                 ; 3.16e-10 s                 ; Yes                       ; Yes                       ;
+; altera_reserved_tdo ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 5.15e-05 V                   ; 3.12 V              ; -0.037 V            ; 0.165 V                              ; 0.109 V                              ; 7.77e-10 s                  ; 4.14e-10 s                  ; No                         ; Yes                        ; 3.08 V                      ; 5.15e-05 V                  ; 3.12 V             ; -0.037 V           ; 0.165 V                             ; 0.109 V                             ; 7.77e-10 s                 ; 4.14e-10 s                 ; No                        ; Yes                       ;
+; IF_SAD_CLK1(n)      ; LVDS         ; 0 s                 ; 0 s                 ; 0.314 V                      ; -0.314 V                     ; -                   ; -                   ; -                                    ; -                                    ; 1.38e-10 s                  ; 1.42e-10 s                  ; Yes                        ; Yes                        ; 0.314 V                     ; -0.314 V                    ; -                  ; -                  ; -                                   ; -                                   ; 1.38e-10 s                 ; 1.42e-10 s                 ; Yes                       ; Yes                       ;
+; IF_SAD_CLK2(n)      ; LVDS         ; 0 s                 ; 0 s                 ; 0.314 V                      ; -0.314 V                     ; -                   ; -                   ; -                                    ; -                                    ; 1.38e-10 s                  ; 1.42e-10 s                  ; Yes                        ; Yes                        ; 0.314 V                     ; -0.314 V                    ; -                  ; -                  ; -                                   ; -                                   ; 1.38e-10 s                 ; 1.42e-10 s                 ; Yes                       ; Yes                       ;
+; IF_TEST(n)          ; LVDS         ; 0 s                 ; 0 s                 ; 0.314 V                      ; -0.314 V                     ; -                   ; -                   ; -                                    ; -                                    ; 1.38e-10 s                  ; 1.42e-10 s                  ; Yes                        ; Yes                        ; 0.314 V                     ; -0.314 V                    ; -                  ; -                  ; -                                   ; -                                   ; 1.38e-10 s                 ; 1.42e-10 s                 ; Yes                       ; Yes                       ;
++---------------------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Signal Integrity Metrics (Fast 1100mv n40c Model)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                ;
++---------------------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
+; Pin                 ; I/O Standard ; Board Delay on Rise ; Board Delay on Fall ; Steady State Voh at FPGA Pin ; Steady State Vol at FPGA Pin ; Voh Max at FPGA Pin ; Vol Min at FPGA Pin ; Ringback Voltage on Rise at FPGA Pin ; Ringback Voltage on Fall at FPGA Pin ; 10-90 Rise Time at FPGA Pin ; 90-10 Fall Time at FPGA Pin ; Monotonic Rise at FPGA Pin ; Monotonic Fall at FPGA Pin ; Steady State Voh at Far-end ; Steady State Vol at Far-end ; Voh Max at Far-end ; Vol Min at Far-end ; Ringback Voltage on Rise at Far-end ; Ringback Voltage on Fall at Far-end ; 10-90 Rise Time at Far-end ; 90-10 Fall Time at Far-end ; Monotonic Rise at Far-end ; Monotonic Fall at Far-end ;
++---------------------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
+; IF_SAD_CLK1         ; LVDS         ; 0 s                 ; 0 s                 ; 0.56 V                       ; -0.56 V                      ; -                   ; -                   ; -                                    ; -                                    ; 1.29e-10 s                  ; 1.33e-10 s                  ; Yes                        ; Yes                        ; 0.56 V                      ; -0.56 V                     ; -                  ; -                  ; -                                   ; -                                   ; 1.29e-10 s                 ; 1.33e-10 s                 ; Yes                       ; Yes                       ;
+; IF_SAD_RESET1       ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 2.38e-07 V                   ; 2.94 V              ; -0.135 V            ; 0.31 V                               ; 0.268 V                              ; 2.65e-10 s                  ; 2.64e-10 s                  ; No                         ; Yes                        ; 2.75 V                      ; 2.38e-07 V                  ; 2.94 V             ; -0.135 V           ; 0.31 V                              ; 0.268 V                             ; 2.65e-10 s                 ; 2.64e-10 s                 ; No                        ; Yes                       ;
+; IF_SAD_SCLK1        ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 2.38e-07 V                   ; 2.94 V              ; -0.139 V            ; 0.31 V                               ; 0.268 V                              ; 2.65e-10 s                  ; 2.63e-10 s                  ; No                         ; Yes                        ; 2.75 V                      ; 2.38e-07 V                  ; 2.94 V             ; -0.139 V           ; 0.31 V                              ; 0.268 V                             ; 2.65e-10 s                 ; 2.63e-10 s                 ; No                        ; Yes                       ;
+; IF_SAD_SDAT1        ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 2.45e-07 V                   ; 2.93 V              ; -0.127 V            ; 0.351 V                              ; 0.317 V                              ; 2.74e-10 s                  ; 2.82e-10 s                  ; No                         ; No                         ; 2.75 V                      ; 2.45e-07 V                  ; 2.93 V             ; -0.127 V           ; 0.351 V                             ; 0.317 V                             ; 2.74e-10 s                 ; 2.82e-10 s                 ; No                        ; No                        ;
+; IF_SAD_SEN1         ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 1.99e-07 V                   ; 2.83 V              ; -0.0718 V           ; 0.269 V                              ; 0.234 V                              ; 2.77e-10 s                  ; 2.75e-10 s                  ; Yes                        ; Yes                        ; 2.75 V                      ; 1.99e-07 V                  ; 2.83 V             ; -0.0718 V          ; 0.269 V                             ; 0.234 V                             ; 2.77e-10 s                 ; 2.75e-10 s                 ; Yes                       ; Yes                       ;
+; IF_SAD_CLK2         ; LVDS         ; 0 s                 ; 0 s                 ; 0.56 V                       ; -0.56 V                      ; -                   ; -                   ; -                                    ; -                                    ; 1.29e-10 s                  ; 1.33e-10 s                  ; Yes                        ; Yes                        ; 0.56 V                      ; -0.56 V                     ; -                  ; -                  ; -                                   ; -                                   ; 1.29e-10 s                 ; 1.33e-10 s                 ; Yes                       ; Yes                       ;
+; IF_SAD_RESET2       ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 2.38e-07 V                   ; 2.94 V              ; -0.139 V            ; 0.31 V                               ; 0.268 V                              ; 2.65e-10 s                  ; 2.63e-10 s                  ; No                         ; Yes                        ; 2.75 V                      ; 2.38e-07 V                  ; 2.94 V             ; -0.139 V           ; 0.31 V                              ; 0.268 V                             ; 2.65e-10 s                 ; 2.63e-10 s                 ; No                        ; Yes                       ;
+; IF_SAD_SCLK2        ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 2.45e-07 V                   ; 2.93 V              ; -0.127 V            ; 0.351 V                              ; 0.317 V                              ; 2.74e-10 s                  ; 2.82e-10 s                  ; No                         ; No                         ; 2.75 V                      ; 2.45e-07 V                  ; 2.93 V             ; -0.127 V           ; 0.351 V                             ; 0.317 V                             ; 2.74e-10 s                 ; 2.82e-10 s                 ; No                        ; No                        ;
+; IF_SAD_SDAT2        ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 1.99e-07 V                   ; 2.83 V              ; -0.0718 V           ; 0.269 V                              ; 0.234 V                              ; 2.77e-10 s                  ; 2.75e-10 s                  ; Yes                        ; Yes                        ; 2.75 V                      ; 1.99e-07 V                  ; 2.83 V             ; -0.0718 V          ; 0.269 V                             ; 0.234 V                             ; 2.77e-10 s                 ; 2.75e-10 s                 ; Yes                       ; Yes                       ;
+; IF_SAD_SEN2         ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 2.38e-07 V                   ; 2.94 V              ; -0.135 V            ; 0.31 V                               ; 0.268 V                              ; 2.65e-10 s                  ; 2.64e-10 s                  ; No                         ; Yes                        ; 2.75 V                      ; 2.38e-07 V                  ; 2.94 V             ; -0.135 V           ; 0.31 V                              ; 0.268 V                             ; 2.65e-10 s                 ; 2.64e-10 s                 ; No                        ; Yes                       ;
+; IF_IND_FPGA1        ; 3.3-V LVCMOS ; 0 s                 ; 0 s                 ; 3.63 V                       ; 4.64e-07 V                   ; 3.74 V              ; -0.508 V            ; 0.391 V                              ; 0.647 V                              ; 3.08e-10 s                  ; 1.34e-10 s                  ; No                         ; No                         ; 3.63 V                      ; 4.64e-07 V                  ; 3.74 V             ; -0.508 V           ; 0.391 V                             ; 0.647 V                             ; 3.08e-10 s                 ; 1.34e-10 s                 ; No                        ; No                        ;
+; IF_IND_FPGA2        ; 3.3-V LVCMOS ; 0 s                 ; 0 s                 ; 3.63 V                       ; 3.38e-07 V                   ; 3.67 V              ; -0.403 V            ; 0.084 V                              ; 0.542 V                              ; 3.5e-10 s                   ; 1.32e-10 s                  ; Yes                        ; No                         ; 3.63 V                      ; 3.38e-07 V                  ; 3.67 V             ; -0.403 V           ; 0.084 V                             ; 0.542 V                             ; 3.5e-10 s                  ; 1.32e-10 s                 ; Yes                       ; No                        ;
+; IF_TEST             ; LVDS         ; 0 s                 ; 0 s                 ; 0.56 V                       ; -0.56 V                      ; -                   ; -                   ; -                                    ; -                                    ; 1.29e-10 s                  ; 1.33e-10 s                  ; Yes                        ; Yes                        ; 0.56 V                      ; -0.56 V                     ; -                  ; -                  ; -                                   ; -                                   ; 1.29e-10 s                 ; 1.33e-10 s                 ; Yes                       ; Yes                       ;
+; SLO_DAC1_CS         ; 3.3-V LVCMOS ; 0 s                 ; 0 s                 ; 3.63 V                       ; 4.64e-07 V                   ; 3.74 V              ; -0.508 V            ; 0.391 V                              ; 0.647 V                              ; 3.08e-10 s                  ; 1.34e-10 s                  ; No                         ; No                         ; 3.63 V                      ; 4.64e-07 V                  ; 3.74 V             ; -0.508 V           ; 0.391 V                             ; 0.647 V                             ; 3.08e-10 s                 ; 1.34e-10 s                 ; No                        ; No                        ;
+; SLO_DAC1_SCLK       ; 3.3-V LVCMOS ; 0 s                 ; 0 s                 ; 3.63 V                       ; 3.38e-07 V                   ; 3.67 V              ; -0.403 V            ; 0.084 V                              ; 0.542 V                              ; 3.5e-10 s                   ; 1.32e-10 s                  ; Yes                        ; No                         ; 3.63 V                      ; 3.38e-07 V                  ; 3.67 V             ; -0.403 V           ; 0.084 V                             ; 0.542 V                             ; 3.5e-10 s                  ; 1.32e-10 s                 ; Yes                       ; No                        ;
+; SLO_DAC1_MOSI       ; 3.3-V LVCMOS ; 0 s                 ; 0 s                 ; 3.63 V                       ; 4.42e-07 V                   ; 3.75 V              ; -0.588 V            ; 0.329 V                              ; 0.704 V                              ; 2.77e-10 s                  ; 1.3e-10 s                   ; Yes                        ; No                         ; 3.63 V                      ; 4.42e-07 V                  ; 3.75 V             ; -0.588 V           ; 0.329 V                             ; 0.704 V                             ; 2.77e-10 s                 ; 1.3e-10 s                  ; Yes                       ; No                        ;
+; altera_reserved_tdo ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.63 V                       ; 5.9e-07 V                    ; 3.68 V              ; -0.193 V            ; 0.293 V                              ; 0.245 V                              ; 4.06e-10 s                  ; 2.62e-10 s                  ; Yes                        ; No                         ; 3.63 V                      ; 5.9e-07 V                   ; 3.68 V             ; -0.193 V           ; 0.293 V                             ; 0.245 V                             ; 4.06e-10 s                 ; 2.62e-10 s                 ; Yes                       ; No                        ;
+; IF_SAD_CLK1(n)      ; LVDS         ; 0 s                 ; 0 s                 ; 0.56 V                       ; -0.56 V                      ; -                   ; -                   ; -                                    ; -                                    ; 1.29e-10 s                  ; 1.33e-10 s                  ; Yes                        ; Yes                        ; 0.56 V                      ; -0.56 V                     ; -                  ; -                  ; -                                   ; -                                   ; 1.29e-10 s                 ; 1.33e-10 s                 ; Yes                       ; Yes                       ;
+; IF_SAD_CLK2(n)      ; LVDS         ; 0 s                 ; 0 s                 ; 0.56 V                       ; -0.56 V                      ; -                   ; -                   ; -                                    ; -                                    ; 1.29e-10 s                  ; 1.33e-10 s                  ; Yes                        ; Yes                        ; 0.56 V                      ; -0.56 V                     ; -                  ; -                  ; -                                   ; -                                   ; 1.29e-10 s                 ; 1.33e-10 s                 ; Yes                       ; Yes                       ;
+; IF_TEST(n)          ; LVDS         ; 0 s                 ; 0 s                 ; 0.56 V                       ; -0.56 V                      ; -                   ; -                   ; -                                    ; -                                    ; 1.29e-10 s                  ; 1.33e-10 s                  ; Yes                        ; Yes                        ; 0.56 V                      ; -0.56 V                     ; -                  ; -                  ; -                                   ; -                                   ; 1.29e-10 s                 ; 1.33e-10 s                 ; Yes                       ; Yes                       ;
++---------------------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Signal Integrity Metrics (Fast 1100mv 100c Model)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                ;
++---------------------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
+; Pin                 ; I/O Standard ; Board Delay on Rise ; Board Delay on Fall ; Steady State Voh at FPGA Pin ; Steady State Vol at FPGA Pin ; Voh Max at FPGA Pin ; Vol Min at FPGA Pin ; Ringback Voltage on Rise at FPGA Pin ; Ringback Voltage on Fall at FPGA Pin ; 10-90 Rise Time at FPGA Pin ; 90-10 Fall Time at FPGA Pin ; Monotonic Rise at FPGA Pin ; Monotonic Fall at FPGA Pin ; Steady State Voh at Far-end ; Steady State Vol at Far-end ; Voh Max at Far-end ; Vol Min at Far-end ; Ringback Voltage on Rise at Far-end ; Ringback Voltage on Fall at Far-end ; 10-90 Rise Time at Far-end ; 90-10 Fall Time at Far-end ; Monotonic Rise at Far-end ; Monotonic Fall at Far-end ;
++---------------------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
+; IF_SAD_CLK1         ; LVDS         ; 0 s                 ; 0 s                 ; 0.481 V                      ; -0.481 V                     ; -                   ; -                   ; -                                    ; -                                    ; 1.42e-10 s                  ; 1.46e-10 s                  ; Yes                        ; Yes                        ; 0.481 V                     ; -0.481 V                    ; -                  ; -                  ; -                                   ; -                                   ; 1.42e-10 s                 ; 1.46e-10 s                 ; Yes                       ; Yes                       ;
+; IF_SAD_RESET1       ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 0.00041 V                    ; 2.85 V              ; -0.076 V            ; 0.363 V                              ; 0.16 V                               ; 3.08e-10 s                  ; 4.37e-10 s                  ; No                         ; No                         ; 2.75 V                      ; 0.00041 V                   ; 2.85 V             ; -0.076 V           ; 0.363 V                             ; 0.16 V                              ; 3.08e-10 s                 ; 4.37e-10 s                 ; No                        ; No                        ;
+; IF_SAD_SCLK1        ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 0.00041 V                    ; 2.85 V              ; -0.0763 V           ; 0.365 V                              ; 0.161 V                              ; 3.08e-10 s                  ; 4.37e-10 s                  ; No                         ; No                         ; 2.75 V                      ; 0.00041 V                   ; 2.85 V             ; -0.0763 V          ; 0.365 V                             ; 0.161 V                             ; 3.08e-10 s                 ; 4.37e-10 s                 ; No                        ; No                        ;
+; IF_SAD_SDAT1        ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 0.000419 V                   ; 2.85 V              ; -0.0671 V           ; 0.203 V                              ; 0.19 V                               ; 4.57e-10 s                  ; 4.54e-10 s                  ; No                         ; No                         ; 2.75 V                      ; 0.000419 V                  ; 2.85 V             ; -0.0671 V          ; 0.203 V                             ; 0.19 V                              ; 4.57e-10 s                 ; 4.54e-10 s                 ; No                        ; No                        ;
+; IF_SAD_SEN1         ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 0.000362 V                   ; 2.79 V              ; -0.0303 V           ; 0.139 V                              ; 0.127 V                              ; 4.44e-10 s                  ; 4.38e-10 s                  ; No                         ; Yes                        ; 2.75 V                      ; 0.000362 V                  ; 2.79 V             ; -0.0303 V          ; 0.139 V                             ; 0.127 V                             ; 4.44e-10 s                 ; 4.38e-10 s                 ; No                        ; Yes                       ;
+; IF_SAD_CLK2         ; LVDS         ; 0 s                 ; 0 s                 ; 0.481 V                      ; -0.481 V                     ; -                   ; -                   ; -                                    ; -                                    ; 1.42e-10 s                  ; 1.46e-10 s                  ; Yes                        ; Yes                        ; 0.481 V                     ; -0.481 V                    ; -                  ; -                  ; -                                   ; -                                   ; 1.42e-10 s                 ; 1.46e-10 s                 ; Yes                       ; Yes                       ;
+; IF_SAD_RESET2       ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 0.00041 V                    ; 2.85 V              ; -0.0763 V           ; 0.365 V                              ; 0.161 V                              ; 3.08e-10 s                  ; 4.37e-10 s                  ; No                         ; No                         ; 2.75 V                      ; 0.00041 V                   ; 2.85 V             ; -0.0763 V          ; 0.365 V                             ; 0.161 V                             ; 3.08e-10 s                 ; 4.37e-10 s                 ; No                        ; No                        ;
+; IF_SAD_SCLK2        ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 0.000419 V                   ; 2.85 V              ; -0.0671 V           ; 0.203 V                              ; 0.19 V                               ; 4.57e-10 s                  ; 4.54e-10 s                  ; No                         ; No                         ; 2.75 V                      ; 0.000419 V                  ; 2.85 V             ; -0.0671 V          ; 0.203 V                             ; 0.19 V                              ; 4.57e-10 s                 ; 4.54e-10 s                 ; No                        ; No                        ;
+; IF_SAD_SDAT2        ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 0.000362 V                   ; 2.79 V              ; -0.0303 V           ; 0.139 V                              ; 0.127 V                              ; 4.44e-10 s                  ; 4.38e-10 s                  ; No                         ; Yes                        ; 2.75 V                      ; 0.000362 V                  ; 2.79 V             ; -0.0303 V          ; 0.139 V                             ; 0.127 V                             ; 4.44e-10 s                 ; 4.38e-10 s                 ; No                        ; Yes                       ;
+; IF_SAD_SEN2         ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 0.00041 V                    ; 2.85 V              ; -0.076 V            ; 0.363 V                              ; 0.16 V                               ; 3.08e-10 s                  ; 4.37e-10 s                  ; No                         ; No                         ; 2.75 V                      ; 0.00041 V                   ; 2.85 V             ; -0.076 V           ; 0.363 V                             ; 0.16 V                              ; 3.08e-10 s                 ; 4.37e-10 s                 ; No                        ; No                        ;
+; IF_IND_FPGA1        ; 3.3-V LVCMOS ; 0 s                 ; 0 s                 ; 3.63 V                       ; 0.000395 V                   ; 3.65 V              ; -0.232 V            ; 0.065 V                              ; 0.547 V                              ; 4.68e-10 s                  ; 2.07e-10 s                  ; Yes                        ; No                         ; 3.63 V                      ; 0.000395 V                  ; 3.65 V             ; -0.232 V           ; 0.065 V                             ; 0.547 V                             ; 4.68e-10 s                 ; 2.07e-10 s                 ; Yes                       ; No                        ;
+; IF_IND_FPGA2        ; 3.3-V LVCMOS ; 0 s                 ; 0 s                 ; 3.63 V                       ; 0.000307 V                   ; 3.64 V              ; -0.165 V            ; 0.022 V                              ; 0.425 V                              ; 4.58e-10 s                  ; 2e-10 s                     ; Yes                        ; No                         ; 3.63 V                      ; 0.000307 V                  ; 3.64 V             ; -0.165 V           ; 0.022 V                             ; 0.425 V                             ; 4.58e-10 s                 ; 2e-10 s                    ; Yes                       ; No                        ;
+; IF_TEST             ; LVDS         ; 0 s                 ; 0 s                 ; 0.481 V                      ; -0.481 V                     ; -                   ; -                   ; -                                    ; -                                    ; 1.42e-10 s                  ; 1.46e-10 s                  ; Yes                        ; Yes                        ; 0.481 V                     ; -0.481 V                    ; -                  ; -                  ; -                                   ; -                                   ; 1.42e-10 s                 ; 1.46e-10 s                 ; Yes                       ; Yes                       ;
+; SLO_DAC1_CS         ; 3.3-V LVCMOS ; 0 s                 ; 0 s                 ; 3.63 V                       ; 0.000395 V                   ; 3.65 V              ; -0.232 V            ; 0.065 V                              ; 0.547 V                              ; 4.68e-10 s                  ; 2.07e-10 s                  ; Yes                        ; No                         ; 3.63 V                      ; 0.000395 V                  ; 3.65 V             ; -0.232 V           ; 0.065 V                             ; 0.547 V                             ; 4.68e-10 s                 ; 2.07e-10 s                 ; Yes                       ; No                        ;
+; SLO_DAC1_SCLK       ; 3.3-V LVCMOS ; 0 s                 ; 0 s                 ; 3.63 V                       ; 0.000307 V                   ; 3.64 V              ; -0.165 V            ; 0.022 V                              ; 0.425 V                              ; 4.58e-10 s                  ; 2e-10 s                     ; Yes                        ; No                         ; 3.63 V                      ; 0.000307 V                  ; 3.64 V             ; -0.165 V           ; 0.022 V                             ; 0.425 V                             ; 4.58e-10 s                 ; 2e-10 s                    ; Yes                       ; No                        ;
+; SLO_DAC1_MOSI       ; 3.3-V LVCMOS ; 0 s                 ; 0 s                 ; 3.63 V                       ; 0.000379 V                   ; 3.65 V              ; -0.289 V            ; 0.051 V                              ; 0.523 V                              ; 4.36e-10 s                  ; 1.95e-10 s                  ; Yes                        ; No                         ; 3.63 V                      ; 0.000379 V                  ; 3.65 V             ; -0.289 V           ; 0.051 V                             ; 0.523 V                             ; 4.36e-10 s                 ; 1.95e-10 s                 ; Yes                       ; No                        ;
+; altera_reserved_tdo ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.63 V                       ; 0.000519 V                   ; 3.68 V              ; -0.039 V            ; 0.235 V                              ; 0.074 V                              ; 6e-10 s                     ; 3e-10 s                     ; No                         ; Yes                        ; 3.63 V                      ; 0.000519 V                  ; 3.68 V             ; -0.039 V           ; 0.235 V                             ; 0.074 V                             ; 6e-10 s                    ; 3e-10 s                    ; No                        ; Yes                       ;
+; IF_SAD_CLK1(n)      ; LVDS         ; 0 s                 ; 0 s                 ; 0.481 V                      ; -0.481 V                     ; -                   ; -                   ; -                                    ; -                                    ; 1.42e-10 s                  ; 1.46e-10 s                  ; Yes                        ; Yes                        ; 0.481 V                     ; -0.481 V                    ; -                  ; -                  ; -                                   ; -                                   ; 1.42e-10 s                 ; 1.46e-10 s                 ; Yes                       ; Yes                       ;
+; IF_SAD_CLK2(n)      ; LVDS         ; 0 s                 ; 0 s                 ; 0.481 V                      ; -0.481 V                     ; -                   ; -                   ; -                                    ; -                                    ; 1.42e-10 s                  ; 1.46e-10 s                  ; Yes                        ; Yes                        ; 0.481 V                     ; -0.481 V                    ; -                  ; -                  ; -                                   ; -                                   ; 1.42e-10 s                 ; 1.46e-10 s                 ; Yes                       ; Yes                       ;
+; IF_TEST(n)          ; LVDS         ; 0 s                 ; 0 s                 ; 0.481 V                      ; -0.481 V                     ; -                   ; -                   ; -                                    ; -                                    ; 1.42e-10 s                  ; 1.46e-10 s                  ; Yes                        ; Yes                        ; 0.481 V                     ; -0.481 V                    ; -                  ; -                  ; -                                   ; -                                   ; 1.42e-10 s                 ; 1.46e-10 s                 ; Yes                       ; Yes                       ;
++---------------------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Setup Transfers                                                                                                                                                                                 ;
++------------------------------------------------------------------------+------------------------------------------------------------------------+------------+------------+----------+----------+
+; From Clock                                                             ; To Clock                                                               ; RR Paths   ; FR Paths   ; RF Paths ; FF Paths ;
++------------------------------------------------------------------------+------------------------------------------------------------------------+------------+------------+----------+----------+
+; A1|sys_pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; A1|sys_pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 182867     ; 0          ; 0        ; 0        ;
+; altera_reserved_tck                                                    ; A1|sys_pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; false path ; false path ; 0        ; 0        ;
+; IF_SAD_CKO1                                                            ; A1|sys_pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; false path ; 0          ; 0        ; 0        ;
+; IF_SAD_CKO2                                                            ; A1|sys_pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; false path ; 0          ; 0        ; 0        ;
+; A1|sys_pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; altera_reserved_tck                                                    ; false path ; 0          ; 0        ; 0        ;
+; altera_reserved_tck                                                    ; altera_reserved_tck                                                    ; 1537       ; 0          ; 39       ; 2        ;
+; A1|sys_pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; IF_SAD_CKO1                                                            ; false path ; 0          ; 0        ; 0        ;
+; IF_SAD_CKO1                                                            ; IF_SAD_CKO1                                                            ; 1052       ; 0          ; 0        ; 0        ;
+; A1|sys_pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; IF_SAD_CKO2                                                            ; false path ; 0          ; 0        ; 0        ;
+; IF_SAD_CKO1                                                            ; IF_SAD_CKO2                                                            ; false path ; 0          ; 0        ; 0        ;
+; IF_SAD_CKO2                                                            ; IF_SAD_CKO2                                                            ; 250        ; 0          ; 0        ; 0        ;
+; IF_SYS_CLK                                                             ; IF_SYS_CLK                                                             ; 1702       ; 0          ; 0        ; 0        ;
++------------------------------------------------------------------------+------------------------------------------------------------------------+------------+------------+----------+----------+
+Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Hold Transfers                                                                                                                                                                                  ;
++------------------------------------------------------------------------+------------------------------------------------------------------------+------------+------------+----------+----------+
+; From Clock                                                             ; To Clock                                                               ; RR Paths   ; FR Paths   ; RF Paths ; FF Paths ;
++------------------------------------------------------------------------+------------------------------------------------------------------------+------------+------------+----------+----------+
+; A1|sys_pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; A1|sys_pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 182867     ; 0          ; 0        ; 0        ;
+; altera_reserved_tck                                                    ; A1|sys_pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; false path ; false path ; 0        ; 0        ;
+; IF_SAD_CKO1                                                            ; A1|sys_pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; false path ; 0          ; 0        ; 0        ;
+; IF_SAD_CKO2                                                            ; A1|sys_pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; false path ; 0          ; 0        ; 0        ;
+; A1|sys_pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; altera_reserved_tck                                                    ; false path ; 0          ; 0        ; 0        ;
+; altera_reserved_tck                                                    ; altera_reserved_tck                                                    ; 1537       ; 0          ; 39       ; 2        ;
+; A1|sys_pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; IF_SAD_CKO1                                                            ; false path ; 0          ; 0        ; 0        ;
+; IF_SAD_CKO1                                                            ; IF_SAD_CKO1                                                            ; 1052       ; 0          ; 0        ; 0        ;
+; A1|sys_pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; IF_SAD_CKO2                                                            ; false path ; 0          ; 0        ; 0        ;
+; IF_SAD_CKO1                                                            ; IF_SAD_CKO2                                                            ; false path ; 0          ; 0        ; 0        ;
+; IF_SAD_CKO2                                                            ; IF_SAD_CKO2                                                            ; 250        ; 0          ; 0        ; 0        ;
+; IF_SYS_CLK                                                             ; IF_SYS_CLK                                                             ; 1702       ; 0          ; 0        ; 0        ;
++------------------------------------------------------------------------+------------------------------------------------------------------------+------------+------------+----------+----------+
+Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Recovery Transfers                                                                                                                                                                            ;
++------------------------------------------------------------------------+------------------------------------------------------------------------+------------+----------+----------+----------+
+; From Clock                                                             ; To Clock                                                               ; RR Paths   ; FR Paths ; RF Paths ; FF Paths ;
++------------------------------------------------------------------------+------------------------------------------------------------------------+------------+----------+----------+----------+
+; A1|sys_pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; A1|sys_pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 948        ; 0        ; 0        ; 0        ;
+; IF_SYS_CLK                                                             ; A1|sys_pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; false path ; 0        ; 0        ; 0        ;
+; altera_reserved_tck                                                    ; altera_reserved_tck                                                    ; 69         ; 0        ; 2        ; 0        ;
+; IF_SYS_CLK                                                             ; IF_SAD_CKO1                                                            ; false path ; 0        ; 0        ; 0        ;
+; IF_SYS_CLK                                                             ; IF_SYS_CLK                                                             ; 57         ; 0        ; 0        ; 0        ;
++------------------------------------------------------------------------+------------------------------------------------------------------------+------------+----------+----------+----------+
+Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Removal Transfers                                                                                                                                                                             ;
++------------------------------------------------------------------------+------------------------------------------------------------------------+------------+----------+----------+----------+
+; From Clock                                                             ; To Clock                                                               ; RR Paths   ; FR Paths ; RF Paths ; FF Paths ;
++------------------------------------------------------------------------+------------------------------------------------------------------------+------------+----------+----------+----------+
+; A1|sys_pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; A1|sys_pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 948        ; 0        ; 0        ; 0        ;
+; IF_SYS_CLK                                                             ; A1|sys_pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; false path ; 0        ; 0        ; 0        ;
+; altera_reserved_tck                                                    ; altera_reserved_tck                                                    ; 69         ; 0        ; 2        ; 0        ;
+; IF_SYS_CLK                                                             ; IF_SAD_CKO1                                                            ; false path ; 0        ; 0        ; 0        ;
+; IF_SYS_CLK                                                             ; IF_SYS_CLK                                                             ; 57         ; 0        ; 0        ; 0        ;
++------------------------------------------------------------------------+------------------------------------------------------------------------+------------+----------+----------+----------+
+Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
+
+
+---------------
+; Report TCCS ;
+---------------
+No dedicated SERDES Transmitter circuitry present in device or used in design
+
+
+---------------
+; Report RSKM ;
+---------------
+No non-DPA dedicated SERDES Receiver circuitry present in device or used in design
+
+
++------------------------------------------------+
+; Unconstrained Paths Summary                    ;
++---------------------------------+-------+------+
+; Property                        ; Setup ; Hold ;
++---------------------------------+-------+------+
+; Illegal Clocks                  ; 0     ; 0    ;
+; Unconstrained Clocks            ; 0     ; 0    ;
+; Unconstrained Input Ports       ; 31    ; 31   ;
+; Unconstrained Input Port Paths  ; 115   ; 115  ;
+; Unconstrained Output Ports      ; 20    ; 20   ;
+; Unconstrained Output Port Paths ; 40    ; 40   ;
++---------------------------------+-------+------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Clock Status Summary                                                                                                                                                      ;
++------------------------------------------------------------------------+------------------------------------------------------------------------+-----------+-------------+
+; Target                                                                 ; Clock                                                                  ; Type      ; Status      ;
++------------------------------------------------------------------------+------------------------------------------------------------------------+-----------+-------------+
+; A1|sys_pll_inst|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]   ; A1|sys_pll_inst|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]   ; Generated ; Constrained ;
+; A1|sys_pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; A1|sys_pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; Generated ; Constrained ;
+; A1|sys_pll_inst|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk ; A1|sys_pll_inst|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk ; Generated ; Constrained ;
+; IF_SAD_CKO1                                                            ; IF_SAD_CKO1                                                            ; Base      ; Constrained ;
+; IF_SAD_CKO2                                                            ; IF_SAD_CKO2                                                            ; Base      ; Constrained ;
+; IF_SYS_CLK                                                             ; IF_SYS_CLK                                                             ; Base      ; Constrained ;
+; altera_reserved_tck                                                    ; altera_reserved_tck                                                    ; Base      ; Constrained ;
++------------------------------------------------------------------------+------------------------------------------------------------------------+-----------+-------------+
+
+
++------------------------------------------------------------------------------------------------------------+
+; Unconstrained Input Ports                                                                                  ;
++---------------------+--------------------------------------------------------------------------------------+
+; Input Port          ; Comment                                                                              ;
++---------------------+--------------------------------------------------------------------------------------+
+; IF_SAD_D1[0]        ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; IF_SAD_D1[1]        ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; IF_SAD_D1[2]        ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; IF_SAD_D1[3]        ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; IF_SAD_D1[4]        ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; IF_SAD_D1[5]        ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; IF_SAD_D1[6]        ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; IF_SAD_D1[7]        ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; IF_SAD_D1[8]        ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; IF_SAD_D1[9]        ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; IF_SAD_D1[10]       ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; IF_SAD_D1[11]       ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; IF_SAD_D1[12]       ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; IF_SAD_D1[13]       ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; IF_SAD_D2[0]        ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; IF_SAD_D2[1]        ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; IF_SAD_D2[2]        ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; IF_SAD_D2[3]        ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; IF_SAD_D2[4]        ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; IF_SAD_D2[5]        ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; IF_SAD_D2[6]        ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; IF_SAD_D2[7]        ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; IF_SAD_D2[8]        ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; IF_SAD_D2[9]        ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; IF_SAD_D2[10]       ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; IF_SAD_D2[11]       ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; IF_SAD_D2[12]       ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; IF_SAD_D2[13]       ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; IF_SAD_SDOUT1       ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; altera_reserved_tdi ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; altera_reserved_tms ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
++---------------------+--------------------------------------------------------------------------------------+
+
+
++-------------------------------------------------------------------------------------------------------------+
+; Unconstrained Output Ports                                                                                  ;
++---------------------+---------------------------------------------------------------------------------------+
+; Output Port         ; Comment                                                                               ;
++---------------------+---------------------------------------------------------------------------------------+
+; IF_IND_FPGA1        ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; IF_IND_FPGA2        ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; IF_SAD_CLK1         ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; IF_SAD_CLK1(n)      ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; IF_SAD_CLK2         ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; IF_SAD_CLK2(n)      ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; IF_SAD_RESET1       ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; IF_SAD_RESET2       ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; IF_SAD_SCLK1        ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; IF_SAD_SCLK2        ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; IF_SAD_SDAT1        ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; IF_SAD_SDAT2        ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; IF_SAD_SEN1         ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; IF_SAD_SEN2         ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; IF_TEST             ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; IF_TEST(n)          ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; SLO_DAC1_CS         ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; SLO_DAC1_MOSI       ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; SLO_DAC1_SCLK       ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; altera_reserved_tdo ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
++---------------------+---------------------------------------------------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------+
+; Unconstrained Input Ports                                                                                  ;
++---------------------+--------------------------------------------------------------------------------------+
+; Input Port          ; Comment                                                                              ;
++---------------------+--------------------------------------------------------------------------------------+
+; IF_SAD_D1[0]        ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; IF_SAD_D1[1]        ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; IF_SAD_D1[2]        ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; IF_SAD_D1[3]        ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; IF_SAD_D1[4]        ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; IF_SAD_D1[5]        ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; IF_SAD_D1[6]        ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; IF_SAD_D1[7]        ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; IF_SAD_D1[8]        ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; IF_SAD_D1[9]        ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; IF_SAD_D1[10]       ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; IF_SAD_D1[11]       ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; IF_SAD_D1[12]       ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; IF_SAD_D1[13]       ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; IF_SAD_D2[0]        ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; IF_SAD_D2[1]        ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; IF_SAD_D2[2]        ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; IF_SAD_D2[3]        ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; IF_SAD_D2[4]        ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; IF_SAD_D2[5]        ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; IF_SAD_D2[6]        ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; IF_SAD_D2[7]        ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; IF_SAD_D2[8]        ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; IF_SAD_D2[9]        ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; IF_SAD_D2[10]       ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; IF_SAD_D2[11]       ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; IF_SAD_D2[12]       ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; IF_SAD_D2[13]       ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; IF_SAD_SDOUT1       ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; altera_reserved_tdi ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; altera_reserved_tms ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
++---------------------+--------------------------------------------------------------------------------------+
+
+
++-------------------------------------------------------------------------------------------------------------+
+; Unconstrained Output Ports                                                                                  ;
++---------------------+---------------------------------------------------------------------------------------+
+; Output Port         ; Comment                                                                               ;
++---------------------+---------------------------------------------------------------------------------------+
+; IF_IND_FPGA1        ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; IF_IND_FPGA2        ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; IF_SAD_CLK1         ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; IF_SAD_CLK1(n)      ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; IF_SAD_CLK2         ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; IF_SAD_CLK2(n)      ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; IF_SAD_RESET1       ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; IF_SAD_RESET2       ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; IF_SAD_SCLK1        ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; IF_SAD_SCLK2        ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; IF_SAD_SDAT1        ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; IF_SAD_SDAT2        ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; IF_SAD_SEN1         ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; IF_SAD_SEN2         ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; IF_TEST             ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; IF_TEST(n)          ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; SLO_DAC1_CS         ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; SLO_DAC1_MOSI       ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; SLO_DAC1_SCLK       ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; altera_reserved_tdo ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
++---------------------+---------------------------------------------------------------------------------------+
+
+
++------------------------------------+
+; TimeQuest Timing Analyzer Messages ;
++------------------------------------+
+Info: *******************************************************************
+Info: Running Quartus Prime TimeQuest Timing Analyzer
+    Info: Version 16.0.0 Build 211 04/27/2016 SJ Lite Edition
+    Info: Processing started: Wed Jun 13 18:17:30 2018
+Info: Command: quartus_sta dmb1test -c dmb1test
+Info: qsta_default_script.tcl version: #1
+Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
+Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
+Info (21077): Low junction temperature is -40 degrees C
+Info (21077): High junction temperature is 100 degrees C
+Info (332164): Evaluating HDL-embedded SDC commands
+    Info (332165): Entity alt_jtag_atlantic
+        Info (332166): set_false_path -from [get_registers {*|alt_jtag_atlantic:*|jupdate}] -to [get_registers {*|alt_jtag_atlantic:*|jupdate1*}] 
+        Info (332166): set_false_path -from [get_registers {*|alt_jtag_atlantic:*|rdata[*]}] -to [get_registers {*|alt_jtag_atlantic*|td_shift[*]}]
+        Info (332166): set_false_path -from [get_registers {*|alt_jtag_atlantic:*|rdata[*]}] -to [get_registers {*|alt_jtag_atlantic*|td_shift[*]}]
+        Info (332166): set_false_path -from [get_registers {*|alt_jtag_atlantic:*|rdata[*]}] -to [get_registers {*|alt_jtag_atlantic*|td_shift[*]}]
+        Info (332166): set_false_path -from [get_registers {*|alt_jtag_atlantic:*|rdata[*]}] -to [get_registers {*|alt_jtag_atlantic*|td_shift[*]}]
+        Info (332166): set_false_path -from [get_registers {*|alt_jtag_atlantic:*|rdata[*]}] -to [get_registers {*|alt_jtag_atlantic*|td_shift[*]}]
+        Info (332166): set_false_path -from [get_registers {*|alt_jtag_atlantic:*|rdata[*]}] -to [get_registers {*|alt_jtag_atlantic*|td_shift[*]}]
+        Info (332166): set_false_path -from [get_registers {*|alt_jtag_atlantic:*|rdata[*]}] -to [get_registers {*|alt_jtag_atlantic*|td_shift[*]}]
+        Info (332166): set_false_path -from [get_registers {*|alt_jtag_atlantic:*|rdata[*]}] -to [get_registers {*|alt_jtag_atlantic*|td_shift[*]}]
+        Info (332166): set_false_path -from [get_registers {*|alt_jtag_atlantic:*|read}] -to [get_registers {*|alt_jtag_atlantic:*|read1*}] 
+        Info (332166): set_false_path -from [get_registers {*|alt_jtag_atlantic:*|read_req}]
+        Info (332166): set_false_path -from [get_registers {*|alt_jtag_atlantic:*|rvalid}] -to [get_registers {*|alt_jtag_atlantic*|td_shift[*]}]
+        Info (332166): set_false_path -from [get_registers {*|t_dav}] -to [get_registers {*|alt_jtag_atlantic:*|tck_t_dav}]
+        Info (332166): set_false_path -from [get_registers {*|alt_jtag_atlantic:*|user_saw_rvalid}] -to [get_registers {*|alt_jtag_atlantic:*|rvalid0*}]
+        Info (332166): set_false_path -from [get_registers {*|alt_jtag_atlantic:*|wdata[*]}] -to [get_registers {*}]
+        Info (332166): set_false_path -from [get_registers {*|alt_jtag_atlantic:*|wdata[*]}] -to [get_registers {*}]
+        Info (332166): set_false_path -from [get_registers {*|alt_jtag_atlantic:*|wdata[*]}] -to [get_registers {*}]
+        Info (332166): set_false_path -from [get_registers {*|alt_jtag_atlantic:*|wdata[*]}] -to [get_registers {*}]
+        Info (332166): set_false_path -from [get_registers {*|alt_jtag_atlantic:*|wdata[*]}] -to [get_registers {*}]
+        Info (332166): set_false_path -from [get_registers {*|alt_jtag_atlantic:*|wdata[*]}] -to [get_registers {*}]
+        Info (332166): set_false_path -from [get_registers {*|alt_jtag_atlantic:*|wdata[*]}] -to [get_registers {*}]
+        Info (332166): set_false_path -from [get_registers {*|alt_jtag_atlantic:*|wdata[*]}] -to [get_registers {*}]
+        Info (332166): set_false_path -from [get_registers {*|alt_jtag_atlantic:*|write}] -to [get_registers {*|alt_jtag_atlantic:*|write1*}] 
+        Info (332166): set_false_path -from [get_registers {*|alt_jtag_atlantic:*|write_stalled}] -to [get_registers {*|alt_jtag_atlantic:*|t_ena*}]
+        Info (332166): set_false_path -from [get_registers {*|alt_jtag_atlantic:*|write_stalled}] -to [get_registers {*|alt_jtag_atlantic:*|t_pause*}]
+        Info (332166): set_false_path -from [get_registers {*|alt_jtag_atlantic:*|write_valid}]
+    Info (332165): Entity altera_std_synchronizer
+        Info (332166): set_false_path -to [get_keepers {*altera_std_synchronizer:*|din_s1}]
+    Info (332165): Entity dcfifo_col1
+        Info (332166): set_false_path -from *rdptr_g* -to *ws_dgrp|dffpipe_c09:dffpipe15|dffe16a* 
+        Info (332166): set_false_path -from *delayed_wrptr_g* -to *rs_dgwp|dffpipe_b09:dffpipe12|dffe13a* 
+    Info (332165): Entity sld_hub
+        Info (332166): create_clock -name altera_reserved_tck [get_ports {altera_reserved_tck}] -period 30MHz   
+        Info (332166): if { [string equal quartus_fit $::TimeQuestInfo(nameofexecutable)] } { set_max_delay -to [get_ports { altera_reserved_tdo } ] 0 }
+        Info (332166): set_clock_groups -asynchronous -group {altera_reserved_tck}
+Info (332104): Reading SDC File: 'dmb1test.sdc'
+Warning (332043): Overwriting existing clock: altera_reserved_tck
+Info (332104): Reading SDC File: 'TestRO/synthesis/submodules/altera_reset_controller.sdc'
+Info (332104): Reading SDC File: 'TestRO/synthesis/submodules/TestRO_nios2_gen2_0_cpu.sdc'
+Info (332097): The following timing edges are non-unate.  TimeQuest will assume pos-unate behavior for these edges in the clock network.
+    Info (332098): Cell: A1|sys_pll_inst|altera_pll_i|general[0].gpll~FRACTIONAL_PLL  from: refclkin  to: fbclk
+    Info (332098): Cell: A1|sys_pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER  from: vco0ph[0]  to: divclk
+    Info (332098): Cell: A1|sys_pll_inst|altera_pll_i|general[0].gpll~PLL_REFCLK_SELECT  from: coreclkin  to: clkout
+    Info (332098): Cell: A1|sys_pll_inst|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER  from: vco0ph[0]  to: divclk
+    Info (332098): Cell: ADC_PLL1|adc_pll_inst|altera_pll_i|general[0].gpll~FRACTIONAL_PLL  from: refclkin  to: fbclk
+    Info (332098): Cell: ADC_PLL1|adc_pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER  from: vco0ph[0]  to: divclk
+    Info (332098): Cell: ADC_PLL1|adc_pll_inst|altera_pll_i|general[0].gpll~PLL_REFCLK_SELECT  from: coreclkin  to: clkout
+    Info (332098): Cell: ADC_PLL2|adc_pll_inst|altera_pll_i|general[0].gpll~FRACTIONAL_PLL  from: refclkin  to: fbclk
+    Info (332098): Cell: ADC_PLL2|adc_pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER  from: vco0ph[0]  to: divclk
+    Info (332098): Cell: ADC_PLL2|adc_pll_inst|altera_pll_i|general[0].gpll~PLL_REFCLK_SELECT  from: coreclkin  to: clkout
+    Info (332098): From: test_A1|nios2_gen2_0|cpu|the_TestRO_nios2_gen2_0_cpu_nios2_oci|the_TestRO_nios2_gen2_0_cpu_nios2_ocimem|TestRO_nios2_gen2_0_cpu_ociram_sp_ram|the_altsyncram|auto_generated|ram_block1a8|clk0  to: TestRO:test_A1|TestRO_nios2_gen2_0:nios2_gen2_0|TestRO_nios2_gen2_0_cpu:cpu|TestRO_nios2_gen2_0_cpu_nios2_oci:the_TestRO_nios2_gen2_0_cpu_nios2_oci|TestRO_nios2_gen2_0_cpu_nios2_ocimem:the_TestRO_nios2_gen2_0_cpu_nios2_ocimem|TestRO_nios2_gen2_0_cpu_ociram_sp_ram_module:TestRO_nios2_gen2_0_cpu_ociram_sp_ram|altsyncram:the_altsyncram|altsyncram_qid1:auto_generated|ram_block1a8~CLOCK1_ENABLE1_0
+Info (332123): Deriving Clock Uncertainty. Please refer to report_sdc in TimeQuest to see clock uncertainties.
+Info (332152): The following assignments are ignored by the derive_clock_uncertainty command
+Warning (332056): PLL cross checking found inconsistent PLL clock settings:
+    Warning (332056): Node: ADC_PLL1|adc_pll_inst|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0] was found missing 1 generated clock that corresponds to a base clock with a period of: 4.000
+    Warning (332056): Node: ADC_PLL2|adc_pll_inst|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0] was found missing 1 generated clock that corresponds to a base clock with a period of: 4.000
+Info: Found TIMEQUEST_REPORT_SCRIPT_INCLUDE_DEFAULT_ANALYSIS = ON
+Info: Analyzing Slow 1100mV 100C Model
+Info (332146): Worst-case setup slack is 0.601
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):     0.601               0.000 IF_SAD_CKO2 
+    Info (332119):     0.672               0.000 IF_SAD_CKO1 
+    Info (332119):     1.614               0.000 A1|sys_pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
+    Info (332119):    11.980               0.000 altera_reserved_tck 
+    Info (332119):    46.239               0.000 IF_SYS_CLK 
+Info (332146): Worst-case hold slack is 0.145
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):     0.145               0.000 altera_reserved_tck 
+    Info (332119):     0.318               0.000 A1|sys_pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
+    Info (332119):     0.338               0.000 IF_SAD_CKO1 
+    Info (332119):     0.340               0.000 IF_SAD_CKO2 
+    Info (332119):     0.361               0.000 IF_SYS_CLK 
+Info (332146): Worst-case recovery slack is 4.712
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):     4.712               0.000 A1|sys_pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
+    Info (332119):    14.449               0.000 altera_reserved_tck 
+    Info (332119):    47.674               0.000 IF_SYS_CLK 
+Info (332146): Worst-case removal slack is 0.994
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):     0.994               0.000 IF_SYS_CLK 
+    Info (332119):     1.095               0.000 altera_reserved_tck 
+    Info (332119):     1.387               0.000 A1|sys_pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
+Info (332146): Worst-case minimum pulse width slack is 0.364
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):     0.364               0.000 IF_SAD_CKO1 
+    Info (332119):     0.364               0.000 IF_SAD_CKO2 
+    Info (332119):     1.000               0.000 A1|sys_pll_inst|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0] 
+    Info (332119):     3.598               0.000 A1|sys_pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
+    Info (332119):    15.472               0.000 altera_reserved_tck 
+    Info (332119):    24.343               0.000 IF_SYS_CLK 
+Info (332114): Report Metastability: Found 60 synchronizer chains.
+    Info (332114): Worst-Case MTBF of Design is 0.0943 years or 2.97e+06 seconds.
+    Info (332114): Typical MTBF of Design is 3.11e+04 years or 9.8e+11 seconds.
+
+    Info (332114): Number of Synchronizer Chains Found: 60
+    Info (332114): Shortest Synchronizer Chain: 1 Registers
+    Info (332114): Fraction of Chains for which MTBFs Could Not be Calculated: 0.117
+    Info (332114): Worst Case Available Settling Time: 1.291 ns
+    Info (332114): 
+    Info (332114): Worst-Case MTBF values are calculated based on the worst-case silicon characteristics, with worst-case operating conditions.
+    Info (332114):   - Under worst-case conditions, an increase of 100ps in available settling time will increase MTBF values by a factor of 8.0
+    Info (332114): Typical MTBF values are calculated based on the nominal silicon characteristics, at nominal operating conditions.
+    Info (332114):   - Under typical conditions, an increase of 100ps in available settling time will increase MTBF values by a factor of 17.8
+Info: Analyzing Slow 1100mV -40C Model
+Info (334003): Started post-fitting delay annotation
+Info (334004): Delay annotation completed successfully
+Info (332097): The following timing edges are non-unate.  TimeQuest will assume pos-unate behavior for these edges in the clock network.
+    Info (332098): Cell: A1|sys_pll_inst|altera_pll_i|general[0].gpll~FRACTIONAL_PLL  from: refclkin  to: fbclk
+    Info (332098): Cell: A1|sys_pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER  from: vco0ph[0]  to: divclk
+    Info (332098): Cell: A1|sys_pll_inst|altera_pll_i|general[0].gpll~PLL_REFCLK_SELECT  from: coreclkin  to: clkout
+    Info (332098): Cell: A1|sys_pll_inst|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER  from: vco0ph[0]  to: divclk
+    Info (332098): Cell: ADC_PLL1|adc_pll_inst|altera_pll_i|general[0].gpll~FRACTIONAL_PLL  from: refclkin  to: fbclk
+    Info (332098): Cell: ADC_PLL1|adc_pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER  from: vco0ph[0]  to: divclk
+    Info (332098): Cell: ADC_PLL1|adc_pll_inst|altera_pll_i|general[0].gpll~PLL_REFCLK_SELECT  from: coreclkin  to: clkout
+    Info (332098): Cell: ADC_PLL2|adc_pll_inst|altera_pll_i|general[0].gpll~FRACTIONAL_PLL  from: refclkin  to: fbclk
+    Info (332098): Cell: ADC_PLL2|adc_pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER  from: vco0ph[0]  to: divclk
+    Info (332098): Cell: ADC_PLL2|adc_pll_inst|altera_pll_i|general[0].gpll~PLL_REFCLK_SELECT  from: coreclkin  to: clkout
+    Info (332098): From: test_A1|nios2_gen2_0|cpu|the_TestRO_nios2_gen2_0_cpu_nios2_oci|the_TestRO_nios2_gen2_0_cpu_nios2_ocimem|TestRO_nios2_gen2_0_cpu_ociram_sp_ram|the_altsyncram|auto_generated|ram_block1a8|clk0  to: TestRO:test_A1|TestRO_nios2_gen2_0:nios2_gen2_0|TestRO_nios2_gen2_0_cpu:cpu|TestRO_nios2_gen2_0_cpu_nios2_oci:the_TestRO_nios2_gen2_0_cpu_nios2_oci|TestRO_nios2_gen2_0_cpu_nios2_ocimem:the_TestRO_nios2_gen2_0_cpu_nios2_ocimem|TestRO_nios2_gen2_0_cpu_ociram_sp_ram_module:TestRO_nios2_gen2_0_cpu_ociram_sp_ram|altsyncram:the_altsyncram|altsyncram_qid1:auto_generated|ram_block1a8~CLOCK1_ENABLE1_0
+Info (332123): Deriving Clock Uncertainty. Please refer to report_sdc in TimeQuest to see clock uncertainties.
+Info (332152): The following assignments are ignored by the derive_clock_uncertainty command
+Warning (332056): PLL cross checking found inconsistent PLL clock settings:
+    Warning (332056): Node: ADC_PLL1|adc_pll_inst|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0] was found missing 1 generated clock that corresponds to a base clock with a period of: 4.000
+    Warning (332056): Node: ADC_PLL2|adc_pll_inst|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0] was found missing 1 generated clock that corresponds to a base clock with a period of: 4.000
+Info (332146): Worst-case setup slack is 0.512
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):     0.512               0.000 IF_SAD_CKO2 
+    Info (332119):     0.654               0.000 IF_SAD_CKO1 
+    Info (332119):     1.697               0.000 A1|sys_pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
+    Info (332119):    12.313               0.000 altera_reserved_tck 
+    Info (332119):    46.162               0.000 IF_SYS_CLK 
+Info (332146): Worst-case hold slack is 0.138
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):     0.138               0.000 altera_reserved_tck 
+    Info (332119):     0.308               0.000 A1|sys_pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
+    Info (332119):     0.322               0.000 IF_SAD_CKO2 
+    Info (332119):     0.326               0.000 IF_SAD_CKO1 
+    Info (332119):     0.349               0.000 IF_SYS_CLK 
+Info (332146): Worst-case recovery slack is 5.000
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):     5.000               0.000 A1|sys_pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
+    Info (332119):    14.643               0.000 altera_reserved_tck 
+    Info (332119):    47.800               0.000 IF_SYS_CLK 
+Info (332146): Worst-case removal slack is 0.925
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):     0.925               0.000 IF_SYS_CLK 
+    Info (332119):     0.990               0.000 altera_reserved_tck 
+    Info (332119):     1.326               0.000 A1|sys_pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
+Info (332146): Worst-case minimum pulse width slack is 0.364
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):     0.364               0.000 IF_SAD_CKO1 
+    Info (332119):     0.364               0.000 IF_SAD_CKO2 
+    Info (332119):     1.000               0.000 A1|sys_pll_inst|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0] 
+    Info (332119):     3.565               0.000 A1|sys_pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
+    Info (332119):    15.461               0.000 altera_reserved_tck 
+    Info (332119):    24.333               0.000 IF_SYS_CLK 
+Info (332114): Report Metastability: Found 60 synchronizer chains.
+    Info (332114): Worst-Case MTBF of Design is 0.0 years or 0.0225 seconds.
+    Info (332114): Typical MTBF of Design is 1e+04 years or 3.16e+11 seconds.
+
+    Info (332114): Number of Synchronizer Chains Found: 60
+    Info (332114): Shortest Synchronizer Chain: 1 Registers
+    Info (332114): Fraction of Chains for which MTBFs Could Not be Calculated: 0.117
+    Info (332114): Worst Case Available Settling Time: 1.251 ns
+    Info (332114): 
+    Info (332114): Worst-Case MTBF values are calculated based on the worst-case silicon characteristics, with worst-case operating conditions.
+    Info (332114):   - Under worst-case conditions, an increase of 100ps in available settling time will increase MTBF values by a factor of 1.7
+    Info (332114): Typical MTBF values are calculated based on the nominal silicon characteristics, at nominal operating conditions.
+    Info (332114):   - Under typical conditions, an increase of 100ps in available settling time will increase MTBF values by a factor of 17.8
+Info: Analyzing Fast 1100mV 100C Model
+Info (334003): Started post-fitting delay annotation
+Info (334004): Delay annotation completed successfully
+Info (332097): The following timing edges are non-unate.  TimeQuest will assume pos-unate behavior for these edges in the clock network.
+    Info (332098): Cell: A1|sys_pll_inst|altera_pll_i|general[0].gpll~FRACTIONAL_PLL  from: refclkin  to: fbclk
+    Info (332098): Cell: A1|sys_pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER  from: vco0ph[0]  to: divclk
+    Info (332098): Cell: A1|sys_pll_inst|altera_pll_i|general[0].gpll~PLL_REFCLK_SELECT  from: coreclkin  to: clkout
+    Info (332098): Cell: A1|sys_pll_inst|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER  from: vco0ph[0]  to: divclk
+    Info (332098): Cell: ADC_PLL1|adc_pll_inst|altera_pll_i|general[0].gpll~FRACTIONAL_PLL  from: refclkin  to: fbclk
+    Info (332098): Cell: ADC_PLL1|adc_pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER  from: vco0ph[0]  to: divclk
+    Info (332098): Cell: ADC_PLL1|adc_pll_inst|altera_pll_i|general[0].gpll~PLL_REFCLK_SELECT  from: coreclkin  to: clkout
+    Info (332098): Cell: ADC_PLL2|adc_pll_inst|altera_pll_i|general[0].gpll~FRACTIONAL_PLL  from: refclkin  to: fbclk
+    Info (332098): Cell: ADC_PLL2|adc_pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER  from: vco0ph[0]  to: divclk
+    Info (332098): Cell: ADC_PLL2|adc_pll_inst|altera_pll_i|general[0].gpll~PLL_REFCLK_SELECT  from: coreclkin  to: clkout
+    Info (332098): From: test_A1|nios2_gen2_0|cpu|the_TestRO_nios2_gen2_0_cpu_nios2_oci|the_TestRO_nios2_gen2_0_cpu_nios2_ocimem|TestRO_nios2_gen2_0_cpu_ociram_sp_ram|the_altsyncram|auto_generated|ram_block1a8|clk0  to: TestRO:test_A1|TestRO_nios2_gen2_0:nios2_gen2_0|TestRO_nios2_gen2_0_cpu:cpu|TestRO_nios2_gen2_0_cpu_nios2_oci:the_TestRO_nios2_gen2_0_cpu_nios2_oci|TestRO_nios2_gen2_0_cpu_nios2_ocimem:the_TestRO_nios2_gen2_0_cpu_nios2_ocimem|TestRO_nios2_gen2_0_cpu_ociram_sp_ram_module:TestRO_nios2_gen2_0_cpu_ociram_sp_ram|altsyncram:the_altsyncram|altsyncram_qid1:auto_generated|ram_block1a8~CLOCK1_ENABLE1_0
+Info (332123): Deriving Clock Uncertainty. Please refer to report_sdc in TimeQuest to see clock uncertainties.
+Info (332152): The following assignments are ignored by the derive_clock_uncertainty command
+Warning (332056): PLL cross checking found inconsistent PLL clock settings:
+    Warning (332056): Node: ADC_PLL1|adc_pll_inst|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0] was found missing 1 generated clock that corresponds to a base clock with a period of: 4.000
+    Warning (332056): Node: ADC_PLL2|adc_pll_inst|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0] was found missing 1 generated clock that corresponds to a base clock with a period of: 4.000
+Info (332146): Worst-case setup slack is 2.157
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):     2.157               0.000 IF_SAD_CKO1 
+    Info (332119):     2.210               0.000 IF_SAD_CKO2 
+    Info (332119):     5.271               0.000 A1|sys_pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
+    Info (332119):    14.562               0.000 altera_reserved_tck 
+    Info (332119):    48.133               0.000 IF_SYS_CLK 
+Info (332146): Worst-case hold slack is 0.022
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):     0.022               0.000 altera_reserved_tck 
+    Info (332119):     0.166               0.000 A1|sys_pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
+    Info (332119):     0.175               0.000 IF_SAD_CKO1 
+    Info (332119):     0.181               0.000 IF_SAD_CKO2 
+    Info (332119):     0.185               0.000 IF_SYS_CLK 
+Info (332146): Worst-case recovery slack is 6.604
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):     6.604               0.000 A1|sys_pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
+    Info (332119):    15.923               0.000 altera_reserved_tck 
+    Info (332119):    48.718               0.000 IF_SYS_CLK 
+Info (332146): Worst-case removal slack is 0.412
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):     0.412               0.000 altera_reserved_tck 
+    Info (332119):     0.476               0.000 IF_SYS_CLK 
+    Info (332119):     0.669               0.000 A1|sys_pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
+Info (332146): Worst-case minimum pulse width slack is 0.629
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):     0.629               0.000 IF_SAD_CKO1 
+    Info (332119):     0.642               0.000 IF_SAD_CKO2 
+    Info (332119):     1.000               0.000 A1|sys_pll_inst|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0] 
+    Info (332119):     3.894               0.000 A1|sys_pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
+    Info (332119):    15.393               0.000 altera_reserved_tck 
+    Info (332119):    24.237               0.000 IF_SYS_CLK 
+Info (332114): Report Metastability: Found 60 synchronizer chains.
+    Info (332114): Worst-Case MTBF of Design is 1e+09 years or 3.15e+16 seconds.
+    Info (332114): Typical MTBF of Design is 1e+09 years or 3.15e+16 seconds.
+
+    Info (332114): Number of Synchronizer Chains Found: 60
+    Info (332114): Shortest Synchronizer Chain: 1 Registers
+    Info (332114): Fraction of Chains for which MTBFs Could Not be Calculated: 0.117
+    Info (332114): Worst Case Available Settling Time: 2.692 ns
+    Info (332114): 
+    Info (332114): Worst-Case MTBF values are calculated based on the worst-case silicon characteristics, with worst-case operating conditions.
+    Info (332114):   - Under worst-case conditions, an increase of 100ps in available settling time will increase MTBF values by a factor of 8.0
+    Info (332114): Typical MTBF values are calculated based on the nominal silicon characteristics, at nominal operating conditions.
+    Info (332114):   - Under typical conditions, an increase of 100ps in available settling time will increase MTBF values by a factor of 17.8
+Info: Analyzing Fast 1100mV -40C Model
+Info (332097): The following timing edges are non-unate.  TimeQuest will assume pos-unate behavior for these edges in the clock network.
+    Info (332098): Cell: A1|sys_pll_inst|altera_pll_i|general[0].gpll~FRACTIONAL_PLL  from: refclkin  to: fbclk
+    Info (332098): Cell: A1|sys_pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER  from: vco0ph[0]  to: divclk
+    Info (332098): Cell: A1|sys_pll_inst|altera_pll_i|general[0].gpll~PLL_REFCLK_SELECT  from: coreclkin  to: clkout
+    Info (332098): Cell: A1|sys_pll_inst|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER  from: vco0ph[0]  to: divclk
+    Info (332098): Cell: ADC_PLL1|adc_pll_inst|altera_pll_i|general[0].gpll~FRACTIONAL_PLL  from: refclkin  to: fbclk
+    Info (332098): Cell: ADC_PLL1|adc_pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER  from: vco0ph[0]  to: divclk
+    Info (332098): Cell: ADC_PLL1|adc_pll_inst|altera_pll_i|general[0].gpll~PLL_REFCLK_SELECT  from: coreclkin  to: clkout
+    Info (332098): Cell: ADC_PLL2|adc_pll_inst|altera_pll_i|general[0].gpll~FRACTIONAL_PLL  from: refclkin  to: fbclk
+    Info (332098): Cell: ADC_PLL2|adc_pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER  from: vco0ph[0]  to: divclk
+    Info (332098): Cell: ADC_PLL2|adc_pll_inst|altera_pll_i|general[0].gpll~PLL_REFCLK_SELECT  from: coreclkin  to: clkout
+    Info (332098): From: test_A1|nios2_gen2_0|cpu|the_TestRO_nios2_gen2_0_cpu_nios2_oci|the_TestRO_nios2_gen2_0_cpu_nios2_ocimem|TestRO_nios2_gen2_0_cpu_ociram_sp_ram|the_altsyncram|auto_generated|ram_block1a8|clk0  to: TestRO:test_A1|TestRO_nios2_gen2_0:nios2_gen2_0|TestRO_nios2_gen2_0_cpu:cpu|TestRO_nios2_gen2_0_cpu_nios2_oci:the_TestRO_nios2_gen2_0_cpu_nios2_oci|TestRO_nios2_gen2_0_cpu_nios2_ocimem:the_TestRO_nios2_gen2_0_cpu_nios2_ocimem|TestRO_nios2_gen2_0_cpu_ociram_sp_ram_module:TestRO_nios2_gen2_0_cpu_ociram_sp_ram|altsyncram:the_altsyncram|altsyncram_qid1:auto_generated|ram_block1a8~CLOCK1_ENABLE1_0
+Info (332123): Deriving Clock Uncertainty. Please refer to report_sdc in TimeQuest to see clock uncertainties.
+Info (332152): The following assignments are ignored by the derive_clock_uncertainty command
+Warning (332056): PLL cross checking found inconsistent PLL clock settings:
+    Warning (332056): Node: ADC_PLL1|adc_pll_inst|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0] was found missing 1 generated clock that corresponds to a base clock with a period of: 4.000
+    Warning (332056): Node: ADC_PLL2|adc_pll_inst|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0] was found missing 1 generated clock that corresponds to a base clock with a period of: 4.000
+Info (332146): Worst-case setup slack is 2.448
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):     2.448               0.000 IF_SAD_CKO1 
+    Info (332119):     2.456               0.000 IF_SAD_CKO2 
+    Info (332119):     6.204               0.000 A1|sys_pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
+    Info (332119):    15.055               0.000 altera_reserved_tck 
+    Info (332119):    48.336               0.000 IF_SYS_CLK 
+Info (332146): Worst-case hold slack is 0.004
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):     0.004               0.000 altera_reserved_tck 
+    Info (332119):     0.143               0.000 A1|sys_pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
+    Info (332119):     0.157               0.000 IF_SAD_CKO1 
+    Info (332119):     0.157               0.000 IF_SAD_CKO2 
+    Info (332119):     0.162               0.000 IF_SYS_CLK 
+Info (332146): Worst-case recovery slack is 7.270
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):     7.270               0.000 A1|sys_pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
+    Info (332119):    16.182               0.000 altera_reserved_tck 
+    Info (332119):    48.919               0.000 IF_SYS_CLK 
+Info (332146): Worst-case removal slack is 0.324
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):     0.324               0.000 altera_reserved_tck 
+    Info (332119):     0.404               0.000 IF_SYS_CLK 
+    Info (332119):     0.573               0.000 A1|sys_pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
+Info (332146): Worst-case minimum pulse width slack is 0.657
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):     0.657               0.000 IF_SAD_CKO1 
+    Info (332119):     0.663               0.000 IF_SAD_CKO2 
+    Info (332119):     1.000               0.000 A1|sys_pll_inst|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0] 
+    Info (332119):     3.892               0.000 A1|sys_pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
+    Info (332119):    15.393               0.000 altera_reserved_tck 
+    Info (332119):    24.236               0.000 IF_SYS_CLK 
+Info (332114): Report Metastability: Found 60 synchronizer chains.
+    Info (332114): Worst-Case MTBF of Design is 2.76e-06 years or 86.9 seconds.
+    Info (332114): Typical MTBF of Design is 1e+09 years or 3.15e+16 seconds.
+
+    Info (332114): Number of Synchronizer Chains Found: 60
+    Info (332114): Shortest Synchronizer Chain: 1 Registers
+    Info (332114): Fraction of Chains for which MTBFs Could Not be Calculated: 0.117
+    Info (332114): Worst Case Available Settling Time: 2.829 ns
+    Info (332114): 
+    Info (332114): Worst-Case MTBF values are calculated based on the worst-case silicon characteristics, with worst-case operating conditions.
+    Info (332114):   - Under worst-case conditions, an increase of 100ps in available settling time will increase MTBF values by a factor of 1.7
+    Info (332114): Typical MTBF values are calculated based on the nominal silicon characteristics, at nominal operating conditions.
+    Info (332114):   - Under typical conditions, an increase of 100ps in available settling time will increase MTBF values by a factor of 17.8
+Info (332102): Design is not fully constrained for setup requirements
+Info (332102): Design is not fully constrained for hold requirements
+Info: Quartus Prime TimeQuest Timing Analyzer was successful. 0 errors, 14 warnings
+    Info: Peak virtual memory: 5661 megabytes
+    Info: Processing ended: Wed Jun 13 18:17:45 2018
+    Info: Elapsed time: 00:00:15
+    Info: Total CPU time (on all processors): 00:00:26
+
+

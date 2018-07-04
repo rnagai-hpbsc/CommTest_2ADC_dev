@@ -1,24 +1,30 @@
 # # File gsaved with Nlview version 6.3.8  2013-12-19 bk=1.2992 VDI=34 GEI=35
 # 
-preplace inst TestRO.jtag_uart_0 -pg 1 -lvl 3 -y 360
+preplace inst TestRO.jtag_uart_0 -pg 1 -lvl 3 -y 410
+preplace inst TestRO.exttrg_0 -pg 1 -lvl 3 -y 510
 preplace inst TestRO.nios2_gen2_0.clock_bridge -pg 1
-preplace inst TestRO.fifo_0 -pg 1 -lvl 3 -y 80
-preplace inst TestRO.fifo_1 -pg 1 -lvl 3 -y 220
+preplace inst TestRO.fifo_0 -pg 1 -lvl 3 -y 130
+preplace inst TestRO.fifo_1 -pg 1 -lvl 3 -y 270
 preplace inst TestRO.nios2_gen2_0.reset_bridge -pg 1
-preplace inst TestRO.write_en_pio -pg 1 -lvl 3 -y 540
-preplace inst TestRO.clk_0 -pg 1 -lvl 1 -y 210
-preplace inst TestRO.nios2_gen2_0 -pg 1 -lvl 2 -y 190
+preplace inst TestRO.write_en_pio -pg 1 -lvl 3 -y 790
+preplace inst TestRO.clk_0 -pg 1 -lvl 1 -y 310
+preplace inst TestRO.nios2_gen2_0 -pg 1 -lvl 2 -y 290
+preplace inst TestRO.version_info -pg 1 -lvl 3 -y 690
 preplace inst TestRO.nios2_gen2_0.cpu -pg 1
 preplace inst TestRO -pg 1 -lvl 1 -y 40 -regy -20
-preplace inst TestRO.onchip_memory2_0 -pg 1 -lvl 3 -y 460
-preplace netloc EXPORT<net_container>TestRO</net_container>(SLAVE)write_en_pio.external_connection,(SLAVE)TestRO.write_en) 1 0 3 NJ 570 NJ 570 NJ
-preplace netloc INTERCONNECT<net_container>TestRO</net_container>(SLAVE)fifo_0.reset_in,(SLAVE)write_en_pio.reset,(SLAVE)jtag_uart_0.reset,(MASTER)clk_0.clk_reset,(SLAVE)fifo_1.reset_in,(SLAVE)onchip_memory2_0.reset1,(MASTER)nios2_gen2_0.debug_reset_request,(SLAVE)nios2_gen2_0.reset) 1 1 2 300 90 680
-preplace netloc FAN_OUT<net_container>TestRO</net_container>(SLAVE)nios2_gen2_0.clk,(SLAVE)jtag_uart_0.clk,(SLAVE)fifo_0.clk_in,(SLAVE)fifo_1.clk_in,(SLAVE)write_en_pio.clk,(MASTER)clk_0.clk,(SLAVE)onchip_memory2_0.clk1) 1 1 2 280 30 760
-preplace netloc INTERCONNECT<net_container>TestRO</net_container>(SLAVE)jtag_uart_0.avalon_jtag_slave,(SLAVE)write_en_pio.s1,(SLAVE)onchip_memory2_0.s1,(SLAVE)fifo_0.in_csr,(SLAVE)fifo_1.in_csr,(MASTER)nios2_gen2_0.data_master,(SLAVE)fifo_0.out,(MASTER)nios2_gen2_0.instruction_master,(SLAVE)fifo_1.out,(SLAVE)nios2_gen2_0.debug_mem_slave) 1 1 2 320 70 720
-preplace netloc FAN_OUT<net_container>TestRO</net_container>(MASTER)nios2_gen2_0.irq,(SLAVE)fifo_0.in_irq,(SLAVE)jtag_uart_0.irq,(SLAVE)fifo_1.in_irq) 1 2 1 700
+preplace inst TestRO.onchip_memory2_0 -pg 1 -lvl 3 -y 610
+preplace inst TestRO.dacctrl -pg 1 -lvl 3 -y 30
+preplace netloc EXPORT<net_container>TestRO</net_container>(SLAVE)write_en_pio.external_connection,(SLAVE)TestRO.write_en) 1 0 3 NJ 820 NJ 820 NJ
+preplace netloc EXPORT<net_container>TestRO</net_container>(SLAVE)TestRO.exttrg_0,(SLAVE)exttrg_0.external_connection) 1 0 3 NJ 540 NJ 540 NJ
+preplace netloc EXPORT<net_container>TestRO</net_container>(SLAVE)TestRO.dacctrl,(SLAVE)dacctrl.external_connection) 1 0 3 NJ 60 NJ 60 NJ
+preplace netloc EXPORT<net_container>TestRO</net_container>(SLAVE)clk_0.clk_in,(SLAVE)TestRO.clk) 1 0 1 NJ
+preplace netloc INTERCONNECT<net_container>TestRO</net_container>(SLAVE)exttrg_0.reset,(SLAVE)fifo_1.reset_in,(MASTER)clk_0.clk_reset,(SLAVE)nios2_gen2_0.reset,(SLAVE)dacctrl.reset,(SLAVE)version_info.reset,(SLAVE)write_en_pio.reset,(SLAVE)onchip_memory2_0.reset1,(MASTER)nios2_gen2_0.debug_reset_request,(SLAVE)jtag_uart_0.reset,(SLAVE)fifo_0.reset_in) 1 1 2 300 230 720
+preplace netloc EXPORT<net_container>TestRO</net_container>(SLAVE)TestRO.vinfo,(SLAVE)version_info.external_connection) 1 0 3 NJ 720 NJ 720 NJ
+preplace netloc INTERCONNECT<net_container>TestRO</net_container>(MASTER)nios2_gen2_0.data_master,(SLAVE)exttrg_0.s1,(SLAVE)nios2_gen2_0.debug_mem_slave,(SLAVE)dacctrl.s1,(SLAVE)jtag_uart_0.avalon_jtag_slave,(SLAVE)write_en_pio.s1,(SLAVE)fifo_0.out,(MASTER)nios2_gen2_0.instruction_master,(SLAVE)fifo_0.in_csr,(SLAVE)version_info.s1,(SLAVE)fifo_1.in_csr,(SLAVE)fifo_1.out,(SLAVE)onchip_memory2_0.s1) 1 1 2 320 250 740
+preplace netloc FAN_OUT<net_container>TestRO</net_container>(SLAVE)jtag_uart_0.irq,(MASTER)nios2_gen2_0.irq,(SLAVE)fifo_1.in_irq,(SLAVE)fifo_0.in_irq) 1 2 1 760
 preplace netloc EXPORT<net_container>TestRO</net_container>(SLAVE)TestRO.reset,(SLAVE)clk_0.clk_in_reset) 1 0 1 NJ
-preplace netloc EXPORT<net_container>TestRO</net_container>(SLAVE)TestRO.clk,(SLAVE)clk_0.clk_in) 1 0 1 NJ
-preplace netloc EXPORT<net_container>TestRO</net_container>(SLAVE)fifo_1.in,(SLAVE)TestRO.fifo_1_in) 1 0 3 NJ 110 NJ 110 NJ
-preplace netloc EXPORT<net_container>TestRO</net_container>(SLAVE)TestRO.fifo_0_in,(SLAVE)fifo_0.in) 1 0 3 NJ 50 NJ 50 NJ
+preplace netloc FAN_OUT<net_container>TestRO</net_container>(SLAVE)dacctrl.clk,(SLAVE)exttrg_0.clk,(SLAVE)nios2_gen2_0.clk,(MASTER)clk_0.clk,(SLAVE)version_info.clk,(SLAVE)jtag_uart_0.clk,(SLAVE)fifo_0.clk_in,(SLAVE)write_en_pio.clk,(SLAVE)onchip_memory2_0.clk1,(SLAVE)fifo_1.clk_in) 1 1 2 280 210 680
+preplace netloc EXPORT<net_container>TestRO</net_container>(SLAVE)TestRO.fifo_1_in,(SLAVE)fifo_1.in) 1 0 3 NJ 190 NJ 190 NJ
+preplace netloc EXPORT<net_container>TestRO</net_container>(SLAVE)TestRO.fifo_0_in,(SLAVE)fifo_0.in) 1 0 3 NJ 160 NJ 160 NJ
 levelinfo -pg 1 0 70 990
 levelinfo -hier TestRO 80 110 440 830 980

@@ -15,10 +15,13 @@ int macro(string file)
   int xmax2 = 0;
   int endfl = 0;
   int endfl2 = 0;
-  TH1F *h1 = new TH1F("Waveform",";Time [ns];ADC value",500,0,2000);
-  TH1F *h2 = new TH1F("Waveform",";Time [ns];ADC value",500,0,2000);
+  TH1F *h1 = new TH1F("Waveform1",";Time [ns];ADC value",500,0,2000);
+  TH1F *h2 = new TH1F("Waveform2",";Time [ns];ADC value",500,0,2000);
   TF1 *func  = new TF1("func" ,"[0]*sin(2*TMath::Pi()*[1]*(x-[2]))+[3]",0,300);
   TF1 *func2 = new TF1("func2","[0]*sin(2*TMath::Pi()*[1]*(x-[2]))+[3]",0,300);
+
+  TH1F *prj1 = new TH1F("Distribution1",";ADC value;Entry",16384,0,16384);
+  TH1F *prj2 = new TH1F("Distribution2",";ADC value;Entry",16384,0,16384);
 
   while (!ifs.eof()) 
   {
@@ -27,6 +30,8 @@ int macro(string file)
     int localtime = (time - inittime)*4.;
     h1->Fill(localtime,wave);
     h2->Fill(localtime,wave2);
+    prj1->Fill(wave);
+    prj2->Fill(wave2);
     cout << localtime << " " << wave << " " << wave2 << " " << xmax2 << endl; 
     
     if (xmin==0 && wave!=0) {
@@ -54,9 +59,12 @@ int macro(string file)
   cout << "xmin: " << xmin << " xmax:" << xmax << " xmin2:" << xmin2 << " xmax2:" << xmax2 << endl;
 
   TCanvas *c1 = new TCanvas("c1","c1",0,0,800,600);
+  c1->SetGrid();
 
   h1->SetLineColor(kBlack);
   h1->Draw("HIST");
+  h1->GetYaxis()->SetRangeUser(0,16384);
+  h1->GetYaxis()->SetTitleOffset(1.47);
   float ymax = h1->GetMaximum();
   func->SetParameter(0,ymax);
   func->SetParameter(1,.002);
@@ -77,6 +85,19 @@ int macro(string file)
   func2->SetParLimits(1,.003,.007);
   //h2->Fit("func2","","",xmin2-1,xmax2-1);
   //func2->Draw("same");
+
+  TCanvas *c2 = new TCanvas("c2","c2",800,0,800,600);
+  c2->SetGrid();
+
+  float d1max = prj1->GetMaximum();
+  float d2max = prj2->GetMaximum();
+  float distmax = (d1max>d2max) ? d1max : d2max; 
+  prj1->GetYaxis()->SetRangeUser(0.,distmax*1.2);
+  prj1->SetLineColor(kBlack);
+  prj1->Draw("HIST");
+  prj2->SetLineColor(kBlue);
+  prj2->Draw("HISTsame");
+
 
   return 0;
 

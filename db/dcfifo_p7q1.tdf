@@ -37,7 +37,7 @@ RETURNS ( aeb);
 FUNCTION mux_5r7 (data[1..0], sel[0..0])
 RETURNS ( result[0..0]);
 
---synthesis_resources = M10K 2 reg 133 
+--synthesis_resources = lut 4 M10K 2 reg 133 
 OPTIONS ALTERA_INTERNAL_OPTION = "AUTO_SHIFT_REGISTER_RECOGNITION=OFF;REMOVE_DUPLICATE_REGISTERS=OFF;SYNCHRONIZER_IDENTIFICATION=OFF;SYNCHRONIZATION_REGISTER_CHAIN_LENGTH = 3;suppress_da_rule_internal=d101;suppress_da_rule_internal=d102;suppress_da_rule_internal=d103;suppress_da_rule_internal=R105;{-to rdemp_eq_comp_lsb_aeb} SYNCHRONIZER_IDENTIFICATION=FORCED_IF_ASYNCHRONOUS;{-to rdemp_eq_comp_lsb_aeb} PRESERVE_REGISTER=ON;{-to rdemp_eq_comp_lsb_aeb} POWER_UP_LEVEL=HIGH;{-to rdemp_eq_comp_msb_aeb} SYNCHRONIZER_IDENTIFICATION=FORCED_IF_ASYNCHRONOUS;{-to rdemp_eq_comp_msb_aeb} PRESERVE_REGISTER=ON;{-to rdemp_eq_comp_msb_aeb} POWER_UP_LEVEL=HIGH;{-to rs_dgwp_reg} SYNCHRONIZER_IDENTIFICATION=FORCED_IF_ASYNCHRONOUS;{-to rs_dgwp_reg} PRESERVE_REGISTER=ON;{-to wrfull_eq_comp_lsb_mux_reg} SYNCHRONIZER_IDENTIFICATION=FORCED_IF_ASYNCHRONOUS;{-to wrfull_eq_comp_lsb_mux_reg} PRESERVE_REGISTER=ON;{-to wrfull_eq_comp_msb_mux_reg} SYNCHRONIZER_IDENTIFICATION=FORCED_IF_ASYNCHRONOUS;{-to wrfull_eq_comp_msb_mux_reg} PRESERVE_REGISTER=ON;{-to wrptr_g} suppress_da_rule_internal=S102;{-to wrptr_g} POWER_UP_LEVEL=LOW;{-to ws_dgrp_reg} SYNCHRONIZER_IDENTIFICATION=FORCED_IF_ASYNCHRONOUS;{-to ws_dgrp_reg} PRESERVE_REGISTER=ON;-name CUT ON -from rdptr_g -to ws_dgrp|dffpipe_re9:dffpipe17|dffe18a;-name SDC_STATEMENT ""set_false_path -from *rdptr_g* -to *ws_dgrp|dffpipe_re9:dffpipe17|dffe18a* "";-name CUT ON -from delayed_wrptr_g -to rs_dgwp|dffpipe_qe9:dffpipe12|dffe13a;-name SDC_STATEMENT ""set_false_path -from *delayed_wrptr_g* -to *rs_dgwp|dffpipe_qe9:dffpipe12|dffe13a* """;
 
 SUBDESIGN dcfifo_p7q1

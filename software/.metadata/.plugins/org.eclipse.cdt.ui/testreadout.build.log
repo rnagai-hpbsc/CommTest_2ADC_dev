@@ -1,4 +1,4 @@
-19:19:03 **** Incremental Build of configuration Nios II for project testreadout ****
+17:06:41 **** Incremental Build of configuration Nios II for project testreadout ****
 make all 
 Info: Building ../testreadout_bsp/
 C:/altera_lite/16.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../testreadout_bsp/
@@ -14,5 +14,5 @@ Info: Creating testreadout.objdump
 nios2-elf-objdump --disassemble --syms --all-header --source testreadout.elf >testreadout.objdump
 [testreadout build complete]
 
-19:19:07 Build Finished (took 4s.133ms)
+17:06:43 Build Finished (took 2s.632ms)
 

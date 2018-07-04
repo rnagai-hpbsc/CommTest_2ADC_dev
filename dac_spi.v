@@ -78,7 +78,7 @@ module DAC_SPI (
   assign spi_enable = starts & counts[10]; // active high
   
   assign spi_sync =  ~spi_enable;
-  assign spi_sclk = ~(spi_enable & counts[4]);
+  assign spi_sclk = ~(spi_enable & ~counts[4]);
   assign spi_data =   spi_enable & datain; 
  
 endmodule 
