@@ -940,6 +940,9 @@ int main()
      2a0:	213e9104 	addi	r4,r4,-1468
      2a4:	000036c0 	call	36c <printf>
 
+	//int initvalue = 4294180864; // 0xFFF40000;
+	//IOWR_ALTERA_AVALON_PIO_DATA(DACCTRL_BASE,initvalue);
+
 	IOWR_ALTERA_AVALON_PIO_DATA(WRITE_EN_PIO_BASE,1);
      2a8:	00c00044 	movi	r3,1
      2ac:	00880034 	movhi	r2,8192

@@ -2,7 +2,7 @@
 #include <iostream>
 #include <fstream>
 
-int macro(string file)
+int macro(string file, float timeinterval=4.)
 {
   ifstream ifs(file.c_str());
 
@@ -15,8 +15,14 @@ int macro(string file)
   int xmax2 = 0;
   int endfl = 0;
   int endfl2 = 0;
-  TH1F *h1 = new TH1F("Waveform1",";Time [ns];ADC value",500,0,2000);
-  TH1F *h2 = new TH1F("Waveform2",";Time [ns];ADC value",500,0,2000);
+
+  int adc1min = -1;
+  int adc1max = -1;
+  int adc2min = -1;
+  int adc2max = -1;
+
+  TH1F *h1 = new TH1F("Waveform1",";Time [ns];ADC value",500,0,500*timeinterval);
+  TH1F *h2 = new TH1F("Waveform2",";Time [ns];ADC value",500,0,500*timeinterval);
   TF1 *func  = new TF1("func" ,"[0]*sin(2*TMath::Pi()*[1]*(x-[2]))+[3]",0,300);
   TF1 *func2 = new TF1("func2","[0]*sin(2*TMath::Pi()*[1]*(x-[2]))+[3]",0,300);
 
@@ -27,7 +33,7 @@ int macro(string file)
   {
     ifs >> time >> wave >> wave2;
     if (counter==0) inittime = time;
-    int localtime = (time - inittime)*4.;
+    int localtime = (time - inittime)*timeinterval;
     h1->Fill(localtime,wave);
     h2->Fill(localtime,wave2);
     prj1->Fill(wave);
@@ -51,6 +57,16 @@ int macro(string file)
       xmax2 = localtime;
       endfl2 = 1;
     }
+
+    if (adc1min==-1 && wave!=0) adc1min = wave;
+    if (adc1max==-1 && wave!=0) adc1max = wave;
+    if (adc2min==-1 && wave2!=0) adc2min = wave2;
+    if (adc2max==-1 && wave2!=0) adc2max = wave2;
+
+    if (adc1min>wave) adc1min = wave;
+    if (adc1max<wave) adc1max = wave;
+    if (adc2min>wave2) adc2min = wave2;
+    if (adc2max<wave2) adc2max = wave2;
 
     counter++;
     if (counter==100000) break;
@@ -95,8 +111,17 @@ int macro(string file)
   prj1->GetYaxis()->SetRangeUser(0.,distmax*1.2);
   prj1->SetLineColor(kBlack);
   prj1->Draw("HIST");
+  prj1->Fit("gaus","","",adc1min,adc1max);
   prj2->SetLineColor(kBlue);
   prj2->Draw("HISTsame");
+  prj2->Fit("gaus","","",adc2min,adc2max);
+
+  TF1 *fit1 = prj1->GetFunction("gaus");
+  TF1 *fit2 = prj2->GetFunction("gaus");
+  fit1->SetLineColor(kBlack);
+  fit2->SetLineColor(kBlue);
+  fit1->Draw("same");
+  fit2->Draw("same");
 
 
   return 0;

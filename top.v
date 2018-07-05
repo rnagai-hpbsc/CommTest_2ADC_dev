@@ -47,8 +47,8 @@ module top
   // ***********************************************************************************************************
   parameter AA = 1023;  //511; --512;
   
-  parameter VERSION = 32'h18070400;
-  
+  parameter VERSION = 32'h18070500;
+    
   reg [31:0] vreg;
 
   // basic wires
@@ -552,13 +552,15 @@ module top
   reg  [3:0] addr_ctrl;
   reg [31:0] addr_cnt; 
   
+  parameter InitBS = 16'd40960;//16'd32768;
+  
   // initial addr
   always @(negedge RESET or posedge CLKB) 
   begin 
     if (~RESET) begin 
 	   addr_ctrl <= 4'h0;
 	   addr_cnt  <= 1'b0;
-		ofstreg   <= 16'd32768;
+		ofstreg   <= InitBS;
 		dacctrl_reg <= 32'd0;
 		flg <= 1'b0;
     end
@@ -568,7 +570,7 @@ module top
 		end
 		if (addr_cnt==32'd20000000) begin 
 		  addr_ctrl <=  4'b0100;
-		  ofstreg   <= 16'd30000;
+		  ofstreg   <=  InitBS;
 		end
 	   if (dacctrl[31]) begin 
 	     dacctrl_reg  <= dacctrl;

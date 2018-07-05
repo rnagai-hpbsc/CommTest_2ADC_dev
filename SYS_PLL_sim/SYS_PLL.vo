@@ -230,7 +230,7 @@ module  SYS_PLL
 		sys_pll_altera_pll_altera_pll_i_1098.number_of_clocks = 2,
 		sys_pll_altera_pll_altera_pll_i_1098.operation_mode = "direct",
 		sys_pll_altera_pll_altera_pll_i_1098.output_clock_frequency0 = "100.000000 MHz",
-		sys_pll_altera_pll_altera_pll_i_1098.output_clock_frequency1 = "250.000000 MHz",
+		sys_pll_altera_pll_altera_pll_i_1098.output_clock_frequency1 = "125.000000 MHz",
 		sys_pll_altera_pll_altera_pll_i_1098.output_clock_frequency10 = "0 MHz",
 		sys_pll_altera_pll_altera_pll_i_1098.output_clock_frequency11 = "0 MHz",
 		sys_pll_altera_pll_altera_pll_i_1098.output_clock_frequency12 = "0 MHz",
