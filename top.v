@@ -44,10 +44,8 @@ module top
   // 
 
   // ***********************************************************************************************************
-  // ***********************************************************************************************************
-  parameter AA = 1023;  //511; --512;
-  
-  parameter VERSION = 32'h18070500;
+  // ***********************************************************************************************************  
+  parameter VERSION = 32'h18070900;
     
   reg [31:0] vreg;
 
@@ -85,36 +83,9 @@ module top
   
   reg [39:0] IN_TIME;  
   
-  wire        IN_CMD_CAL;
-  wire  [7:0] IN_CMD_DISC;
-  wire        IN_SET_DAC;
-  wire [31:0] IN_TOTAL_CNT;
   wire        IN_TRIG1_START;
-  wire  [3:0] IN_TRIG1_CNT;
-  wire        IN_SET_ADC_INI;
-  wire  [3:0] IN_CMD_AD_FREQ;
-  wire  [7:0] IN_CAL_CLK_CNT;
-  wire        IN_CAL_CLK_PLS;
-  wire        DA1_SEQ_STS;
-  wire        DA1_SEQ_CLR;
-  wire [11:0] DA1_SEQ_CNT;
-  wire        DA1_DIN;
-  wire        DA1_SEQ_STA;
-  wire  [1:0] DA1_SEL_CH;
   
   // Initial commands
-  wire       INT_SEQ_SIG;  
-  reg        INT_SEQ_STS;  
-  reg [23:0] INT_SEQ_CNT;
-  reg  [1:0] INT_SEQ_D;
-  reg        SAD_INI_SEQ_STS;
-  reg        SAD_INI_SEQ_CLR;
-  reg [15:0] SAD_INI_SEQ_CNT;
-  reg        SAD_INI_SEQ_DIN;
-  reg        SAD_INI_SEQ_STA;
-  reg  [7:0] SAD_INI_ADD;
-  reg  [7:0] SAD_INI_DAT;
-  reg        SAD_INI_RESET_SIG;
   reg        TRIG_SEQ_STS;
   reg        TRIG_SEQ_CLR;
   reg [11:0] TRIG_SEQ_CNT;
@@ -123,16 +94,11 @@ module top
   wire CLKB;
   wire CLK_250M; // clock feed to ADCs 
   
-  // Reset 
-  //reg [15:0] RESET_COUNT;
-  //reg        RESET_SIG;  //   attribute syn_radhardlevel of sftbuf1: signal is "cc"; 
-
 
   // **************************************************************************************
   // SYS
   // **************************************************************************************
   // SYS
-  //assign CLKB         = CLK_250M;
   assign IF_TEST      = IF_SAD_SDOUT1;
   assign IF_SAD_CLK1  = CLK_250M;
   assign IF_SAD_CLK2  = CLK_250M;
@@ -149,14 +115,12 @@ module top
   );
   
   wire clk_adc;
-  wire clk_ro;
   wire adc_pll_locked;
   ADC_PLL ADC_PLL1 
   (
     .refclk   (clka_out),
 	 .rst      (1'b0),
 	 .outclk_0 (clk_adc), // same frequency as CLK_250M. 
-	 //.outclk_1 (clk_ro),
 	 .locked   (adc_pll_locked)
   );
 
@@ -170,14 +134,12 @@ module top
   );
   
   wire clk_adc2;
-  wire clk_ro2;
   wire adc_pll_locked2;
   ADC_PLL ADC_PLL2 
   (
     .refclk   (clka_out2),
 	 .rst      (1'b0),
 	 .outclk_0 (clk_adc2),
-	 //.outclk_1 (clk_ro2),
 	 .locked   (adc_pll_locked2)
   );
   
@@ -185,16 +147,6 @@ module top
   // **************************************************************************************
   // RESET
   // **************************************************************************************
-
-  /*wire RST_FLG = (RESET_COUNT == 16'hFFFE); // 20MHz *256*256 = 3.28msec
-  
-  always @(posedge CLK) 
-  begin
-    RESET_SIG   <= RST_FLG;
-	 RESET_COUNT <= RST_FLG ? RESET_COUNT : RESET_COUNT + 1'b1;
-  end
-
-  assign RESET = RESET_SIG;*/
   
   RST_GEN rst_inst (
     .clk   (CLK),
@@ -211,7 +163,7 @@ module top
   wire hSEC_SIG_FLG = (hSEC_SIG_CNT ==  8'h63 ); // 0.1sec 1msec*100 64
   wire  SEC_SIG_FLG = ( SEC_SIG_CNT ==  4'h9  ); // 1sec 0.1sec*10
 
-  always @(negedge RESET or posedge clk_adc) 
+  always @(negedge RESET or posedge CLKB) 
   begin
 	 if(~RESET) 
 	 begin 
@@ -265,133 +217,32 @@ module top
   //always @(CLK or IN_AD_CLK_CNT) begin
   //  FIFO_WR_ENA <= 1'b1;
   //end
-
-
+  
   // **************************************************************************************
   // Initial Set  SEQUENCE
   // **************************************************************************************
 
-  wire INT_SEQ_FLG = (INT_SEQ_CNT == 24'hFFFFFF); //167msec
-
-  always @(negedge RESET or posedge CLK) 
-  begin
-    if(~RESET) 
-	 begin 
-	   INT_SEQ_CNT <= 24'h000000;
-		INT_SEQ_STS <=  1'b0;
-		INT_SEQ_D   <=  2'b00;
-	 end
-	 else 
-	 begin
-	   INT_SEQ_STS  <= INT_SEQ_FLG ;
-		INT_SEQ_CNT  <= INT_SEQ_FLG ? INT_SEQ_CNT : INT_SEQ_CNT + 1'b1;
-		INT_SEQ_D[0] <= INT_SEQ_STS ;
-      INT_SEQ_D[1] <= INT_SEQ_D[0];
-    end
-  end
-
-  assign INT_SEQ_SIG = INT_SEQ_D[0] &  ~INT_SEQ_D[1];
-
+  wire sen, sclk, sdata, reset;
   
-  // **************************************************************************************
-  // DA1 HV & DISCRI Controle
-  // **************************************************************************************
-
-  wire SAD_INI_SEQ_FLG   = (SAD_INI_SEQ_CNT == 16'h3FFF);
-  wire SAD_INI_SEQ_FLG_1 = (SAD_INI_SEQ_CNT == 16'h0001); 
-  wire SAD_INI_SEQ_FLG_2 = (SAD_INI_SEQ_CNT == 16'h00FF); //256*50nsec = 12.8usec
+  ADC_INIT init_inst (
+    .clk (CLK),
+	 .rst_n (RESET),
+    .sen (sen),
+    .sclk (sclk),
+    .sdata (sdata),
+    .reset (reset)
+  );
   
-  always @(negedge RESET or posedge CLK) 
-  begin
-    if(~RESET) 
-	 begin
-	   SAD_INI_SEQ_STA   <=  1'b0;
-      SAD_INI_SEQ_STS   <=  1'b0;
-		SAD_INI_SEQ_CNT   <= 16'h0000;
-		SAD_INI_SEQ_CLR   <=  1'b0;
-		SAD_INI_ADD       <=  8'hFF;
-		SAD_INI_DAT       <=  8'hFF;
-		SAD_INI_SEQ_DIN   <=  1'b0;
-		SAD_INI_RESET_SIG <=  1'b0;
-    end 
-	 else 
-	 begin
-	   SAD_INI_SEQ_STA <= INT_SEQ_SIG;
-		SAD_INI_SEQ_STS <= SAD_INI_SEQ_STA ? 1'b1 : 
-		                   SAD_INI_SEQ_CLR ? 1'b0 :
-								                   SAD_INI_SEQ_STS;
-		SAD_INI_SEQ_CNT <= SAD_INI_SEQ_STS ? SAD_INI_SEQ_CNT + 1'b1 : 
-		                                     16'h0000;
-		SAD_INI_SEQ_CLR <= (SAD_INI_SEQ_STS & SAD_INI_SEQ_FLG);
-      if(SAD_INI_SEQ_STS) 
-		begin
-        case(SAD_INI_SEQ_CNT[13:11])
-        3'b001 : begin
-                   SAD_INI_ADD <= 8'h00;
-                   SAD_INI_DAT <= 8'b00000010;
-                 end
-        3'b010 : begin
-                   SAD_INI_ADD <= 8'h3D;
-                   SAD_INI_DAT <= 8'b11100000;
-                 end
-        3'b011 : begin
-                   SAD_INI_ADD <= 8'h41;
-                   SAD_INI_DAT <= 8'b11000000;
-                 end
-        3'b100 : begin
-                   SAD_INI_ADD <= 8'h25;
-                   SAD_INI_DAT <= 8'b00000011;
-                 end
-        default : begin
-                   SAD_INI_ADD <= 8'h41;
-                   SAD_INI_DAT <= 8'b11000000;
-                 end
-        endcase
-        case(SAD_INI_SEQ_CNT[9:6])
-        4'h0 : SAD_INI_SEQ_DIN <= SAD_INI_ADD[7];
-        4'h1 : SAD_INI_SEQ_DIN <= SAD_INI_ADD[6];
-        4'h2 : SAD_INI_SEQ_DIN <= SAD_INI_ADD[5];
-        4'h3 : SAD_INI_SEQ_DIN <= SAD_INI_ADD[4];
-        4'h4 : SAD_INI_SEQ_DIN <= SAD_INI_ADD[3];
-        4'h5 : SAD_INI_SEQ_DIN <= SAD_INI_ADD[2];
-        4'h6 : SAD_INI_SEQ_DIN <= SAD_INI_ADD[1];
-        4'h7 : SAD_INI_SEQ_DIN <= SAD_INI_ADD[0];
-        4'h8 : SAD_INI_SEQ_DIN <= SAD_INI_DAT[7];
-        4'h9 : SAD_INI_SEQ_DIN <= SAD_INI_DAT[6];
-        4'hA : SAD_INI_SEQ_DIN <= SAD_INI_DAT[5];
-        4'hB : SAD_INI_SEQ_DIN <= SAD_INI_DAT[4];
-        4'hC : SAD_INI_SEQ_DIN <= SAD_INI_DAT[3];
-        4'hD : SAD_INI_SEQ_DIN <= SAD_INI_DAT[2];
-        4'hE : SAD_INI_SEQ_DIN <= SAD_INI_DAT[1];
-        4'hF : SAD_INI_SEQ_DIN <= SAD_INI_DAT[0];
-        default : begin end
-        endcase
-		  SAD_INI_RESET_SIG <= SAD_INI_SEQ_FLG_1 ? 1'b1 :
-		                       SAD_INI_SEQ_FLG_2 ? 1'b0 : 
-									                      SAD_INI_RESET_SIG;
-      end
-      else 
-		begin
-		  SAD_INI_ADD <= 8'hFF;
-		  SAD_INI_DAT <= 8'hFF;
-        SAD_INI_SEQ_DIN <= 1'b0;
-		  SAD_INI_RESET_SIG <= 1'b0;
-      end
-    end
-  end
+  assign IF_SAD_SEN1 = sen;
+  assign IF_SAD_SCLK1 = sclk;
+  assign IF_SAD_SDAT1 = sdata;
+  assign IF_SAD_RESET1 = reset;
   
+  assign IF_SAD_SEN2 = sen;
+  assign IF_SAD_SCLK2 = sclk;
+  assign IF_SAD_SDAT2 = sdata;
+  assign IF_SAD_RESET2 = reset; 
   
-  assign IF_SAD_SEN1   =  ~((SAD_INI_SEQ_STS & SAD_INI_SEQ_CNT[10]));
-  assign IF_SAD_SCLK1  =  ~((SAD_INI_SEQ_STS & SAD_INI_SEQ_CNT[10] & SAD_INI_SEQ_CNT[5]));
-  assign IF_SAD_SDAT1  =     SAD_INI_SEQ_STS & SAD_INI_SEQ_CNT[10] & SAD_INI_SEQ_DIN;
-  assign IF_SAD_RESET1 =     SAD_INI_RESET_SIG;
-  //13usec
-  assign IF_SAD_SEN2   =  ~((SAD_INI_SEQ_STS & SAD_INI_SEQ_CNT[10]));
-  assign IF_SAD_SCLK2  =  ~((SAD_INI_SEQ_STS & SAD_INI_SEQ_CNT[10] & SAD_INI_SEQ_CNT[5]));
-  assign IF_SAD_SDAT2  =     SAD_INI_SEQ_STS & SAD_INI_SEQ_CNT[10] & SAD_INI_SEQ_DIN;
-  assign IF_SAD_RESET2 =     SAD_INI_RESET_SIG;
-
-
   // **************************************************************************************
   // DATA AQUISITION  Controle
   // **************************************************************************************
@@ -402,28 +253,22 @@ module top
 
   always @(negedge RESET or posedge CLKB) 
   begin
-    if(~RESET) 
-	 begin
+    if(~RESET) begin
       TRIG_SEQ_STS <= 1'b0;
 		TRIG_SEQ_CNT <= 12'h000;
 		TRIG_SEQ_CLR <= 1'b0;
     end
-	 else 
-	 begin
-      if(TRIG_SEQ_CLR) 
-		begin
+	 else begin
+      if(TRIG_SEQ_CLR) begin
         TRIG_SEQ_STS <= 1'b0;
       end
-      else if(IN_TRIG1_START) 
-		begin
+      else if(IN_TRIG1_START) begin
         TRIG_SEQ_STS <= 1'b1;
       end
-		if(TRIG_SEQ_STS) 
-		begin
+		if(TRIG_SEQ_STS) begin
 		  TRIG_SEQ_CNT <= FIFO_WR_ENA ? TRIG_SEQ_CNT + 1'b1 : TRIG_SEQ_CNT;
       end
-      else 
-		begin
+      else begin
         TRIG_SEQ_CNT <= 12'h000;
       end
 		TRIG_SEQ_CLR <= (TRIG_SEQ_STS & TRIG_SEQ_FLG);
@@ -431,16 +276,15 @@ module top
   end
 
  
-  assign FIFO_DAT_IN1 = IF_SAD_D1[13:0];
-  assign FIFO_DAT_IN2 = IF_SAD_D2[13:0];
+  assign FIFO_DAT_IN1 = IF_SAD_D1;
+  assign FIFO_DAT_IN2 = IF_SAD_D2;
  
   wire FIFO_WR_EN_RO;
   
   reg FIFO_WR_EN_RO_1;
   reg TRIG_SEQ_STS_1; 
   
-  always @(posedge clk_adc) 
-  begin 
+  always @(posedge clk_adc) begin 
     FIFO_WR_EN_RO_1 <= FIFO_WR_EN_RO;
 	 TRIG_SEQ_STS_1  <= TRIG_SEQ_STS;
   end
@@ -448,8 +292,7 @@ module top
   reg FIFO_WR_EN_RO_2;
   reg TRIG_SEQ_STS_2;
   
-  always @(posedge clk_adc2) 
-  begin
+  always @(posedge clk_adc2) begin
     FIFO_WR_EN_RO_2 <= FIFO_WR_EN_RO;
 	 TRIG_SEQ_STS_2  <= TRIG_SEQ_STS;
   end
@@ -552,36 +395,38 @@ module top
   reg  [3:0] addr_ctrl;
   reg [31:0] addr_cnt; 
   
-  parameter InitBS = 16'd40960;//16'd32768;
+  parameter InitBS = 16'd32768;//16'd32768;
+  
   
   // initial addr
   always @(negedge RESET or posedge CLKB) 
   begin 
     if (~RESET) begin 
-	   addr_ctrl <= 4'h0;
-	   addr_cnt  <= 1'b0;
+	   addr_ctrl <=  4'h0;
+	   addr_cnt  <= 32'd0;
 		ofstreg   <= InitBS;
 		dacctrl_reg <= 32'd0;
 		flg <= 1'b0;
+		cntflg <= 32'd0;
     end
 	 else begin 
-		if (addr_cnt[31]==1'b0) begin
+		if (~addr_cnt[31]) begin
 		  addr_cnt  <= addr_cnt + 1'b1;
 		end
 		if (addr_cnt==32'd20000000) begin 
 		  addr_ctrl <=  4'b0100;
 		  ofstreg   <=  InitBS;
 		end
-	   if (dacctrl[31]) begin 
-	     dacctrl_reg  <= dacctrl;
+		if (dacctrl[31]) begin 
+		  dacctrl_reg <= dacctrl;
 		  flg <= 1'b1;
 		end
 		if (flg) begin 
 		  cntflg <= cntflg + 1'b1;
 		  ext_ctrl_src <= 1'b1;
 		  addr_ctrl <= dacctrl[19:16];
-		  ofstreg   <= dacctrl[15:0];
-		  if (cntflg==32'd10) begin 
+		  ofstreg <= dacctrl[15:0];
+		  if (cntflg==32'd10) begin
 		    flg <= 1'b0;
 			 ext_ctrl_src <= 1'b0;
 			 addr_ctrl <= 4'h0;
@@ -609,7 +454,8 @@ module top
   );
   
   // version 
-  always @(negedge RESET or posedge CLKB) begin 
+  always @(negedge RESET or posedge CLKB) 
+  begin 
     if (~RESET) begin 
 	   vreg <= 32'd0;
     end 

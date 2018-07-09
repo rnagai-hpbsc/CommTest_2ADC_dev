@@ -1,0 +1,21 @@
+module SPI_COMMGEN (
+  input         clk, 
+  input         rst_n,
+  input  [31:0] indata, 
+  output  [3:0] addr,
+  output [15:0] sdata
+  );
+  
+  reg  [3:0] addr_tmp;
+  reg [15:0] sdat_tmp;
+
+  always @(negedge rst_n or posedge clk) begin 
+    if (~rst_n) begin
+	   addr_tmp <=  4'h0;
+		sdat_tmp <= 16'h0000;
+	 end
+	 else begin 
+	 end
+  end
+
+endmodule 

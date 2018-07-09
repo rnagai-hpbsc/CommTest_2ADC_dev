@@ -54,7 +54,7 @@ module dac_spi2 #(
 	   init_cnt <= 32'd0;
 	 end
 	 else begin 
-	   if (init_cnt[31]==1'b0) begin 
+	   if (~init_cnt[31]) begin 
 		  init_cnt <= init_cnt + 1'b1;
 		end
 	 end

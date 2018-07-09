@@ -184,4 +184,5 @@ set_global_assignment -name VERILOG_FILE SPI_CMDGEN.v
 set_global_assignment -name VERILOG_FILE RST_GEN.v
 set_global_assignment -name VERILOG_FILE ADC_INIT.v
 set_global_assignment -name VERILOG_FILE dac_spi2.v
+set_global_assignment -name VERILOG_FILE SPI_COMMGEN.v
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
