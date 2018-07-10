@@ -5,7 +5,8 @@ module SPI_COMMGEN (
   input  [31:0] indata, 
   output        ctrlen,
   output  [3:0] addr,
-  output [15:0] sdata
+  output [15:0] sdata,
+  output  [2:0] cntmon
   );
   
   
@@ -14,13 +15,15 @@ module SPI_COMMGEN (
   reg  [3:0] addr_tmp;
   reg [15:0] sdat_tmp;
   reg [31:0] data_str;
+  reg  [2:0] cnt;
   
 
   always @(negedge rst_n or posedge clk) begin 
     if (~rst_n) begin
 	   addr_tmp <=  4'h0;
-		sdat_tmp <= 16'h0000;
+		sdat_tmp <= 16'hFFFF;
 		data_str <= 32'h00000000;
+		cnt      <=  3'b000;
 	 end
 	 else begin 
 	   if (wren) begin  
@@ -31,7 +34,13 @@ module SPI_COMMGEN (
 			 ctrl_tmp <= 1'b1;
 		  end
 		  else begin
-		    ctrl_tmp <= 1'b0; 
+		    if (cnt[2]==1'b0 & ctrl_tmp) begin 
+			   cnt <= cnt + 1'b1;
+			 end
+			 else begin 
+		      ctrl_tmp <= 1'b0;
+			   cnt <= 3'b000;
+			 end	
 		  end
 		end
 	 end
@@ -40,5 +49,7 @@ module SPI_COMMGEN (
   assign ctrlen = ctrl_tmp;
   assign addr   = addr_tmp;
   assign sdata  = sdat_tmp;
+  
+  assign cntmon = cnt;
 
 endmodule 

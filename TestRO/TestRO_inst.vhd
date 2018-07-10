@@ -2,6 +2,7 @@
 		port (
 			clk_clk               : in  std_logic                     := 'X';             -- clk
 			dacctrl_export        : out std_logic_vector(31 downto 0);                    -- export
+			ext_rst_export        : out std_logic;                                        -- export
 			exttrg_0_export       : out std_logic;                                        -- export
 			fifo_0_in_writedata   : in  std_logic_vector(31 downto 0) := (others => 'X'); -- writedata
 			fifo_0_in_write       : in  std_logic                     := 'X';             -- write
@@ -19,6 +20,7 @@
 		port map (
 			clk_clk               => CONNECTED_TO_clk_clk,               --          clk.clk
 			dacctrl_export        => CONNECTED_TO_dacctrl_export,        --      dacctrl.export
+			ext_rst_export        => CONNECTED_TO_ext_rst_export,        --      ext_rst.export
 			exttrg_0_export       => CONNECTED_TO_exttrg_0_export,       --     exttrg_0.export
 			fifo_0_in_writedata   => CONNECTED_TO_fifo_0_in_writedata,   --    fifo_0_in.writedata
 			fifo_0_in_write       => CONNECTED_TO_fifo_0_in_write,       --             .write

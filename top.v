@@ -45,7 +45,7 @@ module top
 
   // ***********************************************************************************************************
   // ***********************************************************************************************************  
-  parameter VERSION = 32'h18070900;
+  parameter VERSION = 32'h18071000;
     
   reg [31:0] vreg;
 
@@ -299,6 +299,7 @@ module top
  
  
   wire spi_sending; 
+  wire ext_rst;
   
   wire [13:0] FIFO_DAT_IN1_PL;
   wire [13:0] FIFO_DAT_IN2_PL;
@@ -311,6 +312,7 @@ module top
 	 .a     (FIFO_DAT_IN1),
 	 .y     (FIFO_DAT_IN1_PL)
   );*/
+  
  
   DAT_FIFO A1_3 
   (	
@@ -353,17 +355,12 @@ module top
 		.write_en_export       (FIFO_WR_EN_RO),
 		.exttrg_0_export       (exttrg),
 		.dacctrl_export        (dacctrl),
-		.version_info_export   (vreg)
+		.version_info_export   (vreg),
+		.ext_rst_export        (ext_rst)
   );
   
   wire ext_ctrl;
-  reg  ext_ctrl_src;
   
-  assign ext_ctrl = ext_ctrl_src;
-  
-  reg [31:0] dacctrl_reg; 
-  reg flg; 
-  reg [31:0] cntflg;
   reg [15:0] ofstreg; 
 
   
@@ -383,17 +380,15 @@ module top
 	 .outclk_1 (CLK_250M)
   );
 
-  wire [15:0] offset_wire;
-   
-  
-  assign offset_wire = ofstreg;
-  
+  wire [15:0] offset_wire;  
   
   wire [3:0] cmd = 4'h3;
   wire [3:0] addr; 
   
   reg  [3:0] addr_ctrl;
   reg [31:0] addr_cnt; 
+  
+  wire [3:0] addr_ext;
   
   parameter InitBS = 16'd32768;//16'd32768;
   
@@ -405,39 +400,47 @@ module top
 	   addr_ctrl <=  4'h0;
 	   addr_cnt  <= 32'd0;
 		ofstreg   <= InitBS;
-		dacctrl_reg <= 32'd0;
-		flg <= 1'b0;
-		cntflg <= 32'd0;
     end
 	 else begin 
-		if (~addr_cnt[31]) begin
+		if (addr_cnt[31]==1'b0) begin
 		  addr_cnt  <= addr_cnt + 1'b1;
 		end
 		if (addr_cnt==32'd20000000) begin 
 		  addr_ctrl <=  4'b0100;
 		  ofstreg   <=  InitBS;
 		end
-		if (dacctrl[31]) begin 
-		  dacctrl_reg <= dacctrl;
-		  flg <= 1'b1;
-		end
-		if (flg) begin 
-		  cntflg <= cntflg + 1'b1;
-		  ext_ctrl_src <= 1'b1;
-		  addr_ctrl <= dacctrl[19:16];
-		  ofstreg <= dacctrl[15:0];
-		  if (cntflg==32'd10) begin
-		    flg <= 1'b0;
-			 ext_ctrl_src <= 1'b0;
-			 addr_ctrl <= 4'h0;
-			 ofstreg <= 16'h0000;
-		  end
-		end
 	 end
   end
   
-  assign addr = addr_ctrl;
- 
+  wire init_done;
+  wire [15:0] sdata_ext;
+
+  reg [15:0] sdata_tmp;
+  always @(negedge RESET or posedge CLKB) begin 
+    if (~RESET) begin 
+	   sdata_tmp <= 16'h0000;
+	 end
+	 else begin 
+	   sdata_tmp <= init_done ? sdata_ext : ofstreg; 
+	 end 
+  end
+
+  
+  assign addr = init_done ? addr_ext : addr_ctrl;
+  assign offset_wire = sdata_tmp;
+
+  SPI_COMMGEN spi_gen_inst 
+  (
+    .clk (CLKB),
+	 .rst_n (RESET),
+	 .wren (~spi_sending),
+	 .indata (dacctrl),
+	 .ctrlen (ext_ctrl),
+	 .addr (addr_ext),
+	 .sdata (sdata_ext),
+	 .cntmon ()
+  );
+  
   
   dac_spi2 spi2_inst
   (
@@ -450,8 +453,11 @@ module top
 	 .spi_data (SLO_DAC1_MOSI),
 	 .spi_sync (SLO_DAC1_CS),
 	 .spi_sclk (SLO_DAC1_SCLK),
-	 .spi_enable(spi_sending)
+	 .spi_enable(spi_sending),
+	 .init_done (init_done)
   );
+  
+  
   
   // version 
   always @(negedge RESET or posedge CLKB) 

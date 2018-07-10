@@ -2,6 +2,7 @@
 module TestRO (
 	clk_clk,
 	dacctrl_export,
+	ext_rst_export,
 	exttrg_0_export,
 	fifo_0_in_writedata,
 	fifo_0_in_write,
@@ -15,6 +16,7 @@ module TestRO (
 
 	input		clk_clk;
 	output	[31:0]	dacctrl_export;
+	output		ext_rst_export;
 	output		exttrg_0_export;
 	input	[31:0]	fifo_0_in_writedata;
 	input		fifo_0_in_write;

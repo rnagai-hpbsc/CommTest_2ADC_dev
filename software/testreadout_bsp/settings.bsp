@@ -2,8 +2,8 @@
 <sch:Settings xmlns:sch="http://www.altera.com/embeddedsw/bsp/schema">
         <BspType>hal</BspType>
         <BspVersion>default</BspVersion>
-        <BspGeneratedTimeStamp>Jul 5, 2018 8:40:05 PM</BspGeneratedTimeStamp>
-        <BspGeneratedUnixTimeStamp>1530790805541</BspGeneratedUnixTimeStamp>
+        <BspGeneratedTimeStamp>Jul 10, 2018 6:00:33 PM</BspGeneratedTimeStamp>
+        <BspGeneratedUnixTimeStamp>1531213233833</BspGeneratedUnixTimeStamp>
         <BspGeneratedLocation>C:\Users\icecube\WorkSpace\Altera\D-Egg_fw\CommTest_2ADC_dev\software\testreadout_bsp</BspGeneratedLocation>
         <BspSettingsFile>settings.bsp</BspSettingsFile>
         <SopcDesignFile>..\..\TestRO.sopcinfo</SopcDesignFile>
@@ -917,7 +917,7 @@
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
-                <slaveDescriptor>fifo_0_in_csr</slaveDescriptor>
+                <slaveDescriptor>fifo_0_out_csr</slaveDescriptor>
                 <addressRange>0x10008200 - 0x1000821F</addressRange>
                 <addressSpan>32</addressSpan>
                 <attributes/>
@@ -929,7 +929,7 @@
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
-                <slaveDescriptor>fifo_1_in_csr</slaveDescriptor>
+                <slaveDescriptor>fifo_1_out_csr</slaveDescriptor>
                 <addressRange>0x10009200 - 0x1000921F</addressRange>
                 <addressSpan>32</addressSpan>
                 <attributes/>
@@ -937,6 +937,12 @@
         <MemoryMap>
                 <slaveDescriptor>version_info</slaveDescriptor>
                 <addressRange>0x11000000 - 0x1100000F</addressRange>
+                <addressSpan>16</addressSpan>
+                <attributes/>
+        </MemoryMap>
+        <MemoryMap>
+                <slaveDescriptor>ext_rst</slaveDescriptor>
+                <addressRange>0x12000000 - 0x1200000F</addressRange>
                 <addressSpan>16</addressSpan>
                 <attributes/>
         </MemoryMap>

@@ -6,6 +6,7 @@
 module TestRO (
 		input  wire        clk_clk,               //          clk.clk
 		output wire [31:0] dacctrl_export,        //      dacctrl.export
+		output wire        ext_rst_export,        //      ext_rst.export
 		output wire        exttrg_0_export,       //     exttrg_0.export
 		input  wire [31:0] fifo_0_in_writedata,   //    fifo_0_in.writedata
 		input  wire        fifo_0_in_write,       //             .write
@@ -51,6 +52,16 @@ module TestRO (
 	wire   [31:0] mm_interconnect_0_fifo_1_out_readdata;                       // fifo_1:avalonmm_read_slave_readdata -> mm_interconnect_0:fifo_1_out_readdata
 	wire          mm_interconnect_0_fifo_1_out_waitrequest;                    // fifo_1:avalonmm_read_slave_waitrequest -> mm_interconnect_0:fifo_1_out_waitrequest
 	wire          mm_interconnect_0_fifo_1_out_read;                           // mm_interconnect_0:fifo_1_out_read -> fifo_1:avalonmm_read_slave_read
+	wire   [31:0] mm_interconnect_0_fifo_0_out_csr_readdata;                   // fifo_0:rdclk_control_slave_readdata -> mm_interconnect_0:fifo_0_out_csr_readdata
+	wire    [2:0] mm_interconnect_0_fifo_0_out_csr_address;                    // mm_interconnect_0:fifo_0_out_csr_address -> fifo_0:rdclk_control_slave_address
+	wire          mm_interconnect_0_fifo_0_out_csr_read;                       // mm_interconnect_0:fifo_0_out_csr_read -> fifo_0:rdclk_control_slave_read
+	wire          mm_interconnect_0_fifo_0_out_csr_write;                      // mm_interconnect_0:fifo_0_out_csr_write -> fifo_0:rdclk_control_slave_write
+	wire   [31:0] mm_interconnect_0_fifo_0_out_csr_writedata;                  // mm_interconnect_0:fifo_0_out_csr_writedata -> fifo_0:rdclk_control_slave_writedata
+	wire   [31:0] mm_interconnect_0_fifo_1_out_csr_readdata;                   // fifo_1:rdclk_control_slave_readdata -> mm_interconnect_0:fifo_1_out_csr_readdata
+	wire    [2:0] mm_interconnect_0_fifo_1_out_csr_address;                    // mm_interconnect_0:fifo_1_out_csr_address -> fifo_1:rdclk_control_slave_address
+	wire          mm_interconnect_0_fifo_1_out_csr_read;                       // mm_interconnect_0:fifo_1_out_csr_read -> fifo_1:rdclk_control_slave_read
+	wire          mm_interconnect_0_fifo_1_out_csr_write;                      // mm_interconnect_0:fifo_1_out_csr_write -> fifo_1:rdclk_control_slave_write
+	wire   [31:0] mm_interconnect_0_fifo_1_out_csr_writedata;                  // mm_interconnect_0:fifo_1_out_csr_writedata -> fifo_1:rdclk_control_slave_writedata
 	wire          mm_interconnect_0_onchip_memory2_0_s1_chipselect;            // mm_interconnect_0:onchip_memory2_0_s1_chipselect -> onchip_memory2_0:chipselect
 	wire  [127:0] mm_interconnect_0_onchip_memory2_0_s1_readdata;              // onchip_memory2_0:readdata -> mm_interconnect_0:onchip_memory2_0_s1_readdata
 	wire   [14:0] mm_interconnect_0_onchip_memory2_0_s1_address;               // mm_interconnect_0:onchip_memory2_0_s1_address -> onchip_memory2_0:address
@@ -75,21 +86,14 @@ module TestRO (
 	wire   [31:0] mm_interconnect_0_dacctrl_s1_writedata;                      // mm_interconnect_0:dacctrl_s1_writedata -> dacctrl:writedata
 	wire   [31:0] mm_interconnect_0_version_info_s1_readdata;                  // version_info:readdata -> mm_interconnect_0:version_info_s1_readdata
 	wire    [1:0] mm_interconnect_0_version_info_s1_address;                   // mm_interconnect_0:version_info_s1_address -> version_info:address
-	wire   [31:0] mm_interconnect_0_fifo_0_in_csr_readdata;                    // fifo_0:wrclk_control_slave_readdata -> mm_interconnect_0:fifo_0_in_csr_readdata
-	wire    [2:0] mm_interconnect_0_fifo_0_in_csr_address;                     // mm_interconnect_0:fifo_0_in_csr_address -> fifo_0:wrclk_control_slave_address
-	wire          mm_interconnect_0_fifo_0_in_csr_read;                        // mm_interconnect_0:fifo_0_in_csr_read -> fifo_0:wrclk_control_slave_read
-	wire          mm_interconnect_0_fifo_0_in_csr_write;                       // mm_interconnect_0:fifo_0_in_csr_write -> fifo_0:wrclk_control_slave_write
-	wire   [31:0] mm_interconnect_0_fifo_0_in_csr_writedata;                   // mm_interconnect_0:fifo_0_in_csr_writedata -> fifo_0:wrclk_control_slave_writedata
-	wire   [31:0] mm_interconnect_0_fifo_1_in_csr_readdata;                    // fifo_1:wrclk_control_slave_readdata -> mm_interconnect_0:fifo_1_in_csr_readdata
-	wire    [2:0] mm_interconnect_0_fifo_1_in_csr_address;                     // mm_interconnect_0:fifo_1_in_csr_address -> fifo_1:wrclk_control_slave_address
-	wire          mm_interconnect_0_fifo_1_in_csr_read;                        // mm_interconnect_0:fifo_1_in_csr_read -> fifo_1:wrclk_control_slave_read
-	wire          mm_interconnect_0_fifo_1_in_csr_write;                       // mm_interconnect_0:fifo_1_in_csr_write -> fifo_1:wrclk_control_slave_write
-	wire   [31:0] mm_interconnect_0_fifo_1_in_csr_writedata;                   // mm_interconnect_0:fifo_1_in_csr_writedata -> fifo_1:wrclk_control_slave_writedata
-	wire          irq_mapper_receiver0_irq;                                    // fifo_0:wrclk_control_slave_irq -> irq_mapper:receiver0_irq
-	wire          irq_mapper_receiver1_irq;                                    // fifo_1:wrclk_control_slave_irq -> irq_mapper:receiver1_irq
-	wire          irq_mapper_receiver2_irq;                                    // jtag_uart_0:av_irq -> irq_mapper:receiver2_irq
+	wire          mm_interconnect_0_ext_rst_s1_chipselect;                     // mm_interconnect_0:ext_rst_s1_chipselect -> ext_rst:chipselect
+	wire   [31:0] mm_interconnect_0_ext_rst_s1_readdata;                       // ext_rst:readdata -> mm_interconnect_0:ext_rst_s1_readdata
+	wire    [1:0] mm_interconnect_0_ext_rst_s1_address;                        // mm_interconnect_0:ext_rst_s1_address -> ext_rst:address
+	wire          mm_interconnect_0_ext_rst_s1_write;                          // mm_interconnect_0:ext_rst_s1_write -> ext_rst:write_n
+	wire   [31:0] mm_interconnect_0_ext_rst_s1_writedata;                      // mm_interconnect_0:ext_rst_s1_writedata -> ext_rst:writedata
+	wire          irq_mapper_receiver0_irq;                                    // jtag_uart_0:av_irq -> irq_mapper:receiver0_irq
 	wire   [31:0] nios2_gen2_0_irq_irq;                                        // irq_mapper:sender_irq -> nios2_gen2_0:irq
-	wire          rst_controller_reset_out_reset;                              // rst_controller:reset_out -> [dacctrl:reset_n, exttrg_0:reset_n, fifo_0:reset_n, fifo_1:reset_n, irq_mapper:reset, mm_interconnect_0:nios2_gen2_0_reset_reset_bridge_in_reset_reset, nios2_gen2_0:reset_n, rst_translator:in_reset, version_info:reset_n, write_en_pio:reset_n]
+	wire          rst_controller_reset_out_reset;                              // rst_controller:reset_out -> [dacctrl:reset_n, ext_rst:reset_n, exttrg_0:reset_n, fifo_0:rdreset_n, fifo_0:wrreset_n, fifo_1:rdreset_n, fifo_1:wrreset_n, irq_mapper:reset, mm_interconnect_0:nios2_gen2_0_reset_reset_bridge_in_reset_reset, nios2_gen2_0:reset_n, rst_translator:in_reset, version_info:reset_n, write_en_pio:reset_n]
 	wire          rst_controller_reset_out_reset_req;                          // rst_controller:reset_req -> [nios2_gen2_0:reset_req, rst_translator:reset_req_in]
 	wire          rst_controller_001_reset_out_reset;                          // rst_controller_001:reset_out -> [jtag_uart_0:rst_n, mm_interconnect_0:jtag_uart_0_reset_reset_bridge_in_reset_reset, onchip_memory2_0:reset]
 	wire          rst_controller_001_reset_out_reset_req;                      // rst_controller_001:reset_req -> [onchip_memory2_0:reset_req, rst_translator_001:reset_req_in]
@@ -106,7 +110,18 @@ module TestRO (
 		.out_port   (dacctrl_export)                           // external_connection.export
 	);
 
-	TestRO_exttrg_0 exttrg_0 (
+	TestRO_ext_rst ext_rst (
+		.clk        (clk_clk),                                 //                 clk.clk
+		.reset_n    (~rst_controller_reset_out_reset),         //               reset.reset_n
+		.address    (mm_interconnect_0_ext_rst_s1_address),    //                  s1.address
+		.write_n    (~mm_interconnect_0_ext_rst_s1_write),     //                    .write_n
+		.writedata  (mm_interconnect_0_ext_rst_s1_writedata),  //                    .writedata
+		.chipselect (mm_interconnect_0_ext_rst_s1_chipselect), //                    .chipselect
+		.readdata   (mm_interconnect_0_ext_rst_s1_readdata),   //                    .readdata
+		.out_port   (ext_rst_export)                           // external_connection.export
+	);
+
+	TestRO_ext_rst exttrg_0 (
 		.clk        (clk_clk),                                  //                 clk.clk
 		.reset_n    (~rst_controller_reset_out_reset),          //               reset.reset_n
 		.address    (mm_interconnect_0_exttrg_0_s1_address),    //                  s1.address
@@ -118,37 +133,39 @@ module TestRO (
 	);
 
 	TestRO_fifo_0 fifo_0 (
-		.wrclock                          (clk_clk),                                   //   clk_in.clk
-		.reset_n                          (~rst_controller_reset_out_reset),           // reset_in.reset_n
-		.avalonmm_write_slave_writedata   (fifo_0_in_writedata),                       //       in.writedata
-		.avalonmm_write_slave_write       (fifo_0_in_write),                           //         .write
-		.avalonmm_write_slave_waitrequest (fifo_0_in_waitrequest),                     //         .waitrequest
-		.avalonmm_read_slave_readdata     (mm_interconnect_0_fifo_0_out_readdata),     //      out.readdata
-		.avalonmm_read_slave_read         (mm_interconnect_0_fifo_0_out_read),         //         .read
-		.avalonmm_read_slave_waitrequest  (mm_interconnect_0_fifo_0_out_waitrequest),  //         .waitrequest
-		.wrclk_control_slave_address      (mm_interconnect_0_fifo_0_in_csr_address),   //   in_csr.address
-		.wrclk_control_slave_read         (mm_interconnect_0_fifo_0_in_csr_read),      //         .read
-		.wrclk_control_slave_writedata    (mm_interconnect_0_fifo_0_in_csr_writedata), //         .writedata
-		.wrclk_control_slave_write        (mm_interconnect_0_fifo_0_in_csr_write),     //         .write
-		.wrclk_control_slave_readdata     (mm_interconnect_0_fifo_0_in_csr_readdata),  //         .readdata
-		.wrclk_control_slave_irq          (irq_mapper_receiver0_irq)                   //   in_irq.irq
+		.wrclock                          (clk_clk),                                    //    clk_in.clk
+		.wrreset_n                        (~rst_controller_reset_out_reset),            //  reset_in.reset_n
+		.rdclock                          (clk_clk),                                    //   clk_out.clk
+		.rdreset_n                        (~rst_controller_reset_out_reset),            // reset_out.reset_n
+		.avalonmm_write_slave_writedata   (fifo_0_in_writedata),                        //        in.writedata
+		.avalonmm_write_slave_write       (fifo_0_in_write),                            //          .write
+		.avalonmm_write_slave_waitrequest (fifo_0_in_waitrequest),                      //          .waitrequest
+		.avalonmm_read_slave_readdata     (mm_interconnect_0_fifo_0_out_readdata),      //       out.readdata
+		.avalonmm_read_slave_read         (mm_interconnect_0_fifo_0_out_read),          //          .read
+		.avalonmm_read_slave_waitrequest  (mm_interconnect_0_fifo_0_out_waitrequest),   //          .waitrequest
+		.rdclk_control_slave_address      (mm_interconnect_0_fifo_0_out_csr_address),   //   out_csr.address
+		.rdclk_control_slave_read         (mm_interconnect_0_fifo_0_out_csr_read),      //          .read
+		.rdclk_control_slave_writedata    (mm_interconnect_0_fifo_0_out_csr_writedata), //          .writedata
+		.rdclk_control_slave_write        (mm_interconnect_0_fifo_0_out_csr_write),     //          .write
+		.rdclk_control_slave_readdata     (mm_interconnect_0_fifo_0_out_csr_readdata)   //          .readdata
 	);
 
 	TestRO_fifo_0 fifo_1 (
-		.wrclock                          (clk_clk),                                   //   clk_in.clk
-		.reset_n                          (~rst_controller_reset_out_reset),           // reset_in.reset_n
-		.avalonmm_write_slave_writedata   (fifo_1_in_writedata),                       //       in.writedata
-		.avalonmm_write_slave_write       (fifo_1_in_write),                           //         .write
-		.avalonmm_write_slave_waitrequest (fifo_1_in_waitrequest),                     //         .waitrequest
-		.avalonmm_read_slave_readdata     (mm_interconnect_0_fifo_1_out_readdata),     //      out.readdata
-		.avalonmm_read_slave_read         (mm_interconnect_0_fifo_1_out_read),         //         .read
-		.avalonmm_read_slave_waitrequest  (mm_interconnect_0_fifo_1_out_waitrequest),  //         .waitrequest
-		.wrclk_control_slave_address      (mm_interconnect_0_fifo_1_in_csr_address),   //   in_csr.address
-		.wrclk_control_slave_read         (mm_interconnect_0_fifo_1_in_csr_read),      //         .read
-		.wrclk_control_slave_writedata    (mm_interconnect_0_fifo_1_in_csr_writedata), //         .writedata
-		.wrclk_control_slave_write        (mm_interconnect_0_fifo_1_in_csr_write),     //         .write
-		.wrclk_control_slave_readdata     (mm_interconnect_0_fifo_1_in_csr_readdata),  //         .readdata
-		.wrclk_control_slave_irq          (irq_mapper_receiver1_irq)                   //   in_irq.irq
+		.wrclock                          (clk_clk),                                    //    clk_in.clk
+		.wrreset_n                        (~rst_controller_reset_out_reset),            //  reset_in.reset_n
+		.rdclock                          (clk_clk),                                    //   clk_out.clk
+		.rdreset_n                        (~rst_controller_reset_out_reset),            // reset_out.reset_n
+		.avalonmm_write_slave_writedata   (fifo_1_in_writedata),                        //        in.writedata
+		.avalonmm_write_slave_write       (fifo_1_in_write),                            //          .write
+		.avalonmm_write_slave_waitrequest (fifo_1_in_waitrequest),                      //          .waitrequest
+		.avalonmm_read_slave_readdata     (mm_interconnect_0_fifo_1_out_readdata),      //       out.readdata
+		.avalonmm_read_slave_read         (mm_interconnect_0_fifo_1_out_read),          //          .read
+		.avalonmm_read_slave_waitrequest  (mm_interconnect_0_fifo_1_out_waitrequest),   //          .waitrequest
+		.rdclk_control_slave_address      (mm_interconnect_0_fifo_1_out_csr_address),   //   out_csr.address
+		.rdclk_control_slave_read         (mm_interconnect_0_fifo_1_out_csr_read),      //          .read
+		.rdclk_control_slave_writedata    (mm_interconnect_0_fifo_1_out_csr_writedata), //          .writedata
+		.rdclk_control_slave_write        (mm_interconnect_0_fifo_1_out_csr_write),     //          .write
+		.rdclk_control_slave_readdata     (mm_interconnect_0_fifo_1_out_csr_readdata)   //          .readdata
 	);
 
 	TestRO_jtag_uart_0 jtag_uart_0 (
@@ -161,7 +178,7 @@ module TestRO (
 		.av_write_n     (~mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_write),      //                  .write_n
 		.av_writedata   (mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_writedata),   //                  .writedata
 		.av_waitrequest (mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_waitrequest), //                  .waitrequest
-		.av_irq         (irq_mapper_receiver2_irq)                                     //               irq.irq
+		.av_irq         (irq_mapper_receiver0_irq)                                     //               irq.irq
 	);
 
 	TestRO_nios2_gen2_0 nios2_gen2_0 (
@@ -214,7 +231,7 @@ module TestRO (
 		.in_port  (version_info_export)                         // external_connection.export
 	);
 
-	TestRO_exttrg_0 write_en_pio (
+	TestRO_ext_rst write_en_pio (
 		.clk        (clk_clk),                                      //                 clk.clk
 		.reset_n    (~rst_controller_reset_out_reset),              //               reset.reset_n
 		.address    (mm_interconnect_0_write_en_pio_s1_address),    //                  s1.address
@@ -246,27 +263,32 @@ module TestRO (
 		.dacctrl_s1_readdata                            (mm_interconnect_0_dacctrl_s1_readdata),                       //                                         .readdata
 		.dacctrl_s1_writedata                           (mm_interconnect_0_dacctrl_s1_writedata),                      //                                         .writedata
 		.dacctrl_s1_chipselect                          (mm_interconnect_0_dacctrl_s1_chipselect),                     //                                         .chipselect
+		.ext_rst_s1_address                             (mm_interconnect_0_ext_rst_s1_address),                        //                               ext_rst_s1.address
+		.ext_rst_s1_write                               (mm_interconnect_0_ext_rst_s1_write),                          //                                         .write
+		.ext_rst_s1_readdata                            (mm_interconnect_0_ext_rst_s1_readdata),                       //                                         .readdata
+		.ext_rst_s1_writedata                           (mm_interconnect_0_ext_rst_s1_writedata),                      //                                         .writedata
+		.ext_rst_s1_chipselect                          (mm_interconnect_0_ext_rst_s1_chipselect),                     //                                         .chipselect
 		.exttrg_0_s1_address                            (mm_interconnect_0_exttrg_0_s1_address),                       //                              exttrg_0_s1.address
 		.exttrg_0_s1_write                              (mm_interconnect_0_exttrg_0_s1_write),                         //                                         .write
 		.exttrg_0_s1_readdata                           (mm_interconnect_0_exttrg_0_s1_readdata),                      //                                         .readdata
 		.exttrg_0_s1_writedata                          (mm_interconnect_0_exttrg_0_s1_writedata),                     //                                         .writedata
 		.exttrg_0_s1_chipselect                         (mm_interconnect_0_exttrg_0_s1_chipselect),                    //                                         .chipselect
-		.fifo_0_in_csr_address                          (mm_interconnect_0_fifo_0_in_csr_address),                     //                            fifo_0_in_csr.address
-		.fifo_0_in_csr_write                            (mm_interconnect_0_fifo_0_in_csr_write),                       //                                         .write
-		.fifo_0_in_csr_read                             (mm_interconnect_0_fifo_0_in_csr_read),                        //                                         .read
-		.fifo_0_in_csr_readdata                         (mm_interconnect_0_fifo_0_in_csr_readdata),                    //                                         .readdata
-		.fifo_0_in_csr_writedata                        (mm_interconnect_0_fifo_0_in_csr_writedata),                   //                                         .writedata
 		.fifo_0_out_read                                (mm_interconnect_0_fifo_0_out_read),                           //                               fifo_0_out.read
 		.fifo_0_out_readdata                            (mm_interconnect_0_fifo_0_out_readdata),                       //                                         .readdata
 		.fifo_0_out_waitrequest                         (mm_interconnect_0_fifo_0_out_waitrequest),                    //                                         .waitrequest
-		.fifo_1_in_csr_address                          (mm_interconnect_0_fifo_1_in_csr_address),                     //                            fifo_1_in_csr.address
-		.fifo_1_in_csr_write                            (mm_interconnect_0_fifo_1_in_csr_write),                       //                                         .write
-		.fifo_1_in_csr_read                             (mm_interconnect_0_fifo_1_in_csr_read),                        //                                         .read
-		.fifo_1_in_csr_readdata                         (mm_interconnect_0_fifo_1_in_csr_readdata),                    //                                         .readdata
-		.fifo_1_in_csr_writedata                        (mm_interconnect_0_fifo_1_in_csr_writedata),                   //                                         .writedata
+		.fifo_0_out_csr_address                         (mm_interconnect_0_fifo_0_out_csr_address),                    //                           fifo_0_out_csr.address
+		.fifo_0_out_csr_write                           (mm_interconnect_0_fifo_0_out_csr_write),                      //                                         .write
+		.fifo_0_out_csr_read                            (mm_interconnect_0_fifo_0_out_csr_read),                       //                                         .read
+		.fifo_0_out_csr_readdata                        (mm_interconnect_0_fifo_0_out_csr_readdata),                   //                                         .readdata
+		.fifo_0_out_csr_writedata                       (mm_interconnect_0_fifo_0_out_csr_writedata),                  //                                         .writedata
 		.fifo_1_out_read                                (mm_interconnect_0_fifo_1_out_read),                           //                               fifo_1_out.read
 		.fifo_1_out_readdata                            (mm_interconnect_0_fifo_1_out_readdata),                       //                                         .readdata
 		.fifo_1_out_waitrequest                         (mm_interconnect_0_fifo_1_out_waitrequest),                    //                                         .waitrequest
+		.fifo_1_out_csr_address                         (mm_interconnect_0_fifo_1_out_csr_address),                    //                           fifo_1_out_csr.address
+		.fifo_1_out_csr_write                           (mm_interconnect_0_fifo_1_out_csr_write),                      //                                         .write
+		.fifo_1_out_csr_read                            (mm_interconnect_0_fifo_1_out_csr_read),                       //                                         .read
+		.fifo_1_out_csr_readdata                        (mm_interconnect_0_fifo_1_out_csr_readdata),                   //                                         .readdata
+		.fifo_1_out_csr_writedata                       (mm_interconnect_0_fifo_1_out_csr_writedata),                  //                                         .writedata
 		.jtag_uart_0_avalon_jtag_slave_address          (mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_address),     //            jtag_uart_0_avalon_jtag_slave.address
 		.jtag_uart_0_avalon_jtag_slave_write            (mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_write),       //                                         .write
 		.jtag_uart_0_avalon_jtag_slave_read             (mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_read),        //                                         .read
@@ -302,8 +324,6 @@ module TestRO (
 		.clk           (clk_clk),                        //       clk.clk
 		.reset         (rst_controller_reset_out_reset), // clk_reset.reset
 		.receiver0_irq (irq_mapper_receiver0_irq),       // receiver0.irq
-		.receiver1_irq (irq_mapper_receiver1_irq),       // receiver1.irq
-		.receiver2_irq (irq_mapper_receiver2_irq),       // receiver2.irq
 		.sender_irq    (nios2_gen2_0_irq_irq)            //    sender.irq
 	);
 

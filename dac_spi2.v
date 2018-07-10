@@ -1,5 +1,7 @@
 module dac_spi2 #(
-  parameter DWIDTH = 24
+  parameter DWIDTH = 24,
+  parameter WTIME1 = 32'd10000000,
+  parameter WTIME2 = 32'd30000000
 )
 (
   input         clk, 
@@ -11,7 +13,8 @@ module dac_spi2 #(
   output        spi_data,
   output        spi_sclk,
   output        spi_sync,
-  output        spi_enable
+  output        spi_enable,
+  output        init_done
   // for monitoring --- to be removed
   /*output        starts_mon,
   output        enable_mon,
@@ -44,9 +47,11 @@ module dac_spi2 #(
   reg [DWIDTH:0] fixsendd;
 
   // flag assignment 
-  assign starts  = (init_cnt==32'd10000000) | (init_cnt==32'd30000000) | ext_ctrl; //~sending & ~loaded & ext_ctrl;   
+  assign starts  = (init_cnt==WTIME1) | (init_cnt==WTIME2) | ext_ctrl; 
   assign enable  = &enbcnt; 
   assign enable2 = &enbcnt[3:0]; 
+  
+  assign init_done = (init_cnt > WTIME2);
   
   // init counter
   always @(negedge rst_n or posedge clk) begin
@@ -54,7 +59,7 @@ module dac_spi2 #(
 	   init_cnt <= 32'd0;
 	 end
 	 else begin 
-	   if (~init_cnt[31]) begin 
+	   if (init_cnt[31]==1'b0) begin 
 		  init_cnt <= init_cnt + 1'b1;
 		end
 	 end

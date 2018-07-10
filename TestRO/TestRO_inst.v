@@ -1,6 +1,7 @@
 	TestRO u0 (
 		.clk_clk               (<connected-to-clk_clk>),               //          clk.clk
 		.dacctrl_export        (<connected-to-dacctrl_export>),        //      dacctrl.export
+		.ext_rst_export        (<connected-to-ext_rst_export>),        //      ext_rst.export
 		.exttrg_0_export       (<connected-to-exttrg_0_export>),       //     exttrg_0.export
 		.fifo_0_in_writedata   (<connected-to-fifo_0_in_writedata>),   //    fifo_0_in.writedata
 		.fifo_0_in_write       (<connected-to-fifo_0_in_write>),       //             .write

@@ -47,12 +47,12 @@ module TestRO_mm_interconnect_0_router_009_default_decode
      parameter DEFAULT_CHANNEL = 0,
                DEFAULT_WR_CHANNEL = -1,
                DEFAULT_RD_CHANNEL = -1,
-               DEFAULT_DESTID = 1 
+               DEFAULT_DESTID = 0 
    )
   (output [96 - 93 : 0] default_destination_id,
-   output [9-1 : 0] default_wr_channel,
-   output [9-1 : 0] default_rd_channel,
-   output [9-1 : 0] default_src_channel
+   output [12-1 : 0] default_wr_channel,
+   output [12-1 : 0] default_rd_channel,
+   output [12-1 : 0] default_src_channel
   );
 
   assign default_destination_id = 
@@ -63,7 +63,7 @@ module TestRO_mm_interconnect_0_router_009_default_decode
       assign default_src_channel = '0;
     end
     else begin : default_channel_assignment
-      assign default_src_channel = 9'b1 << DEFAULT_CHANNEL;
+      assign default_src_channel = 12'b1 << DEFAULT_CHANNEL;
     end
   endgenerate
 
@@ -73,8 +73,8 @@ module TestRO_mm_interconnect_0_router_009_default_decode
       assign default_rd_channel = '0;
     end
     else begin : default_rw_channel_assignment
-      assign default_wr_channel = 9'b1 << DEFAULT_WR_CHANNEL;
-      assign default_rd_channel = 9'b1 << DEFAULT_RD_CHANNEL;
+      assign default_wr_channel = 12'b1 << DEFAULT_WR_CHANNEL;
+      assign default_rd_channel = 12'b1 << DEFAULT_RD_CHANNEL;
     end
   endgenerate
 
@@ -103,7 +103,7 @@ module TestRO_mm_interconnect_0_router_009
     // -------------------
     output                          src_valid,
     output reg [110-1    : 0] src_data,
-    output reg [9-1 : 0] src_channel,
+    output reg [12-1 : 0] src_channel,
     output                          src_startofpacket,
     output                          src_endofpacket,
     input                           src_ready
@@ -119,7 +119,7 @@ module TestRO_mm_interconnect_0_router_009
     localparam PKT_PROTECTION_H = 100;
     localparam PKT_PROTECTION_L = 98;
     localparam ST_DATA_W = 110;
-    localparam ST_CHANNEL_W = 9;
+    localparam ST_CHANNEL_W = 12;
     localparam DECODER_TYPE = 1;
 
     localparam PKT_TRANS_WRITE = 68;
@@ -158,16 +158,11 @@ module TestRO_mm_interconnect_0_router_009
     assign src_valid         = sink_valid;
     assign src_startofpacket = sink_startofpacket;
     assign src_endofpacket   = sink_endofpacket;
-    wire [9-1 : 0] default_src_channel;
+    wire [12-1 : 0] default_src_channel;
 
 
 
 
-    // -------------------------------------------------------
-    // Write and read transaction signals
-    // -------------------------------------------------------
-    wire read_transaction;
-    assign read_transaction  = sink_data[PKT_TRANS_READ];
 
 
     TestRO_mm_interconnect_0_router_009_default_decode the_default_decode(
@@ -189,8 +184,8 @@ module TestRO_mm_interconnect_0_router_009
 
 
 
-        if (destid == 1  && read_transaction) begin
-            src_channel = 9'b1;
+        if (destid == 0 ) begin
+            src_channel = 12'b1;
         end
 
 
