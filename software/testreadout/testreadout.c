@@ -31,26 +31,43 @@ int main()
 
 	int initvalue =4293918720; // 0xFFF00000;
 
-	int addr, value;
+	int addr, value, sendvalue, sentvalue;
+
 	printf("Address : ");
 	scanf("%d",&addr);
 	printf("%d\n",addr);
 	printf("Input value : ");
 	scanf("%d",&value);
 	printf("%d\n",value);
-	int sendvalue = initvalue + addr*16 + value;
+	sendvalue = initvalue + addr*256*256 + value;
 	IOWR_ALTERA_AVALON_PIO_DATA(DACCTRL_BASE,sendvalue);
-
 	printf("writing DACCTRL_BASE : %x\n",sendvalue);
-
 	printf("waiting...\n");
 	usleep(1000000);
+	sentvalue = IORD_ALTERA_AVALON_PIO_DATA(DACCTRL_BASE);
+	printf("Wrote value is %x\n",sentvalue);
 
-	int sentvalue = IORD_ALTERA_AVALON_PIO_DATA(DACCTRL_BASE);
+
+	printf("\nNext command...\n\n");
+	printf("Address : ");
+	scanf("%d",&addr);
+	printf("%d\n",addr);
+	printf("Input value : ");
+	scanf("%d",&value);
+	printf("%d\n",value);
+	sendvalue = initvalue + addr*256*256 + value;
+	IOWR_ALTERA_AVALON_PIO_DATA(DACCTRL_BASE,sendvalue);
+	printf("writing DACCTRL_BASE : %x\n",sendvalue);
+	printf("waiting...\n");
+	usleep(1000000);
+	sentvalue = IORD_ALTERA_AVALON_PIO_DATA(DACCTRL_BASE);
 	printf("Wrote value is %x\n",sentvalue);
 
 	getchar();
+	printf("\nIf want to start data-taking, press enter...\n");
 	getchar();
+
+	printf("\n *** Start data-taking *** \n\n");
 
 	IOWR_ALTERA_AVALON_PIO_DATA(WRITE_EN_PIO_BASE,1);
 
@@ -58,7 +75,7 @@ int main()
 		++index;
 		data = IORD_ALTERA_AVALON_JTAG_UART_DATA(FIFO_0_OUT_BASE);
 		data2 = IORD_ALTERA_AVALON_JTAG_UART_DATA(FIFO_1_OUT_BASE);
-		printf("%d,%d,%d\n",index,data,data2);
+		printf("%d,%d,%d,%x\n",index,data,data2,data2);
 		if (altera_avalon_fifo_read_level(FIFO_0_OUT_CSR_BASE)==0) break;
 		if (index==100) {
 			IOWR_ALTERA_AVALON_PIO_DATA(WRITE_EN_PIO_BASE,0);

@@ -21,7 +21,6 @@ module dac_spi2 #(
   output        loaded_mon,
   output  [5:0] sndcnt_mon,
   output  [5:0] enbcnt_mon,
-  output  [2:0] st_cnt_mon,
   output [DWIDTH:0] senddt_mon*/
 );
    
@@ -38,7 +37,6 @@ module dac_spi2 #(
   // counters
   reg  [5:0] sndcnt;
   reg  [4:0] enbcnt;
-  reg  [2:0] st_cnt;
   
   reg  [31:0] init_cnt; 
   
@@ -93,7 +91,6 @@ module dac_spi2 #(
 	   end
 	   else begin
 	     if (enable & loaded) begin 
-		    st_cnt   <= 3'b000;
 		    senddata <= {senddata[DWIDTH-1:0],1'b0};
 			 sending  <= 1'b1; 
 			 sndcnt   <= sndcnt + 1'b1; 
@@ -118,7 +115,6 @@ module dac_spi2 #(
   assign enbcnt_mon = enbcnt;
   assign senddt_mon = fixsendd;
   assign enable_mon = enable;
-  assign st_cnt_mon = st_cnt;
   assign loaded_mon = loaded;*/
 
 endmodule

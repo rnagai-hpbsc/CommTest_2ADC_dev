@@ -45,7 +45,7 @@ module top
 
   // ***********************************************************************************************************
   // ***********************************************************************************************************  
-  parameter VERSION = 32'h18071000;
+  parameter VERSION = 32'h18071300;
     
   reg [31:0] vreg;
 
@@ -145,7 +145,7 @@ module top
   
 
   // **************************************************************************************
-  // RESET
+  // RESET module
   // **************************************************************************************
   
   RST_GEN rst_inst (
@@ -155,7 +155,7 @@ module top
   
 
   // **************************************************************************************
-  // TIME Controle
+  // TIME Control
   // **************************************************************************************
 
   wire uSEC_SIG_FLG = (uSEC_SIG_CNT ==  8'h13 ); // 20MHz 20 14(H)
@@ -202,17 +202,15 @@ module top
 
   //----------------------------------------- ADC CLK Controle
 
-  always @(negedge RESET or posedge CLK) 
-  begin
-    if(~RESET) 
-	 begin 
-	   IN_AD_CLK_CNT <= 4'h0;
-	 end
-	 else 
-	 begin
-      IN_AD_CLK_CNT <= IN_AD_CLK_CNT + 1'b1;
-    end
-  end
+//  always @(negedge RESET or posedge CLK) 
+//  begin
+//    if(~RESET) begin 
+//	   IN_AD_CLK_CNT <= 4'h0;
+//	 end
+//	 else begin
+//      IN_AD_CLK_CNT <= IN_AD_CLK_CNT + 1'b1;
+//    end
+//  end
 
   //always @(CLK or IN_AD_CLK_CNT) begin
   //  FIFO_WR_ENA <= 1'b1;
@@ -244,7 +242,7 @@ module top
   assign IF_SAD_RESET2 = reset; 
   
   // **************************************************************************************
-  // DATA AQUISITION  Controle
+  // DATA AQUISITION  Control
   // **************************************************************************************
 
   assign IN_TRIG1_START = SEC_SIG;
@@ -304,32 +302,54 @@ module top
   wire [13:0] FIFO_DAT_IN1_PL;
   wire [13:0] FIFO_DAT_IN2_PL;
   
-  /*pline #(.P_WIDTH(14),.P_DEPTH(10)) 
+  
+  pline #(.P_WIDTH(14),.P_DEPTH(20)) 
   pl_1 
   (
-    .clk   (CLKB),
+    .clk   (clk_adc),
 	 .rst_n (RESET),
 	 .a     (FIFO_DAT_IN1),
 	 .y     (FIFO_DAT_IN1_PL)
-  );*/
+  );
   
- 
+  wire intrig1;
+  
+  IntTrig #(.THRES(900),.TRGTIME(100))
+  InT_1 
+  (
+    .clk   (clk_adc),
+	 .rst_n (RESET),
+	 .tdat  (FIFO_DAT_IN1),
+	 .otrig (intrig1)
+  );
+  
+   
   DAT_FIFO A1_3 
   (	
-    .data    (FIFO_DAT_IN1),
+    .data    (FIFO_DAT_IN1_PL),
 	 .rdclk   (CLKB),
 	 .rdreq   (FIFO_RD_ENA),
 	 .wrclk   (clk_adc),
-	 .wrreq   (FIFO_WR_ENA & TRIG_SEQ_STS_1 & FIFO_WR_EN_RO_1),
+	 .wrreq   (FIFO_WR_ENA & TRIG_SEQ_STS_1 & FIFO_WR_EN_RO_1 & intrig1),
 	 .q       (FIFO_DAT_OUT1),
 	 .rdempty (FIFO_EF),
 	 .wrfull  (FIFO_FF),
 	 .aclr    (~RESET)
   );
   
+  pline #(.P_WIDTH(14),.P_DEPTH(10))
+  pl_2
+  (
+    .clk   (clk_adc2),
+	 .rst_n (RESET),
+	 .a     (FIFO_DAT_IN2),
+	 .y     (FIFO_DAT_IN2_PL)
+  );
+  
+  
   DAT_FIFO A2_3 
   (
-    .data    (FIFO_DAT_IN2),
+    .data    (FIFO_DAT_IN2_PL),
 	 .rdclk   (CLKB),
 	 .rdreq   (FIFO_RD_ENA),
 	 .wrclk   (clk_adc2),
@@ -390,7 +410,7 @@ module top
   
   wire [3:0] addr_ext;
   
-  parameter InitBS = 16'd32768;//16'd32768;
+  parameter InitBS = 16'd32768;
   
   
   // initial addr
@@ -446,7 +466,7 @@ module top
   (
     .clk    (CLKB),
 	 .rst_n  (RESET),
-	 .comm   (4'h3),
+	 .comm   (cmd),
 	 .addr   (addr),
 	 .data   (offset_wire),
 	 .ext_ctrl (ext_ctrl),
@@ -459,7 +479,7 @@ module top
   
   
   
-  // version 
+  // version information
   always @(negedge RESET or posedge CLKB) 
   begin 
     if (~RESET) begin 

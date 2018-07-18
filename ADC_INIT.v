@@ -77,45 +77,45 @@ module ADC_INIT #(
 		clr <= (sts & flg);
       if(sts) begin
         case(cnt[13:11])
-        3'b001 : begin
-                   addr <= 8'h00;
-                   data <= 8'b00000010;
-                 end
-        3'b010 : begin
-                   addr <= 8'h3D;
-                   data <= 8'b11100000;
-                 end
-        3'b011 : begin
-                   addr <= 8'h41;
-                   data <= 8'b11000000;
-                 end
-        3'b100 : begin
-                   addr <= 8'h25;
-                   data <= 8'b00000011;
-                 end
-        default : begin
-                   addr <= 8'h41;
-                   data <= 8'b11000000;
-                 end
+			  3'b001 : begin
+							 addr <= 8'h00;
+							 data <= 8'b00000010;
+						  end
+			  3'b010 : begin
+							 addr <= 8'h3D;
+							 data <= 8'b11100000;
+						  end
+			  3'b011 : begin
+							 addr <= 8'h41;
+							 data <= 8'b11000000;
+						  end
+			  3'b100 : begin
+							 addr <= 8'h25;
+							 data <= 8'b00000011;
+						  end
+			  default : begin
+							 addr <= 8'h41;
+							 data <= 8'b11000000;
+						  end
         endcase
         case(cnt[9:6])
-        4'h0 : din <= addr[7];
-        4'h1 : din <= addr[6];
-        4'h2 : din <= addr[5];
-        4'h3 : din <= addr[4];
-        4'h4 : din <= addr[3];
-        4'h5 : din <= addr[2];
-        4'h6 : din <= addr[1];
-        4'h7 : din <= addr[0];
-        4'h8 : din <= data[7];
-        4'h9 : din <= data[6];
-        4'hA : din <= data[5];
-        4'hB : din <= data[4];
-        4'hC : din <= data[3];
-        4'hD : din <= data[2];
-        4'hE : din <= data[1];
-        4'hF : din <= data[0];
-        default : begin end
+			  4'h0 : din <= addr[7];
+			  4'h1 : din <= addr[6];
+			  4'h2 : din <= addr[5];
+			  4'h3 : din <= addr[4];
+			  4'h4 : din <= addr[3];
+			  4'h5 : din <= addr[2];
+			  4'h6 : din <= addr[1];
+			  4'h7 : din <= addr[0];
+			  4'h8 : din <= data[7];
+			  4'h9 : din <= data[6];
+			  4'hA : din <= data[5];
+			  4'hB : din <= data[4];
+			  4'hC : din <= data[3];
+			  4'hD : din <= data[2];
+			  4'hE : din <= data[1];
+			  4'hF : din <= data[0];
+			  default : begin end
         endcase
 		  rst_sig <= flg1 | (~flg2 & rst_sig);
       end
