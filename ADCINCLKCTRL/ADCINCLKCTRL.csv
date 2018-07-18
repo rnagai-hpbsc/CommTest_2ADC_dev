@@ -1,0 +1,18 @@
+# system info ADCINCLKCTRL on 2018.07.18.13:31:13
+system_info:
+name,value
+DEVICE,5CEFA7F23I7
+DEVICE_FAMILY,Cyclone V
+GENERATION_ID,1531888272
+#
+#
+# Files generated for ADCINCLKCTRL on 2018.07.18.13:31:13
+files:
+filepath,kind,attributes,module,is_top
+simulation/ADCINCLKCTRL.v,VERILOG,,ADCINCLKCTRL,true
+simulation/submodules/ADCINCLKCTRL_altclkctrl_0.v,VERILOG,,ADCINCLKCTRL_altclkctrl_0,false
+#
+# Map from instance-path to kind of module
+instances:
+instancePath,module
+ADCINCLKCTRL.altclkctrl_0,ADCINCLKCTRL_altclkctrl_0

@@ -42,8 +42,7 @@ set_global_assignment -name DEVICE 5CEFA7F23I7
 set_global_assignment -name TOP_LEVEL_ENTITY top
 set_global_assignment -name ORIGINAL_QUARTUS_VERSION 16.0.0
 set_global_assignment -name PROJECT_CREATION_TIME_DATE "14:03:30  APRIL 03, 2018"
-set_global_assignment -name LAST_QUARTUS_VERSION 16.0.0
-set_global_assignment -name VERILOG_FILE top.v
+set_global_assignment -name LAST_QUARTUS_VERSION "18.0.0 Lite Edition"
 set_global_assignment -name PROJECT_OUTPUT_DIRECTORY output_files
 set_global_assignment -name MIN_CORE_JUNCTION_TEMP "-40"
 set_global_assignment -name MAX_CORE_JUNCTION_TEMP 100
@@ -51,15 +50,9 @@ set_global_assignment -name ERROR_CHECK_FREQUENCY_DIVISOR 256
 set_global_assignment -name EDA_SIMULATION_TOOL "ModelSim-Altera (Verilog)"
 set_global_assignment -name EDA_TIME_SCALE "1 ns" -section_id eda_simulation
 set_global_assignment -name EDA_OUTPUT_DATA_FORMAT "VERILOG HDL" -section_id eda_simulation
-set_global_assignment -name QIP_FILE SYS_GCLK/synthesis/SYS_GCLK.qip
 set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
 set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
 set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
-set_global_assignment -name QIP_FILE SYS_PLL.qip
-set_global_assignment -name SIP_FILE SYS_PLL.sip
-set_global_assignment -name VERILOG_FILE Cmd_dec.v
-set_global_assignment -name VERILOG_FILE Tlm_ans.v
-set_global_assignment -name QIP_FILE DAT_FIFO.qip
 set_location_assignment PIN_M7 -to IF_IND_FPGA1
 set_location_assignment PIN_M6 -to IF_IND_FPGA2
 set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to IF_IND_FPGA1
@@ -154,16 +147,10 @@ set_instance_assignment -name IO_STANDARD "2.5 V" -to IF_SAD_SEN1
 set_instance_assignment -name IO_STANDARD "2.5 V" -to IF_SAD_SEN2
 set_instance_assignment -name IO_STANDARD "2.5 V" -to IF_SYS_CLK
 set_instance_assignment -name IO_STANDARD LVDS -to IF_TEST
-set_global_assignment -name SDC_FILE dmb1test.sdc
-set_global_assignment -name QIP_FILE TestRO/synthesis/TestRO.qip
-set_global_assignment -name QIP_FILE ADC_PLL.qip
-set_global_assignment -name SIP_FILE ADC_PLL.sip
-set_global_assignment -name QIP_FILE ADCINCLKCTRL/synthesis/ADCINCLKCTRL.qip
 set_location_assignment PIN_R5 -to SLO_DAC1_CS
 set_location_assignment PIN_R6 -to SLO_DAC1_SCLK
 set_location_assignment PIN_U7 -to SLO_DAC1_MISO
 set_location_assignment PIN_U8 -to SLO_DAC1_MOSI
-set_global_assignment -name VERILOG_FILE dac_spi.v
 set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to SLO_DAC1_CS
 set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to SLO_DAC1_MISO
 set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to SLO_DAC1_SCLK
@@ -176,6 +163,19 @@ set_global_assignment -name EDA_TEST_BENCH_NAME top_vlg_tst -section_id eda_simu
 set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id top_vlg_tst
 set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME top_vlg_tst -section_id top_vlg_tst
 set_global_assignment -name EDA_TEST_BENCH_FILE simulation/modelsim/top.vt -section_id top_vlg_tst
+set_global_assignment -name VERILOG_FILE top.v
+set_global_assignment -name QIP_FILE SYS_GCLK/synthesis/SYS_GCLK.qip
+set_global_assignment -name QIP_FILE SYS_PLL.qip
+set_global_assignment -name SIP_FILE SYS_PLL.sip
+set_global_assignment -name VERILOG_FILE Cmd_dec.v
+set_global_assignment -name VERILOG_FILE Tlm_ans.v
+set_global_assignment -name QIP_FILE DAT_FIFO.qip
+set_global_assignment -name SDC_FILE dmb1test.sdc
+set_global_assignment -name QIP_FILE TestRO/synthesis/TestRO.qip
+set_global_assignment -name QIP_FILE ADC_PLL.qip
+set_global_assignment -name SIP_FILE ADC_PLL.sip
+set_global_assignment -name QIP_FILE ADCINCLKCTRL/synthesis/ADCINCLKCTRL.qip
+set_global_assignment -name VERILOG_FILE dac_spi.v
 set_global_assignment -name VERILOG_FILE ExtTrig.v
 set_global_assignment -name VERILOG_FILE IntTrig.v
 set_global_assignment -name VERILOG_FILE pline.v
