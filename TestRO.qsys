@@ -9,6 +9,38 @@
    categories="System" />
  <parameter name="bonusData"><![CDATA[bonusData 
 {
+   element bs_1
+   {
+      datum _sortIndex
+      {
+         value = "11";
+         type = "int";
+      }
+   }
+   element bs_1.s1
+   {
+      datum baseAddress
+      {
+         value = "318767104";
+         type = "String";
+      }
+   }
+   element bs_2
+   {
+      datum _sortIndex
+      {
+         value = "12";
+         type = "int";
+      }
+   }
+   element bs_2.s1
+   {
+      datum baseAddress
+      {
+         value = "335544320";
+         type = "String";
+      }
+   }
    element clk_0
    {
       datum _sortIndex
@@ -206,6 +238,16 @@
  <parameter name="timeStamp" value="0" />
  <parameter name="useTestBenchNamingPattern" value="false" />
  <instanceScript></instanceScript>
+ <interface
+   name="bs1"
+   internal="bs_1.external_connection"
+   type="conduit"
+   dir="end" />
+ <interface
+   name="bs2"
+   internal="bs_2.external_connection"
+   type="conduit"
+   dir="end" />
  <interface name="clk" internal="clk_0.clk_in" type="clock" dir="end" />
  <interface
    name="dacctrl"
@@ -235,6 +277,34 @@
    internal="write_en_pio.external_connection"
    type="conduit"
    dir="end" />
+ <module name="bs_1" kind="altera_avalon_pio" version="18.0" enabled="1">
+  <parameter name="bitClearingEdgeCapReg" value="false" />
+  <parameter name="bitModifyingOutReg" value="false" />
+  <parameter name="captureEdge" value="false" />
+  <parameter name="clockRate" value="100000000" />
+  <parameter name="direction" value="Input" />
+  <parameter name="edgeType" value="RISING" />
+  <parameter name="generateIRQ" value="false" />
+  <parameter name="irqType" value="LEVEL" />
+  <parameter name="resetValue" value="0" />
+  <parameter name="simDoTestBenchWiring" value="false" />
+  <parameter name="simDrivenValue" value="0" />
+  <parameter name="width" value="14" />
+ </module>
+ <module name="bs_2" kind="altera_avalon_pio" version="18.0" enabled="1">
+  <parameter name="bitClearingEdgeCapReg" value="false" />
+  <parameter name="bitModifyingOutReg" value="false" />
+  <parameter name="captureEdge" value="false" />
+  <parameter name="clockRate" value="100000000" />
+  <parameter name="direction" value="Input" />
+  <parameter name="edgeType" value="RISING" />
+  <parameter name="generateIRQ" value="false" />
+  <parameter name="irqType" value="LEVEL" />
+  <parameter name="resetValue" value="0" />
+  <parameter name="simDoTestBenchWiring" value="false" />
+  <parameter name="simDrivenValue" value="0" />
+  <parameter name="width" value="14" />
+ </module>
  <module name="clk_0" kind="clock_source" version="18.0" enabled="1">
   <parameter name="clockFrequency" value="100000000" />
   <parameter name="clockFrequencyKnown" value="true" />
@@ -368,7 +438,7 @@
   <parameter name="dataAddrWidth" value="30" />
   <parameter name="dataMasterHighPerformanceAddrWidth" value="1" />
   <parameter name="dataMasterHighPerformanceMapParam" value="" />
-  <parameter name="dataSlaveMapParam"><![CDATA[<address-map><slave name='onchip_memory2_0.s1' start='0x0' end='0x493E0' type='altera_avalon_onchip_memory2.s1' /><slave name='jtag_uart_0.avalon_jtag_slave' start='0x10008000' end='0x10008008' type='altera_avalon_jtag_uart.avalon_jtag_slave' /><slave name='fifo_0.out' start='0x10008100' end='0x10008104' type='altera_avalon_fifo.out' /><slave name='fifo_0.out_csr' start='0x10008200' end='0x10008220' type='altera_avalon_fifo.out_csr' /><slave name='nios2_gen2_0.debug_mem_slave' start='0x10008800' end='0x10009000' type='altera_nios2_gen2.debug_mem_slave' /><slave name='fifo_1.out' start='0x10009100' end='0x10009104' type='altera_avalon_fifo.out' /><slave name='fifo_1.out_csr' start='0x10009200' end='0x10009220' type='altera_avalon_fifo.out_csr' /><slave name='version_info.s1' start='0x11000000' end='0x11000010' type='altera_avalon_pio.s1' /><slave name='ext_rst.s1' start='0x12000000' end='0x12000010' type='altera_avalon_pio.s1' /><slave name='write_en_pio.s1' start='0x20000000' end='0x20000010' type='altera_avalon_pio.s1' /><slave name='exttrg_0.s1' start='0x21000000' end='0x21000010' type='altera_avalon_pio.s1' /><slave name='dacctrl.s1' start='0x22000000' end='0x22000010' type='altera_avalon_pio.s1' /></address-map>]]></parameter>
+  <parameter name="dataSlaveMapParam"><![CDATA[<address-map><slave name='onchip_memory2_0.s1' start='0x0' end='0x493E0' type='altera_avalon_onchip_memory2.s1' /><slave name='jtag_uart_0.avalon_jtag_slave' start='0x10008000' end='0x10008008' type='altera_avalon_jtag_uart.avalon_jtag_slave' /><slave name='fifo_0.out' start='0x10008100' end='0x10008104' type='altera_avalon_fifo.out' /><slave name='fifo_0.out_csr' start='0x10008200' end='0x10008220' type='altera_avalon_fifo.out_csr' /><slave name='nios2_gen2_0.debug_mem_slave' start='0x10008800' end='0x10009000' type='altera_nios2_gen2.debug_mem_slave' /><slave name='fifo_1.out' start='0x10009100' end='0x10009104' type='altera_avalon_fifo.out' /><slave name='fifo_1.out_csr' start='0x10009200' end='0x10009220' type='altera_avalon_fifo.out_csr' /><slave name='version_info.s1' start='0x11000000' end='0x11000010' type='altera_avalon_pio.s1' /><slave name='ext_rst.s1' start='0x12000000' end='0x12000010' type='altera_avalon_pio.s1' /><slave name='bs_1.s1' start='0x13000000' end='0x13000010' type='altera_avalon_pio.s1' /><slave name='bs_2.s1' start='0x14000000' end='0x14000010' type='altera_avalon_pio.s1' /><slave name='write_en_pio.s1' start='0x20000000' end='0x20000010' type='altera_avalon_pio.s1' /><slave name='exttrg_0.s1' start='0x21000000' end='0x21000010' type='altera_avalon_pio.s1' /><slave name='dacctrl.s1' start='0x22000000' end='0x22000010' type='altera_avalon_pio.s1' /></address-map>]]></parameter>
   <parameter name="data_master_high_performance_paddr_base" value="0" />
   <parameter name="data_master_high_performance_paddr_size" value="0" />
   <parameter name="data_master_paddr_base" value="0" />
@@ -705,6 +775,24 @@
  <connection
    kind="avalon"
    version="18.0"
+   start="nios2_gen2_0.data_master"
+   end="bs_1.s1">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x13000000" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="18.0"
+   start="nios2_gen2_0.data_master"
+   end="bs_2.s1">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x14000000" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="18.0"
    start="nios2_gen2_0.instruction_master"
    end="jtag_uart_0.avalon_jtag_slave">
   <parameter name="arbitrationPriority" value="1" />
@@ -772,6 +860,8 @@
  <connection kind="clock" version="18.0" start="clk_0.clk" end="dacctrl.clk" />
  <connection kind="clock" version="18.0" start="clk_0.clk" end="version_info.clk" />
  <connection kind="clock" version="18.0" start="clk_0.clk" end="ext_rst.clk" />
+ <connection kind="clock" version="18.0" start="clk_0.clk" end="bs_1.clk" />
+ <connection kind="clock" version="18.0" start="clk_0.clk" end="bs_2.clk" />
  <connection
    kind="clock"
    version="18.0"
@@ -823,6 +913,8 @@
    version="18.0"
    start="clk_0.clk_reset"
    end="ext_rst.reset" />
+ <connection kind="reset" version="18.0" start="clk_0.clk_reset" end="bs_1.reset" />
+ <connection kind="reset" version="18.0" start="clk_0.clk_reset" end="bs_2.reset" />
  <connection
    kind="reset"
    version="18.0"

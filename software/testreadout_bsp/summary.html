@@ -22,10 +22,10 @@
 <td width="20%" bgcolor="#77BBFF">BSP Version:</td><td>default</td>
 </tr>
 <tr mode="wrap">
-<td width="20%" bgcolor="#77BBFF">BSP Generated On:</td><td>Jul 13, 2018 3:01:44 PM</td>
+<td width="20%" bgcolor="#77BBFF">BSP Generated On:</td><td>Jul 20, 2018 4:42:23 PM</td>
 </tr>
 <tr mode="wrap">
-<td width="20%" bgcolor="#77BBFF">BSP Generated Timestamp:</td><td>1531461704813</td>
+<td width="20%" bgcolor="#77BBFF">BSP Generated Timestamp:</td><td>1532072543629</td>
 </tr>
 <tr mode="wrap">
 <td width="20%" bgcolor="#77BBFF">BSP Generated Location:</td><td>C:\Users\icecube\WorkSpace\Altera\D-Egg_fw\CommTest_2ADC_dev\software\testreadout_bsp</td>
@@ -45,6 +45,9 @@
 </tr>
 <tr mode="wrap" STYLE="display: 'block'; font-family: 'courier'; color: '#000000'; font-weight: '500'; font-size: '14'; margin-top: '10pt'; text-align: 'left'">
 <td>write_en_pio</td><td>0x20000000 - 0x2000000F</td><td>16</td><td class="listing">&nbsp;</td>
+</tr>
+<tr mode="wrap" STYLE="display: 'block'; font-family: 'courier'; color: '#000000'; font-weight: '500'; font-size: '14'; margin-top: '10pt'; text-align: 'left'">
+<td>bs_1</td><td>0x13000000 - 0x1300000F</td><td>16</td><td class="listing">&nbsp;</td>
 </tr>
 <tr mode="wrap" STYLE="display: 'block'; font-family: 'courier'; color: '#000000'; font-weight: '500'; font-size: '14'; margin-top: '10pt'; text-align: 'left'">
 <td>ext_rst</td><td>0x12000000 - 0x1200000F</td><td>16</td><td class="listing">&nbsp;</td>
@@ -1437,7 +1440,7 @@
 <td width="20%">Identifier:</td><td>CFLAGS_MGPOPT</td>
 </tr>
 <tr>
-<td width="20%">Default Value:</td><td>-mgpopt=local</td>
+<td width="20%">Default Value:</td><td>-mgpopt=global</td>
 </tr>
 <tr>
 <td width="20%">Value:</td><td>-mgpopt=local</td>
@@ -1446,7 +1449,7 @@
 <td width="20%">Type:</td><td>UnquotedString</td>
 </tr>
 <tr mode="wrap">
-<td width="20%">Destination:</td><td>makefile_variable</td>
+<td width="20%">Destination:</td><td>public_mk_define</td>
 </tr>
 <tr mode="wrap">
 <td width="20%">Description:</td><td>C/C++ compiler to generate (do not generate) GP-relative accesses. 'none' tells the compilter not to generate GP-relative accesses. 'local' will generate GP-relative accesses for small data objects that are not external, weak, or uninitialized common symbols. Also use GP-relative addressing for objects that have been explicitly placed in a small data section via a section attribute. provides the default set of debug symbols typically required to debug a typical application. 'global' is same as 'local' but also generate GP-relative accesses for small data objects that are external, weak, or common.</td>

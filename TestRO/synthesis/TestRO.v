@@ -4,6 +4,8 @@
 
 `timescale 1 ps / 1 ps
 module TestRO (
+		input  wire [13:0] bs1_export,            //          bs1.export
+		input  wire [13:0] bs2_export,            //          bs2.export
 		input  wire        clk_clk,               //          clk.clk
 		output wire [31:0] dacctrl_export,        //      dacctrl.export
 		output wire        ext_rst_export,        //      ext_rst.export
@@ -91,13 +93,33 @@ module TestRO (
 	wire    [1:0] mm_interconnect_0_ext_rst_s1_address;                        // mm_interconnect_0:ext_rst_s1_address -> ext_rst:address
 	wire          mm_interconnect_0_ext_rst_s1_write;                          // mm_interconnect_0:ext_rst_s1_write -> ext_rst:write_n
 	wire   [31:0] mm_interconnect_0_ext_rst_s1_writedata;                      // mm_interconnect_0:ext_rst_s1_writedata -> ext_rst:writedata
+	wire   [31:0] mm_interconnect_0_bs_1_s1_readdata;                          // bs_1:readdata -> mm_interconnect_0:bs_1_s1_readdata
+	wire    [1:0] mm_interconnect_0_bs_1_s1_address;                           // mm_interconnect_0:bs_1_s1_address -> bs_1:address
+	wire   [31:0] mm_interconnect_0_bs_2_s1_readdata;                          // bs_2:readdata -> mm_interconnect_0:bs_2_s1_readdata
+	wire    [1:0] mm_interconnect_0_bs_2_s1_address;                           // mm_interconnect_0:bs_2_s1_address -> bs_2:address
 	wire          irq_mapper_receiver0_irq;                                    // jtag_uart_0:av_irq -> irq_mapper:receiver0_irq
 	wire   [31:0] nios2_gen2_0_irq_irq;                                        // irq_mapper:sender_irq -> nios2_gen2_0:irq
-	wire          rst_controller_reset_out_reset;                              // rst_controller:reset_out -> [dacctrl:reset_n, ext_rst:reset_n, exttrg_0:reset_n, fifo_0:rdreset_n, fifo_0:wrreset_n, fifo_1:rdreset_n, fifo_1:wrreset_n, irq_mapper:reset, mm_interconnect_0:nios2_gen2_0_reset_reset_bridge_in_reset_reset, nios2_gen2_0:reset_n, rst_translator:in_reset, version_info:reset_n, write_en_pio:reset_n]
+	wire          rst_controller_reset_out_reset;                              // rst_controller:reset_out -> [bs_1:reset_n, bs_2:reset_n, dacctrl:reset_n, ext_rst:reset_n, exttrg_0:reset_n, fifo_0:rdreset_n, fifo_0:wrreset_n, fifo_1:rdreset_n, fifo_1:wrreset_n, irq_mapper:reset, mm_interconnect_0:nios2_gen2_0_reset_reset_bridge_in_reset_reset, nios2_gen2_0:reset_n, rst_translator:in_reset, version_info:reset_n, write_en_pio:reset_n]
 	wire          rst_controller_reset_out_reset_req;                          // rst_controller:reset_req -> [nios2_gen2_0:reset_req, rst_translator:reset_req_in]
 	wire          rst_controller_001_reset_out_reset;                          // rst_controller_001:reset_out -> [jtag_uart_0:rst_n, mm_interconnect_0:jtag_uart_0_reset_reset_bridge_in_reset_reset, onchip_memory2_0:reset]
 	wire          rst_controller_001_reset_out_reset_req;                      // rst_controller_001:reset_req -> [onchip_memory2_0:reset_req, rst_translator_001:reset_req_in]
 	wire          nios2_gen2_0_debug_reset_request_reset;                      // nios2_gen2_0:debug_reset_request -> rst_controller_001:reset_in1
+
+	TestRO_bs_1 bs_1 (
+		.clk      (clk_clk),                            //                 clk.clk
+		.reset_n  (~rst_controller_reset_out_reset),    //               reset.reset_n
+		.address  (mm_interconnect_0_bs_1_s1_address),  //                  s1.address
+		.readdata (mm_interconnect_0_bs_1_s1_readdata), //                    .readdata
+		.in_port  (bs1_export)                          // external_connection.export
+	);
+
+	TestRO_bs_1 bs_2 (
+		.clk      (clk_clk),                            //                 clk.clk
+		.reset_n  (~rst_controller_reset_out_reset),    //               reset.reset_n
+		.address  (mm_interconnect_0_bs_2_s1_address),  //                  s1.address
+		.readdata (mm_interconnect_0_bs_2_s1_readdata), //                    .readdata
+		.in_port  (bs2_export)                          // external_connection.export
+	);
 
 	TestRO_dacctrl dacctrl (
 		.clk        (clk_clk),                                 //                 clk.clk
@@ -259,6 +281,10 @@ module TestRO (
 		.nios2_gen2_0_instruction_master_waitrequest    (nios2_gen2_0_instruction_master_waitrequest),                 //                                         .waitrequest
 		.nios2_gen2_0_instruction_master_read           (nios2_gen2_0_instruction_master_read),                        //                                         .read
 		.nios2_gen2_0_instruction_master_readdata       (nios2_gen2_0_instruction_master_readdata),                    //                                         .readdata
+		.bs_1_s1_address                                (mm_interconnect_0_bs_1_s1_address),                           //                                  bs_1_s1.address
+		.bs_1_s1_readdata                               (mm_interconnect_0_bs_1_s1_readdata),                          //                                         .readdata
+		.bs_2_s1_address                                (mm_interconnect_0_bs_2_s1_address),                           //                                  bs_2_s1.address
+		.bs_2_s1_readdata                               (mm_interconnect_0_bs_2_s1_readdata),                          //                                         .readdata
 		.dacctrl_s1_address                             (mm_interconnect_0_dacctrl_s1_address),                        //                               dacctrl_s1.address
 		.dacctrl_s1_write                               (mm_interconnect_0_dacctrl_s1_write),                          //                                         .write
 		.dacctrl_s1_readdata                            (mm_interconnect_0_dacctrl_s1_readdata),                       //                                         .readdata

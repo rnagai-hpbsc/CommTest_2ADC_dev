@@ -4,7 +4,7 @@
  * Machine generated for CPU 'nios2_gen2_0' in SOPC Builder design 'TestRO'
  * SOPC Builder design path: ../../TestRO.sopcinfo
  *
- * Generated: Tue Jul 10 18:00:36 JST 2018
+ * Generated: Wed Jul 18 15:47:34 JST 2018
  */
 
 /*
@@ -174,6 +174,33 @@
 #define ALT_STDOUT_PRESENT
 #define ALT_STDOUT_TYPE "altera_avalon_jtag_uart"
 #define ALT_SYSTEM_NAME "TestRO"
+
+
+/*
+ * bs_1 configuration
+ *
+ */
+
+#define ALT_MODULE_CLASS_bs_1 altera_avalon_pio
+#define BS_1_BASE 0x13000000
+#define BS_1_BIT_CLEARING_EDGE_REGISTER 0
+#define BS_1_BIT_MODIFYING_OUTPUT_REGISTER 0
+#define BS_1_CAPTURE 0
+#define BS_1_DATA_WIDTH 14
+#define BS_1_DO_TEST_BENCH_WIRING 0
+#define BS_1_DRIVEN_SIM_VALUE 0
+#define BS_1_EDGE_TYPE "NONE"
+#define BS_1_FREQ 100000000
+#define BS_1_HAS_IN 1
+#define BS_1_HAS_OUT 0
+#define BS_1_HAS_TRI 0
+#define BS_1_IRQ -1
+#define BS_1_IRQ_INTERRUPT_CONTROLLER_ID -1
+#define BS_1_IRQ_TYPE "NONE"
+#define BS_1_NAME "/dev/bs_1"
+#define BS_1_RESET_VALUE 0
+#define BS_1_SPAN 16
+#define BS_1_TYPE "altera_avalon_pio"
 
 
 /*

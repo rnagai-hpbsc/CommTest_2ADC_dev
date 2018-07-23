@@ -30,6 +30,11 @@
 #ifndef __ALT_FIFO_UTIL_H__
 #define __ALT_FIFO_UTIL_H__
 
+#ifdef __cplusplus
+extern "C"
+{
+#endif /* __cplusplus */
+
 #include "altera_avalon_fifo_regs.h"
 
 #define ALTERA_AVALON_FIFO_TYPE (volatile alt_u32*)
@@ -65,5 +70,9 @@ int altera_avalon_fifo_read_backpressure (alt_u32 read_address);
 #define ALTERA_AVALON_FIFO_IENABLE_WRITE_ERROR -2
 #define ALTERA_AVALON_FIFO_THRESHOLD_WRITE_ERROR    -3
 #define ALTERA_AVALON_FIFO_FULL -4
+
+#ifdef __cplusplus
+}
+#endif /* __cplusplus */
 
 #endif /* __ALT_FIFO_UTIL_H__ */
