@@ -1842,3 +1842,13 @@ Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.e
 
 !ENTRY com.altera.sbtgui.launch 4 0 2018-07-20 15:14:39.507
 !MESSAGE Downloading ELF Process failed
+!SESSION 2018-07-24 11:58:59.822 -----------------------------------------------
+eclipse.buildId=4.5.2.M20160212-1500
+java.version=1.8.0_05
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.cpp.product -pluginCustomization C:/intelfpga_lite/18.0/nios2eds/bin/eclipse_nios2/plugin_customization.ini
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.cpp.product -pluginCustomization C:/intelfpga_lite/18.0/nios2eds/bin/eclipse_nios2/plugin_customization.ini
+
+!ENTRY org.eclipse.cdt.core 1 0 2018-07-24 12:30:08.519
+!MESSAGE Indexed 'testreadout' (1 sources, 33 headers) in 0.417 sec: 1,275 declarations; 2,098 references; 0 unresolved inclusions; 0 syntax errors; 0 unresolved names (0%)

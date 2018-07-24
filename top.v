@@ -45,7 +45,7 @@ module top
 
   // ***********************************************************************************************************
   // ***********************************************************************************************************
-  parameter VERSION = 32'h18072304;
+  parameter VERSION = 32'h18072403;
     
   reg [31:0] vreg;
   
@@ -90,7 +90,7 @@ module top
   assign IF_IND_FPGA2 = FIFO_FF;
   
   
-  // INPUT CLOCK 
+  // INPUT CLOCK from ADC1
   wire clka_out;
   ADCINCLKCTRL ADC1_CLKCTRL
   (
@@ -170,14 +170,12 @@ module top
  
   wire FIFO_WR_EN_RO;
   
-  reg FIFO_WR_EN_RO_1;
+  reg FIFO_WR_EN_RO_1, FIFO_WR_EN_RO_2;
   
   always @(posedge clk_adc) begin 
     FIFO_WR_EN_RO_1 <= FIFO_WR_EN_RO;
   end
-  
-  reg FIFO_WR_EN_RO_2;
-  
+    
   always @(posedge clk_adc2) begin
     FIFO_WR_EN_RO_2 <= FIFO_WR_EN_RO;
   end
@@ -189,7 +187,6 @@ module top
   wire [13:0] FIFO_DAT_IN1_PL;
   wire [13:0] FIFO_DAT_IN2_PL;
   
-  
   pline #(.P_WIDTH(14),.P_DEPTH(20)) 
   pl_1 
   (
@@ -199,10 +196,19 @@ module top
 	 .y     (FIFO_DAT_IN1_PL)
   );
   
+  pline #(.P_WIDTH(14),.P_DEPTH(10))
+  pl_2
+  (
+    .clk   (clk_adc2),
+	 .rst_n (RESET),
+	 .a     (FIFO_DAT_IN2),
+	 .y     (FIFO_DAT_IN2_PL)
+  );
+  
   wire intrig1, intrig2;
   wire [13:0] baseline_1;
-  reg  [13:0] baseline_1_intr;
   wire [13:0] baseline_2;
+  reg  [13:0] baseline_1_intr;
   reg  [13:0] baseline_2_intr;
   
   always @(negedge RESET or posedge clk_adc) 
@@ -225,7 +231,7 @@ module top
 	 end
   end
   
-  IntTrig #(.THRES(50),.TRGTIME(100))
+  IntTrig #(.THRES(800),.TRGTIME(70))
   InT_1 
   (
     .clk      (clk_adc),
@@ -235,7 +241,7 @@ module top
 	 .otrig    (intrig1)
   );
   
-  IntTrig #(.THRES(50),.TRGTIME(100))
+  IntTrig #(.THRES(800),.TRGTIME(70))
   InT_2 
   (
     .clk      (clk_adc2),
@@ -283,16 +289,6 @@ module top
 	 .wrfull  (FIFO_FF),
 	 .aclr    (~RESET)
   );
-  
-  pline #(.P_WIDTH(14),.P_DEPTH(10))
-  pl_2
-  (
-    .clk   (clk_adc2),
-	 .rst_n (RESET),
-	 .a     (FIFO_DAT_IN2),
-	 .y     (FIFO_DAT_IN2_PL)
-  );
-  
   
   DAT_FIFO A2_3 
   (

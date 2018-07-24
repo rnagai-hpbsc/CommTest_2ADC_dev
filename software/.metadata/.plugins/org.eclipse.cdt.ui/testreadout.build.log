@@ -1,4 +1,4 @@
-16:19:59 **** Incremental Build of configuration Nios II for project testreadout ****
+15:52:56 **** Incremental Build of configuration Nios II for project testreadout ****
 make all 
 Info: Building ../testreadout_bsp/
 C:/intelFPGA_lite/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../testreadout_bsp/
@@ -14,5 +14,5 @@ Info: Creating testreadout.objdump
 nios2-elf-objdump --disassemble --syms --all-header --source testreadout.elf >testreadout.objdump
 [testreadout build complete]
 
-16:20:01 Build Finished (took 2s.421ms)
+15:52:58 Build Finished (took 1s.811ms)
 
