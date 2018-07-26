@@ -39,7 +39,7 @@ int main()
 	printf("%d\n",addr);
 	printf("Input value : ");
 	//scanf("%d",&value);
-	value = 32768;
+	value = 16384;//32768;
 	printf("%d\n",value);
 	sendvalue = initvalue + addr*256*256 + value;
 	IOWR_ALTERA_AVALON_PIO_DATA(DACCTRL_BASE,sendvalue);
@@ -49,7 +49,8 @@ int main()
 	printf("Wrote value is %x\n",sentvalue);
 	usleep(1000000);
 	baseline_1 = IORD_ALTERA_AVALON_PIO_DATA(BS_1_BASE);
-	printf("Actual Baseline value is : %d.\n",baseline_1);
+	baseline_2 = IORD_ALTERA_AVALON_PIO_DATA(BS_2_BASE);
+	printf("Actual Baseline value is : %d %d.\n",baseline_1,baseline_2);
 
 	printf("\n");
 
@@ -59,7 +60,7 @@ int main()
 	printf("%d\n",addr);
 	printf("Input value : ");
 	//scanf("%d",&value);
-	value = 32768;
+	value = 16384;//32768;
 	printf("%d\n",value);
 	sendvalue = initvalue + addr*256*256 + value;
 	IOWR_ALTERA_AVALON_PIO_DATA(DACCTRL_BASE,sendvalue);
@@ -68,8 +69,9 @@ int main()
 	sentvalue = IORD_ALTERA_AVALON_PIO_DATA(DACCTRL_BASE);
 	printf("Wrote value is %x\n",sentvalue);
 	usleep(1000000);
+	baseline_1 = IORD_ALTERA_AVALON_PIO_DATA(BS_1_BASE);
 	baseline_2 = IORD_ALTERA_AVALON_PIO_DATA(BS_2_BASE);
-	printf("Actual Baseline value is : %d.\n",baseline_2);
+	printf("Actual Baseline value is : %d %d.\n",baseline_1, baseline_2);
 
 	printf("\nIf want to start data-taking, press enter...\n");
 
@@ -79,6 +81,7 @@ int main()
 
 	int eventnumber = 0;
 	printf("Event#0\n");
+
 	while (1) {
 		++index;
 		data = IORD_ALTERA_AVALON_FIFO_DATA(FIFO_0_OUT_BASE);
@@ -86,21 +89,21 @@ int main()
 		baseline_1 = IORD_ALTERA_AVALON_PIO_DATA(BS_1_BASE);
 		baseline_2 = IORD_ALTERA_AVALON_PIO_DATA(BS_2_BASE);
 		printf("%d,%d,%d,%d",index,data,data2,baseline_1);
-		if (baseline_1+50<data) printf("*");
-		printf(",%d",baseline_2);
-		if (baseline_2+50<data2) printf("*");
-		printf("\n");
+		//if (baseline_1+50<data) printf("*");
+		printf(",%d\n",baseline_2);
+		//if (baseline_2+50<data2) printf("*");
+		//printf("\n");
 		if (altera_avalon_fifo_read_level(FIFO_0_OUT_CSR_BASE)==0) {
 			//break;
 			index=0;
 			++eventnumber;
-			printf("\nEvent#%d\n",eventnumber);
+			printf("\nEvent # %d\n",eventnumber);
 			IOWR_ALTERA_AVALON_PIO_DATA(WRITE_EN_PIO_BASE,1);
 		}
-		if (index==1000) {
+		if (index==1) {
 			IOWR_ALTERA_AVALON_PIO_DATA(WRITE_EN_PIO_BASE,0);
 		}
-		if (eventnumber==10) break;
+		if (eventnumber==1) break;
 	}
 	IOWR_ALTERA_AVALON_PIO_DATA(WRITE_EN_PIO_BASE,0);
 

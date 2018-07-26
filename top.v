@@ -38,14 +38,18 @@ module top
   output         SLO_DAC1_CS, 
   output         SLO_DAC1_SCLK, 
   output         SLO_DAC1_MOSI, 
-  input          SLO_DAC1_MISO 
+  input          SLO_DAC1_MISO,
+  
+  // Ext Trig in 
+  input          EXT_TRIG_IN1,
+  input          EXT_TRIG_IN2 
 );
 
   // 
 
   // ***********************************************************************************************************
   // ***********************************************************************************************************
-  parameter VERSION = 32'h18072403;
+  parameter VERSION = 32'h18072505;
     
   reg [31:0] vreg;
   
@@ -139,7 +143,7 @@ module top
   
   
   // **************************************************************************************
-  // Initial Set  SEQUENCE
+  // Initial setting for ADCs to enable CMOS mode
   // **************************************************************************************
 
   wire sen, sclk, sdata, reset;
@@ -163,7 +167,35 @@ module top
   assign IF_SAD_SDAT2 = sdata;
   assign IF_SAD_RESET2 = reset; 
 
-// -------------------------------  
+  // **************************************************************************************
+  // External Triger 
+  // **************************************************************************************
+  
+  reg ext_trig1, ext_trig2;
+  
+  always @(negedge RESET or posedge clk_adc) begin 
+    if (~RESET) begin 
+	   ext_trig1 <= 1'b0;
+	 end
+	 else begin 
+	   ext_trig1 <= EXT_TRIG_IN1;
+	 end
+  end
+  
+  always @(negedge RESET or posedge clk_adc2) begin 
+    if (~RESET) begin 
+	   ext_trig2 <= 1'b0;
+	 end
+	 else begin 
+	   ext_trig2 <= EXT_TRIG_IN2;
+	 end
+  end
+  
+  wire orexttrg = ext_trig1 | ext_trig2; 
+  
+  // **************************************************************************************
+  // Data taking 
+  // **************************************************************************************
  
   assign FIFO_DAT_IN1 = IF_SAD_D1;
   assign FIFO_DAT_IN2 = IF_SAD_D2;
@@ -187,7 +219,7 @@ module top
   wire [13:0] FIFO_DAT_IN1_PL;
   wire [13:0] FIFO_DAT_IN2_PL;
   
-  pline #(.P_WIDTH(14),.P_DEPTH(20)) 
+  pline #(.P_WIDTH(14),.P_DEPTH(100)) 
   pl_1 
   (
     .clk   (clk_adc),
@@ -196,7 +228,7 @@ module top
 	 .y     (FIFO_DAT_IN1_PL)
   );
   
-  pline #(.P_WIDTH(14),.P_DEPTH(10))
+  pline #(.P_WIDTH(14),.P_DEPTH(100))
   pl_2
   (
     .clk   (clk_adc2),
@@ -231,7 +263,7 @@ module top
 	 end
   end
   
-  IntTrig #(.THRES(800),.TRGTIME(70))
+  IntTrig #(.THRES(80),.TRGTIME(70))
   InT_1 
   (
     .clk      (clk_adc),
@@ -241,7 +273,7 @@ module top
 	 .otrig    (intrig1)
   );
   
-  IntTrig #(.THRES(800),.TRGTIME(70))
+  IntTrig #(.THRES(80),.TRGTIME(70))
   InT_2 
   (
     .clk      (clk_adc2),
@@ -253,7 +285,7 @@ module top
   
   wire done_1, done_2; 
   
-  baseline_mes2 #(.LNCLK(5))
+  baseline_mes2 #(.LNCLK(7))
   bs_1 
   (
     .clk      (clk_adc), 
@@ -264,7 +296,7 @@ module top
 	 .done     (done_1)
   );
   
-  baseline_mes2 #(.LNCLK(5))
+  baseline_mes2 #(.LNCLK(7))
   bs_2
   (
     .clk      (clk_adc2),
@@ -275,7 +307,7 @@ module top
 	 .done     (done_2)
   );
   
-  wire ortrig = intrig1 | intrig2;
+  wire ortrig = intrig1 | intrig2; 
    
   DAT_FIFO A1_3 
   (	
@@ -283,7 +315,7 @@ module top
 	 .rdclk   (CLKB),
 	 .rdreq   (FIFO_RD_ENA),
 	 .wrclk   (clk_adc),
-	 .wrreq   (FIFO_WR_ENA & FIFO_WR_EN_RO_1 & ortrig),
+	 .wrreq   (FIFO_WR_ENA & FIFO_WR_EN_RO_1 & orexttrg),
 	 .q       (FIFO_DAT_OUT1),
 	 .rdempty (FIFO_EF),
 	 .wrfull  (FIFO_FF),
@@ -296,7 +328,7 @@ module top
 	 .rdclk   (CLKB),
 	 .rdreq   (FIFO_RD_ENA),
 	 .wrclk   (clk_adc2),
-	 .wrreq   (FIFO_WR_ENA & FIFO_WR_EN_RO_2 & ortrig),
+	 .wrreq   (FIFO_WR_ENA & FIFO_WR_EN_RO_2 & orexttrg),
 	 .q       (FIFO_DAT_OUT2),
 	 .rdempty (FIFO_EF2),
 	 .wrfull  (FIFO_FF2),
