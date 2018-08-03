@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <EnsembleReport name="TestRO" kind="system" version="18.0" fabric="QSYS">
  <!-- Format version 18.0 614 (Future versions may contain additional information.) -->
- <!-- 2018.07.23.17:09:16 -->
+ <!-- 2018.07.31.18:21:02 -->
  <!-- A collection of modules and connections -->
  <parameter name="clockCrossingAdapter">
   <type>com.altera.sopcmodel.ensemble.EClockAdapter</type>
@@ -53,7 +53,7 @@
  </parameter>
  <parameter name="generationId">
   <type>int</type>
-  <value>1532333336</value>
+  <value>1533028844</value>
   <derived>false</derived>
   <enabled>true</enabled>
   <visible>true</visible>
@@ -4428,7 +4428,7 @@ the requested settings for a module instance. -->
   </assignment>
   <assignment>
    <name>embeddedsw.CMacro.FIFO_DEPTH</name>
-   <value>512</value>
+   <value>4096</value>
   </assignment>
   <assignment>
    <name>embeddedsw.CMacro.SINGLE_CLOCK_MODE</name>
@@ -4520,7 +4520,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="fifoDepth">
    <type>int</type>
-   <value>512</value>
+   <value>4096</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -5964,7 +5964,7 @@ the requested settings for a module instance. -->
   </assignment>
   <assignment>
    <name>embeddedsw.CMacro.FIFO_DEPTH</name>
-   <value>512</value>
+   <value>4096</value>
   </assignment>
   <assignment>
    <name>embeddedsw.CMacro.SINGLE_CLOCK_MODE</name>
@@ -6056,7 +6056,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="fifoDepth">
    <type>int</type>
-   <value>512</value>
+   <value>4096</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -23283,5 +23283,5 @@ parameters are a RESULT of the module parameters. -->
   <version>18.0</version>
  </plugin>
  <reportVersion>18.0 614</reportVersion>
- <uniqueIdentifier>D89EF311D4EA00000164C62F345A</uniqueIdentifier>
+ <uniqueIdentifier>D89EF311D4EA00000164EFA3D179</uniqueIdentifier>
 </EnsembleReport>

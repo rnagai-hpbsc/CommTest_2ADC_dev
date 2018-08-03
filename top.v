@@ -49,7 +49,7 @@ module top
 
   // ***********************************************************************************************************
   // ***********************************************************************************************************
-  parameter VERSION = 32'h18072505;
+  parameter VERSION = 32'h18073104;
     
   reg [31:0] vreg;
   
@@ -172,26 +172,32 @@ module top
   // **************************************************************************************
   
   reg ext_trig1, ext_trig2;
+  reg orexttrg1, orexttrg2;
   
+  wire orexttrg = ext_trig1 | ext_trig2; 
+
   always @(negedge RESET or posedge clk_adc) begin 
     if (~RESET) begin 
 	   ext_trig1 <= 1'b0;
+		orexttrg1 <= 1'b0;
 	 end
 	 else begin 
 	   ext_trig1 <= EXT_TRIG_IN1;
+		orexttrg1 <= orexttrg;
 	 end
   end
   
   always @(negedge RESET or posedge clk_adc2) begin 
     if (~RESET) begin 
 	   ext_trig2 <= 1'b0;
+		orexttrg2 <= 1'b0;
 	 end
 	 else begin 
 	   ext_trig2 <= EXT_TRIG_IN2;
+		orexttrg2 <= orexttrg;
 	 end
   end
   
-  wire orexttrg = ext_trig1 | ext_trig2; 
   
   // **************************************************************************************
   // Data taking 
@@ -268,7 +274,7 @@ module top
   (
     .clk      (clk_adc),
 	 .rst_n    (RESET),
-	 .baseline (baseline_1_intr),
+	 .baseline (baseline_1),
 	 .tdat     (FIFO_DAT_IN1),
 	 .otrig    (intrig1)
   );
@@ -278,14 +284,14 @@ module top
   (
     .clk      (clk_adc2),
 	 .rst_n    (RESET),
-	 .baseline (baseline_2_intr),
+	 .baseline (baseline_2),
 	 .tdat     (FIFO_DAT_IN2),
 	 .otrig    (intrig2)
   );
   
   wire done_1, done_2; 
   
-  baseline_mes2 #(.LNCLK(7))
+  baseline_mes2 #(.LNCLK(6))
   bs_1 
   (
     .clk      (clk_adc), 
@@ -296,7 +302,7 @@ module top
 	 .done     (done_1)
   );
   
-  baseline_mes2 #(.LNCLK(7))
+  baseline_mes2 #(.LNCLK(6))
   bs_2
   (
     .clk      (clk_adc2),
@@ -315,7 +321,7 @@ module top
 	 .rdclk   (CLKB),
 	 .rdreq   (FIFO_RD_ENA),
 	 .wrclk   (clk_adc),
-	 .wrreq   (FIFO_WR_ENA & FIFO_WR_EN_RO_1 & orexttrg),
+	 .wrreq   (FIFO_WR_EN_RO_1 & ~FIFO_FF & orexttrg),
 	 .q       (FIFO_DAT_OUT1),
 	 .rdempty (FIFO_EF),
 	 .wrfull  (FIFO_FF),
@@ -328,7 +334,7 @@ module top
 	 .rdclk   (CLKB),
 	 .rdreq   (FIFO_RD_ENA),
 	 .wrclk   (clk_adc2),
-	 .wrreq   (FIFO_WR_ENA & FIFO_WR_EN_RO_2 & orexttrg),
+	 .wrreq   (FIFO_WR_EN_RO_2 & ~FIFO_FF2 & orexttrg),
 	 .q       (FIFO_DAT_OUT2),
 	 .rdempty (FIFO_EF2),
 	 .wrfull  (FIFO_FF2),

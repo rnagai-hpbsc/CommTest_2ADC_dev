@@ -360,7 +360,7 @@
   <parameter name="channelWidth" value="8" />
   <parameter name="deviceFamilyString" value="Cyclone V" />
   <parameter name="errorWidth" value="8" />
-  <parameter name="fifoDepth" value="512" />
+  <parameter name="fifoDepth" value="4096" />
   <parameter name="fifoInputInterfaceOptions" value="AVALONMM_WRITE" />
   <parameter name="fifoOutputInterfaceOptions" value="AVALONMM_READ" />
   <parameter name="showHiddenFeatures" value="false" />
@@ -381,7 +381,7 @@
   <parameter name="channelWidth" value="8" />
   <parameter name="deviceFamilyString" value="Cyclone V" />
   <parameter name="errorWidth" value="8" />
-  <parameter name="fifoDepth" value="512" />
+  <parameter name="fifoDepth" value="4096" />
   <parameter name="fifoInputInterfaceOptions" value="AVALONMM_WRITE" />
   <parameter name="fifoOutputInterfaceOptions" value="AVALONMM_READ" />
   <parameter name="showHiddenFeatures" value="false" />

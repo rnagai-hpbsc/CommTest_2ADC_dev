@@ -71,7 +71,7 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY
  26 .jdi          000051e6  00000000  00000000  00070682  2**0
                   CONTENTS, READONLY
- 27 .sopcinfo     0007005e  00000000  00000000  00075868  2**0
+ 27 .sopcinfo     00070062  00000000  00000000  00075868  2**0
                   CONTENTS, READONLY
 SYMBOL TABLE:
 00000000 l    d  .entry	00000000 .entry
@@ -997,87 +997,87 @@ int main()
      2e0:	21014b04 	addi	r4,r4,1324
      2e4:	00006140 	call	614 <printf>
 	//scanf("%d",&addr);
-	addr = 0;
-     2e8:	e03ff815 	stw	zero,-32(fp)
+	addr = 4;
+     2e8:	00800104 	movi	r2,4
+     2ec:	e0bff815 	stw	r2,-32(fp)
 	printf("%d\n",addr);
-     2ec:	e17ff817 	ldw	r5,-32(fp)
-     2f0:	01000074 	movhi	r4,1
-     2f4:	21014e04 	addi	r4,r4,1336
-     2f8:	00006140 	call	614 <printf>
+     2f0:	e17ff817 	ldw	r5,-32(fp)
+     2f4:	01000074 	movhi	r4,1
+     2f8:	21014e04 	addi	r4,r4,1336
+     2fc:	00006140 	call	614 <printf>
 	printf("Input value : ");
-     2fc:	01000074 	movhi	r4,1
-     300:	21014f04 	addi	r4,r4,1340
-     304:	00006140 	call	614 <printf>
+     300:	01000074 	movhi	r4,1
+     304:	21014f04 	addi	r4,r4,1340
+     308:	00006140 	call	614 <printf>
 	//scanf("%d",&value);
-	value = 16384;//32768;
-     308:	00900004 	movi	r2,16384
-     30c:	e0bff915 	stw	r2,-28(fp)
+	value = 32768;
+     30c:	00a00014 	movui	r2,32768
+     310:	e0bff915 	stw	r2,-28(fp)
 	printf("%d\n",value);
-     310:	e17ff917 	ldw	r5,-28(fp)
-     314:	01000074 	movhi	r4,1
-     318:	21014e04 	addi	r4,r4,1336
-     31c:	00006140 	call	614 <printf>
+     314:	e17ff917 	ldw	r5,-28(fp)
+     318:	01000074 	movhi	r4,1
+     31c:	21014e04 	addi	r4,r4,1336
+     320:	00006140 	call	614 <printf>
 	sendvalue = initvalue + addr*256*256 + value;
-     320:	e0bff817 	ldw	r2,-32(fp)
-     324:	1006943a 	slli	r3,r2,16
-     328:	e0bff717 	ldw	r2,-36(fp)
-     32c:	1887883a 	add	r3,r3,r2
-     330:	e0bff917 	ldw	r2,-28(fp)
-     334:	1885883a 	add	r2,r3,r2
-     338:	e0bffa15 	stw	r2,-24(fp)
+     324:	e0bff817 	ldw	r2,-32(fp)
+     328:	1006943a 	slli	r3,r2,16
+     32c:	e0bff717 	ldw	r2,-36(fp)
+     330:	1887883a 	add	r3,r3,r2
+     334:	e0bff917 	ldw	r2,-28(fp)
+     338:	1885883a 	add	r2,r3,r2
+     33c:	e0bffa15 	stw	r2,-24(fp)
 	IOWR_ALTERA_AVALON_PIO_DATA(DACCTRL_BASE,sendvalue);
-     33c:	00888034 	movhi	r2,8704
-     340:	e0fffa17 	ldw	r3,-24(fp)
-     344:	10c00035 	stwio	r3,0(r2)
+     340:	00888034 	movhi	r2,8704
+     344:	e0fffa17 	ldw	r3,-24(fp)
+     348:	10c00035 	stwio	r3,0(r2)
 	printf("writing DACCTRL_BASE : %x\n",sendvalue);
-     348:	e17ffa17 	ldw	r5,-24(fp)
-     34c:	01000074 	movhi	r4,1
-     350:	21015304 	addi	r4,r4,1356
-     354:	00006140 	call	614 <printf>
+     34c:	e17ffa17 	ldw	r5,-24(fp)
+     350:	01000074 	movhi	r4,1
+     354:	21015304 	addi	r4,r4,1356
+     358:	00006140 	call	614 <printf>
 	usleep(1000000);
-     358:	010003f4 	movhi	r4,15
-     35c:	21109004 	addi	r4,r4,16960
-     360:	000df680 	call	df68 <usleep>
+     35c:	010003f4 	movhi	r4,15
+     360:	21109004 	addi	r4,r4,16960
+     364:	000df680 	call	df68 <usleep>
 	sentvalue = IORD_ALTERA_AVALON_PIO_DATA(DACCTRL_BASE);
-     364:	00888034 	movhi	r2,8704
-     368:	10800037 	ldwio	r2,0(r2)
-     36c:	e0bffb15 	stw	r2,-20(fp)
+     368:	00888034 	movhi	r2,8704
+     36c:	10800037 	ldwio	r2,0(r2)
+     370:	e0bffb15 	stw	r2,-20(fp)
 	printf("Wrote value is %x\n",sentvalue);
-     370:	e17ffb17 	ldw	r5,-20(fp)
-     374:	01000074 	movhi	r4,1
-     378:	21015a04 	addi	r4,r4,1384
-     37c:	00006140 	call	614 <printf>
+     374:	e17ffb17 	ldw	r5,-20(fp)
+     378:	01000074 	movhi	r4,1
+     37c:	21015a04 	addi	r4,r4,1384
+     380:	00006140 	call	614 <printf>
 	usleep(1000000);
-     380:	010003f4 	movhi	r4,15
-     384:	21109004 	addi	r4,r4,16960
-     388:	000df680 	call	df68 <usleep>
+     384:	010003f4 	movhi	r4,15
+     388:	21109004 	addi	r4,r4,16960
+     38c:	000df680 	call	df68 <usleep>
 	baseline_1 = IORD_ALTERA_AVALON_PIO_DATA(BS_1_BASE);
-     38c:	0084c034 	movhi	r2,4864
-     390:	10800037 	ldwio	r2,0(r2)
-     394:	e0bffc15 	stw	r2,-16(fp)
+     390:	0084c034 	movhi	r2,4864
+     394:	10800037 	ldwio	r2,0(r2)
+     398:	e0bffc15 	stw	r2,-16(fp)
 	baseline_2 = IORD_ALTERA_AVALON_PIO_DATA(BS_2_BASE);
-     398:	00850034 	movhi	r2,5120
-     39c:	10800037 	ldwio	r2,0(r2)
-     3a0:	e0bffd15 	stw	r2,-12(fp)
+     39c:	00850034 	movhi	r2,5120
+     3a0:	10800037 	ldwio	r2,0(r2)
+     3a4:	e0bffd15 	stw	r2,-12(fp)
 	printf("Actual Baseline value is : %d %d.\n",baseline_1,baseline_2);
-     3a4:	e1bffd17 	ldw	r6,-12(fp)
-     3a8:	e17ffc17 	ldw	r5,-16(fp)
-     3ac:	01000074 	movhi	r4,1
-     3b0:	21015f04 	addi	r4,r4,1404
-     3b4:	00006140 	call	614 <printf>
+     3a8:	e1bffd17 	ldw	r6,-12(fp)
+     3ac:	e17ffc17 	ldw	r5,-16(fp)
+     3b0:	01000074 	movhi	r4,1
+     3b4:	21015f04 	addi	r4,r4,1404
+     3b8:	00006140 	call	614 <printf>
 
 	printf("\n");
-     3b8:	01000284 	movi	r4,10
-     3bc:	00006580 	call	658 <putchar>
+     3bc:	01000284 	movi	r4,10
+     3c0:	00006580 	call	658 <putchar>
 
 	printf("Address : ");
-     3c0:	01000074 	movhi	r4,1
-     3c4:	21014b04 	addi	r4,r4,1324
-     3c8:	00006140 	call	614 <printf>
+     3c4:	01000074 	movhi	r4,1
+     3c8:	21014b04 	addi	r4,r4,1324
+     3cc:	00006140 	call	614 <printf>
 	//scanf("%d",&addr);
-	addr = 4;
-     3cc:	00800104 	movi	r2,4
-     3d0:	e0bff815 	stw	r2,-32(fp)
+	addr = 0;
+     3d0:	e03ff815 	stw	zero,-32(fp)
 	printf("%d\n",addr);
      3d4:	e17ff817 	ldw	r5,-32(fp)
      3d8:	01000074 	movhi	r4,1
@@ -1088,8 +1088,8 @@ int main()
      3e8:	21014f04 	addi	r4,r4,1340
      3ec:	00006140 	call	614 <printf>
 	//scanf("%d",&value);
-	value = 16384;//32768;
-     3f0:	00900004 	movi	r2,16384
+	value = 32768;
+     3f0:	00a00014 	movui	r2,32768
      3f4:	e0bff915 	stw	r2,-28(fp)
 	printf("%d\n",value);
      3f8:	e17ff917 	ldw	r5,-28(fp)
@@ -1199,14 +1199,11 @@ int main()
      52c:	01000074 	movhi	r4,1
      530:	21017e04 	addi	r4,r4,1528
      534:	00006140 	call	614 <printf>
-		//if (baseline_1+50<data) printf("*");
 		printf(",%d\n",baseline_2);
      538:	e17ffd17 	ldw	r5,-12(fp)
      53c:	01000074 	movhi	r4,1
      540:	21018104 	addi	r4,r4,1540
      544:	00006140 	call	614 <printf>
-		//if (baseline_2+50<data2) printf("*");
-		//printf("\n");
 		if (altera_avalon_fifo_read_level(FIFO_0_OUT_CSR_BASE)==0) {
      548:	01040074 	movhi	r4,4097
      54c:	21208004 	addi	r4,r4,-32256
@@ -1238,9 +1235,9 @@ int main()
      594:	00880034 	movhi	r2,8192
      598:	10c00035 	stwio	r3,0(r2)
 		}
-		if (eventnumber==1) break;
+		if (eventnumber==10) break;
      59c:	e0bff517 	ldw	r2,-44(fp)
-     5a0:	10800058 	cmpnei	r2,r2,1
+     5a0:	10800298 	cmpnei	r2,r2,10
      5a4:	10000126 	beq	r2,zero,5ac <main+0x340>
 	}
      5a8:	003fca06 	br	4d4 <__alt_data_end+0xfffb70f4>
@@ -1249,7 +1246,7 @@ int main()
 		if (index==1) {
 			IOWR_ALTERA_AVALON_PIO_DATA(WRITE_EN_PIO_BASE,0);
 		}
-		if (eventnumber==1) break;
+		if (eventnumber==10) break;
      5ac:	0001883a 	nop
 	}
 	IOWR_ALTERA_AVALON_PIO_DATA(WRITE_EN_PIO_BASE,0);

@@ -35,11 +35,11 @@ int main()
 
 	printf("Address : ");
 	//scanf("%d",&addr);
-	addr = 0;
+	addr = 4;
 	printf("%d\n",addr);
 	printf("Input value : ");
 	//scanf("%d",&value);
-	value = 16384;//32768;
+	value = 32768;
 	printf("%d\n",value);
 	sendvalue = initvalue + addr*256*256 + value;
 	IOWR_ALTERA_AVALON_PIO_DATA(DACCTRL_BASE,sendvalue);
@@ -56,11 +56,11 @@ int main()
 
 	printf("Address : ");
 	//scanf("%d",&addr);
-	addr = 4;
+	addr = 0;
 	printf("%d\n",addr);
 	printf("Input value : ");
 	//scanf("%d",&value);
-	value = 16384;//32768;
+	value = 32768;
 	printf("%d\n",value);
 	sendvalue = initvalue + addr*256*256 + value;
 	IOWR_ALTERA_AVALON_PIO_DATA(DACCTRL_BASE,sendvalue);
@@ -89,10 +89,7 @@ int main()
 		baseline_1 = IORD_ALTERA_AVALON_PIO_DATA(BS_1_BASE);
 		baseline_2 = IORD_ALTERA_AVALON_PIO_DATA(BS_2_BASE);
 		printf("%d,%d,%d,%d",index,data,data2,baseline_1);
-		//if (baseline_1+50<data) printf("*");
 		printf(",%d\n",baseline_2);
-		//if (baseline_2+50<data2) printf("*");
-		//printf("\n");
 		if (altera_avalon_fifo_read_level(FIFO_0_OUT_CSR_BASE)==0) {
 			//break;
 			index=0;
@@ -103,7 +100,7 @@ int main()
 		if (index==1) {
 			IOWR_ALTERA_AVALON_PIO_DATA(WRITE_EN_PIO_BASE,0);
 		}
-		if (eventnumber==1) break;
+		if (eventnumber==10) break;
 	}
 	IOWR_ALTERA_AVALON_PIO_DATA(WRITE_EN_PIO_BASE,0);
 
