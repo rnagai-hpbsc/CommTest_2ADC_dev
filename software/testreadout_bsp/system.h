@@ -4,7 +4,7 @@
  * Machine generated for CPU 'nios2_gen2_0' in SOPC Builder design 'TestRO'
  * SOPC Builder design path: ../../TestRO.sopcinfo
  *
- * Generated: Tue Jul 31 17:09:12 JST 2018
+ * Generated: Tue Aug 07 18:27:11 JST 2018
  */
 
 /*
@@ -323,7 +323,7 @@
 #define FIFO_0_OUT_BITS_PER_SYMBOL 16
 #define FIFO_0_OUT_CHANNEL_WIDTH 8
 #define FIFO_0_OUT_ERROR_WIDTH 8
-#define FIFO_0_OUT_FIFO_DEPTH 2048
+#define FIFO_0_OUT_FIFO_DEPTH 4096
 #define FIFO_0_OUT_IRQ -1
 #define FIFO_0_OUT_IRQ_INTERRUPT_CONTROLLER_ID -1
 #define FIFO_0_OUT_NAME "/dev/fifo_0_out"
@@ -355,7 +355,7 @@
 #define FIFO_0_OUT_CSR_BITS_PER_SYMBOL 16
 #define FIFO_0_OUT_CSR_CHANNEL_WIDTH 8
 #define FIFO_0_OUT_CSR_ERROR_WIDTH 8
-#define FIFO_0_OUT_CSR_FIFO_DEPTH 2048
+#define FIFO_0_OUT_CSR_FIFO_DEPTH 4096
 #define FIFO_0_OUT_CSR_IRQ -1
 #define FIFO_0_OUT_CSR_IRQ_INTERRUPT_CONTROLLER_ID -1
 #define FIFO_0_OUT_CSR_NAME "/dev/fifo_0_out_csr"
@@ -387,7 +387,7 @@
 #define FIFO_1_OUT_BITS_PER_SYMBOL 16
 #define FIFO_1_OUT_CHANNEL_WIDTH 8
 #define FIFO_1_OUT_ERROR_WIDTH 8
-#define FIFO_1_OUT_FIFO_DEPTH 2048
+#define FIFO_1_OUT_FIFO_DEPTH 4096
 #define FIFO_1_OUT_IRQ -1
 #define FIFO_1_OUT_IRQ_INTERRUPT_CONTROLLER_ID -1
 #define FIFO_1_OUT_NAME "/dev/fifo_1_out"
@@ -419,7 +419,7 @@
 #define FIFO_1_OUT_CSR_BITS_PER_SYMBOL 16
 #define FIFO_1_OUT_CSR_CHANNEL_WIDTH 8
 #define FIFO_1_OUT_CSR_ERROR_WIDTH 8
-#define FIFO_1_OUT_CSR_FIFO_DEPTH 2048
+#define FIFO_1_OUT_CSR_FIFO_DEPTH 4096
 #define FIFO_1_OUT_CSR_IRQ -1
 #define FIFO_1_OUT_CSR_IRQ_INTERRUPT_CONTROLLER_ID -1
 #define FIFO_1_OUT_CSR_NAME "/dev/fifo_1_out_csr"

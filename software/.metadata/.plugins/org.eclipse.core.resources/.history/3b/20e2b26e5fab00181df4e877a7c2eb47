@@ -1,0 +1,125 @@
+/*
+ * testreadout.c
+ *
+ *  Created on: Apr 5, 2018
+ *      Author: icecube
+ */
+#include <stdio.h>
+#include <unistd.h>
+#include "system.h"
+#include "altera_avalon_jtag_uart_regs.h"
+#include "altera_avalon_pio_regs.h"
+#include "altera_avalon_fifo_regs.h"
+#include "altera_avalon_fifo_util.h"
+
+int configure(int addr, int value);
+
+int main()
+{
+	// parameters
+	int flag = 0;
+	int ntake = 100;
+	int value = 4608;
+
+	printf("Hello world!\n");
+
+	int index = 0;
+	int data, data2;
+
+	int version = IORD_ALTERA_AVALON_JTAG_UART_DATA(VERSION_INFO_BASE);
+	printf ("\n ** Version: %x ** \n\n",version);
+
+	printf("Resetting...\n");
+	IOWR_ALTERA_AVALON_PIO_DATA(EXT_RST_BASE,1);
+	//usleep(1000000);
+	IOWR_ALTERA_AVALON_PIO_DATA(EXT_RST_BASE,0);
+	//usleep(1000000);
+	printf("\n");
+
+
+	// configuring
+	int addr, baseline_1, baseline_2;
+
+	addr = 4;
+	while (flag) {
+		printf("Addr is ");
+		scanf("%d",&addr); printf("%d.\n",addr);
+		if (addr > 7) {printf("Not supported. Continue.\n"); continue;}
+		printf("Value is ");
+		scanf("%d",&value); printf("%d.\n",value);
+		if (value > 65534) {printf("Not supported. Continue.\n"); continue;}
+		configure(addr,value);
+		printf("\nNext Command, \n");
+		printf("  if you set 0: Finish configuring and continue\n");
+		printf("             1: Continue the configuring\n");
+		printf("             2: Finish configuring and finish the code\n");
+		printf("Enter the number : ");
+		scanf("%d",&flag); printf("%d.\n",flag);
+		while (flag > 2) {
+			printf("Number > 2 is not supported. Try again.\n");
+			printf("Enter the number : ");
+			scanf("%d",&flag); printf("%d.\n",flag);
+		}
+		if (flag==2) printf("Close the program. %c\n",0x04);
+	}
+	configure(0,value);
+	configure(4,value);
+
+	printf("\nIf want to start data-taking, press enter...\n");
+
+	printf("\n *** Start data-taking *** \n\n");
+
+	IOWR_ALTERA_AVALON_PIO_DATA(WRITE_EN_PIO_BASE,1);
+
+	int eventnumber = 0;
+	printf("Event#0\n");
+
+	while (1) {
+		++index;
+		data = IORD_ALTERA_AVALON_FIFO_DATA(FIFO_0_OUT_BASE);
+		data2 = IORD_ALTERA_AVALON_FIFO_DATA(FIFO_1_OUT_BASE);
+		baseline_1 = IORD_ALTERA_AVALON_PIO_DATA(BS_1_BASE);
+		baseline_2 = IORD_ALTERA_AVALON_PIO_DATA(BS_2_BASE);
+		printf("%d,%d,%d,%d",index,data,data2,baseline_1);
+		printf(",%d\n",baseline_2);
+		if (altera_avalon_fifo_read_level(FIFO_0_OUT_CSR_BASE)==0) {
+			//break;
+			index=0;
+			++eventnumber;
+			printf("\nEvent # %d\n",eventnumber);
+			IOWR_ALTERA_AVALON_PIO_DATA(WRITE_EN_PIO_BASE,1);
+		}
+		if (index==1) {
+			IOWR_ALTERA_AVALON_PIO_DATA(WRITE_EN_PIO_BASE,0);
+		}
+		if (eventnumber==ntake) break;
+	}
+	IOWR_ALTERA_AVALON_PIO_DATA(WRITE_EN_PIO_BASE,0);
+
+	printf("End of the code. %c\n",0x04); // exit
+	return 0;
+}
+
+int configure(int addr, int value)
+{
+	int initvalue =4293918720; // 0xFFF00000;
+
+	int sendvalue, sentvalue, baseline_1, baseline_2;
+
+	printf("Address : %d\n",addr);
+	printf("Input value : %d\n",value);
+	sendvalue = initvalue + addr*256*256 + value;
+	IOWR_ALTERA_AVALON_PIO_DATA(DACCTRL_BASE,sendvalue);
+	printf("writing DACCTRL_BASE : %x\n",sendvalue);
+	usleep(1000000);
+	sentvalue = IORD_ALTERA_AVALON_PIO_DATA(DACCTRL_BASE);
+	printf("Wrote value is %x\n",sentvalue);
+	usleep(1000000);
+	baseline_1 = IORD_ALTERA_AVALON_PIO_DATA(BS_1_BASE);
+	baseline_2 = IORD_ALTERA_AVALON_PIO_DATA(BS_2_BASE);
+	printf("Actual Baseline value is : %d %d.\n",baseline_1,baseline_2);
+
+	printf("\n");
+
+	return 0;
+}

@@ -12,8 +12,15 @@
 #include "altera_avalon_fifo_regs.h"
 #include "altera_avalon_fifo_util.h"
 
+int configure(int addr, int value);
+
 int main()
 {
+	// parameters
+	int flag = 0;
+	int ntake = 100;
+	int value = 6144;
+
 	printf("Hello world!\n");
 
 	int index = 0;
@@ -29,49 +36,34 @@ int main()
 	//usleep(1000000);
 	printf("\n");
 
-	int initvalue =4293918720; // 0xFFF00000;
 
-	int addr, value, sendvalue, sentvalue, baseline_1, baseline_2;
+	// configuring
+	int addr, baseline_1, baseline_2;
 
-	printf("Address : ");
-	//scanf("%d",&addr);
 	addr = 4;
-	printf("%d\n",addr);
-	printf("Input value : ");
-	//scanf("%d",&value);
-	value = 32768;
-	printf("%d\n",value);
-	sendvalue = initvalue + addr*256*256 + value;
-	IOWR_ALTERA_AVALON_PIO_DATA(DACCTRL_BASE,sendvalue);
-	printf("writing DACCTRL_BASE : %x\n",sendvalue);
-	usleep(1000000);
-	sentvalue = IORD_ALTERA_AVALON_PIO_DATA(DACCTRL_BASE);
-	printf("Wrote value is %x\n",sentvalue);
-	usleep(1000000);
-	baseline_1 = IORD_ALTERA_AVALON_PIO_DATA(BS_1_BASE);
-	baseline_2 = IORD_ALTERA_AVALON_PIO_DATA(BS_2_BASE);
-	printf("Actual Baseline value is : %d %d.\n",baseline_1,baseline_2);
-
-	printf("\n");
-
-	printf("Address : ");
-	//scanf("%d",&addr);
-	addr = 0;
-	printf("%d\n",addr);
-	printf("Input value : ");
-	//scanf("%d",&value);
-	value = 32768;
-	printf("%d\n",value);
-	sendvalue = initvalue + addr*256*256 + value;
-	IOWR_ALTERA_AVALON_PIO_DATA(DACCTRL_BASE,sendvalue);
-	printf("writing DACCTRL_BASE : %x\n",sendvalue);
-	usleep(1000000);
-	sentvalue = IORD_ALTERA_AVALON_PIO_DATA(DACCTRL_BASE);
-	printf("Wrote value is %x\n",sentvalue);
-	usleep(1000000);
-	baseline_1 = IORD_ALTERA_AVALON_PIO_DATA(BS_1_BASE);
-	baseline_2 = IORD_ALTERA_AVALON_PIO_DATA(BS_2_BASE);
-	printf("Actual Baseline value is : %d %d.\n",baseline_1, baseline_2);
+	while (flag) {
+		printf("Addr is ");
+		scanf("%d",&addr); printf("%d.\n",addr);
+		if (addr > 7) {printf("Not supported. Continue.\n"); continue;}
+		printf("Value is ");
+		scanf("%d",&value); printf("%d.\n",value);
+		if (value > 65534) {printf("Not supported. Continue.\n"); continue;}
+		configure(addr,value);
+		printf("\nNext Command, \n");
+		printf("  if you set 0: Finish configuring and continue\n");
+		printf("             1: Continue the configuring\n");
+		printf("             2: Finish configuring and finish the code\n");
+		printf("Enter the number : ");
+		scanf("%d",&flag); printf("%d.\n",flag);
+		while (flag > 2) {
+			printf("Number > 2 is not supported. Try again.\n");
+			printf("Enter the number : ");
+			scanf("%d",&flag); printf("%d.\n",flag);
+		}
+		if (flag==2) printf("Close the program. %c\n",0x04);
+	}
+	configure(4,value-4096);
+	configure(0,value-4096);
 
 	printf("\nIf want to start data-taking, press enter...\n");
 
@@ -100,7 +92,7 @@ int main()
 		if (index==1) {
 			IOWR_ALTERA_AVALON_PIO_DATA(WRITE_EN_PIO_BASE,0);
 		}
-		if (eventnumber==10) break;
+		if (eventnumber==ntake) break;
 	}
 	IOWR_ALTERA_AVALON_PIO_DATA(WRITE_EN_PIO_BASE,0);
 
@@ -108,3 +100,26 @@ int main()
 	return 0;
 }
 
+int configure(int addr, int value)
+{
+	int initvalue =4293918720; // 0xFFF00000;
+
+	int sendvalue, sentvalue, baseline_1, baseline_2;
+
+	printf("Address : %d\n",addr);
+	printf("Input value : %d\n",value);
+	sendvalue = initvalue + addr*256*256 + value;
+	IOWR_ALTERA_AVALON_PIO_DATA(DACCTRL_BASE,sendvalue);
+	printf("writing DACCTRL_BASE : %x\n",sendvalue);
+	usleep(1000000);
+	sentvalue = IORD_ALTERA_AVALON_PIO_DATA(DACCTRL_BASE);
+	printf("Wrote value is %x\n",sentvalue);
+	usleep(1000000);
+	baseline_1 = IORD_ALTERA_AVALON_PIO_DATA(BS_1_BASE);
+	baseline_2 = IORD_ALTERA_AVALON_PIO_DATA(BS_2_BASE);
+	printf("Actual Baseline value is : %d %d.\n",baseline_1,baseline_2);
+
+	printf("\n");
+
+	return 0;
+}
