@@ -4,7 +4,7 @@
  * Machine generated for CPU 'nios2_gen2_0' in SOPC Builder design 'TestRO'
  * SOPC Builder design path: ../../TestRO.sopcinfo
  *
- * Generated: Tue Aug 07 18:27:11 JST 2018
+ * Generated: Wed Nov 14 11:49:01 JST 2018
  */
 
 /*
@@ -495,6 +495,33 @@
 #define ONCHIP_MEMORY2_0_SPAN 300000
 #define ONCHIP_MEMORY2_0_TYPE "altera_avalon_onchip_memory2"
 #define ONCHIP_MEMORY2_0_WRITABLE 1
+
+
+/*
+ * testpad_1 configuration
+ *
+ */
+
+#define ALT_MODULE_CLASS_testpad_1 altera_avalon_pio
+#define TESTPAD_1_BASE 0x15000000
+#define TESTPAD_1_BIT_CLEARING_EDGE_REGISTER 0
+#define TESTPAD_1_BIT_MODIFYING_OUTPUT_REGISTER 0
+#define TESTPAD_1_CAPTURE 0
+#define TESTPAD_1_DATA_WIDTH 14
+#define TESTPAD_1_DO_TEST_BENCH_WIRING 0
+#define TESTPAD_1_DRIVEN_SIM_VALUE 0
+#define TESTPAD_1_EDGE_TYPE "NONE"
+#define TESTPAD_1_FREQ 100000000
+#define TESTPAD_1_HAS_IN 1
+#define TESTPAD_1_HAS_OUT 0
+#define TESTPAD_1_HAS_TRI 0
+#define TESTPAD_1_IRQ -1
+#define TESTPAD_1_IRQ_INTERRUPT_CONTROLLER_ID -1
+#define TESTPAD_1_IRQ_TYPE "NONE"
+#define TESTPAD_1_NAME "/dev/testpad_1"
+#define TESTPAD_1_RESET_VALUE 0
+#define TESTPAD_1_SPAN 16
+#define TESTPAD_1_TYPE "altera_avalon_pio"
 
 
 /*

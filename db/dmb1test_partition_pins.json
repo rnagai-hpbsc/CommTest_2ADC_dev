@@ -68,19 +68,11 @@
 					"strict" : false
 				},
 				{
-					"name" : "EXT_TRIG_IN1",
-					"strict" : false
-				},
-				{
-					"name" : "EXT_TRIG_IN2",
+					"name" : "IF_SAD_D1[1]",
 					"strict" : false
 				},
 				{
 					"name" : "IF_SAD_D2[1]",
-					"strict" : false
-				},
-				{
-					"name" : "IF_SAD_D1[1]",
 					"strict" : false
 				},
 				{
@@ -180,11 +172,11 @@
 					"strict" : false
 				},
 				{
-					"name" : "IF_SAD_D2[0]",
+					"name" : "IF_SAD_D1[0]",
 					"strict" : false
 				},
 				{
-					"name" : "IF_SAD_D1[0]",
+					"name" : "IF_SAD_D2[0]",
 					"strict" : false
 				}
 			]

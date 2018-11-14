@@ -13,6 +13,7 @@
 		.fifo_1_in_waitrequest (<connected-to-fifo_1_in_waitrequest>), //             .waitrequest
 		.reset_reset_n         (<connected-to-reset_reset_n>),         //        reset.reset_n
 		.version_info_export   (<connected-to-version_info_export>),   // version_info.export
-		.write_en_export       (<connected-to-write_en_export>)        //     write_en.export
+		.write_en_export       (<connected-to-write_en_export>),       //     write_en.export
+		.tp1_export            (<connected-to-tp1_export>)             //          tp1.export
 	);
 

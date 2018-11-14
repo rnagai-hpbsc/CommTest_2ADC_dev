@@ -2,8 +2,8 @@
 <sch:Settings xmlns:sch="http://www.altera.com/embeddedsw/bsp/schema">
         <BspType>hal</BspType>
         <BspVersion>default</BspVersion>
-        <BspGeneratedTimeStamp>Aug 7, 2018 6:27:07 PM</BspGeneratedTimeStamp>
-        <BspGeneratedUnixTimeStamp>1533634027642</BspGeneratedUnixTimeStamp>
+        <BspGeneratedTimeStamp>Nov 14, 2018 12:29:56 PM</BspGeneratedTimeStamp>
+        <BspGeneratedUnixTimeStamp>1542166196214</BspGeneratedUnixTimeStamp>
         <BspGeneratedLocation>C:\Users\icecube\WorkSpace\Altera\D-Egg_fw\CommTest_2ADC_dev\software\testreadout_bsp</BspGeneratedLocation>
         <BspSettingsFile>settings.bsp</BspSettingsFile>
         <SopcDesignFile>..\..\TestRO.sopcinfo</SopcDesignFile>
@@ -955,6 +955,12 @@
         <MemoryMap>
                 <slaveDescriptor>bs_2</slaveDescriptor>
                 <addressRange>0x14000000 - 0x1400000F</addressRange>
+                <addressSpan>16</addressSpan>
+                <attributes/>
+        </MemoryMap>
+        <MemoryMap>
+                <slaveDescriptor>testpad_1</slaveDescriptor>
+                <addressRange>0x15000000 - 0x1500000F</addressRange>
                 <addressSpan>16</addressSpan>
                 <attributes/>
         </MemoryMap>

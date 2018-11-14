@@ -1,6 +1,6 @@
 <sld_project_info>
   <project>
-    <hash md5_digest_80b="c5af3a8a174a4b81ade4"/>
+    <hash md5_digest_80b="f5b3fcc6878096b919dc"/>
   </project>
   <file_info>
     <file device="5CEFA7F23I7" path="dmb1test.sof" usercode="0xFFFFFFFF"/>
@@ -157,7 +157,7 @@
     </sld_info>
     <sld_info hpath="TestRO:test_A1" name="test_A1">
       <assignment_values>
-        <assignment_value text="QSYS_NAME TestRO HAS_SOPCINFO 1 GENERATION_ID 1533028844"/>
+        <assignment_value text="QSYS_NAME TestRO HAS_SOPCINFO 1 GENERATION_ID 1542163249"/>
       </assignment_values>
       <parameters/>
     </sld_info>

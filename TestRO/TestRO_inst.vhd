@@ -14,7 +14,8 @@
 			fifo_1_in_waitrequest : out std_logic;                                        -- waitrequest
 			reset_reset_n         : in  std_logic                     := 'X';             -- reset_n
 			version_info_export   : in  std_logic_vector(31 downto 0) := (others => 'X'); -- export
-			write_en_export       : out std_logic                                         -- export
+			write_en_export       : out std_logic;                                        -- export
+			tp1_export            : in  std_logic_vector(13 downto 0) := (others => 'X')  -- export
 		);
 	end component TestRO;
 
@@ -34,6 +35,7 @@
 			fifo_1_in_waitrequest => CONNECTED_TO_fifo_1_in_waitrequest, --             .waitrequest
 			reset_reset_n         => CONNECTED_TO_reset_reset_n,         --        reset.reset_n
 			version_info_export   => CONNECTED_TO_version_info_export,   -- version_info.export
-			write_en_export       => CONNECTED_TO_write_en_export        --     write_en.export
+			write_en_export       => CONNECTED_TO_write_en_export,       --     write_en.export
+			tp1_export            => CONNECTED_TO_tp1_export             --          tp1.export
 		);
 

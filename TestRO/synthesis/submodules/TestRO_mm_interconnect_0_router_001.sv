@@ -50,9 +50,9 @@ module TestRO_mm_interconnect_0_router_001_default_decode
                DEFAULT_DESTID = 11 
    )
   (output [96 - 93 : 0] default_destination_id,
-   output [14-1 : 0] default_wr_channel,
-   output [14-1 : 0] default_rd_channel,
-   output [14-1 : 0] default_src_channel
+   output [15-1 : 0] default_wr_channel,
+   output [15-1 : 0] default_rd_channel,
+   output [15-1 : 0] default_src_channel
   );
 
   assign default_destination_id = 
@@ -63,7 +63,7 @@ module TestRO_mm_interconnect_0_router_001_default_decode
       assign default_src_channel = '0;
     end
     else begin : default_channel_assignment
-      assign default_src_channel = 14'b1 << DEFAULT_CHANNEL;
+      assign default_src_channel = 15'b1 << DEFAULT_CHANNEL;
     end
   endgenerate
 
@@ -73,8 +73,8 @@ module TestRO_mm_interconnect_0_router_001_default_decode
       assign default_rd_channel = '0;
     end
     else begin : default_rw_channel_assignment
-      assign default_wr_channel = 14'b1 << DEFAULT_WR_CHANNEL;
-      assign default_rd_channel = 14'b1 << DEFAULT_RD_CHANNEL;
+      assign default_wr_channel = 15'b1 << DEFAULT_WR_CHANNEL;
+      assign default_rd_channel = 15'b1 << DEFAULT_RD_CHANNEL;
     end
   endgenerate
 
@@ -103,7 +103,7 @@ module TestRO_mm_interconnect_0_router_001
     // -------------------
     output                          src_valid,
     output reg [110-1    : 0] src_data,
-    output reg [14-1 : 0] src_channel,
+    output reg [15-1 : 0] src_channel,
     output                          src_startofpacket,
     output                          src_endofpacket,
     input                           src_ready
@@ -119,7 +119,7 @@ module TestRO_mm_interconnect_0_router_001
     localparam PKT_PROTECTION_H = 100;
     localparam PKT_PROTECTION_L = 98;
     localparam ST_DATA_W = 110;
-    localparam ST_CHANNEL_W = 14;
+    localparam ST_CHANNEL_W = 15;
     localparam DECODER_TYPE = 0;
 
     localparam PKT_TRANS_WRITE = 68;
@@ -170,7 +170,7 @@ module TestRO_mm_interconnect_0_router_001
     assign src_startofpacket = sink_startofpacket;
     assign src_endofpacket   = sink_endofpacket;
     wire [PKT_DEST_ID_W-1:0] default_destid;
-    wire [14-1 : 0] default_src_channel;
+    wire [15-1 : 0] default_src_channel;
 
 
 
@@ -201,43 +201,43 @@ module TestRO_mm_interconnect_0_router_001
 
     // ( 0x0 .. 0x80000 )
     if ( {address[RG:PAD0],{PAD0{1'b0}}} == 29'h0   ) begin
-            src_channel = 14'b1000000;
+            src_channel = 15'b1000000;
             src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 11;
     end
 
     // ( 0x10008000 .. 0x10008008 )
     if ( {address[RG:PAD1],{PAD1{1'b0}}} == 29'h10008000   ) begin
-            src_channel = 14'b0000001;
+            src_channel = 15'b0000001;
             src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 9;
     end
 
     // ( 0x10008100 .. 0x10008104 )
     if ( {address[RG:PAD2],{PAD2{1'b0}}} == 29'h10008100  && read_transaction  ) begin
-            src_channel = 14'b0000100;
+            src_channel = 15'b0000100;
             src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 6;
     end
 
     // ( 0x10008200 .. 0x10008220 )
     if ( {address[RG:PAD3],{PAD3{1'b0}}} == 29'h10008200   ) begin
-            src_channel = 14'b0010000;
+            src_channel = 15'b0010000;
             src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 5;
     end
 
     // ( 0x10008800 .. 0x10009000 )
     if ( {address[RG:PAD4],{PAD4{1'b0}}} == 29'h10008800   ) begin
-            src_channel = 14'b0000010;
+            src_channel = 15'b0000010;
             src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 10;
     end
 
     // ( 0x10009100 .. 0x10009104 )
     if ( {address[RG:PAD5],{PAD5{1'b0}}} == 29'h10009100  && read_transaction  ) begin
-            src_channel = 14'b0001000;
+            src_channel = 15'b0001000;
             src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 8;
     end
 
     // ( 0x10009200 .. 0x10009220 )
     if ( {address[RG:PAD6],{PAD6{1'b0}}} == 29'h10009200   ) begin
-            src_channel = 14'b0100000;
+            src_channel = 15'b0100000;
             src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 7;
     end
 

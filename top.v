@@ -49,7 +49,7 @@ module top
 
   // ***********************************************************************************************************
   // ***********************************************************************************************************
-  parameter VERSION = 32'h18073104;
+  parameter VERSION = 32'h18111401;
     
   reg [31:0] vreg;
   
@@ -225,7 +225,7 @@ module top
   wire [13:0] FIFO_DAT_IN1_PL;
   wire [13:0] FIFO_DAT_IN2_PL;
   
-  pline #(.P_WIDTH(14),.P_DEPTH(100)) 
+  pline #(.P_WIDTH(14),.P_DEPTH(80)) 
   pl_1 
   (
     .clk   (clk_adc),
@@ -234,7 +234,7 @@ module top
 	 .y     (FIFO_DAT_IN1_PL)
   );
   
-  pline #(.P_WIDTH(14),.P_DEPTH(100))
+  pline #(.P_WIDTH(14),.P_DEPTH(80))
   pl_2
   (
     .clk   (clk_adc2),
@@ -313,7 +313,7 @@ module top
 	 .done     (done_2)
   );
   
-  wire ortrig = intrig1 | intrig2; 
+  wire ortrig = 1'b1;//intrig1 | intrig2; 
    
   DAT_FIFO A1_3 
   (	
@@ -321,7 +321,7 @@ module top
 	 .rdclk   (CLKB),
 	 .rdreq   (FIFO_RD_ENA),
 	 .wrclk   (clk_adc),
-	 .wrreq   (FIFO_WR_EN_RO_1 & ~FIFO_FF & orexttrg),
+	 .wrreq   (FIFO_WR_EN_RO_1),// & ~FIFO_FF & orexttrg),
 	 .q       (FIFO_DAT_OUT1),
 	 .rdempty (FIFO_EF),
 	 .wrfull  (FIFO_FF),
@@ -334,7 +334,7 @@ module top
 	 .rdclk   (CLKB),
 	 .rdreq   (FIFO_RD_ENA),
 	 .wrclk   (clk_adc2),
-	 .wrreq   (FIFO_WR_EN_RO_2 & ~FIFO_FF2 & orexttrg),
+	 .wrreq   (1'b1),//FIFO_WR_EN_RO_2 & ~FIFO_FF2 & orexttrg),
 	 .q       (FIFO_DAT_OUT2),
 	 .rdempty (FIFO_EF2),
 	 .wrfull  (FIFO_FF2),
@@ -374,7 +374,8 @@ module top
 		.version_info_export   (vreg),
 		.ext_rst_export        (ext_rst),
 		.bs1_export            (baseline_1_pl),
-		.bs2_export            (baseline_2_pl)
+		.bs2_export            (baseline_2_pl),
+		.tp1_export            (FIFO_DAT_OUT1)
   );
   
   wire ext_ctrl;
@@ -382,7 +383,7 @@ module top
   reg [15:0] ofstreg; 
 
   
-  assign FIFO_RD_ENA = ~FIFO_EF & ~FIFO_EF2;
+  assign FIFO_RD_ENA = 1'b1;//~FIFO_EF & ~FIFO_EF2;
 
   SYS_GCLK A0 
   (
