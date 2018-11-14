@@ -1,0 +1,23 @@
+IP Ports Diff Report for SYS_GCLK
+Wed Jul 18 13:31:16 2018
+Quartus Prime Version 18.0.0 Build 614 04/24/2018 SJ Lite Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. IP Information
+
+
+
++------------------------------------------------------+
+; IP Information                                       ;
++----------------------+-------------------------------+
+; IP Variation Name    ; SYS_GCLK                      ;
+; Prior Version        ; 16.0                          ;
+; New Version          ; 18.0                          ;
+; New File             ; SYS_GCLK/synthesis/SYS_GCLK.v ;
+; Has Port Differences ; No                            ;
++----------------------+-------------------------------+
+
+

@@ -4,7 +4,7 @@
  * Machine generated for CPU 'nios2_gen2_0' in SOPC Builder design 'TestRO'
  * SOPC Builder design path: ../../TestRO.sopcinfo
  *
- * Generated: Tue Jul 10 18:00:36 JST 2018
+ * Generated: Wed Nov 14 11:49:01 JST 2018
  */
 
 /*
@@ -177,6 +177,60 @@
 
 
 /*
+ * bs_1 configuration
+ *
+ */
+
+#define ALT_MODULE_CLASS_bs_1 altera_avalon_pio
+#define BS_1_BASE 0x13000000
+#define BS_1_BIT_CLEARING_EDGE_REGISTER 0
+#define BS_1_BIT_MODIFYING_OUTPUT_REGISTER 0
+#define BS_1_CAPTURE 0
+#define BS_1_DATA_WIDTH 14
+#define BS_1_DO_TEST_BENCH_WIRING 0
+#define BS_1_DRIVEN_SIM_VALUE 0
+#define BS_1_EDGE_TYPE "NONE"
+#define BS_1_FREQ 100000000
+#define BS_1_HAS_IN 1
+#define BS_1_HAS_OUT 0
+#define BS_1_HAS_TRI 0
+#define BS_1_IRQ -1
+#define BS_1_IRQ_INTERRUPT_CONTROLLER_ID -1
+#define BS_1_IRQ_TYPE "NONE"
+#define BS_1_NAME "/dev/bs_1"
+#define BS_1_RESET_VALUE 0
+#define BS_1_SPAN 16
+#define BS_1_TYPE "altera_avalon_pio"
+
+
+/*
+ * bs_2 configuration
+ *
+ */
+
+#define ALT_MODULE_CLASS_bs_2 altera_avalon_pio
+#define BS_2_BASE 0x14000000
+#define BS_2_BIT_CLEARING_EDGE_REGISTER 0
+#define BS_2_BIT_MODIFYING_OUTPUT_REGISTER 0
+#define BS_2_CAPTURE 0
+#define BS_2_DATA_WIDTH 14
+#define BS_2_DO_TEST_BENCH_WIRING 0
+#define BS_2_DRIVEN_SIM_VALUE 0
+#define BS_2_EDGE_TYPE "NONE"
+#define BS_2_FREQ 100000000
+#define BS_2_HAS_IN 1
+#define BS_2_HAS_OUT 0
+#define BS_2_HAS_TRI 0
+#define BS_2_IRQ -1
+#define BS_2_IRQ_INTERRUPT_CONTROLLER_ID -1
+#define BS_2_IRQ_TYPE "NONE"
+#define BS_2_NAME "/dev/bs_2"
+#define BS_2_RESET_VALUE 0
+#define BS_2_SPAN 16
+#define BS_2_TYPE "altera_avalon_pio"
+
+
+/*
  * dacctrl configuration
  *
  */
@@ -269,7 +323,7 @@
 #define FIFO_0_OUT_BITS_PER_SYMBOL 16
 #define FIFO_0_OUT_CHANNEL_WIDTH 8
 #define FIFO_0_OUT_ERROR_WIDTH 8
-#define FIFO_0_OUT_FIFO_DEPTH 512
+#define FIFO_0_OUT_FIFO_DEPTH 4096
 #define FIFO_0_OUT_IRQ -1
 #define FIFO_0_OUT_IRQ_INTERRUPT_CONTROLLER_ID -1
 #define FIFO_0_OUT_NAME "/dev/fifo_0_out"
@@ -301,7 +355,7 @@
 #define FIFO_0_OUT_CSR_BITS_PER_SYMBOL 16
 #define FIFO_0_OUT_CSR_CHANNEL_WIDTH 8
 #define FIFO_0_OUT_CSR_ERROR_WIDTH 8
-#define FIFO_0_OUT_CSR_FIFO_DEPTH 512
+#define FIFO_0_OUT_CSR_FIFO_DEPTH 4096
 #define FIFO_0_OUT_CSR_IRQ -1
 #define FIFO_0_OUT_CSR_IRQ_INTERRUPT_CONTROLLER_ID -1
 #define FIFO_0_OUT_CSR_NAME "/dev/fifo_0_out_csr"
@@ -333,7 +387,7 @@
 #define FIFO_1_OUT_BITS_PER_SYMBOL 16
 #define FIFO_1_OUT_CHANNEL_WIDTH 8
 #define FIFO_1_OUT_ERROR_WIDTH 8
-#define FIFO_1_OUT_FIFO_DEPTH 512
+#define FIFO_1_OUT_FIFO_DEPTH 4096
 #define FIFO_1_OUT_IRQ -1
 #define FIFO_1_OUT_IRQ_INTERRUPT_CONTROLLER_ID -1
 #define FIFO_1_OUT_NAME "/dev/fifo_1_out"
@@ -365,7 +419,7 @@
 #define FIFO_1_OUT_CSR_BITS_PER_SYMBOL 16
 #define FIFO_1_OUT_CSR_CHANNEL_WIDTH 8
 #define FIFO_1_OUT_CSR_ERROR_WIDTH 8
-#define FIFO_1_OUT_CSR_FIFO_DEPTH 512
+#define FIFO_1_OUT_CSR_FIFO_DEPTH 4096
 #define FIFO_1_OUT_CSR_IRQ -1
 #define FIFO_1_OUT_CSR_IRQ_INTERRUPT_CONTROLLER_ID -1
 #define FIFO_1_OUT_CSR_NAME "/dev/fifo_1_out_csr"
@@ -441,6 +495,33 @@
 #define ONCHIP_MEMORY2_0_SPAN 300000
 #define ONCHIP_MEMORY2_0_TYPE "altera_avalon_onchip_memory2"
 #define ONCHIP_MEMORY2_0_WRITABLE 1
+
+
+/*
+ * testpad_1 configuration
+ *
+ */
+
+#define ALT_MODULE_CLASS_testpad_1 altera_avalon_pio
+#define TESTPAD_1_BASE 0x15000000
+#define TESTPAD_1_BIT_CLEARING_EDGE_REGISTER 0
+#define TESTPAD_1_BIT_MODIFYING_OUTPUT_REGISTER 0
+#define TESTPAD_1_CAPTURE 0
+#define TESTPAD_1_DATA_WIDTH 14
+#define TESTPAD_1_DO_TEST_BENCH_WIRING 0
+#define TESTPAD_1_DRIVEN_SIM_VALUE 0
+#define TESTPAD_1_EDGE_TYPE "NONE"
+#define TESTPAD_1_FREQ 100000000
+#define TESTPAD_1_HAS_IN 1
+#define TESTPAD_1_HAS_OUT 0
+#define TESTPAD_1_HAS_TRI 0
+#define TESTPAD_1_IRQ -1
+#define TESTPAD_1_IRQ_INTERRUPT_CONTROLLER_ID -1
+#define TESTPAD_1_IRQ_TYPE "NONE"
+#define TESTPAD_1_NAME "/dev/testpad_1"
+#define TESTPAD_1_RESET_VALUE 0
+#define TESTPAD_1_SPAN 16
+#define TESTPAD_1_TYPE "altera_avalon_pio"
 
 
 /*

@@ -1,0 +1,18 @@
+# system info SYS_GCLK on 2018.07.18.13:28:59
+system_info:
+name,value
+DEVICE,5CEFA7F23I7
+DEVICE_FAMILY,Cyclone V
+GENERATION_ID,1531888137
+#
+#
+# Files generated for SYS_GCLK on 2018.07.18.13:28:59
+files:
+filepath,kind,attributes,module,is_top
+simulation/SYS_GCLK.v,VERILOG,,SYS_GCLK,true
+simulation/submodules/SYS_GCLK_altclkctrl_0.v,VERILOG,,SYS_GCLK_altclkctrl_0,false
+#
+# Map from instance-path to kind of module
+instances:
+instancePath,module
+SYS_GCLK.altclkctrl_0,SYS_GCLK_altclkctrl_0

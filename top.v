@@ -38,16 +38,23 @@ module top
   output         SLO_DAC1_CS, 
   output         SLO_DAC1_SCLK, 
   output         SLO_DAC1_MOSI, 
-  input          SLO_DAC1_MISO 
+  input          SLO_DAC1_MISO,
+  
+  // Ext Trig in 
+  input          EXT_TRIG_IN1,
+  input          EXT_TRIG_IN2 
 );
 
   // 
 
   // ***********************************************************************************************************
-  // ***********************************************************************************************************  
-  parameter VERSION = 32'h18071300;
+  // ***********************************************************************************************************
+  parameter VERSION = 32'h18111401;
     
   reg [31:0] vreg;
+  
+  // ***********************************************************************************************************  
+
 
   // basic wires
   wire CLK; 
@@ -70,26 +77,7 @@ module top
     
   
   reg  [3:0] IN_AD_CLK_CNT;
-  
-  // counters
-  reg  [7:0] uSEC_SIG_CNT; 
-  reg [11:0] mSEC_SIG_CNT;
-  reg  [7:0] hSEC_SIG_CNT;
-  reg  [7:0]  SEC_SIG_CNT;
-  reg  uSEC_SIG;
-  reg  mSEC_SIG;
-  reg  hSEC_SIG;
-  reg   SEC_SIG;
-  
-  reg [39:0] IN_TIME;  
-  
-  wire        IN_TRIG1_START;
-  
-  // Initial commands
-  reg        TRIG_SEQ_STS;
-  reg        TRIG_SEQ_CLR;
-  reg [11:0] TRIG_SEQ_CNT;
-  
+    
   // Clock
   wire CLKB;
   wire CLK_250M; // clock feed to ADCs 
@@ -98,7 +86,7 @@ module top
   // **************************************************************************************
   // SYS
   // **************************************************************************************
-  // SYS
+
   assign IF_TEST      = IF_SAD_SDOUT1;
   assign IF_SAD_CLK1  = CLK_250M;
   assign IF_SAD_CLK2  = CLK_250M;
@@ -106,7 +94,7 @@ module top
   assign IF_IND_FPGA2 = FIFO_FF;
   
   
-  // INPUT CLOCK 
+  // INPUT CLOCK from ADC1
   wire clka_out;
   ADCINCLKCTRL ADC1_CLKCTRL
   (
@@ -153,71 +141,9 @@ module top
 	 .rst_n (RESET)
   );
   
-
-  // **************************************************************************************
-  // TIME Control
-  // **************************************************************************************
-
-  wire uSEC_SIG_FLG = (uSEC_SIG_CNT ==  8'h13 ); // 20MHz 20 14(H)
-  wire mSEC_SIG_FLG = (mSEC_SIG_CNT == 12'h3E7); // 1msec 1usec*1000 3E8(H)
-  wire hSEC_SIG_FLG = (hSEC_SIG_CNT ==  8'h63 ); // 0.1sec 1msec*100 64
-  wire  SEC_SIG_FLG = ( SEC_SIG_CNT ==  4'h9  ); // 1sec 0.1sec*10
-
-  always @(negedge RESET or posedge CLKB) 
-  begin
-	 if(~RESET) 
-	 begin 
-	   uSEC_SIG_CNT <=  8'h00;
-		uSEC_SIG     <=  1'b0;
-	   mSEC_SIG_CNT <= 12'h000;
-		mSEC_SIG     <=  1'b0;
-      hSEC_SIG_CNT <=  8'h00;
-      hSEC_SIG     <=  1'b0;
-	    SEC_SIG_CNT <=  8'h00;
-		 SEC_SIG     <=  1'b0;
-		 IN_TIME     <= 40'd0;
-    end
-	 else 
-	 begin
-	   uSEC_SIG     <= uSEC_SIG_FLG ;
-		mSEC_SIG     <= uSEC_SIG ? mSEC_SIG_FLG : 1'b0;
-		hSEC_SIG     <= mSEC_SIG ? hSEC_SIG_FLG : 1'b0;
-		SEC_SIG      <= hSEC_SIG ?  SEC_SIG_FLG : 1'b0;
-		uSEC_SIG_CNT <= uSEC_SIG_FLG ? 8'h00 : 
-		                               uSEC_SIG_CNT + 1'b1;
-		mSEC_SIG_CNT <=    ~uSEC_SIG ? mSEC_SIG_CNT : 
-		                mSEC_SIG_FLG ? 12'h000 : 
-								             mSEC_SIG_CNT + 1'b1;
-		hSEC_SIG_CNT <=    ~mSEC_SIG ? hSEC_SIG_CNT : 
-		                hSEC_SIG_FLG ? 8'h00 : 
-							                hSEC_SIG_CNT + 1'b1;
-		SEC_SIG_CNT  <=    ~hSEC_SIG ? SEC_SIG_CNT : 
-		                 SEC_SIG_FLG ? 8'h00 : 
-							                SEC_SIG_CNT + 1'b1;
-      IN_TIME <= SEC_SIG ? IN_TIME + 1'b1 : IN_TIME;
-
-    end
-  end
-
-
-  //----------------------------------------- ADC CLK Controle
-
-//  always @(negedge RESET or posedge CLK) 
-//  begin
-//    if(~RESET) begin 
-//	   IN_AD_CLK_CNT <= 4'h0;
-//	 end
-//	 else begin
-//      IN_AD_CLK_CNT <= IN_AD_CLK_CNT + 1'b1;
-//    end
-//  end
-
-  //always @(CLK or IN_AD_CLK_CNT) begin
-  //  FIFO_WR_ENA <= 1'b1;
-  //end
   
   // **************************************************************************************
-  // Initial Set  SEQUENCE
+  // Initial setting for ADCs to enable CMOS mode
   // **************************************************************************************
 
   wire sen, sclk, sdata, reset;
@@ -240,59 +166,56 @@ module top
   assign IF_SAD_SCLK2 = sclk;
   assign IF_SAD_SDAT2 = sdata;
   assign IF_SAD_RESET2 = reset; 
+
+  // **************************************************************************************
+  // External Triger 
+  // **************************************************************************************
+  
+  reg ext_trig1, ext_trig2;
+  reg orexttrg1, orexttrg2;
+  
+  wire orexttrg = ext_trig1 | ext_trig2; 
+
+  always @(negedge RESET or posedge clk_adc) begin 
+    if (~RESET) begin 
+	   ext_trig1 <= 1'b0;
+		orexttrg1 <= 1'b0;
+	 end
+	 else begin 
+	   ext_trig1 <= EXT_TRIG_IN1;
+		orexttrg1 <= orexttrg;
+	 end
+  end
+  
+  always @(negedge RESET or posedge clk_adc2) begin 
+    if (~RESET) begin 
+	   ext_trig2 <= 1'b0;
+		orexttrg2 <= 1'b0;
+	 end
+	 else begin 
+	   ext_trig2 <= EXT_TRIG_IN2;
+		orexttrg2 <= orexttrg;
+	 end
+  end
+  
   
   // **************************************************************************************
-  // DATA AQUISITION  Control
+  // Data taking 
   // **************************************************************************************
-
-  assign IN_TRIG1_START = SEC_SIG;
-
-  wire TRIG_SEQ_FLG = (TRIG_SEQ_CNT == 12'h3FF);
-
-  always @(negedge RESET or posedge CLKB) 
-  begin
-    if(~RESET) begin
-      TRIG_SEQ_STS <= 1'b0;
-		TRIG_SEQ_CNT <= 12'h000;
-		TRIG_SEQ_CLR <= 1'b0;
-    end
-	 else begin
-      if(TRIG_SEQ_CLR) begin
-        TRIG_SEQ_STS <= 1'b0;
-      end
-      else if(IN_TRIG1_START) begin
-        TRIG_SEQ_STS <= 1'b1;
-      end
-		if(TRIG_SEQ_STS) begin
-		  TRIG_SEQ_CNT <= FIFO_WR_ENA ? TRIG_SEQ_CNT + 1'b1 : TRIG_SEQ_CNT;
-      end
-      else begin
-        TRIG_SEQ_CNT <= 12'h000;
-      end
-		TRIG_SEQ_CLR <= (TRIG_SEQ_STS & TRIG_SEQ_FLG);
-    end
-  end
-
  
   assign FIFO_DAT_IN1 = IF_SAD_D1;
   assign FIFO_DAT_IN2 = IF_SAD_D2;
  
   wire FIFO_WR_EN_RO;
   
-  reg FIFO_WR_EN_RO_1;
-  reg TRIG_SEQ_STS_1; 
+  reg FIFO_WR_EN_RO_1, FIFO_WR_EN_RO_2;
   
   always @(posedge clk_adc) begin 
     FIFO_WR_EN_RO_1 <= FIFO_WR_EN_RO;
-	 TRIG_SEQ_STS_1  <= TRIG_SEQ_STS;
   end
-  
-  reg FIFO_WR_EN_RO_2;
-  reg TRIG_SEQ_STS_2;
-  
+    
   always @(posedge clk_adc2) begin
     FIFO_WR_EN_RO_2 <= FIFO_WR_EN_RO;
-	 TRIG_SEQ_STS_2  <= TRIG_SEQ_STS;
   end
  
  
@@ -302,8 +225,7 @@ module top
   wire [13:0] FIFO_DAT_IN1_PL;
   wire [13:0] FIFO_DAT_IN2_PL;
   
-  
-  pline #(.P_WIDTH(14),.P_DEPTH(20)) 
+  pline #(.P_WIDTH(14),.P_DEPTH(80)) 
   pl_1 
   (
     .clk   (clk_adc),
@@ -312,32 +234,7 @@ module top
 	 .y     (FIFO_DAT_IN1_PL)
   );
   
-  wire intrig1;
-  
-  IntTrig #(.THRES(900),.TRGTIME(100))
-  InT_1 
-  (
-    .clk   (clk_adc),
-	 .rst_n (RESET),
-	 .tdat  (FIFO_DAT_IN1),
-	 .otrig (intrig1)
-  );
-  
-   
-  DAT_FIFO A1_3 
-  (	
-    .data    (FIFO_DAT_IN1_PL),
-	 .rdclk   (CLKB),
-	 .rdreq   (FIFO_RD_ENA),
-	 .wrclk   (clk_adc),
-	 .wrreq   (FIFO_WR_ENA & TRIG_SEQ_STS_1 & FIFO_WR_EN_RO_1 & intrig1),
-	 .q       (FIFO_DAT_OUT1),
-	 .rdempty (FIFO_EF),
-	 .wrfull  (FIFO_FF),
-	 .aclr    (~RESET)
-  );
-  
-  pline #(.P_WIDTH(14),.P_DEPTH(10))
+  pline #(.P_WIDTH(14),.P_DEPTH(80))
   pl_2
   (
     .clk   (clk_adc2),
@@ -346,6 +243,90 @@ module top
 	 .y     (FIFO_DAT_IN2_PL)
   );
   
+  wire intrig1, intrig2;
+  wire [13:0] baseline_1;
+  wire [13:0] baseline_2;
+  reg  [13:0] baseline_1_intr;
+  reg  [13:0] baseline_2_intr;
+  
+  always @(negedge RESET or posedge clk_adc) 
+  begin 
+    if (~RESET) begin 
+	   baseline_1_intr <= 14'd0;
+	 end
+	 else begin 
+	   baseline_1_intr <= baseline_1;
+	 end
+  end
+  
+  always @(negedge RESET or posedge clk_adc2) 
+  begin 
+    if (~RESET) begin 
+	   baseline_2_intr <= 14'd0;
+	 end
+	 else begin 
+	   baseline_2_intr <= baseline_2;
+	 end
+  end
+  
+  IntTrig #(.THRES(80),.TRGTIME(70))
+  InT_1 
+  (
+    .clk      (clk_adc),
+	 .rst_n    (RESET),
+	 .baseline (baseline_1),
+	 .tdat     (FIFO_DAT_IN1),
+	 .otrig    (intrig1)
+  );
+  
+  IntTrig #(.THRES(80),.TRGTIME(70))
+  InT_2 
+  (
+    .clk      (clk_adc2),
+	 .rst_n    (RESET),
+	 .baseline (baseline_2),
+	 .tdat     (FIFO_DAT_IN2),
+	 .otrig    (intrig2)
+  );
+  
+  wire done_1, done_2; 
+  
+  baseline_mes2 #(.LNCLK(6))
+  bs_1 
+  (
+    .clk      (clk_adc), 
+	 .rst_n    (RESET), 
+	 .dacset   (spi_sending),
+	 .indata   (FIFO_DAT_IN1), 
+	 .baseline (baseline_1),
+	 .done     (done_1)
+  );
+  
+  baseline_mes2 #(.LNCLK(6))
+  bs_2
+  (
+    .clk      (clk_adc2),
+	 .rst_n    (RESET),
+	 .dacset   (spi_sending),
+	 .indata   (FIFO_DAT_IN2),
+	 .baseline (baseline_2),
+	 .done     (done_2)
+  );
+  
+  wire ortrig = 1'b1;//intrig1 | intrig2; 
+   
+  DAT_FIFO A1_3 
+  (	
+    .data    (FIFO_DAT_IN1_PL),
+	 .rdclk   (CLKB),
+	 .rdreq   (FIFO_RD_ENA),
+	 .wrclk   (clk_adc),
+	 .wrreq   (FIFO_WR_EN_RO_1),// & ~FIFO_FF & orexttrg),
+	 .q       (FIFO_DAT_OUT1),
+	 .rdempty (FIFO_EF),
+	 .wrfull  (FIFO_FF),
+	 .aclr    (~RESET)
+  );
   
   DAT_FIFO A2_3 
   (
@@ -353,7 +334,7 @@ module top
 	 .rdclk   (CLKB),
 	 .rdreq   (FIFO_RD_ENA),
 	 .wrclk   (clk_adc2),
-	 .wrreq   (FIFO_WR_ENA & TRIG_SEQ_STS_2 & FIFO_WR_EN_RO_2),
+	 .wrreq   (1'b1),//FIFO_WR_EN_RO_2 & ~FIFO_FF2 & orexttrg),
 	 .q       (FIFO_DAT_OUT2),
 	 .rdempty (FIFO_EF2),
 	 .wrfull  (FIFO_FF2),
@@ -362,6 +343,21 @@ module top
   
   wire exttrg; 
   wire [31:0] dacctrl;
+  
+  reg [13:0] baseline_1_pl, baseline_2_pl; 
+  always @(negedge RESET or posedge CLKB) 
+  begin 
+    if (~RESET) begin 
+	   baseline_1_pl <= 14'd0; 
+		baseline_2_pl <= 14'd0;
+	 end
+	 else begin 
+	   baseline_1_pl <= baseline_1;
+		baseline_2_pl <= baseline_2;
+	 end
+  end
+  
+  
   TestRO test_A1 
   (
   		.clk_clk               (CLKB),               //       clk.clk
@@ -376,7 +372,10 @@ module top
 		.exttrg_0_export       (exttrg),
 		.dacctrl_export        (dacctrl),
 		.version_info_export   (vreg),
-		.ext_rst_export        (ext_rst)
+		.ext_rst_export        (ext_rst),
+		.bs1_export            (baseline_1_pl),
+		.bs2_export            (baseline_2_pl),
+		.tp1_export            (FIFO_DAT_OUT1)
   );
   
   wire ext_ctrl;
@@ -384,7 +383,7 @@ module top
   reg [15:0] ofstreg; 
 
   
-  assign FIFO_RD_ENA = ~FIFO_EF & ~FIFO_EF2;
+  assign FIFO_RD_ENA = 1'b1;//~FIFO_EF & ~FIFO_EF2;
 
   SYS_GCLK A0 
   (
@@ -436,7 +435,8 @@ module top
   wire [15:0] sdata_ext;
 
   reg [15:0] sdata_tmp;
-  always @(negedge RESET or posedge CLKB) begin 
+  always @(negedge RESET or posedge CLKB) 
+  begin 
     if (~RESET) begin 
 	   sdata_tmp <= 16'h0000;
 	 end

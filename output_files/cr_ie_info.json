@@ -1,0 +1,22 @@
+{
+	"system" : {
+		"platform" : "windows64",
+		"os_name" : "Windows 10",
+		"os_version" : "10.0"
+	},
+	"error" : {
+		"executable" : "quartus",
+		"comment" : "none",
+		"error_message" : "Illegal tap position",
+		"source_file" : "/quartus/pgm/pgme/pgme_algorithm.cpp",
+		"line" : "1109",
+		"stack_trace" : "\t0x7ffc439cf39e: pgm_pgme + 0x4f39e (?get_id_index@PGME_ALGORITHM@@UEAAII@Z + 0x6e)\n\t0x7ffc439d170b: pgm_pgme + 0x5170b (?get_open_ids@PGME_MAXII_ALGORITHM@@IEAAPEAPEAVAJI_OPEN@@XZ + 0xab)\n\t0x7ffc439d618c: pgm_pgme + 0x5618c (?init@PGME_MAXII_ALGORITHM@@UEAA_NI@Z + 0x70c)\n\t0x7ffc439b7c72: pgm_pgme + 0x37c72 (?engage@PGME_PROGRAMMER@@QEAA_NW4PGM_PROGRAMMING_MODE@@PEAV?$vector@PEAVPGM_CHAIN_ELEMENT@@V?$allocator@PEAVPGM_CHAIN_ELEMENT@@@std@@@std@@_NPEAK@Z + 0x1162)\n\t0x7ffc43b1d425: pgm_pgmwq + 0x7d425 (?run@PGMWQ_PROGRAMMING_THREAD@@MEAAXXZ + 0x25)\n\t 0x5bb695b7: QtCore4 + 0x295b7 (?start@QThread@@QEAAXW4Priority@1@@Z + 0x427)\n\t0x7ffc9f904f7e: MSVCR120 + 0x24f7e (_beginthreadex + 0x106)\n\t0x7ffc9f905125: MSVCR120 + 0x25125 (_endthreadex + 0x191)\n\t0x7ffcb0703033: KERNEL32 + 0x13033 (BaseThreadInitThunk + 0x13)\n\t0x7ffcb0851460: ntdll + 0x71460 (RtlUserThreadStart + 0x20)\n",
+		"subsystem" : "PGME"
+	},
+	"quartus" : {
+		"quartus_bits" : "64",
+		"version" : "18.0.0",
+		"build" : "614",
+		"edition" : "Lite Edition"
+	}
+}

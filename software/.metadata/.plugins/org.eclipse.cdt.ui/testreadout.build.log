@@ -1,9 +1,18 @@
-15:01:49 **** Incremental Build of configuration Nios II for project testreadout ****
+12:43:49 **** Incremental Build of configuration Nios II for project testreadout ****
 make all 
 Info: Building ../testreadout_bsp/
-C:/altera_lite/16.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../testreadout_bsp/
+C:/intelFPGA_lite/18.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../testreadout_bsp/
 [BSP build complete]
+Info: Compiling testreadout.c to obj/default/testreadout.o
+nios2-elf-gcc -xc -MP -MMD -c -I../testreadout_bsp//HAL/inc -I../testreadout_bsp/ -I../testreadout_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=local  -o obj/default/testreadout.o testreadout.c
+Info: Linking testreadout.elf
+nios2-elf-g++  -T'../testreadout_bsp//linker.x' -msys-crt0='../testreadout_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -L../testreadout_bsp/   -Wl,-Map=testreadout.map   -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=local  -o testreadout.elf obj/default/testreadout.o -lm -msys-lib=m
+nios2-elf-insert testreadout.elf --thread_model hal --cpu_name nios2_gen2_0 --qsys true --simulation_enabled false --stderr_dev jtag_uart_0 --stdin_dev jtag_uart_0 --stdout_dev jtag_uart_0 --sopc_system_name TestRO --quartus_project_dir "C:/Users/icecube/WorkSpace/Altera/D-Egg_fw/CommTest_2ADC_dev" --jdi ../..//output_files/dmb1test.jdi --sopcinfo C:/Users/icecube/WorkSpace/Altera/D-Egg_fw/CommTest_2ADC_dev/software/testreadout_bsp/../../TestRO.sopcinfo
+Info: (testreadout.elf) 111 KBytes program size (code + initialized data).
+Info:                   174 KBytes free for stack + heap.
+Info: Creating testreadout.objdump
+nios2-elf-objdump --disassemble --syms --all-header --source testreadout.elf >testreadout.objdump
 [testreadout build complete]
 
-15:01:50 Build Finished (took 844ms)
+12:43:52 Build Finished (took 3s.281ms)
 

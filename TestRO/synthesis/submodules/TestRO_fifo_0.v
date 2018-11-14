@@ -39,7 +39,7 @@ module TestRO_fifo_0_dual_clock_fifo (
   output  [ 31: 0] q;
   output           rdempty;
   output           rdfull;
-  output  [  8: 0] rdusedw;
+  output  [ 11: 0] rdusedw;
   output           wrfull;
   input            aclr;
   input   [ 31: 0] data;
@@ -48,16 +48,17 @@ module TestRO_fifo_0_dual_clock_fifo (
   input            wrclk;
   input            wrreq;
 
-  wire             int_rdfull;
-  wire             int_wrfull;
-  wire    [ 31: 0] q;
-  wire             rdempty;
-  wire             rdfull;
-  wire    [  8: 0] rdusedw;
-  wire             wrfull;
-  wire    [  8: 0] wrusedw;
-  assign wrfull = (wrusedw >= 512-3) | int_wrfull;
-  assign rdfull = (rdusedw >= 512-3) | int_rdfull;
+
+wire             int_rdfull;
+wire             int_wrfull;
+wire    [ 31: 0] q;
+wire             rdempty;
+wire             rdfull;
+wire    [ 11: 0] rdusedw;
+wire             wrfull;
+wire    [ 11: 0] wrusedw;
+  assign wrfull = (wrusedw >= 4096-3) | int_wrfull;
+  assign rdfull = (rdusedw >= 4096-3) | int_rdfull;
   dcfifo dual_clock_fifo
     (
       .aclr (aclr),
@@ -77,14 +78,19 @@ module TestRO_fifo_0_dual_clock_fifo (
   defparam dual_clock_fifo.add_ram_output_register = "OFF",
            dual_clock_fifo.clocks_are_synchronized = "FALSE",
            dual_clock_fifo.intended_device_family = "CYCLONEV",
-           dual_clock_fifo.lpm_numwords = 512,
+           dual_clock_fifo.lpm_hint = "DISABLE_DCFIFO_EMBEDDED_TIMING_CONSTRAINT",
+           dual_clock_fifo.lpm_numwords = 4096,
            dual_clock_fifo.lpm_showahead = "OFF",
            dual_clock_fifo.lpm_type = "dcfifo",
            dual_clock_fifo.lpm_width = 32,
-           dual_clock_fifo.lpm_widthu = 9,
+           dual_clock_fifo.lpm_widthu = 12,
            dual_clock_fifo.overflow_checking = "ON",
+           dual_clock_fifo.rdsync_delaypipe = 4,
+           dual_clock_fifo.read_aclr_synch = "ON",
            dual_clock_fifo.underflow_checking = "ON",
-           dual_clock_fifo.use_eab = "ON";
+           dual_clock_fifo.use_eab = "ON",
+           dual_clock_fifo.write_aclr_synch = "ON",
+           dual_clock_fifo.wrsync_delaypipe = 4;
 
 
 endmodule
@@ -136,61 +142,62 @@ module TestRO_fifo_0_dcfifo_with_controls (
   input            wrreq;
   input            wrreset_n;
 
-  wire    [ 31: 0] q;
-  reg              rdclk_control_slave_almostempty_n_reg;
-  wire             rdclk_control_slave_almostempty_pulse;
-  wire             rdclk_control_slave_almostempty_signal;
-  reg     [  9: 0] rdclk_control_slave_almostempty_threshold_register;
-  reg              rdclk_control_slave_almostfull_n_reg;
-  wire             rdclk_control_slave_almostfull_pulse;
-  wire             rdclk_control_slave_almostfull_signal;
-  reg     [  9: 0] rdclk_control_slave_almostfull_threshold_register;
-  reg              rdclk_control_slave_empty_n_reg;
-  wire             rdclk_control_slave_empty_pulse;
-  wire             rdclk_control_slave_empty_signal;
-  reg              rdclk_control_slave_event_almostempty_q;
-  wire             rdclk_control_slave_event_almostempty_signal;
-  reg              rdclk_control_slave_event_almostfull_q;
-  wire             rdclk_control_slave_event_almostfull_signal;
-  reg              rdclk_control_slave_event_empty_q;
-  wire             rdclk_control_slave_event_empty_signal;
-  reg              rdclk_control_slave_event_full_q;
-  wire             rdclk_control_slave_event_full_signal;
-  reg              rdclk_control_slave_event_overflow_q;
-  wire             rdclk_control_slave_event_overflow_signal;
-  wire    [  5: 0] rdclk_control_slave_event_register;
-  reg              rdclk_control_slave_event_underflow_q;
-  wire             rdclk_control_slave_event_underflow_signal;
-  reg              rdclk_control_slave_full_n_reg;
-  wire             rdclk_control_slave_full_pulse;
-  wire             rdclk_control_slave_full_signal;
-  reg     [  5: 0] rdclk_control_slave_ienable_register;
-  wire    [  9: 0] rdclk_control_slave_level_register;
-  wire    [ 31: 0] rdclk_control_slave_read_mux;
-  reg     [ 31: 0] rdclk_control_slave_readdata;
-  reg              rdclk_control_slave_status_almostempty_q;
-  wire             rdclk_control_slave_status_almostempty_signal;
-  reg              rdclk_control_slave_status_almostfull_q;
-  wire             rdclk_control_slave_status_almostfull_signal;
-  reg              rdclk_control_slave_status_empty_q;
-  wire             rdclk_control_slave_status_empty_signal;
-  reg              rdclk_control_slave_status_full_q;
-  wire             rdclk_control_slave_status_full_signal;
-  reg              rdclk_control_slave_status_overflow_q;
-  wire             rdclk_control_slave_status_overflow_signal;
-  wire    [  5: 0] rdclk_control_slave_status_register;
-  reg              rdclk_control_slave_status_underflow_q;
-  wire             rdclk_control_slave_status_underflow_signal;
-  wire    [  9: 0] rdclk_control_slave_threshold_writedata;
-  wire             rdempty;
-  wire             rdfull;
-  wire    [  9: 0] rdlevel;
-  wire             rdoverflow;
-  wire             rdunderflow;
-  wire    [  8: 0] rdusedw;
-  wire             wrfull;
-  wire             wrreq_sync;
-  wire             wrreq_valid;
+
+wire    [ 31: 0] q;
+reg              rdclk_control_slave_almostempty_n_reg;
+wire             rdclk_control_slave_almostempty_pulse;
+wire             rdclk_control_slave_almostempty_signal;
+reg     [ 12: 0] rdclk_control_slave_almostempty_threshold_register;
+reg              rdclk_control_slave_almostfull_n_reg;
+wire             rdclk_control_slave_almostfull_pulse;
+wire             rdclk_control_slave_almostfull_signal;
+reg     [ 12: 0] rdclk_control_slave_almostfull_threshold_register;
+reg              rdclk_control_slave_empty_n_reg;
+wire             rdclk_control_slave_empty_pulse;
+wire             rdclk_control_slave_empty_signal;
+reg              rdclk_control_slave_event_almostempty_q;
+wire             rdclk_control_slave_event_almostempty_signal;
+reg              rdclk_control_slave_event_almostfull_q;
+wire             rdclk_control_slave_event_almostfull_signal;
+reg              rdclk_control_slave_event_empty_q;
+wire             rdclk_control_slave_event_empty_signal;
+reg              rdclk_control_slave_event_full_q;
+wire             rdclk_control_slave_event_full_signal;
+reg              rdclk_control_slave_event_overflow_q;
+wire             rdclk_control_slave_event_overflow_signal;
+wire    [  5: 0] rdclk_control_slave_event_register;
+reg              rdclk_control_slave_event_underflow_q;
+wire             rdclk_control_slave_event_underflow_signal;
+reg              rdclk_control_slave_full_n_reg;
+wire             rdclk_control_slave_full_pulse;
+wire             rdclk_control_slave_full_signal;
+reg     [  5: 0] rdclk_control_slave_ienable_register;
+wire    [ 12: 0] rdclk_control_slave_level_register;
+wire    [ 31: 0] rdclk_control_slave_read_mux;
+reg     [ 31: 0] rdclk_control_slave_readdata;
+reg              rdclk_control_slave_status_almostempty_q;
+wire             rdclk_control_slave_status_almostempty_signal;
+reg              rdclk_control_slave_status_almostfull_q;
+wire             rdclk_control_slave_status_almostfull_signal;
+reg              rdclk_control_slave_status_empty_q;
+wire             rdclk_control_slave_status_empty_signal;
+reg              rdclk_control_slave_status_full_q;
+wire             rdclk_control_slave_status_full_signal;
+reg              rdclk_control_slave_status_overflow_q;
+wire             rdclk_control_slave_status_overflow_signal;
+wire    [  5: 0] rdclk_control_slave_status_register;
+reg              rdclk_control_slave_status_underflow_q;
+wire             rdclk_control_slave_status_underflow_signal;
+wire    [ 12: 0] rdclk_control_slave_threshold_writedata;
+wire             rdempty;
+wire             rdfull;
+wire    [ 12: 0] rdlevel;
+wire             rdoverflow;
+wire             rdunderflow;
+wire    [ 11: 0] rdusedw;
+wire             wrfull;
+wire             wrreq_sync;
+wire             wrreq_valid;
   //the_dcfifo, which is an e_instance
   TestRO_fifo_0_dual_clock_fifo the_dcfifo
     (
@@ -224,8 +231,8 @@ module TestRO_fifo_0_dcfifo_with_controls (
   assign rdoverflow = wrreq_sync & rdfull;
   assign rdunderflow = rdreq & rdempty;
   assign rdclk_control_slave_threshold_writedata = (rdclk_control_slave_writedata < 1) ? 1 :
-    (rdclk_control_slave_writedata > 508) ? 508 :
-    rdclk_control_slave_writedata[9 : 0];
+    (rdclk_control_slave_writedata > 4092) ? 4092 :
+    rdclk_control_slave_writedata[12 : 0];
 
   assign rdclk_control_slave_event_almostfull_signal = rdclk_control_slave_almostfull_pulse;
   assign rdclk_control_slave_event_almostempty_signal = rdclk_control_slave_almostempty_pulse;
@@ -295,7 +302,7 @@ module TestRO_fifo_0_dcfifo_with_controls (
   always @(posedge rdclk or negedge rdreset_n)
     begin
       if (rdreset_n == 0)
-          rdclk_control_slave_almostfull_threshold_register <= 508;
+          rdclk_control_slave_almostfull_threshold_register <= 4092;
       else if ((rdclk_control_slave_address == 4) & rdclk_control_slave_write)
           rdclk_control_slave_almostfull_threshold_register <= rdclk_control_slave_threshold_writedata;
     end
@@ -524,18 +531,19 @@ module TestRO_fifo_0 (
   input            wrclock;
   input            wrreset_n;
 
-  wire    [ 31: 0] avalonmm_read_slave_readdata;
-  wire             avalonmm_read_slave_waitrequest;
-  wire             avalonmm_write_slave_waitrequest;
-  wire    [ 31: 0] data;
-  wire    [ 31: 0] q;
-  wire             rdclk;
-  wire    [ 31: 0] rdclk_control_slave_readdata;
-  wire             rdempty;
-  wire             rdreq;
-  wire             wrclk;
-  wire             wrfull;
-  wire             wrreq;
+
+wire    [ 31: 0] avalonmm_read_slave_readdata;
+wire             avalonmm_read_slave_waitrequest;
+wire             avalonmm_write_slave_waitrequest;
+wire    [ 31: 0] data;
+wire    [ 31: 0] q;
+wire             rdclk;
+wire    [ 31: 0] rdclk_control_slave_readdata;
+wire             rdempty;
+wire             rdreq;
+wire             wrclk;
+wire             wrfull;
+wire             wrreq;
   //the_dcfifo_with_controls, which is an e_instance
   TestRO_fifo_0_dcfifo_with_controls the_dcfifo_with_controls
     (

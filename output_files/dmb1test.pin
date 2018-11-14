@@ -1,17 +1,16 @@
- -- Copyright (C) 1991-2016 Altera Corporation. All rights reserved.
- -- Your use of Altera Corporation's design tools, logic functions 
+ -- Copyright (C) 2018  Intel Corporation. All rights reserved.
+ -- Your use of Intel Corporation's design tools, logic functions 
  -- and other software and tools, and its AMPP partner logic 
  -- functions, and any output files from any of the foregoing 
  -- (including device programming or simulation files), and any 
  -- associated documentation or information are expressly subject 
- -- to the terms and conditions of the Altera Program License 
- -- Subscription Agreement, the Altera Quartus Prime License Agreement,
- -- the Altera MegaCore Function License Agreement, or other 
- -- applicable license agreement, including, without limitation, 
- -- that your use is for the sole purpose of programming logic 
- -- devices manufactured by Altera and sold by Altera or its 
- -- authorized distributors.  Please refer to the applicable 
- -- agreement for further details.
+ -- to the terms and conditions of the Intel Program License 
+ -- Subscription Agreement, the Intel Quartus Prime License Agreement,
+ -- the Intel FPGA IP License Agreement, or other applicable license
+ -- agreement, including, without limitation, that your use is for
+ -- the sole purpose of programming logic devices manufactured by
+ -- Intel and sold by Intel or its authorized distributors.  Please
+ -- refer to the applicable agreement for further details.
  -- 
  -- This is a Quartus Prime output file. It is for reporting purposes only, and is
  -- not intended for use as a Quartus Prime input file. This file cannot be used
@@ -35,6 +34,7 @@
  --                  Bank 5B:       2.5V
  --                  Bank 7A:  2.5V
  --                  Bank 8A:  2.5V
+ --                  Bank 9A:  Dedicated configuration pins only, no VCCIO required.
  -- RREF          : External reference resistor for the quad, MUST be connected to
  --                 GND via a 2k Ohm resistor.
  -- GND           : Dedicated ground pin. Dedicated GND pins MUST be connected to GND.
@@ -68,7 +68,7 @@
  -- Pin directions (input, output or bidir) are based on device operating in user mode.
  ---------------------------------------------------------------------------------
 
-Quartus Prime Version 16.0.0 Build 211 04/27/2016 SJ Lite Edition
+Quartus Prime Version 18.0.0 Build 614 04/24/2018 SJ Lite Edition
 CHIP  "dmb1test"  ASSIGNED TO AN: 5CEFA7F23I7
 
 Pin Name/Usage               : Location  : Dir.   : I/O Standard      : Voltage : I/O Bank  : User Assignment
@@ -389,7 +389,7 @@ GND                          : N5        : gnd    :                   :         
 RESERVED_INPUT_WITH_WEAK_PULLUP : N6        :        :                   :         : 3A        :                
 GND                          : N7        : gnd    :                   :         :           :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : N8        :        :                   :         : 3B        :                
-RESERVED_INPUT_WITH_WEAK_PULLUP : N9        :        :                   :         : 3B        :                
+EXT_TRIG_IN2                 : N9        : input  : LVDS              :         : 3B        : Y              
 VCC                          : N10       : power  :                   : 1.1V    :           :                
 GND                          : N11       : gnd    :                   :         :           :                
 VCC                          : N12       : power  :                   : 1.1V    :           :                
@@ -411,7 +411,7 @@ altera_reserved_tms          : P5        : input  : 3.3-V LVTTL       :         
 RESERVED_INPUT_WITH_WEAK_PULLUP : P6        :        :                   :         : 3A        :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : P7        :        :                   :         : 3A        :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : P8        :        :                   :         : 3B        :                
-RESERVED_INPUT_WITH_WEAK_PULLUP : P9        :        :                   :         : 3B        :                
+EXT_TRIG_IN2(n)              : P9        : input  : LVDS              :         : 3B        : Y              
 GND                          : P10       : gnd    :                   :         :           :                
 VCC                          : P11       : power  :                   : 1.1V    :           :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : P12       :        :                   :         : 3B        :                
@@ -434,8 +434,8 @@ SLO_DAC1_SCLK                : R6        : output : 3.3-V LVCMOS      :         
 RESERVED_INPUT_WITH_WEAK_PULLUP : R7        :        :                   :         : 3A        :                
 VCCIO3B                      : R8        : power  :                   : 2.5V    : 3B        :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : R9        :        :                   :         : 3B        :                
-RESERVED_INPUT_WITH_WEAK_PULLUP : R10       :        :                   :         : 3B        :                
-RESERVED_INPUT_WITH_WEAK_PULLUP : R11       :        :                   :         : 3B        :                
+EXT_TRIG_IN1(n)              : R10       : input  : LVDS              :         : 3B        : Y              
+EXT_TRIG_IN1                 : R11       : input  : LVDS              :         : 3B        : Y              
 RESERVED_INPUT_WITH_WEAK_PULLUP : R12       :        :                   :         : 3B        :                
 GND                          : R13       : gnd    :                   :         :           :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : R14       :        :                   :         : 4A        :                

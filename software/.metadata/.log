@@ -1808,3 +1808,513 @@ java.io.IOException: Cannot run program "objdump": Launching failed
 	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:591)
 	at org.eclipse.equinox.launcher.Main.run(Main.java:1450)
 	at org.eclipse.equinox.launcher.Main.main(Main.java:1426)
+!SESSION 2018-07-18 15:45:46.933 -----------------------------------------------
+eclipse.buildId=4.5.2.M20160212-1500
+java.version=1.8.0_05
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.cpp.product -pluginCustomization C:/intelfpga_lite/18.0/nios2eds/bin/eclipse_nios2/plugin_customization.ini
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.cpp.product -pluginCustomization C:/intelfpga_lite/18.0/nios2eds/bin/eclipse_nios2/plugin_customization.ini
+
+!ENTRY org.eclipse.cdt.core 1 0 2018-07-18 15:47:03.645
+!MESSAGE Indexed 'testreadout' (1 sources, 33 headers) in 1.59 sec: 1,274 declarations; 2,071 references; 0 unresolved inclusions; 0 syntax errors; 0 unresolved names (0%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2018-07-18 15:47:07.192
+!MESSAGE Indexed 'testreadout_bsp' (81 sources, 153 headers) in 3.48 sec: 5,364 declarations; 8,805 references; 1 unresolved inclusions; 2 syntax errors; 9 unresolved names (0.063%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2018-07-18 15:47:14.471
+!MESSAGE Indexed 'testreadout' (1 sources, 33 headers) in 0.094 sec: 1,274 declarations; 2,071 references; 0 unresolved inclusions; 0 syntax errors; 0 unresolved names (0%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2018-07-18 15:49:37.824
+!MESSAGE Indexed 'testreadout' (1 sources, 33 headers) in 0.093 sec: 1,275 declarations; 2,081 references; 0 unresolved inclusions; 0 syntax errors; 0 unresolved names (0%)
+
+!ENTRY com.altera.sbtgui.launch 1 0 2018-07-20 15:14:34.543
+!MESSAGE Executing: [C:/intelfpga_lite/18.0/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=2 --instance=0 --stop --accept-bad-sysid --sidp=Not Found]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2018-07-20 15:14:36.527
+!MESSAGE Failed Executing: [nios2-download, '--cable=USB-Blaster on localhost [USB-0]', --device=2, --instance=0, --stop, --accept-bad-sysid, --sidp=Not Found] return code: 8
+
+!ENTRY com.altera.sbtgui.launch 1 0 2018-07-20 15:14:36.980
+!MESSAGE Executing: [C:/intelfpga_lite/18.0/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=2 --instance=0 --go --accept-bad-sysid --reset-target /cygdrive/c/Users/icecube/WorkSpace/Altera/D-Egg_fw/CommTest_2ADC_dev/software/testreadout/testreadout.elf]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2018-07-20 15:14:39.429
+!MESSAGE Failed Executing: [nios2-download, '--cable=USB-Blaster on localhost [USB-0]', --device=2, --instance=0, --go, --accept-bad-sysid, --reset-target, /cygdrive/c/Users/icecube/WorkSpace/Altera/D-Egg_fw/CommTest_2ADC_dev/software/testreadout/testreadout.elf] return code: 4, 'other error'
+
+!ENTRY com.altera.sbtgui.launch 4 0 2018-07-20 15:14:39.507
+!MESSAGE Downloading ELF Process failed
+!SESSION 2018-07-24 11:58:59.822 -----------------------------------------------
+eclipse.buildId=4.5.2.M20160212-1500
+java.version=1.8.0_05
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.cpp.product -pluginCustomization C:/intelfpga_lite/18.0/nios2eds/bin/eclipse_nios2/plugin_customization.ini
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.cpp.product -pluginCustomization C:/intelfpga_lite/18.0/nios2eds/bin/eclipse_nios2/plugin_customization.ini
+
+!ENTRY org.eclipse.cdt.core 1 0 2018-07-24 12:30:08.519
+!MESSAGE Indexed 'testreadout' (1 sources, 33 headers) in 0.417 sec: 1,275 declarations; 2,098 references; 0 unresolved inclusions; 0 syntax errors; 0 unresolved names (0%)
+!SESSION 2018-08-07 18:24:43.762 -----------------------------------------------
+eclipse.buildId=4.5.2.M20160212-1500
+java.version=1.8.0_05
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.cpp.product -pluginCustomization C:/intelfpga_lite/18.0/nios2eds/bin/eclipse_nios2/plugin_customization.ini
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.cpp.product -pluginCustomization C:/intelfpga_lite/18.0/nios2eds/bin/eclipse_nios2/plugin_customization.ini
+
+!ENTRY org.eclipse.epp.logging.aeri.ide 2 10 2018-08-07 18:30:25.580
+!MESSAGE Updating the index from remote failed. ; version: 1.100.0.v20160217-0435
+!STACK 0
+java.net.SocketTimeoutException: Read timed out
+	at java.net.SocketInputStream.socketRead0(Native Method)
+	at java.net.SocketInputStream.read(Unknown Source)
+	at java.net.SocketInputStream.read(Unknown Source)
+	at org.apache.http.impl.io.SessionInputBufferImpl.streamRead(SessionInputBufferImpl.java:136)
+	at org.apache.http.impl.io.SessionInputBufferImpl.fillBuffer(SessionInputBufferImpl.java:152)
+	at org.apache.http.impl.io.SessionInputBufferImpl.readLine(SessionInputBufferImpl.java:270)
+	at org.apache.http.impl.conn.DefaultHttpResponseParser.parseHead(DefaultHttpResponseParser.java:140)
+	at org.apache.http.impl.conn.DefaultHttpResponseParser.parseHead(DefaultHttpResponseParser.java:57)
+	at org.apache.http.impl.io.AbstractMessageParser.parse(AbstractMessageParser.java:260)
+	at org.apache.http.impl.DefaultBHttpClientConnection.receiveResponseHeader(DefaultBHttpClientConnection.java:161)
+	at org.apache.http.impl.conn.CPoolProxy.receiveResponseHeader(CPoolProxy.java:153)
+	at org.apache.http.protocol.HttpRequestExecutor.doReceiveResponse(HttpRequestExecutor.java:271)
+	at org.apache.http.protocol.HttpRequestExecutor.execute(HttpRequestExecutor.java:123)
+	at org.apache.http.impl.execchain.MainClientExec.execute(MainClientExec.java:254)
+	at org.apache.http.impl.execchain.ProtocolExec.execute(ProtocolExec.java:195)
+	at org.apache.http.impl.execchain.RetryExec.execute(RetryExec.java:86)
+	at org.apache.http.impl.execchain.RedirectExec.execute(RedirectExec.java:108)
+	at org.apache.http.impl.client.InternalHttpClient.doExecute(InternalHttpClient.java:184)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:82)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:57)
+	at org.apache.http.client.fluent.Executor.execute(Executor.java:206)
+	at org.eclipse.epp.internal.logging.aeri.ide.server.mars.IO.downloadDatabase(IO.java:171)
+	at org.eclipse.epp.internal.logging.aeri.ide.server.mars.ServerProblemsHistory$UpdateIndexJob.run(ServerProblemsHistory.java:279)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+!SESSION 2018-10-24 16:36:18.239 -----------------------------------------------
+eclipse.buildId=4.5.2.M20160212-1500
+java.version=1.8.0_05
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.cpp.product -pluginCustomization C:/intelfpga_lite/18.0/nios2eds/bin/eclipse_nios2/plugin_customization.ini
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.cpp.product -pluginCustomization C:/intelfpga_lite/18.0/nios2eds/bin/eclipse_nios2/plugin_customization.ini
+
+!ENTRY org.eclipse.egit.ui 2 0 2018-10-24 16:36:42.973
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\icecube'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.epp.logging.aeri.ide 2 10 2018-10-24 16:42:00.967
+!MESSAGE Updating the index from remote failed. ; version: 1.100.0.v20160217-0435
+!STACK 0
+java.net.SocketTimeoutException: Read timed out
+	at java.net.SocketInputStream.socketRead0(Native Method)
+	at java.net.SocketInputStream.read(Unknown Source)
+	at java.net.SocketInputStream.read(Unknown Source)
+	at org.apache.http.impl.io.SessionInputBufferImpl.streamRead(SessionInputBufferImpl.java:136)
+	at org.apache.http.impl.io.SessionInputBufferImpl.fillBuffer(SessionInputBufferImpl.java:152)
+	at org.apache.http.impl.io.SessionInputBufferImpl.readLine(SessionInputBufferImpl.java:270)
+	at org.apache.http.impl.conn.DefaultHttpResponseParser.parseHead(DefaultHttpResponseParser.java:140)
+	at org.apache.http.impl.conn.DefaultHttpResponseParser.parseHead(DefaultHttpResponseParser.java:57)
+	at org.apache.http.impl.io.AbstractMessageParser.parse(AbstractMessageParser.java:260)
+	at org.apache.http.impl.DefaultBHttpClientConnection.receiveResponseHeader(DefaultBHttpClientConnection.java:161)
+	at org.apache.http.impl.conn.CPoolProxy.receiveResponseHeader(CPoolProxy.java:153)
+	at org.apache.http.protocol.HttpRequestExecutor.doReceiveResponse(HttpRequestExecutor.java:271)
+	at org.apache.http.protocol.HttpRequestExecutor.execute(HttpRequestExecutor.java:123)
+	at org.apache.http.impl.execchain.MainClientExec.execute(MainClientExec.java:254)
+	at org.apache.http.impl.execchain.ProtocolExec.execute(ProtocolExec.java:195)
+	at org.apache.http.impl.execchain.RetryExec.execute(RetryExec.java:86)
+	at org.apache.http.impl.execchain.RedirectExec.execute(RedirectExec.java:108)
+	at org.apache.http.impl.client.InternalHttpClient.doExecute(InternalHttpClient.java:184)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:82)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:57)
+	at org.apache.http.client.fluent.Executor.execute(Executor.java:206)
+	at org.eclipse.epp.internal.logging.aeri.ide.server.mars.IO.downloadDatabase(IO.java:171)
+	at org.eclipse.epp.internal.logging.aeri.ide.server.mars.ServerProblemsHistory$UpdateIndexJob.run(ServerProblemsHistory.java:279)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+!SESSION 2018-11-09 19:17:42.446 -----------------------------------------------
+eclipse.buildId=4.5.2.M20160212-1500
+java.version=1.8.0_05
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.cpp.product -pluginCustomization C:/intelfpga_lite/18.0/nios2eds/bin/eclipse_nios2/plugin_customization.ini
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.cpp.product -pluginCustomization C:/intelfpga_lite/18.0/nios2eds/bin/eclipse_nios2/plugin_customization.ini
+
+!ENTRY com.altera.sbtgui.launch 1 0 2018-11-09 19:18:56.615
+!MESSAGE Executing: [C:/intelfpga_lite/18.0/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=2 --instance=0 --stop --accept-bad-sysid --sidp=Not Found]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2018-11-09 19:19:00.569
+!MESSAGE Failed Executing: [nios2-download, '--cable=USB-Blaster on localhost [USB-0]', --device=2, --instance=0, --stop, --accept-bad-sysid, --sidp=Not Found] return code: 8
+
+!ENTRY com.altera.sbtgui.launch 1 0 2018-11-09 19:19:00.991
+!MESSAGE Executing: [C:/intelfpga_lite/18.0/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=2 --instance=0 --go --accept-bad-sysid --reset-target /cygdrive/c/Users/icecube/WorkSpace/Altera/D-Egg_fw/CommTest_2ADC_dev/software/testreadout/testreadout.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2018-11-09 19:22:16.850
+!MESSAGE Executing: [C:/intelfpga_lite/18.0/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=2 --instance=0 --stop --accept-bad-sysid --sidp=Not Found]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2018-11-09 19:22:20.242
+!MESSAGE Failed Executing: [nios2-download, '--cable=USB-Blaster on localhost [USB-0]', --device=2, --instance=0, --stop, --accept-bad-sysid, --sidp=Not Found] return code: 8
+
+!ENTRY com.altera.sbtgui.launch 1 0 2018-11-09 19:22:20.601
+!MESSAGE Executing: [C:/intelfpga_lite/18.0/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=2 --instance=0 --go --accept-bad-sysid --reset-target /cygdrive/c/Users/icecube/WorkSpace/Altera/D-Egg_fw/CommTest_2ADC_dev/software/testreadout/testreadout.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2018-11-09 19:23:40.847
+!MESSAGE Executing: [C:/intelfpga_lite/18.0/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=2 --instance=0 --stop --accept-bad-sysid --sidp=Not Found]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2018-11-09 19:23:44.355
+!MESSAGE Failed Executing: [nios2-download, '--cable=USB-Blaster on localhost [USB-0]', --device=2, --instance=0, --stop, --accept-bad-sysid, --sidp=Not Found] return code: 8
+
+!ENTRY com.altera.sbtgui.launch 1 0 2018-11-09 19:23:44.730
+!MESSAGE Executing: [C:/intelfpga_lite/18.0/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=2 --instance=0 --go --accept-bad-sysid --reset-target /cygdrive/c/Users/icecube/WorkSpace/Altera/D-Egg_fw/CommTest_2ADC_dev/software/testreadout/testreadout.elf]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2018-11-09 19:23:48.463
+!MESSAGE Failed Executing: [nios2-download, '--cable=USB-Blaster on localhost [USB-0]', --device=2, --instance=0, --go, --accept-bad-sysid, --reset-target, /cygdrive/c/Users/icecube/WorkSpace/Altera/D-Egg_fw/CommTest_2ADC_dev/software/testreadout/testreadout.elf] return code: 4, 'other error'
+
+!ENTRY com.altera.sbtgui.launch 4 0 2018-11-09 19:23:48.463
+!MESSAGE Downloading ELF Process failed
+
+!ENTRY com.altera.sbtgui.launch 1 0 2018-11-09 19:24:21.002
+!MESSAGE Executing: [C:/intelfpga_lite/18.0/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=2 --instance=0 --stop --accept-bad-sysid --sidp=Not Found]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2018-11-09 19:24:24.140
+!MESSAGE Failed Executing: [nios2-download, '--cable=USB-Blaster on localhost [USB-0]', --device=2, --instance=0, --stop, --accept-bad-sysid, --sidp=Not Found] return code: 8
+
+!ENTRY com.altera.sbtgui.launch 1 0 2018-11-09 19:24:24.499
+!MESSAGE Executing: [C:/intelfpga_lite/18.0/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=2 --instance=0 --go --accept-bad-sysid --reset-target /cygdrive/c/Users/icecube/WorkSpace/Altera/D-Egg_fw/CommTest_2ADC_dev/software/testreadout/testreadout.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2018-11-09 19:28:40.362
+!MESSAGE Executing: [C:/intelfpga_lite/18.0/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=2 --instance=0 --stop --accept-bad-sysid --sidp=Not Found]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2018-11-09 19:28:43.770
+!MESSAGE Failed Executing: [nios2-download, '--cable=USB-Blaster on localhost [USB-0]', --device=2, --instance=0, --stop, --accept-bad-sysid, --sidp=Not Found] return code: 8
+
+!ENTRY com.altera.sbtgui.launch 1 0 2018-11-09 19:28:44.129
+!MESSAGE Executing: [C:/intelfpga_lite/18.0/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=2 --instance=0 --go --accept-bad-sysid --reset-target /cygdrive/c/Users/icecube/WorkSpace/Altera/D-Egg_fw/CommTest_2ADC_dev/software/testreadout/testreadout.elf]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2018-11-09 19:28:47.863
+!MESSAGE Failed Executing: [nios2-download, '--cable=USB-Blaster on localhost [USB-0]', --device=2, --instance=0, --go, --accept-bad-sysid, --reset-target, /cygdrive/c/Users/icecube/WorkSpace/Altera/D-Egg_fw/CommTest_2ADC_dev/software/testreadout/testreadout.elf] return code: 4, 'other error'
+
+!ENTRY com.altera.sbtgui.launch 4 0 2018-11-09 19:28:47.863
+!MESSAGE Downloading ELF Process failed
+
+!ENTRY com.altera.sbtgui.launch 1 0 2018-11-09 19:29:10.982
+!MESSAGE Executing: [C:/intelfpga_lite/18.0/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=2 --instance=0 --stop --accept-bad-sysid --sidp=Not Found]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2018-11-09 19:29:14.237
+!MESSAGE Failed Executing: [nios2-download, '--cable=USB-Blaster on localhost [USB-0]', --device=2, --instance=0, --stop, --accept-bad-sysid, --sidp=Not Found] return code: 8
+
+!ENTRY com.altera.sbtgui.launch 1 0 2018-11-09 19:29:14.596
+!MESSAGE Executing: [C:/intelfpga_lite/18.0/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=2 --instance=0 --go --accept-bad-sysid --reset-target /cygdrive/c/Users/icecube/WorkSpace/Altera/D-Egg_fw/CommTest_2ADC_dev/software/testreadout/testreadout.elf]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2018-11-09 19:29:18.252
+!MESSAGE Failed Executing: [nios2-download, '--cable=USB-Blaster on localhost [USB-0]', --device=2, --instance=0, --go, --accept-bad-sysid, --reset-target, /cygdrive/c/Users/icecube/WorkSpace/Altera/D-Egg_fw/CommTest_2ADC_dev/software/testreadout/testreadout.elf] return code: 4, 'other error'
+
+!ENTRY com.altera.sbtgui.launch 4 0 2018-11-09 19:29:18.252
+!MESSAGE Downloading ELF Process failed
+!SESSION 2018-11-09 19:30:19.311 -----------------------------------------------
+eclipse.buildId=4.5.2.M20160212-1500
+java.version=1.8.0_05
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.cpp.product -pluginCustomization C:/intelfpga_lite/18.0/nios2eds/bin/eclipse_nios2/plugin_customization.ini
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.cpp.product -pluginCustomization C:/intelfpga_lite/18.0/nios2eds/bin/eclipse_nios2/plugin_customization.ini
+
+!ENTRY com.altera.sbtgui.launch 1 0 2018-11-09 19:33:29.216
+!MESSAGE Executing: [C:/intelfpga_lite/18.0/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=2 --instance=0 --stop --accept-bad-sysid --sidp=Not Found]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2018-11-09 19:33:32.208
+!MESSAGE Failed Executing: [nios2-download, '--cable=USB-Blaster on localhost [USB-0]', --device=2, --instance=0, --stop, --accept-bad-sysid, --sidp=Not Found] return code: 8
+
+!ENTRY com.altera.sbtgui.launch 1 0 2018-11-09 19:33:32.556
+!MESSAGE Executing: [C:/intelfpga_lite/18.0/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=2 --instance=0 --go --accept-bad-sysid --reset-target /cygdrive/c/Users/icecube/WorkSpace/Altera/D-Egg_fw/CommTest_2ADC_dev/software/testreadout/testreadout.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2018-11-09 19:34:24.500
+!MESSAGE Executing: [C:/intelfpga_lite/18.0/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=2 --instance=0 --stop --accept-bad-sysid --sidp=Not Found]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2018-11-09 19:34:27.636
+!MESSAGE Failed Executing: [nios2-download, '--cable=USB-Blaster on localhost [USB-0]', --device=2, --instance=0, --stop, --accept-bad-sysid, --sidp=Not Found] return code: 8
+
+!ENTRY com.altera.sbtgui.launch 1 0 2018-11-09 19:34:27.969
+!MESSAGE Executing: [C:/intelfpga_lite/18.0/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=2 --instance=0 --go --accept-bad-sysid --reset-target /cygdrive/c/Users/icecube/WorkSpace/Altera/D-Egg_fw/CommTest_2ADC_dev/software/testreadout/testreadout.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2018-11-09 19:40:03.682
+!MESSAGE Executing: [C:/intelfpga_lite/18.0/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=2 --instance=0 --stop --accept-bad-sysid --sidp=Not Found]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2018-11-09 19:40:06.667
+!MESSAGE Failed Executing: [nios2-download, '--cable=USB-Blaster on localhost [USB-0]', --device=2, --instance=0, --stop, --accept-bad-sysid, --sidp=Not Found] return code: 8
+
+!ENTRY com.altera.sbtgui.launch 1 0 2018-11-09 19:40:06.994
+!MESSAGE Executing: [C:/intelfpga_lite/18.0/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=2 --instance=0 --go --accept-bad-sysid --reset-target /cygdrive/c/Users/icecube/WorkSpace/Altera/D-Egg_fw/CommTest_2ADC_dev/software/testreadout/testreadout.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2018-11-09 19:41:38.500
+!MESSAGE Executing: [C:/intelfpga_lite/18.0/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=2 --instance=0 --stop --accept-bad-sysid --sidp=Not Found]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2018-11-09 19:41:41.514
+!MESSAGE Failed Executing: [nios2-download, '--cable=USB-Blaster on localhost [USB-0]', --device=2, --instance=0, --stop, --accept-bad-sysid, --sidp=Not Found] return code: 8
+
+!ENTRY com.altera.sbtgui.launch 1 0 2018-11-09 19:41:41.842
+!MESSAGE Executing: [C:/intelfpga_lite/18.0/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=2 --instance=0 --go --accept-bad-sysid --reset-target /cygdrive/c/Users/icecube/WorkSpace/Altera/D-Egg_fw/CommTest_2ADC_dev/software/testreadout/testreadout.elf]
+!SESSION 2018-11-12 10:11:36.992 -----------------------------------------------
+eclipse.buildId=4.5.2.M20160212-1500
+java.version=1.8.0_05
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.cpp.product -pluginCustomization C:/intelfpga_lite/18.0/nios2eds/bin/eclipse_nios2/plugin_customization.ini
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.cpp.product -pluginCustomization C:/intelfpga_lite/18.0/nios2eds/bin/eclipse_nios2/plugin_customization.ini
+
+!ENTRY org.eclipse.egit.ui 2 0 2018-11-12 10:11:56.054
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\icecube'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY com.altera.sbtgui.launch 1 0 2018-11-12 10:12:10.052
+!MESSAGE Executing: [C:/intelfpga_lite/18.0/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=2 --instance=0 --stop --accept-bad-sysid --sidp=Not Found]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2018-11-12 10:12:13.357
+!MESSAGE Failed Executing: [nios2-download, '--cable=USB-Blaster on localhost [USB-0]', --device=2, --instance=0, --stop, --accept-bad-sysid, --sidp=Not Found] return code: 8
+
+!ENTRY com.altera.sbtgui.launch 1 0 2018-11-12 10:12:13.763
+!MESSAGE Executing: [C:/intelfpga_lite/18.0/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=2 --instance=0 --go --accept-bad-sysid --reset-target /cygdrive/c/Users/icecube/WorkSpace/Altera/D-Egg_fw/CommTest_2ADC_dev/software/testreadout/testreadout.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2018-11-12 10:16:19.216
+!MESSAGE Executing: [C:/intelfpga_lite/18.0/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=2 --instance=0 --stop --accept-bad-sysid --sidp=Not Found]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2018-11-12 10:16:22.302
+!MESSAGE Failed Executing: [nios2-download, '--cable=USB-Blaster on localhost [USB-0]', --device=2, --instance=0, --stop, --accept-bad-sysid, --sidp=Not Found] return code: 8
+
+!ENTRY com.altera.sbtgui.launch 1 0 2018-11-12 10:16:22.640
+!MESSAGE Executing: [C:/intelfpga_lite/18.0/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=2 --instance=0 --go --accept-bad-sysid --reset-target /cygdrive/c/Users/icecube/WorkSpace/Altera/D-Egg_fw/CommTest_2ADC_dev/software/testreadout/testreadout.elf]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2018-11-12 10:16:26.093
+!MESSAGE Failed Executing: [nios2-download, '--cable=USB-Blaster on localhost [USB-0]', --device=2, --instance=0, --go, --accept-bad-sysid, --reset-target, /cygdrive/c/Users/icecube/WorkSpace/Altera/D-Egg_fw/CommTest_2ADC_dev/software/testreadout/testreadout.elf] return code: 4, 'other error'
+
+!ENTRY com.altera.sbtgui.launch 4 0 2018-11-12 10:16:26.098
+!MESSAGE Downloading ELF Process failed
+!SESSION 2018-11-12 10:22:44.008 -----------------------------------------------
+eclipse.buildId=4.3.2.M20140221-1700
+java.version=1.8.0_05
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.cpp.product -pluginCustomization C:/altera_lite/16.0/nios2eds/bin/eclipse_nios2/plugin_customization.ini
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.cpp.product -pluginCustomization C:/altera_lite/16.0/nios2eds/bin/eclipse_nios2/plugin_customization.ini
+
+!ENTRY org.eclipse.e4.ui.workbench 4 0 2018-11-12 10:22:57.042
+!MESSAGE Unable to load class 'org.eclipse.e4.ui.workbench.addons.splitteraddon.SplitterAddon' from bundle '145'
+!STACK 0
+java.lang.ClassNotFoundException: org.eclipse.e4.ui.workbench.addons.splitteraddon.SplitterAddon cannot be found by org.eclipse.e4.ui.workbench.addons.swt_1.0.2.v20131129-1621
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClassInternal(BundleLoader.java:501)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:421)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:412)
+	at org.eclipse.osgi.internal.baseadaptor.DefaultClassLoader.loadClass(DefaultClassLoader.java:107)
+	at java.lang.ClassLoader.loadClass(Unknown Source)
+	at org.eclipse.osgi.internal.loader.BundleLoader.loadClass(BundleLoader.java:340)
+	at org.eclipse.osgi.framework.internal.core.BundleHost.loadClass(BundleHost.java:229)
+	at org.eclipse.osgi.framework.internal.core.AbstractBundle.loadClass(AbstractBundle.java:1212)
+	at org.eclipse.e4.ui.internal.workbench.ReflectionContributionFactory.createFromBundle(ReflectionContributionFactory.java:100)
+	at org.eclipse.e4.ui.internal.workbench.ReflectionContributionFactory.doCreate(ReflectionContributionFactory.java:71)
+	at org.eclipse.e4.ui.internal.workbench.ReflectionContributionFactory.create(ReflectionContributionFactory.java:49)
+	at org.eclipse.e4.ui.internal.workbench.swt.E4Application.createE4Workbench(E4Application.java:276)
+	at org.eclipse.ui.internal.Workbench$5.run(Workbench.java:581)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:332)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:567)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:150)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:124)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:110)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:79)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:354)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:181)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:636)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:591)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1450)
+	at org.eclipse.equinox.launcher.Main.main(Main.java:1426)
+
+!ENTRY org.eclipse.e4.ui.workbench 4 0 2018-11-12 10:22:57.089
+!MESSAGE Unable to load class 'org.eclipse.ui.internal.ide.application.addons.ModelCleanupAddon' from bundle '391'
+!STACK 0
+java.lang.ClassNotFoundException: org.eclipse.ui.internal.ide.application.addons.ModelCleanupAddon cannot be found by org.eclipse.ui.ide.application_1.0.401.v20131105-1007
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClassInternal(BundleLoader.java:501)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:421)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:412)
+	at org.eclipse.osgi.internal.baseadaptor.DefaultClassLoader.loadClass(DefaultClassLoader.java:107)
+	at java.lang.ClassLoader.loadClass(Unknown Source)
+	at org.eclipse.osgi.internal.loader.BundleLoader.loadClass(BundleLoader.java:340)
+	at org.eclipse.osgi.framework.internal.core.BundleHost.loadClass(BundleHost.java:229)
+	at org.eclipse.osgi.framework.internal.core.AbstractBundle.loadClass(AbstractBundle.java:1212)
+	at org.eclipse.e4.ui.internal.workbench.ReflectionContributionFactory.createFromBundle(ReflectionContributionFactory.java:100)
+	at org.eclipse.e4.ui.internal.workbench.ReflectionContributionFactory.doCreate(ReflectionContributionFactory.java:71)
+	at org.eclipse.e4.ui.internal.workbench.ReflectionContributionFactory.create(ReflectionContributionFactory.java:49)
+	at org.eclipse.e4.ui.internal.workbench.swt.E4Application.createE4Workbench(E4Application.java:276)
+	at org.eclipse.ui.internal.Workbench$5.run(Workbench.java:581)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:332)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:567)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:150)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:124)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:110)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:79)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:354)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:181)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:636)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:591)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1450)
+	at org.eclipse.equinox.launcher.Main.main(Main.java:1426)
+
+!ENTRY org.eclipse.cdt.core 1 0 2018-11-12 10:23:04.259
+!MESSAGE Indexed 'testreadout' (1 sources, 8 headers) in 0.76 sec: 83 declarations; 253 references; 2 unresolved inclusions; 0 syntax errors; 0 unresolved names (0.00%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2018-11-12 10:23:08.321
+!MESSAGE Indexed 'testreadout_bsp' (81 sources, 153 headers) in 3.83 sec: 5,364 declarations; 8,819 references; 1 unresolved inclusions; 2 syntax errors; 9 unresolved names (0.06%)
+
+!ENTRY com.altera.sbtgui.launch 1 0 2018-11-12 10:23:51.061
+!MESSAGE Executing: [C:/altera_lite/16.0/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=2 --instance=0 --stop --accept-bad-sysid --sidp=Not Found]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2018-11-12 10:23:54.580
+!MESSAGE Failed Executing: [nios2-download, '--cable=USB-Blaster on localhost [USB-0]', --device=2, --instance=0, --stop, --accept-bad-sysid, --sidp=Not Found] return code: 8
+
+!ENTRY com.altera.sbtgui.launch 1 0 2018-11-12 10:23:54.939
+!MESSAGE Executing: [C:/altera_lite/16.0/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=2 --instance=0 --go --accept-bad-sysid --reset-target /cygdrive/c/Users/icecube/WorkSpace/Altera/D-Egg_fw/CommTest_2ADC_dev/software/testreadout/testreadout.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2018-11-12 10:24:32.917
+!MESSAGE Executing: [C:/altera_lite/16.0/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=2 --instance=0 --stop --accept-bad-sysid --sidp=Not Found]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2018-11-12 10:24:35.956
+!MESSAGE Failed Executing: [nios2-download, '--cable=USB-Blaster on localhost [USB-0]', --device=2, --instance=0, --stop, --accept-bad-sysid, --sidp=Not Found] return code: 8
+
+!ENTRY com.altera.sbtgui.launch 1 0 2018-11-12 10:24:36.316
+!MESSAGE Executing: [C:/altera_lite/16.0/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=2 --instance=0 --go --accept-bad-sysid --reset-target /cygdrive/c/Users/icecube/WorkSpace/Altera/D-Egg_fw/CommTest_2ADC_dev/software/testreadout/testreadout.elf]
+!SESSION 2018-11-13 13:53:52.016 -----------------------------------------------
+eclipse.buildId=4.5.2.M20160212-1500
+java.version=1.8.0_05
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.cpp.product -pluginCustomization C:/intelfpga_lite/18.1/nios2eds/bin/eclipse_nios2/plugin_customization.ini
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.cpp.product -pluginCustomization C:/intelfpga_lite/18.1/nios2eds/bin/eclipse_nios2/plugin_customization.ini
+
+!ENTRY org.eclipse.cdt.core 1 0 2018-11-13 13:54:59.371
+!MESSAGE Indexed 'testreadout' (1 sources, 8 headers) in 0.734 sec: 83 declarations; 253 references; 2 unresolved inclusions; 0 syntax errors; 0 unresolved names (0%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2018-11-13 13:55:07.587
+!MESSAGE Indexed 'testreadout_bsp' (81 sources, 153 headers) in 4.09 sec: 5,364 declarations; 8,804 references; 4 unresolved inclusions; 2 syntax errors; 12 unresolved names (0.085%)
+
+!ENTRY com.altera.sbtgui.launch 1 0 2018-11-13 13:55:29.618
+!MESSAGE Executing: [C:/intelfpga_lite/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=2 --instance=0 --stop --accept-bad-sysid --sidp=Not Found]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2018-11-13 13:55:33.390
+!MESSAGE Failed Executing: [nios2-download, '--cable=USB-Blaster on localhost [USB-0]', --device=2, --instance=0, --stop, --accept-bad-sysid, --sidp=Not Found] return code: 8
+
+!ENTRY com.altera.sbtgui.launch 1 0 2018-11-13 13:55:33.773
+!MESSAGE Executing: [C:/intelfpga_lite/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=2 --instance=0 --go --accept-bad-sysid --reset-target /cygdrive/c/Users/icecube/WorkSpace/Altera/D-Egg_fw/CommTest_2ADC_dev/software/testreadout/testreadout.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2018-11-13 13:56:00.689
+!MESSAGE Terminated Launch with connection: 20USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2018-11-13 13:56:01.557
+!MESSAGE Executing: [C:/intelfpga_lite/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=2 --instance=0 --stop --accept-bad-sysid --sidp=Not Found]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2018-11-13 13:56:04.660
+!MESSAGE Failed Executing: [nios2-download, '--cable=USB-Blaster on localhost [USB-0]', --device=2, --instance=0, --stop, --accept-bad-sysid, --sidp=Not Found] return code: 8
+
+!ENTRY com.altera.sbtgui.launch 1 0 2018-11-13 13:56:04.996
+!MESSAGE Executing: [C:/intelfpga_lite/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=2 --instance=0 --go --accept-bad-sysid --reset-target /cygdrive/c/Users/icecube/WorkSpace/Altera/D-Egg_fw/CommTest_2ADC_dev/software/testreadout/testreadout.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2018-11-13 13:57:37.643
+!MESSAGE Executing: [C:/intelfpga_lite/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=2 --instance=0 --stop --accept-bad-sysid --sidp=Not Found]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2018-11-13 13:57:40.588
+!MESSAGE Failed Executing: [nios2-download, '--cable=USB-Blaster on localhost [USB-0]', --device=2, --instance=0, --stop, --accept-bad-sysid, --sidp=Not Found] return code: 8
+
+!ENTRY com.altera.sbtgui.launch 1 0 2018-11-13 13:57:40.922
+!MESSAGE Executing: [C:/intelfpga_lite/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=2 --instance=0 --go --accept-bad-sysid --reset-target /cygdrive/c/Users/icecube/WorkSpace/Altera/D-Egg_fw/CommTest_2ADC_dev/software/testreadout/testreadout.elf]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2018-11-13 13:57:44.444
+!MESSAGE Failed Executing: [nios2-download, '--cable=USB-Blaster on localhost [USB-0]', --device=2, --instance=0, --go, --accept-bad-sysid, --reset-target, /cygdrive/c/Users/icecube/WorkSpace/Altera/D-Egg_fw/CommTest_2ADC_dev/software/testreadout/testreadout.elf] return code: 4, 'other error'
+
+!ENTRY com.altera.sbtgui.launch 4 0 2018-11-13 13:57:44.449
+!MESSAGE Downloading ELF Process failed
+
+!ENTRY com.altera.sbtgui.launch 1 0 2018-11-13 13:57:59.195
+!MESSAGE Executing: [C:/intelfpga_lite/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=2 --instance=0 --stop --accept-bad-sysid --sidp=Not Found]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2018-11-13 13:58:02.020
+!MESSAGE Failed Executing: [nios2-download, '--cable=USB-Blaster on localhost [USB-0]', --device=2, --instance=0, --stop, --accept-bad-sysid, --sidp=Not Found] return code: 8
+
+!ENTRY com.altera.sbtgui.launch 1 0 2018-11-13 13:58:02.344
+!MESSAGE Executing: [C:/intelfpga_lite/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=2 --instance=0 --go --accept-bad-sysid --reset-target /cygdrive/c/Users/icecube/WorkSpace/Altera/D-Egg_fw/CommTest_2ADC_dev/software/testreadout/testreadout.elf]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2018-11-13 13:58:05.795
+!MESSAGE Failed Executing: [nios2-download, '--cable=USB-Blaster on localhost [USB-0]', --device=2, --instance=0, --go, --accept-bad-sysid, --reset-target, /cygdrive/c/Users/icecube/WorkSpace/Altera/D-Egg_fw/CommTest_2ADC_dev/software/testreadout/testreadout.elf] return code: 4, 'other error'
+
+!ENTRY com.altera.sbtgui.launch 4 0 2018-11-13 13:58:05.799
+!MESSAGE Downloading ELF Process failed
+
+!ENTRY com.altera.sbtgui.launch 1 0 2018-11-13 13:58:29.012
+!MESSAGE Executing: [C:/intelfpga_lite/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=2 --instance=0 --stop --accept-bad-sysid --sidp=Not Found]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2018-11-13 13:58:31.894
+!MESSAGE Failed Executing: [nios2-download, '--cable=USB-Blaster on localhost [USB-0]', --device=2, --instance=0, --stop, --accept-bad-sysid, --sidp=Not Found] return code: 8
+
+!ENTRY com.altera.sbtgui.launch 1 0 2018-11-13 13:58:32.227
+!MESSAGE Executing: [C:/intelfpga_lite/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=2 --instance=0 --go --accept-bad-sysid --reset-target /cygdrive/c/Users/icecube/WorkSpace/Altera/D-Egg_fw/CommTest_2ADC_dev/software/testreadout/testreadout.elf]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2018-11-13 13:58:35.679
+!MESSAGE Failed Executing: [nios2-download, '--cable=USB-Blaster on localhost [USB-0]', --device=2, --instance=0, --go, --accept-bad-sysid, --reset-target, /cygdrive/c/Users/icecube/WorkSpace/Altera/D-Egg_fw/CommTest_2ADC_dev/software/testreadout/testreadout.elf] return code: 4, 'other error'
+
+!ENTRY com.altera.sbtgui.launch 4 0 2018-11-13 13:58:35.684
+!MESSAGE Downloading ELF Process failed
+!SESSION 2018-11-13 16:37:45.951 -----------------------------------------------
+eclipse.buildId=4.5.2.M20160212-1500
+java.version=1.8.0_05
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.cpp.product -pluginCustomization C:/intelfpga_lite/18.1/nios2eds/bin/eclipse_nios2/plugin_customization.ini
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.cpp.product -pluginCustomization C:/intelfpga_lite/18.1/nios2eds/bin/eclipse_nios2/plugin_customization.ini
+
+!ENTRY com.altera.sbtgui.launch 1 0 2018-11-13 16:43:51.424
+!MESSAGE Executing: [C:/intelfpga_lite/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=2 --instance=0 --stop --accept-bad-sysid --sidp=Not Found]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2018-11-13 16:43:57.034
+!MESSAGE Failed Executing: [nios2-download, '--cable=USB-Blaster on localhost [USB-0]', --device=2, --instance=0, --stop, --accept-bad-sysid, --sidp=Not Found] return code: 8
+
+!ENTRY com.altera.sbtgui.launch 1 0 2018-11-13 16:43:58.096
+!MESSAGE Executing: [C:/intelfpga_lite/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=2 --instance=0 --go --accept-bad-sysid --reset-target /cygdrive/c/Users/icecube/WorkSpace/Altera/D-Egg_fw/CommTest_2ADC_dev/software/testreadout/testreadout.elf]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2018-11-13 16:44:03.661
+!MESSAGE Failed Executing: [nios2-download, '--cable=USB-Blaster on localhost [USB-0]', --device=2, --instance=0, --go, --accept-bad-sysid, --reset-target, /cygdrive/c/Users/icecube/WorkSpace/Altera/D-Egg_fw/CommTest_2ADC_dev/software/testreadout/testreadout.elf] return code: 8
+
+!ENTRY com.altera.sbtgui.launch 4 0 2018-11-13 16:44:03.692
+!MESSAGE Downloading ELF Process failed
+
+!ENTRY com.altera.sbtgui.launch 1 0 2018-11-13 17:05:09.003
+!MESSAGE Executing: [C:/intelfpga_lite/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=2 --instance=0 --stop --accept-bad-sysid --sidp=Not Found]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2018-11-13 17:05:12.511
+!MESSAGE Failed Executing: [nios2-download, '--cable=USB-Blaster on localhost [USB-0]', --device=2, --instance=0, --stop, --accept-bad-sysid, --sidp=Not Found] return code: 8
+
+!ENTRY com.altera.sbtgui.launch 1 0 2018-11-13 17:05:13.480
+!MESSAGE Executing: [C:/intelfpga_lite/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=2 --instance=0 --go --accept-bad-sysid --reset-target /cygdrive/c/Users/icecube/WorkSpace/Altera/D-Egg_fw/CommTest_2ADC_dev/software/testreadout/testreadout.elf]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2018-11-13 17:05:16.709
+!MESSAGE Failed Executing: [nios2-download, '--cable=USB-Blaster on localhost [USB-0]', --device=2, --instance=0, --go, --accept-bad-sysid, --reset-target, /cygdrive/c/Users/icecube/WorkSpace/Altera/D-Egg_fw/CommTest_2ADC_dev/software/testreadout/testreadout.elf] return code: 8
+
+!ENTRY com.altera.sbtgui.launch 4 0 2018-11-13 17:05:16.709
+!MESSAGE Downloading ELF Process failed
+!SESSION 2018-11-13 17:32:41.276 -----------------------------------------------
+eclipse.buildId=4.5.2.M20160212-1500
+java.version=1.8.0_05
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.cpp.product -pluginCustomization C:/intelfpga_lite/18.0/nios2eds/bin/eclipse_nios2/plugin_customization.ini
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.cpp.product -pluginCustomization C:/intelfpga_lite/18.0/nios2eds/bin/eclipse_nios2/plugin_customization.ini
+
+!ENTRY org.eclipse.cdt.core 1 0 2018-11-14 11:53:47.182
+!MESSAGE Indexed 'testreadout' (1 sources, 33 headers) in 0.281 sec: 1,290 declarations; 2,108 references; 0 unresolved inclusions; 0 syntax errors; 0 unresolved names (0%)
