@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <deploy
- date="2018.04.23.15:20:46"
- outputDirectory="C:/Users/icecube/WorkSpace/Altera/D-Egg_fw/CommTest_Fujii_verilog_dev/ADCINCLKCTRL/">
+ date="2018.07.18.13:31:15"
+ outputDirectory="C:/Users/icecube/WorkSpace/Altera/D-Egg_fw/CommTest_2ADC_dev/ADCINCLKCTRL/">
  <perimeter>
   <parameter
      name="AUTO_GENERATION_ID"
@@ -46,34 +46,34 @@
  </perimeter>
  <entity
    path=""
-   parameterizationKey="ADCINCLKCTRL:1.0:AUTO_DEVICE=5CEFA7F23I7,AUTO_DEVICE_FAMILY=Cyclone V,AUTO_DEVICE_SPEEDGRADE=7,AUTO_GENERATION_ID=1524464446,AUTO_UNIQUE_ID=(altclkctrl:16.0:CLOCK_TYPE=1,DEVICE_FAMILY=Cyclone V,ENA_REGISTER_MODE=1,GUI_USE_ENA=false,NUMBER_OF_CLOCKS=1,USE_GLITCH_FREE_SWITCH_OVER_IMPLEMENTATION=false)"
+   parameterizationKey="ADCINCLKCTRL:1.0:AUTO_DEVICE=5CEFA7F23I7,AUTO_DEVICE_FAMILY=Cyclone V,AUTO_DEVICE_SPEEDGRADE=7,AUTO_GENERATION_ID=1531888274,AUTO_UNIQUE_ID=(altclkctrl:18.0:CLOCK_TYPE=1,DEVICE_FAMILY=Cyclone V,ENA_REGISTER_MODE=1,GUI_USE_ENA=false,NUMBER_OF_CLOCKS=1,USE_GLITCH_FREE_SWITCH_OVER_IMPLEMENTATION=false)"
    instancePathKey="ADCINCLKCTRL"
    kind="ADCINCLKCTRL"
    version="1.0"
    name="ADCINCLKCTRL">
-  <parameter name="AUTO_GENERATION_ID" value="1524464446" />
+  <parameter name="AUTO_GENERATION_ID" value="1531888274" />
   <parameter name="AUTO_DEVICE" value="5CEFA7F23I7" />
   <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone V" />
   <parameter name="AUTO_UNIQUE_ID" value="" />
   <parameter name="AUTO_DEVICE_SPEEDGRADE" value="7" />
   <generatedFiles>
    <file
-       path="C:/Users/icecube/WorkSpace/Altera/D-Egg_fw/CommTest_Fujii_verilog_dev/ADCINCLKCTRL/synthesis/ADCINCLKCTRL.v"
+       path="C:/Users/icecube/WorkSpace/Altera/D-Egg_fw/CommTest_2ADC_dev/ADCINCLKCTRL/synthesis/ADCINCLKCTRL.v"
        type="VERILOG" />
   </generatedFiles>
   <childGeneratedFiles>
    <file
-       path="C:/Users/icecube/WorkSpace/Altera/D-Egg_fw/CommTest_Fujii_verilog_dev/ADCINCLKCTRL/synthesis/submodules/ADCINCLKCTRL_altclkctrl_0.v"
+       path="C:/Users/icecube/WorkSpace/Altera/D-Egg_fw/CommTest_2ADC_dev/ADCINCLKCTRL/synthesis/submodules/ADCINCLKCTRL_altclkctrl_0.v"
        type="VERILOG"
        attributes="" />
   </childGeneratedFiles>
   <sourceFiles>
    <file
-       path="C:/Users/icecube/WorkSpace/Altera/D-Egg_fw/CommTest_Fujii_verilog_dev/ADCINCLKCTRL.qsys" />
+       path="C:/Users/icecube/WorkSpace/Altera/D-Egg_fw/CommTest_2ADC_dev/ADCINCLKCTRL.qsys" />
   </sourceFiles>
   <childSourceFiles>
    <file
-       path="C:/altera_lite/16.0/ip/altera/megafunctions/altclkctrl/altclkctrl_hw.tcl" />
+       path="C:/intelfpga_lite/18.0/ip/altera/megafunctions/altclkctrl/altclkctrl_hw.tcl" />
   </childSourceFiles>
   <messages>
    <message level="Debug" culprit="ADCINCLKCTRL">queue size: 0 starting:ADCINCLKCTRL "ADCINCLKCTRL"</message>
@@ -92,16 +92,16 @@
    <message level="Debug" culprit="ADCINCLKCTRL"><![CDATA["<b>ADCINCLKCTRL</b>" reuses <b>altclkctrl</b> "<b>submodules/ADCINCLKCTRL_altclkctrl_0</b>"]]></message>
    <message level="Debug" culprit="ADCINCLKCTRL">queue size: 0 starting:altclkctrl "submodules/ADCINCLKCTRL_altclkctrl_0"</message>
    <message level="Info" culprit="altclkctrl_0">Generating top-level entity ADCINCLKCTRL_altclkctrl_0.</message>
-   <message level="Debug" culprit="altclkctrl_0">Current quartus bindir: C:/altera_lite/16.0/quartus/bin64/.</message>
+   <message level="Debug" culprit="altclkctrl_0">Current quartus bindir: C:/intelfpga_lite/18.0/quartus/bin64/.</message>
    <message level="Info" culprit="altclkctrl_0"><![CDATA["<b>ADCINCLKCTRL</b>" instantiated <b>altclkctrl</b> "<b>altclkctrl_0</b>"]]></message>
   </messages>
  </entity>
  <entity
    path="submodules/"
-   parameterizationKey="altclkctrl:16.0:CLOCK_TYPE=1,DEVICE_FAMILY=Cyclone V,ENA_REGISTER_MODE=1,GUI_USE_ENA=false,NUMBER_OF_CLOCKS=1,USE_GLITCH_FREE_SWITCH_OVER_IMPLEMENTATION=false"
+   parameterizationKey="altclkctrl:18.0:CLOCK_TYPE=1,DEVICE_FAMILY=Cyclone V,ENA_REGISTER_MODE=1,GUI_USE_ENA=false,NUMBER_OF_CLOCKS=1,USE_GLITCH_FREE_SWITCH_OVER_IMPLEMENTATION=false"
    instancePathKey="ADCINCLKCTRL:.:altclkctrl_0"
    kind="altclkctrl"
-   version="16.0"
+   version="18.0"
    name="ADCINCLKCTRL_altclkctrl_0">
   <parameter name="NUMBER_OF_CLOCKS" value="1" />
   <parameter name="USE_GLITCH_FREE_SWITCH_OVER_IMPLEMENTATION" value="false" />
@@ -111,21 +111,21 @@
   <parameter name="CLOCK_TYPE" value="1" />
   <generatedFiles>
    <file
-       path="C:/Users/icecube/WorkSpace/Altera/D-Egg_fw/CommTest_Fujii_verilog_dev/ADCINCLKCTRL/synthesis/submodules/ADCINCLKCTRL_altclkctrl_0.v"
+       path="C:/Users/icecube/WorkSpace/Altera/D-Egg_fw/CommTest_2ADC_dev/ADCINCLKCTRL/synthesis/submodules/ADCINCLKCTRL_altclkctrl_0.v"
        type="VERILOG"
        attributes="" />
   </generatedFiles>
   <childGeneratedFiles/>
   <sourceFiles>
    <file
-       path="C:/altera_lite/16.0/ip/altera/megafunctions/altclkctrl/altclkctrl_hw.tcl" />
+       path="C:/intelfpga_lite/18.0/ip/altera/megafunctions/altclkctrl/altclkctrl_hw.tcl" />
   </sourceFiles>
   <childSourceFiles/>
   <instantiator instantiator="ADCINCLKCTRL" as="altclkctrl_0" />
   <messages>
    <message level="Debug" culprit="ADCINCLKCTRL">queue size: 0 starting:altclkctrl "submodules/ADCINCLKCTRL_altclkctrl_0"</message>
    <message level="Info" culprit="altclkctrl_0">Generating top-level entity ADCINCLKCTRL_altclkctrl_0.</message>
-   <message level="Debug" culprit="altclkctrl_0">Current quartus bindir: C:/altera_lite/16.0/quartus/bin64/.</message>
+   <message level="Debug" culprit="altclkctrl_0">Current quartus bindir: C:/intelfpga_lite/18.0/quartus/bin64/.</message>
    <message level="Info" culprit="altclkctrl_0"><![CDATA["<b>ADCINCLKCTRL</b>" instantiated <b>altclkctrl</b> "<b>altclkctrl_0</b>"]]></message>
   </messages>
  </entity>

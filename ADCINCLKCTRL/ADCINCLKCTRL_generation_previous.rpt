@@ -1,0 +1,35 @@
+Info: Starting: Create block symbol file (.bsf)
+Info: qsys-generate C:\Users\icecube\WorkSpace\Altera\D-Egg_fw\CommTest_Fujii_verilog_dev\ADCINCLKCTRL.qsys --block-symbol-file --output-directory=C:\Users\icecube\WorkSpace\Altera\D-Egg_fw\CommTest_Fujii_verilog_dev\ADCINCLKCTRL --family="Cyclone V" --part=5CEFA7F23I7
+Progress: Loading CommTest_Fujii_verilog_dev/ADCINCLKCTRL.qsys
+Progress: Reading input file
+Progress: Adding altclkctrl_0 [altclkctrl 16.0]
+Progress: Parameterizing module altclkctrl_0
+Progress: Building connections
+Progress: Parameterizing connections
+Progress: Validating
+Progress: Done reading input file
+: ADCINCLKCTRL.altclkctrl_0: Targeting device family: Cyclone V.
+: ADCINCLKCTRL.altclkctrl_0: Global clock network allows a clock signal to reach all parts of the chip with the same amount of skew. Input port 'clkselect' can be used to switch between four clock inputs.
+: ADCINCLKCTRL.altclkctrl_0: The register mode of port 'ena' is unavailable while 'ena' port not added. 
+Info: qsys-generate succeeded.
+Info: Finished: Create block symbol file (.bsf)
+Info: 
+Info: Starting: Create HDL design files for synthesis
+Info: qsys-generate C:\Users\icecube\WorkSpace\Altera\D-Egg_fw\CommTest_Fujii_verilog_dev\ADCINCLKCTRL.qsys --synthesis=VERILOG --output-directory=C:\Users\icecube\WorkSpace\Altera\D-Egg_fw\CommTest_Fujii_verilog_dev\ADCINCLKCTRL\synthesis --family="Cyclone V" --part=5CEFA7F23I7
+Progress: Loading CommTest_Fujii_verilog_dev/ADCINCLKCTRL.qsys
+Progress: Reading input file
+Progress: Adding altclkctrl_0 [altclkctrl 16.0]
+Progress: Parameterizing module altclkctrl_0
+Progress: Building connections
+Progress: Parameterizing connections
+Progress: Validating
+Progress: Done reading input file
+: ADCINCLKCTRL.altclkctrl_0: Targeting device family: Cyclone V.
+: ADCINCLKCTRL.altclkctrl_0: Global clock network allows a clock signal to reach all parts of the chip with the same amount of skew. Input port 'clkselect' can be used to switch between four clock inputs.
+: ADCINCLKCTRL.altclkctrl_0: The register mode of port 'ena' is unavailable while 'ena' port not added. 
+Info: ADCINCLKCTRL: Generating ADCINCLKCTRL "ADCINCLKCTRL" for QUARTUS_SYNTH
+Info: altclkctrl_0: Generating top-level entity ADCINCLKCTRL_altclkctrl_0.
+Info: altclkctrl_0: "ADCINCLKCTRL" instantiated altclkctrl "altclkctrl_0"
+Info: ADCINCLKCTRL: Done "ADCINCLKCTRL" with 2 modules, 2 files
+Info: qsys-generate succeeded.
+Info: Finished: Create HDL design files for synthesis

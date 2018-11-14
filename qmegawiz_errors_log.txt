@@ -1,0 +1,61 @@
+
+
+C:/Users/icecube/WorkSpace/Altera/D-Egg_fw/CommTest_2ADC_dev/ADC_PLL.v
+
+Jul 23 06PM:15:02>: Megafunction PLL Intel FPGA IP v18.0 is not listed in any 
+wizard.lst file in the specified library path(s).Wizard launch aborted
+
+C:/Users/icecube/WorkSpace/Altera/D-Egg_fw/CommTest_2ADC_dev/ADC_PLL.v
+
+Jul 23 06PM:15:23>: Megafunction PLL Intel FPGA IP v18.0 is not listed in any 
+wizard.lst file in the specified library path(s).Wizard launch aborted
+
+C:/Users/icecube/WorkSpace/Altera/D-Egg_fw/CommTest_2ADC_dev/ADC_PLL.v
+
+Jul 23 06PM:15:27>: Megafunction PLL Intel FPGA IP v18.0 is not listed in any 
+wizard.lst file in the specified library path(s).Wizard launch aborted
+
+C:/Users/icecube/WorkSpace/Altera/D-Egg_fw/CommTest_2ADC_dev/ADC_PLL.v
+
+Jul 23 06PM:15:39>: Megafunction PLL Intel FPGA IP v18.0 is not listed in any 
+wizard.lst file in the specified library path(s).Wizard launch aborted
+
+C:/Users/icecube/WorkSpace/Altera/D-Egg_fw/CommTest_2ADC_dev/ADC_PLL.v
+
+Jul 23 06PM:15:43>: Megafunction PLL Intel FPGA IP v18.0 is not listed in any 
+wizard.lst file in the specified library path(s).Wizard launch aborted
+
+C:/Users/icecube/WorkSpace/Altera/D-Egg_fw/CommTest_2ADC_dev/ADC_PLL.v
+
+Jul 23 06PM:16:45>: Megafunction PLL Intel FPGA IP v18.0 is not listed in any 
+wizard.lst file in the specified library path(s).Wizard launch aborted
+
+C:/Users/icecube/WorkSpace/Altera/D-Egg_fw/CommTest_2ADC_dev/SYS_PLL.v
+
+Jul 23 06PM:17:21>: Megafunction PLL Intel FPGA IP v18.0 is not listed in any 
+wizard.lst file in the specified library path(s).Wizard launch aborted
+
+C:/Users/icecube/WorkSpace/Altera/D-Egg_fw/CommTest_2ADC_dev/SYS_PLL.v
+
+Jul 23 06PM:17:35>: Megafunction PLL Intel FPGA IP v18.0 is not listed in any 
+wizard.lst file in the specified library path(s).Wizard launch aborted
+
+C:/Users/icecube/WorkSpace/Altera/D-Egg_fw/CommTest_2ADC_dev/SYS_PLL.v
+
+Jul 23 06PM:18:18>: Megafunction PLL Intel FPGA IP v18.0 is not listed in any 
+wizard.lst file in the specified library path(s).Wizard launch aborted
+
+C:/Users/icecube/WorkSpace/Altera/D-Egg_fw/CommTest_2ADC_dev/SYS_PLL.v
+
+Jul 23 06PM:18:35>: Megafunction PLL Intel FPGA IP v18.0 is not listed in any 
+wizard.lst file in the specified library path(s).Wizard launch aborted
+
+C:/Users/icecube/WorkSpace/Altera/D-Egg_fw/CommTest_2ADC_dev/ADC_PLL.v
+
+Jul 24 11AM:32:47>: Megafunction PLL Intel FPGA IP v18.0 is not listed in any 
+wizard.lst file in the specified library path(s).Wizard launch aborted
+
+C:/Users/icecube/WorkSpace/Altera/D-Egg_fw/CommTest_2ADC_dev/ADC_PLL.v
+
+Jul 24 11AM:33:16>: Megafunction PLL Intel FPGA IP v18.0 is not listed in any 
+wizard.lst file in the specified library path(s).Wizard launch aborted

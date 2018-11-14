@@ -41,8 +41,8 @@ set_time_format -unit ns -decimal_places 3
 
 create_clock -name {altera_reserved_tck} -period 33.333 -waveform { 0.000 16.666 } [get_ports {altera_reserved_tck}]
 create_clock -name {sysclk} -period 50.000 -waveform { 0.000 25.000 } [get_ports {IF_SYS_CLK}]
-create_clock -name {in_aclk1} -period 8.000 -waveform { 0.000 4.000 } [get_ports {IF_SAD_CKO1}]
-create_clock -name {in_aclk2} -period 8.000 -waveform { 0.000 4.000 } [get_ports {IF_SAD_CKO2}]
+create_clock -name {in_aclk1} -period 4.000 -waveform { 0.000 2.000 } [get_ports {IF_SAD_CKO1}]
+create_clock -name {in_aclk2} -period 4.000 -waveform { 0.000 2.000 } [get_ports {IF_SAD_CKO2}]
 
 
 #**************************************************************
@@ -51,7 +51,7 @@ create_clock -name {in_aclk2} -period 8.000 -waveform { 0.000 4.000 } [get_ports
 
 create_generated_clock -name {gsysclk} -source [get_pins {A1|sys_pll_inst|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|refclkin}] -duty_cycle 50/1 -multiply_by 50 -divide_by 2 -master_clock {sysclk} [get_pins {A1|sys_pll_inst|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]}] 
 create_generated_clock -name {lgcclk} -source [get_pins {A1|sys_pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|vco0ph[0]}] -duty_cycle 50/1 -multiply_by 1 -divide_by 5 -master_clock {gsysclk} [get_pins {A1|sys_pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}] 
-create_generated_clock -name {fdclk} -source [get_pins {A1|sys_pll_inst|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|vco0ph[0]}] -duty_cycle 50/1 -multiply_by 1 -divide_by 4 -master_clock {gsysclk} [get_pins {A1|sys_pll_inst|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}] 
+create_generated_clock -name {fdclk} -source [get_pins {A1|sys_pll_inst|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|vco0ph[0]}] -duty_cycle 50/1 -multiply_by 1 -divide_by 2 -master_clock {gsysclk} [get_pins {A1|sys_pll_inst|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}] 
 
 create_generated_clock -name {gaclk1} -source [get_pins {ADC_PLL1|adc_pll_inst|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|refclkin}] -duty_cycle 50/1 -multiply_by 1 -divide_by 1 -master_clock {in_aclk1} [get_pins {ADC_PLL1|adc_pll_inst|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]}] 
 create_generated_clock -name {aclk1} -source [get_pins {ADC_PLL1|adc_pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|vco0ph[0]}] -duty_cycle 50/1 -multiply_by 1 -divide_by 1 -master_clock {gaclk1} [get_pins {ADC_PLL1|adc_pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}] 

@@ -1,8 +1,47 @@
-Info: Starting: Create block symbol file (.bsf)
-Info: qsys-generate C:\Users\icecube\WorkSpace\Altera\D-Egg_fw\CommTest_Fujii_verilog\SYS_GCLK.qsys --block-symbol-file --output-directory=C:\Users\icecube\WorkSpace\Altera\D-Egg_fw\CommTest_Fujii_verilog\SYS_GCLK --family="Cyclone V" --part=5CEFA7F23I7
-Progress: Loading CommTest_Fujii_verilog/SYS_GCLK.qsys
+Info: Starting: Create simulation model
+Info: qsys-generate C:\Users\icecube\WorkSpace\Altera\D-Egg_fw\CommTest_2ADC_dev\SYS_GCLK.qsys --simulation=VERILOG --allow-mixed-language-simulation --output-directory=C:\Users\icecube\WorkSpace\Altera\D-Egg_fw\CommTest_2ADC_dev\SYS_GCLK\simulation --family="Cyclone V" --part=5CEFA7F23I7
+Progress: Loading CommTest_2ADC_dev/SYS_GCLK.qsys
 Progress: Reading input file
-Progress: Adding altclkctrl_0 [altclkctrl 16.0]
+Progress: Adding altclkctrl_0 [altclkctrl 18.0]
+Progress: Parameterizing module altclkctrl_0
+Progress: Building connections
+Progress: Parameterizing connections
+Progress: Validating
+Progress: Done reading input file
+: SYS_GCLK.altclkctrl_0: Targeting device family: Cyclone V.
+: SYS_GCLK.altclkctrl_0: Global clock network allows a clock signal to reach all parts of the chip with the same amount of skew. Input port 'clkselect' can be used to switch between four clock inputs.
+: SYS_GCLK.altclkctrl_0: The register mode of port 'ena' is unavailable while 'ena' port not added. 
+Info: SYS_GCLK: Generating SYS_GCLK "SYS_GCLK" for SIM_VERILOG
+Info: altclkctrl_0: Generating top-level entity SYS_GCLK_altclkctrl_0.
+Info: altclkctrl_0: "SYS_GCLK" instantiated altclkctrl "altclkctrl_0"
+Info: SYS_GCLK: Done "SYS_GCLK" with 2 modules, 2 files
+Info: qsys-generate succeeded.
+Info: Finished: Create simulation model
+Info: Starting: Create Modelsim Project.
+Info: sim-script-gen --spd=C:\Users\icecube\WorkSpace\Altera\D-Egg_fw\CommTest_2ADC_dev\SYS_GCLK\SYS_GCLK.spd --output-directory=C:/Users/icecube/WorkSpace/Altera/D-Egg_fw/CommTest_2ADC_dev/SYS_GCLK/simulation/ --use-relative-paths=true
+Info: Doing: ip-make-simscript --spd=C:\Users\icecube\WorkSpace\Altera\D-Egg_fw\CommTest_2ADC_dev\SYS_GCLK\SYS_GCLK.spd --output-directory=C:/Users/icecube/WorkSpace/Altera/D-Egg_fw/CommTest_2ADC_dev/SYS_GCLK/simulation/ --use-relative-paths=true
+Info: Generating the following file(s) for MODELSIM simulator in C:/Users/icecube/WorkSpace/Altera/D-Egg_fw/CommTest_2ADC_dev/SYS_GCLK/simulation/ directory:
+Info: 	mentor/msim_setup.tcl
+Info: Generating the following file(s) for VCS simulator in C:/Users/icecube/WorkSpace/Altera/D-Egg_fw/CommTest_2ADC_dev/SYS_GCLK/simulation/ directory:
+Info: 	synopsys/vcs/vcs_setup.sh
+Info: Generating the following file(s) for VCSMX simulator in C:/Users/icecube/WorkSpace/Altera/D-Egg_fw/CommTest_2ADC_dev/SYS_GCLK/simulation/ directory:
+Info: 	synopsys/vcsmx/synopsys_sim.setup
+Info: 	synopsys/vcsmx/vcsmx_setup.sh
+Info: Generating the following file(s) for NCSIM simulator in C:/Users/icecube/WorkSpace/Altera/D-Egg_fw/CommTest_2ADC_dev/SYS_GCLK/simulation/ directory:
+Info: 	cadence/cds.lib
+Info: 	cadence/hdl.var
+Info: 	cadence/ncsim_setup.sh
+Info: 	1 .cds.lib files in cadence/cds_libs/ directory
+Info: Generating the following file(s) for RIVIERA simulator in C:/Users/icecube/WorkSpace/Altera/D-Egg_fw/CommTest_2ADC_dev/SYS_GCLK/simulation/ directory:
+Info: 	aldec/rivierapro_setup.tcl
+Info: For information on how to simulate your IP, see the explanatory comments in the simulator-specific subdirectories under C:/Users/icecube/WorkSpace/Altera/D-Egg_fw/CommTest_2ADC_dev/SYS_GCLK/simulation/.
+Info: Regenerate these scripts whenever you make any change to any Quartus-generated IP in your project.
+Info: Finished: Create Modelsim Project.
+Info: Starting: Create block symbol file (.bsf)
+Info: qsys-generate C:\Users\icecube\WorkSpace\Altera\D-Egg_fw\CommTest_2ADC_dev\SYS_GCLK.qsys --block-symbol-file --output-directory=C:\Users\icecube\WorkSpace\Altera\D-Egg_fw\CommTest_2ADC_dev\SYS_GCLK --family="Cyclone V" --part=5CEFA7F23I7
+Progress: Loading CommTest_2ADC_dev/SYS_GCLK.qsys
+Progress: Reading input file
+Progress: Adding altclkctrl_0 [altclkctrl 18.0]
 Progress: Parameterizing module altclkctrl_0
 Progress: Building connections
 Progress: Parameterizing connections
@@ -15,10 +54,10 @@ Info: qsys-generate succeeded.
 Info: Finished: Create block symbol file (.bsf)
 Info: 
 Info: Starting: Create HDL design files for synthesis
-Info: qsys-generate C:\Users\icecube\WorkSpace\Altera\D-Egg_fw\CommTest_Fujii_verilog\SYS_GCLK.qsys --synthesis=VERILOG --output-directory=C:\Users\icecube\WorkSpace\Altera\D-Egg_fw\CommTest_Fujii_verilog\SYS_GCLK\synthesis --family="Cyclone V" --part=5CEFA7F23I7
-Progress: Loading CommTest_Fujii_verilog/SYS_GCLK.qsys
+Info: qsys-generate C:\Users\icecube\WorkSpace\Altera\D-Egg_fw\CommTest_2ADC_dev\SYS_GCLK.qsys --synthesis=VERILOG --output-directory=C:\Users\icecube\WorkSpace\Altera\D-Egg_fw\CommTest_2ADC_dev\SYS_GCLK\synthesis --family="Cyclone V" --part=5CEFA7F23I7
+Progress: Loading CommTest_2ADC_dev/SYS_GCLK.qsys
 Progress: Reading input file
-Progress: Adding altclkctrl_0 [altclkctrl 16.0]
+Progress: Adding altclkctrl_0 [altclkctrl 18.0]
 Progress: Parameterizing module altclkctrl_0
 Progress: Building connections
 Progress: Parameterizing connections
