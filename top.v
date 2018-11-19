@@ -7,7 +7,10 @@ module top
 (
   // SYS
   input          IF_SYS_CLK, // 20 MHz
-  input          IF_RX,
+  
+  // USB-UART part 
+  input          IF_RX, // receiver
+  output         IF_TX, // transmitter 
   
   // ADC1
   output         IF_SAD_CLK1, // LVDS
@@ -87,7 +90,7 @@ module top
   // SYS
   // **************************************************************************************
 
-  assign IF_TEST      = IF_SAD_SDOUT1;
+  assign IF_TEST      = IF_SAD_SDOUT2;
   assign IF_SAD_CLK1  = CLK_250M;
   assign IF_SAD_CLK2  = CLK_250M;
   assign IF_IND_FPGA1 = IF_SAD_SDOUT1;
@@ -175,6 +178,7 @@ module top
   reg orexttrg1, orexttrg2;
   
   wire orexttrg = ext_trig1 | ext_trig2; 
+  //assign IF_TEST = orexttrg; 
 
   always @(negedge RESET or posedge clk_adc) begin 
     if (~RESET) begin 
@@ -321,7 +325,7 @@ module top
 	 .rdclk   (CLKB),
 	 .rdreq   (FIFO_RD_ENA),
 	 .wrclk   (clk_adc),
-	 .wrreq   (FIFO_WR_EN_RO_1),// & ~FIFO_FF & orexttrg),
+	 .wrreq   (FIFO_WR_EN_RO_1 & ~FIFO_FF & orexttrg),
 	 .q       (FIFO_DAT_OUT1),
 	 .rdempty (FIFO_EF),
 	 .wrfull  (FIFO_FF),
@@ -334,7 +338,7 @@ module top
 	 .rdclk   (CLKB),
 	 .rdreq   (FIFO_RD_ENA),
 	 .wrclk   (clk_adc2),
-	 .wrreq   (1'b1),//FIFO_WR_EN_RO_2 & ~FIFO_FF2 & orexttrg),
+	 .wrreq   (orexttrg),//FIFO_WR_EN_RO_2 & ~FIFO_FF2 & orexttrg),
 	 .q       (FIFO_DAT_OUT2),
 	 .rdempty (FIFO_EF2),
 	 .wrfull  (FIFO_FF2),
@@ -477,6 +481,50 @@ module top
 	 .init_done (init_done)
   );
   
+  
+  // USB-UART controlling 
+  wire txclk; 
+  reg  [7:0] txdata;
+  wire [7:0] fifo8_out;
+  reg rxflag; 
+  reg rdenable; 
+  wire endsending;
+  wire txfifo1_full, txfifo1_empty;
+  
+  RS232C_TX uart_tx_inst (
+    .clk (CLKB),
+    .rstn (RESET),
+	 .tx_en (~txfifo1_empty),
+	 .txdata (txdata),
+	 .uart_txd (IF_TX),
+	 .LED (),
+	 .oclk (txclk),
+	 .endsending (endsending)
+  );
+  
+  always @(posedge txclk) begin 
+    rxflag <= endsending;
+	 txdata <= fifo8_out; 
+	 if (rxflag) begin 
+	   rxflag <= 1'b0;
+		rdenable <= 1'b1;
+	 end
+	 else begin 
+	   rdenable <= 1'b0;
+	 end 
+  end 
+  
+  TX_FIFO tx_fifo_1 (
+    .data   ({2'b00,FIFO_DAT_IN1_PL}),
+    .rdclk  (txclk),
+    .rdreq  (rdenable),
+    .wrclk  (clk_adc1),
+    .wrreq  (1'b1),//orexttrg & ~txfifo1_full),
+    .q      (fifo8_out),
+    .rdempty(txfifo1_empty),
+    .wrfull (txfifo1_full)
+  );
+
   
   
   // version information

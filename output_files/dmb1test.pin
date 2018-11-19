@@ -28,7 +28,7 @@
  -- VCCIO         : Dedicated power pin, which MUST be connected to VCC
  --                 of its bank.
  --                  Bank 3A:       3.3V
- --                  Bank 3B:       2.5V
+ --                  Bank 3B:       1.35V
  --                  Bank 4A:       2.5V
  --                  Bank 5A:       2.5V
  --                  Bank 5B:       2.5V
@@ -269,7 +269,7 @@ RESERVED_INPUT_WITH_WEAK_PULLUP : G17       :        :                   :      
 RESERVED_INPUT_WITH_WEAK_PULLUP : G18       :        :                   :         : 7A        :                
 GND                          : G19       : gnd    :                   :         :           :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : G20       :        :                   :         : 7A        :                
-RESERVED_INPUT_WITH_WEAK_PULLUP : G21       :        :                   :         : 7A        :                
+IF_TX                        : G21       : output : 2.5 V             :         : 7A        : Y              
 RESERVED_INPUT_WITH_WEAK_PULLUP : G22       :        :                   :         : 7A        :                
 GND                          : H1        : gnd    :                   :         :           :                
 GND                          : H2        : gnd    :                   :         :           :                
@@ -389,7 +389,7 @@ GND                          : N5        : gnd    :                   :         
 RESERVED_INPUT_WITH_WEAK_PULLUP : N6        :        :                   :         : 3A        :                
 GND                          : N7        : gnd    :                   :         :           :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : N8        :        :                   :         : 3B        :                
-EXT_TRIG_IN2                 : N9        : input  : LVDS              :         : 3B        : Y              
+EXT_TRIG_IN2                 : N9        : input  : Differential 1.35-V SSTL :         : 3B        : Y              
 VCC                          : N10       : power  :                   : 1.1V    :           :                
 GND                          : N11       : gnd    :                   :         :           :                
 VCC                          : N12       : power  :                   : 1.1V    :           :                
@@ -411,7 +411,7 @@ altera_reserved_tms          : P5        : input  : 3.3-V LVTTL       :         
 RESERVED_INPUT_WITH_WEAK_PULLUP : P6        :        :                   :         : 3A        :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : P7        :        :                   :         : 3A        :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : P8        :        :                   :         : 3B        :                
-EXT_TRIG_IN2(n)              : P9        : input  : LVDS              :         : 3B        : Y              
+EXT_TRIG_IN2(n)              : P9        : input  : Differential 1.35-V SSTL :         : 3B        : N              
 GND                          : P10       : gnd    :                   :         :           :                
 VCC                          : P11       : power  :                   : 1.1V    :           :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : P12       :        :                   :         : 3B        :                
@@ -432,10 +432,10 @@ nCSO, DATA4                  : R4        :        :                   :         
 SLO_DAC1_CS                  : R5        : output : 3.3-V LVCMOS      :         : 3A        : Y              
 SLO_DAC1_SCLK                : R6        : output : 3.3-V LVCMOS      :         : 3A        : Y              
 RESERVED_INPUT_WITH_WEAK_PULLUP : R7        :        :                   :         : 3A        :                
-VCCIO3B                      : R8        : power  :                   : 2.5V    : 3B        :                
+VCCIO3B                      : R8        : power  :                   : 1.35V   : 3B        :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : R9        :        :                   :         : 3B        :                
-EXT_TRIG_IN1(n)              : R10       : input  : LVDS              :         : 3B        : Y              
-EXT_TRIG_IN1                 : R11       : input  : LVDS              :         : 3B        : Y              
+EXT_TRIG_IN1(n)              : R10       : input  : Differential 1.35-V SSTL :         : 3B        : N              
+EXT_TRIG_IN1                 : R11       : input  : Differential 1.35-V SSTL :         : 3B        : Y              
 RESERVED_INPUT_WITH_WEAK_PULLUP : R12       :        :                   :         : 3B        :                
 GND                          : R13       : gnd    :                   :         :           :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : R14       :        :                   :         : 4A        :                
@@ -457,7 +457,7 @@ RESERVED_INPUT_WITH_WEAK_PULLUP : T7        :        :                   :      
 RESERVED_INPUT_WITH_WEAK_PULLUP : T8        :        :                   :         : 3A        :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : T9        :        :                   :         : 3B        :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : T10       :        :                   :         : 3B        :                
-VCCIO3B                      : T11       : power  :                   : 2.5V    : 3B        :                
+VCCIO3B                      : T11       : power  :                   : 1.35V   : 3B        :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : T12       :        :                   :         : 4A        :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : T13       :        :                   :         : 4A        :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : T14       :        :                   :         : 4A        :                
@@ -522,7 +522,7 @@ VCCPD3A                      : W6        : power  :                   : 3.3V    
 VCC_AUX                      : W7        : power  :                   : 2.5V    :           :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : W8        :        :                   :         : 3A        :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : W9        :        :                   :         : 3A        :                
-VCCIO3B                      : W10       : power  :                   : 2.5V    : 3B        :                
+VCCIO3B                      : W10       : power  :                   : 1.35V   : 3B        :                
 VCCPD3B4A                    : W11       : power  :                   : 2.5V    : 3B, 4A    :                
 VCCPD3B4A                    : W12       : power  :                   : 2.5V    : 3B, 4A    :                
 VCC_AUX                      : W13       : power  :                   : 2.5V    :           :                
@@ -547,7 +547,7 @@ RESERVED_INPUT_WITH_WEAK_PULLUP : Y9        :        :                   :      
 RESERVED_INPUT_WITH_WEAK_PULLUP : Y10       :        :                   :         : 3B        :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : Y11       :        :                   :         : 3B        :                
 VREFB3BN0                    : Y12       : power  :                   :         : 3B        :                
-VCCIO3B                      : Y13       : power  :                   : 2.5V    : 3B        :                
+VCCIO3B                      : Y13       : power  :                   : 1.35V   : 3B        :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : Y14       :        :                   :         : 4A        :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : Y15       :        :                   :         : 4A        :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : Y16       :        :                   :         : 4A        :                
