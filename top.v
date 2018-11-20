@@ -52,7 +52,7 @@ module top
 
   // ***********************************************************************************************************
   // ***********************************************************************************************************
-  parameter VERSION = 32'h18111401;
+  parameter VERSION = 32'h18112002;
     
   reg [31:0] vreg;
   
@@ -318,6 +318,8 @@ module top
   );
   
   wire ortrig = 1'b1;//intrig1 | intrig2; 
+  
+  reg rdenable;
    
   DAT_FIFO A1_3 
   (	
@@ -332,16 +334,32 @@ module top
 	 .aclr    (~RESET)
   );
   
-  DAT_FIFO A2_3 
+  DAT_FIFO A2_3
   (
     .data    (FIFO_DAT_IN2_PL),
 	 .rdclk   (CLKB),
-	 .rdreq   (FIFO_RD_ENA),
+	 .rdreq   (rdenable & ~FIFO_EF2),//FIFO_RD_ENA),
 	 .wrclk   (clk_adc2),
 	 .wrreq   (orexttrg),//FIFO_WR_EN_RO_2 & ~FIFO_FF2 & orexttrg),
 	 .q       (FIFO_DAT_OUT2),
 	 .rdempty (FIFO_EF2),
 	 .wrfull  (FIFO_FF2),
+	 .aclr    (~RESET)
+  );
+
+
+  wire [13:0] FIFO_UART_OUT2;
+  wire FIFO_UART_EF2, FIFO_UART_FF2;
+  DAT_FIFO A2_uart 
+  (
+    .data    (FIFO_DAT_IN2_PL),
+	 .rdclk   (txclk),
+	 .rdreq   (rdenable & ~FIFO_UART_EF2),//FIFO_RD_ENA),
+	 .wrclk   (clk_adc2),
+	 .wrreq   (orexttrg),//FIFO_WR_EN_RO_2 & ~FIFO_FF2 & orexttrg),
+	 .q       (FIFO_UART_OUT2),
+	 .rdempty (FIFO_UART_EF2),
+	 .wrfull  (FIFO_UART_FF2),
 	 .aclr    (~RESET)
   );
   
@@ -487,37 +505,43 @@ module top
   reg  [7:0] txdata;
   wire [7:0] fifo8_out;
   reg rxflag; 
-  reg rdenable; 
   wire endsending;
   wire txfifo1_full, txfifo1_empty;
   
   RS232C_TX uart_tx_inst (
     .clk (CLKB),
     .rstn (RESET),
-	 .tx_en (~txfifo1_empty),
-	 .txdata (txdata),
+	 .tx_en (1'b1),
+	 .txdata (txdata),//FIFO_DAT_OUT2[9:2]),
 	 .uart_txd (IF_TX),
 	 .LED (),
 	 .oclk (txclk),
 	 .endsending (endsending)
   );
   
+  initial begin 
+    rxflag = 1'b0;
+  end
+  
   always @(posedge txclk) begin 
-    rxflag <= endsending;
-	 txdata <= fifo8_out; 
-	 if (rxflag) begin 
-	   rxflag <= 1'b0;
-		rdenable <= 1'b1;
-	 end
-	 else begin 
-	   rdenable <= 1'b0;
+    if (rxflag) begin 
+	   txdata <= FIFO_UART_OUT2[7:0]; 
 	 end 
+	 else begin
+	   txdata <= {2'b00, FIFO_UART_OUT2[13:8]};
+	 end
+	 if (endsending) begin 
+	   rxflag <= ~rxflag; 
+		if (rxflag) rdenable <= 1'b1;
+		else rdenable <= 1'b0;
+	 end
+	 else rdenable <= 1'b0;
   end 
   
   TX_FIFO tx_fifo_1 (
     .data   ({2'b00,FIFO_DAT_IN1_PL}),
     .rdclk  (txclk),
-    .rdreq  (rdenable),
+    .rdreq  (1'b1),//rdenable),
     .wrclk  (clk_adc1),
     .wrreq  (1'b1),//orexttrg & ~txfifo1_full),
     .q      (fifo8_out),

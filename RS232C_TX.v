@@ -38,15 +38,14 @@ module RS232C_TX (
   always @(posedge serclk) begin
     txd_out <= buffer[0];
     if (tx_en & rstn & (sendcnt == 0)) begin
-	   buffer  <= {1'b0,txdata,1'b1};
+	   buffer  <= {1'b1,txdata,1'b0};
 		sendcnt <= 1;
     end
     else begin
-      if (sendcnt != 0) begin 
+      if (sendcnt != 0)  
         sendcnt <= sendcnt + 1'b1;
-        buffer[8:0] <= buffer[9:1];
-        buffer[9]   <= 1'b1;
-		end 
+      buffer[8:0] <= buffer[9:1];
+      buffer[9]   <= 1'b1;
     end
   end
   
