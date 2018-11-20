@@ -52,7 +52,7 @@ module top
 
   // ***********************************************************************************************************
   // ***********************************************************************************************************
-  parameter VERSION = 32'h18112002;
+  parameter VERSION = 32'h18112004;
     
   reg [31:0] vreg;
   
@@ -538,7 +538,7 @@ module top
 	 else rdenable <= 1'b0;
   end 
   
-  TX_FIFO tx_fifo_1 (
+  /*TX_FIFO tx_fifo_1 (
     .data   ({2'b00,FIFO_DAT_IN1_PL}),
     .rdclk  (txclk),
     .rdreq  (1'b1),//rdenable),
@@ -547,7 +547,7 @@ module top
     .q      (fifo8_out),
     .rdempty(txfifo1_empty),
     .wrfull (txfifo1_full)
-  );
+  );*/
 
   
   
