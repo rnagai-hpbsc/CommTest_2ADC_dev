@@ -338,9 +338,9 @@ module top
   (
     .data    (FIFO_DAT_IN2_PL),
 	 .rdclk   (CLKB),
-	 .rdreq   (rdenable & ~FIFO_EF2),//FIFO_RD_ENA),
+	 .rdreq   (FIFO_RD_ENA),
 	 .wrclk   (clk_adc2),
-	 .wrreq   (orexttrg),//FIFO_WR_EN_RO_2 & ~FIFO_FF2 & orexttrg),
+	 .wrreq   (FIFO_WR_EN_RO_2 & ~FIFO_FF2 & orexttrg),
 	 .q       (FIFO_DAT_OUT2),
 	 .rdempty (FIFO_EF2),
 	 .wrfull  (FIFO_FF2),
@@ -397,7 +397,7 @@ module top
 		.ext_rst_export        (ext_rst),
 		.bs1_export            (baseline_1_pl),
 		.bs2_export            (baseline_2_pl),
-		.tp1_export            (FIFO_DAT_OUT1)
+		.tp1_export            ()
   );
   
   wire ext_ctrl;
@@ -405,7 +405,7 @@ module top
   reg [15:0] ofstreg; 
 
   
-  assign FIFO_RD_ENA = 1'b1;//~FIFO_EF & ~FIFO_EF2;
+  assign FIFO_RD_ENA = ~FIFO_EF & ~FIFO_EF2;
 
   SYS_GCLK A0 
   (

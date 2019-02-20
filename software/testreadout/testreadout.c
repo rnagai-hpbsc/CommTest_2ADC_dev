@@ -5,6 +5,7 @@
  *      Author: icecube
  */
 #include <stdio.h>
+#include <stdlib.h>
 #include <unistd.h>
 #include "system.h"
 #include "altera_avalon_jtag_uart_regs.h"
@@ -17,11 +18,13 @@ int configure(int addr, int value);
 int main()
 {
 	// parameters
-	int flag = 0;
+	int flag = 1;
 	int run = 1;
-	int ntake = 1;
-	int maxsamplenumber = 10;
+	int ntake = 500;
+	int maxsamplenumber = -1;
 	int value = 32000;//8192;//6144;
+	int fixedvalue = 16384;
+
 
 	printf("Hello world!\n");
 
@@ -67,9 +70,13 @@ int main()
 		}
 		if (flag==2) printf("Close the program. %c\n",0x04);
 	}
-	configure(0,value);
-	configure(4,value);
-	configure(0,value);
+
+	//scanf("%d",&value);
+	//fixedvalue = value;
+	configure(0,fixedvalue);
+	configure(4,fixedvalue);
+	configure(0,fixedvalue);
+
 
 	printf("\nIf want to start data-taking, press enter...\n");
 
@@ -83,9 +90,9 @@ int main()
 	while (run) {
 		//printf("%d\n", index);
 		++index;
-		data = IORD_ALTERA_AVALON_FIFO_DATA(FIFO_0_OUT_BASE);
-		//data2 = IORD_ALTERA_AVALON_FIFO_DATA(FIFO_1_OUT_BASE);
-		data2 = IORD_ALTERA_AVALON_PIO_DATA(TESTPAD_1_BASE);
+		data  = IORD_ALTERA_AVALON_FIFO_DATA(FIFO_0_OUT_BASE);
+		data2 = IORD_ALTERA_AVALON_FIFO_DATA(FIFO_1_OUT_BASE);
+		//data2 = IORD_ALTERA_AVALON_PIO_DATA(TESTPAD_1_BASE);
 		baseline_1 = IORD_ALTERA_AVALON_PIO_DATA(BS_1_BASE);
 		baseline_2 = IORD_ALTERA_AVALON_PIO_DATA(BS_2_BASE);
 		printf("%d,%d,%d,%d",index,data,data2,baseline_1);
